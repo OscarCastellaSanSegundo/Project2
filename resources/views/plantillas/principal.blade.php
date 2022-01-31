@@ -9,25 +9,19 @@
     <link rel="stylesheet" href=" {{ asset('css/inicio.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost/template/public">
-                <img src="../public/Imagenes/logo.jfif" alt="" width="180" height="70">
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dades mestres
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="http://localhost/template/public/cicles">Cicles</a></li>
-                        <li><a class="dropdown-item" href="http://localhost/template/public/cursos">Cursos</a></li>
-                    </ul>
-                </ul>
-            </div>
+        <a class="navbar-brand" href="#">
+                <img src="../public/Imagenes/Logo2Project2.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Bootstrap
+        </a>
+        <a class="navbar-brand">Navbar</a>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
-    </nav>
+      </nav>
 
     <div class="container">
         @yield('contenido')
