@@ -10,7 +10,12 @@ Llamada
 
 @section('contenido')
 
-    <input type="button" onclick="" value="Llamadas" id="botonInicio">
-    <input type="button" onclick="" value="Expedientes" id="botonInicio">
-    <img src="../public/Imagenes/Logo1Vector1.png" alt="" width="180" height="120" class="d-inline-block align-text-top logoBotonInicio">
+<div class="card informacionLlamante" style="width: 18rem;">
+    <img src="../public/Imagenes/cartaTelefono.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Informació del trucant</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
 @endsection

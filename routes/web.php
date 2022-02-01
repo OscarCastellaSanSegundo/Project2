@@ -18,11 +18,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('/Expedientes', function () {
+Route::get('/expediente', function () {
     return view('expediente.index');
 });
 
-Route::get('/Llamada', function () {
+Route::get('/llamada', function () {
     return view('llamada.index');
 });
 
