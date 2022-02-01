@@ -14,15 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio.index');
 });
+
 
 Route::get('/Expedientes', function () {
     return view('expediente.index');
 });
 
-Route::get('/Llamadas', function () {
-    return view('principal.index');
+Route::get('/Llamada', function () {
+    return view('llamada.index');
 });
 
 Route::get('/Inicio', function () {

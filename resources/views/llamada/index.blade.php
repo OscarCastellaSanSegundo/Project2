@@ -5,7 +5,7 @@ Llamada de emergencia
 @endsection
 
 @section('tituloNav')
-Menu
+Llamada
 @endsection
 
 @section('contenido')

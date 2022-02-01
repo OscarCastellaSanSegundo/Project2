@@ -1,12 +1,18 @@
-@extends('plantillas.expedientes')
+@extends('plantillas.principal')
+
+
 
 @section('titulo')
-Gestion de expedientes
+
 @endsection
 
+
+
 @section('tituloNav')
-Expedientes
+
 @endsection
+
+
 
 @section('contenido')
 

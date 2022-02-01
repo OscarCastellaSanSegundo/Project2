@@ -12,14 +12,10 @@
     <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">
-                <img src="../public/Imagenes/Logo2Project2.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                Bootstrap
+                <img src="../public/Imagenes/Logo2Project2.png" alt="" width="60" height="48" class="d-inline-block align-text-top">
+                @yield('tituloNav')
         </a>
-        <a class="navbar-brand">Navbar</a>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <a class="nav-link" href="#">Cerrar sesion</a>
         </div>
       </nav>
 
