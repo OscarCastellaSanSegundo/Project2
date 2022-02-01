@@ -9,8 +9,14 @@ Menu
 @endsection
 
 @section('contenido')
+    <div class="row text-center colu">
+        <div class="col colu">
+            <input type="button" onclick="" value="Llamadas" id="botonInicio">
+        </div>
+        <div class="col colu">
+            <input type="button" onclick="" value="Expedientes" id="botonInicio">
 
-    <input type="button" onclick="" value="Llamadas" id="botonInicio">
-    <input type="button" onclick="" value="Expedientes" id="botonInicio">
-    <img src="../public/Imagenes/Logo1Vector1.png" alt="" width="180" height="120" class="d-inline-block align-text-top logoBotonInicio">
-@endsection
+        </div>
+    </div>
+{{--     <img src="../public/Imagenes/Logo1Vector1.png" alt="" width="180" height="120" class="d-inline-block align-text-top logoBotonInicio">
+ --}}@endsection
