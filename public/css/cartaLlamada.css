@@ -1,5 +1,19 @@
-.informacionLlamante{
+/* .informacionLlamante{
     right: 5%;
     margin-top: 5%;
     position: fixed;
+} */
+
+.principal{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.zonaTelefono{
+    width: 20%;
+}
+
+.zonaFormulario{
+    width: 75%;
 }
