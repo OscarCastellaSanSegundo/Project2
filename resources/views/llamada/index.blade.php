@@ -14,50 +14,169 @@ Llamada
     <div class="zonaFormulario">
 
         <div>
-            <div class="card" style="width: 100%; margin-top: 15px;">
+            <div class="card" style="width: 100%; margin-top: 10px;">
                 <img class="card-img-top" src="../public/Imagenes/EMERGENCIA1.png" alt="Card image cap">
 
                 <div class="card-body">
-                  <h5 class="card-title">Emergencia</h5>
+                    <h4 class="card-title">Localització de la Emergencia</h4>
+
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">
+                            <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="collapse show multi-collapse" id="multiCollapseExample4">
+
+
+                                    <div class="form-group row mb-2">
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2">
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2">
+
+                                        </div>
+                                    </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col provinciaMunicipio">
+
+                            <div class="form-group row mb-2">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Comarca" aria-label="Comarca" aria-describedby="button-addon2">
+                                </div>
+
+                                <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div>
+                        <h4>Tipus de localització</h4>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+                            <label class="form-check-label" for="inlineRadio1">Carrer</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                            <label class="form-check-label" for="inlineRadio2">Punt singular</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">
+                            <label class="form-check-label" for="inlineRadio3">Carretera</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                            <label class="form-check-label" for="inlineRadio4">Entitat població</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+                            <label class="form-check-label" for="inlineRadio5">Provincia</label>
+                        </div>
+                        {{-- <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+                            <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+                        </div> --}}
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                <div class="card card-body">
+
+                                    <div class="form-group row mb-2 gx-2">
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Tipo de via" aria-label="Tipo de via" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Direccion" aria-label="Direccion" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <input type="number" class="form-control form-control-sm" placeholder="nº" aria-label="nº" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Escalera" aria-label="Escalera" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Piso" aria-label="Piso" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Puerta" aria-label="Puerta" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Otro" aria-label="Otro" aria-describedby="button-addon2">
+                                        </div>
+                                        <a class="col-sm-1 col-navbar-brand-sm" href="#">
+                                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                <div class="card card-body">
+
+                                    <div class="form-group row mb-2 gx-2">
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Nombre del punto singular" aria-label="Nombre del punto singular" aria-describedby="button-addon2">
+                                        </div>
+                                        <a class="col-sm-1 col-navbar-brand-sm" href="#">
+                                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseExample3">
+                                <div class="card card-body">
+
+                                    <div class="form-group row mb-2 gx-2">
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Nombre de la carretera" aria-label="Nombre de la carretera" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="number" class="form-control form-control-sm" placeholder="KM" aria-label="KM" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Sentido de la marcha" aria-label="Sentido de la marcha" aria-describedby="button-addon2">
+                                        </div>
+                                        <a class="col-sm-1 col-navbar-brand-sm" href="#">
+                                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
-
-                <div class="form-group row mb-2" style="margin-left: 5px;">
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" placeholder="Comarca" aria-label="Comarca" aria-describedby="button-addon2">
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2">
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control form-control-sm" placeholder="Municipio" aria-label="Municipio" aria-describedby="button-addon2">
-                    </div>
-                    <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                        <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                    </a>
-                </div>
-
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Tipo de localizacion</li>
-                    <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                        <label class="form-check-label" for="exampleRadios1">
-                          Default radio
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                          Second default radio
-                        </label>
-                      </div>
-                      <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-                        <label class="form-check-label" for="exampleRadios3">
-                          Disabled radio
-                        </label>
-                      </div>
-                </ul>
-
 
                 <div class="card-body">
                   <a href="#" class="card-link">Card link</a>
@@ -76,9 +195,9 @@ Llamada
     <div class="zonaTelefono">
 
         <div>
-            <div class="card" style="width: 100%; margin-top: 15px;">
+            <div class="card" style="width: 100%; margin-top: 10px;">
                 <div class="card-body row mb-0 cronometro">
-                    <h5>Nº Expediente</h5>
+                    <h5>Nº Llamada</h5>
                     <div class="col-sm-6 mb-0">
                         <p>463824284</p>
                     </div>
@@ -89,7 +208,7 @@ Llamada
               </div>
         </div>
 
-        <div class="card informacionLlamante" style="width: 100%; margin-top: 20px">
+        <div class="card informacionLlamante" style="width: 100%; margin-top: 10px">
             <img src="../public/Imagenes/cartaTelefono.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Informació del trucant</h5>
@@ -138,32 +257,37 @@ Llamada
             </div>
         </div>
 
+        {{-- Procedimiento de llamada --}}
+
         <div>
-            <div class="card procedenciaLlamada" style="width: 100%; margin-top: 20px;">
+            <div class="card procedenciaLlamada" style="width: 100%; margin-top: 10px;">
                 <div class="card-header">
                   <h5>Procedencia de la llamada</h5>
                 </div>
                 <div class="card-body">
 
-                    <div class="form-group row mb-2">
-                        <div class="col-sm-10">
+                    <div class="form-group row mb-2 gx-1">
+                        <div class="col-sm-5">
                             <input type="text" class="form-control form-control-sm" placeholder="Procedencia" aria-label="Procedencia" aria-describedby="button-addon2">
                         </div>
-                        <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control form-control-sm" placeholder="Municipio" aria-label="Municipio" aria-describedby="button-addon2">
+                        </div>
+                        <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
                         </a>
                     </div>
 
-                    <div class="form-group row mb-2">
+                    {{-- <div class="form-group row mb-2">
                         <div class="col-sm-10">
                             <input type="text" class="form-control form-control-sm" placeholder="Municipio" aria-label="Municipio" aria-describedby="button-addon2">
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
                         </a>
-                    </div>
+                    </div> --}}
 
-                    <div class="form-group row mb-2">
+                    <div class="form-group row mb-2 gx-3">
                         <div class="col-sm-10">
                             <input type="text" class="form-control form-control-sm" placeholder="Direccion" aria-label="Direccion" aria-describedby="button-addon2">
                         </div>
@@ -172,20 +296,28 @@ Llamada
                         </a>
                     </div>
 
-                    {{-- Procedimiento de llamada --}}
+                    <div class="form-inline row mb-2 gx-1">
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control form-control-sm" placeholder="Tipo" aria-label="Tipo" aria-describedby="button-addon2">
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="number" class="form-control form-control-sm" placeholder="KM" aria-label="KM" aria-describedby="button-addon2">
+                        </div>
+
+                        <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
+                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                        </a>
+                    </div>
 
                     <div class="form-inline row mb-2 gx-1">
                         <div class="col-sm-3">
-                            <input type="text" class="form-control form-control-sm" placeholder="Tipo" aria-label="Tipo" aria-describedby="button-addon2">
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="number" class="form-control form-control-sm" placeholder="KM" aria-label="KM" aria-describedby="button-addon2">
-                        </div>
-                        <div class="col-sm-2">
                             <input type="number" class="form-control form-control-sm" placeholder="nº" aria-label="nº" aria-describedby="button-addon2">
                         </div>
                         <div class="col-sm-3">
                             <input type="text" class="form-control form-control-sm" placeholder="Piso" aria-label="Piso" aria-describedby="button-addon2">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-sm" placeholder="Otro" aria-label="Otro" aria-describedby="button-addon2">
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -196,22 +328,12 @@ Llamada
                         <div class="col-sm-10">
                             <input type="text" class="form-control form-control-sm" placeholder="Informacion del telefono" aria-label="Informacion del telefono" aria-describedby="button-addon2">
                         </div>
-                        <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                        <a class="col-sm-2 col-navbar-brand-sm gx-2" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
                         </a>
                     </div>
 
-                    <div class="form-group row mb-2">
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control form-control-sm" placeholder="Fecha" aria-label="Fecha" aria-describedby="button-addon2">
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control form-control-sm" placeholder="Hora" aria-label="Hora" aria-describedby="button-addon2">
-                        </div>
-                        <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                        </a>
-                    </div>
+
                 </div>
               </div>
         </div>

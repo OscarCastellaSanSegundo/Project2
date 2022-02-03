@@ -1,21 +1,35 @@
-#botonInicio{
-    width: 80%;
-    height: 400px;
-}
 
+.principal{
+   width: 100%;
+    height: 600px;
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+
+}
 
 body{
-  background-color: rgb(235, 123, 123);
+    background-color: salmon;
 }
 
-
-.logoBotonInicio{
-    position: fixed;
-    top: 10%;
-    right: 5%;
+.boton1{
+    width: 100%;
+    height: 100%;
 }
 
-.colu{
+.boton2{
+    width: 100%;
+    height: 100%;
+}
+
+.divLlamada, .divExpediente{
     width: 100%;
 }
 
+.divExpediente{
+    margin-left: 15px;
+}
+
+.divLlamada{
+    margin-right: 15px;
+}
