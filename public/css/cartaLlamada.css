@@ -4,21 +4,21 @@
     position: fixed;
 } */
 
-.principal{
+.principalCarta{
     display: flex;
     /* justify-content: space-between;
     justify-content: center; */
-    justify-content: center;
+    justify-content: space-between;
     width:100%;
 }
 
 .zonaTelefono{
-    width: 25%;
+    width: 15%;
     margin-left: 15px;
 }
 
 .zonaFormulario{
-    width: 75%;
+    width: 60%;
 }
 
 /* .provinciaMunicipio{

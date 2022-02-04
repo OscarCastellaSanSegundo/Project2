@@ -10,7 +10,7 @@ Llamada
 
 @section('contenido')
 
-<div class="principal">
+<div class="principalCarta">
     <div class="zonaFormulario">
 
         <div>
@@ -28,70 +28,114 @@ Llamada
                     </div>
 
                     <div class="row">
-                        <div class="col">
-                            <div class="collapse show multi-collapse" id="multiCollapseExample4">
+                        <div class="col-7">
+                            <div class="col provinciaMunicipio">
 
+                                <div class="form-group row mb-2">
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Municipio" aria-label="Provincia" aria-describedby="button-addon2">
 
-                                    <div class="form-group row mb-2">
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2">
-
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2">
-
-                                        </div>
                                     </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2">
 
-
-                            </div>
-                        </div>
-                        <div class="col provinciaMunicipio">
-
-                            <div class="form-group row mb-2">
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Comarca" aria-label="Comarca" aria-describedby="button-addon2">
+                                    </div>
                                 </div>
 
-                                <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                                </a>
                             </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
+                                <div class="form-group row mb-2">
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Comarca" aria-label="Comarca" aria-describedby="button-addon2">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-1">
+
+                            <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                                <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    {{-- ------------------------------------------------------------------------------------------------------------------------------------ --}}
+                    <div class="row">
+                        <div class="col-8">
+                            <h4>Tipus de localització</h4>
+                        </div>
+                        <div class="col-4">
+                            <h4>Tipus d'incident</h4>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-1" style="margin-right: 15px">
+                            <div class="col provinciaMunicipio">
 
+                                <div class="form-check form-check-inline ">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
+                                    <label class="form-check-label" for="inlineRadio1">Provincia</label>
+                                </div>
 
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
-                    <div>
-                        <h4>Tipus de localització</h4>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
-                            <label class="form-check-label" for="inlineRadio1">Carrer</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+                                    <label class="form-check-label" for="inlineRadio2">Calle</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                                    <label class="form-check-label" for="inlineRadio3">Punt singular</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">
+                                    <label class="form-check-label" for="inlineRadio4">Carretera</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
+                                    <label class="form-check-label" for="inlineRadio5">Entitat població</label>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
-                            <label class="form-check-label" for="inlineRadio2">Punt singular</label>
+                        <div class="col-1 gx-0">
+
+                            <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                                <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                            </a>
+
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">
-                            <label class="form-check-label" for="inlineRadio3">Carretera</label>
+                        <div class="col-1 gx-0">
+
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Tipo</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                            <label class="form-check-label" for="inlineRadio4">Entitat població</label>
+                        <div class="col-2 gx-0">
+
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Incidente</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
-                            <label class="form-check-label" for="inlineRadio5">Provincia</label>
-                        </div>
-                        {{-- <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-                            <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
-                        </div> --}}
                     </div>
-
 
                     <div class="row">
                         <div class="col">
@@ -102,7 +146,7 @@ Llamada
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control form-control-sm" placeholder="Tipo de via" aria-label="Tipo de via" aria-describedby="button-addon2">
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-2">
                                             <input type="text" class="form-control form-control-sm" placeholder="Direccion" aria-label="Direccion" aria-describedby="button-addon2">
                                         </div>
                                         <div class="col-sm-1">
@@ -117,8 +161,8 @@ Llamada
                                         <div class="col-sm-1">
                                             <input type="text" class="form-control form-control-sm" placeholder="Puerta" aria-label="Puerta" aria-describedby="button-addon2">
                                         </div>
-                                        <div class="col-sm-1">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Otro" aria-label="Otro" aria-describedby="button-addon2">
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Otras referencias (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
                                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -139,6 +183,9 @@ Llamada
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control form-control-sm" placeholder="Nombre del punto singular" aria-label="Nombre del punto singular" aria-describedby="button-addon2">
                                         </div>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Otras referencias (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
+                                        </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
                                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
                                         </a>
@@ -154,14 +201,35 @@ Llamada
                                 <div class="card card-body">
 
                                     <div class="form-group row mb-2 gx-2">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <input type="text" class="form-control form-control-sm" placeholder="Nombre de la carretera" aria-label="Nombre de la carretera" aria-describedby="button-addon2">
                                         </div>
                                         <div class="col-sm-2">
                                             <input type="number" class="form-control form-control-sm" placeholder="KM" aria-label="KM" aria-describedby="button-addon2">
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-2">
                                             <input type="text" class="form-control form-control-sm" placeholder="Sentido de la marcha" aria-label="Sentido de la marcha" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Otras referencias (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
+                                        </div>
+                                        <a class="col-sm-1 col-navbar-brand-sm" href="#">
+                                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseExample5">
+                                <div class="card card-body">
+
+                                    <div class="form-group row mb-2 gx-2">
+                                        <div class="col-sm-11">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Otras referencias (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
                                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
