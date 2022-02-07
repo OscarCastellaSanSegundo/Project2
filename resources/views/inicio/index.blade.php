@@ -11,10 +11,15 @@ Menu
 @section('contenido')
     <div class="principal">
         <div class="divLlamada">
-            <input type="button" onclick="" value="Llamadas" class="boton1">
+            <video id ="videobg" preload="auto" autoplay="true" loop>
+                <source src="../public/Videos/pulsacion.mp4" >
+            </video>
         </div>
         <div class="divExpediente">
-            <input type="button" onclick="" value="Expedientes" class="boton2">
+            <video id ="videobg" preload="auto" autoplay="true" loop>
+                <source src="../public/Videos/llamada.mp4" >
+            </video>
+            {{-- <input type="button" onclick="" value="Expedientes" class="boton2"> --}}
         </div>
     </div>
 {{--     <img src="../public/Imagenes/Logo1Vector1.png" alt="" width="180" height="120" class="d-inline-block align-text-top logoBotonInicio">
