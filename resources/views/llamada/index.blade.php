@@ -15,7 +15,7 @@ Llamada
 
         <div>
             <div class="card" style="width: 100%; margin-top: 10px;">
-                <img class="card-img-top" src="../public/Imagenes/EMERGENCIA1.png" alt="Card image cap">
+                <img class="card-img-top" src="../public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
 
                 <div class="card-body">
                     <h4 class="card-title">Localització de la Emergencia</h4>
@@ -241,28 +241,27 @@ Llamada
                         </div>
                     </div>
 
-
-
-
                 </div>
-
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
+            </div>
         </div>
 
-
-        <div class="card col-8" style="margin-top: 10px">
+        <div class="card col-12" style="margin-top: 10px">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
+                <div class="row col-12">
+                    <div class="col-8">
                         <h4>Expedients existents</h4>
-                        <table class="table">
+                    </div>
+                    <div class="col-4 gx-5">
+                        <h4>Crear expediente</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+
+                        <table class="table table-primary table-striped tablaExpedientes">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">nº</th>
                                 <th scope="col">First</th>
                                 <th scope="col">Last</th>
                                 <th scope="col">Handle</th>
@@ -289,16 +288,53 @@ Llamada
                             </tbody>
                         </table>
                     </div>
-                    <div class="col">
-
+                    <div class="col-2">
+                        <button type="button" class="btn btn-primary botonExpedienteNuevoConRecomendacion">Expediente nuevo con recomendacion</button>
+                    </div>
+                    <div class="col-2 ">
+                        <button type="button" class="btn btn-primary botonExpedienteNuevo">Expediente nuevo</button>
                     </div>
                 </div>
 
             </div>
+
         </div>
 
-        
 
+
+    </div>
+
+    <div class="zonaMapa">
+
+        <div class="card" style="height: 100%">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <div class="container-fluid">
+                    <h1 class="text-center">Contact Address</h1>
+                    <hr>
+                     <div class="row" >
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                     </div>
+                        <div class="row text-center">
+                          <div class="col-4 box1 pt-4">
+                            <a href="tel:+123456789"><i class="fas fa-phone fa-3x"></i>
+                            <h3 class="d-none d-lg-block d-xl-block">Phone</h3>
+                            <p class="d-none d-lg-block d-xl-block">+123456789</p></a>
+                          </div>
+                          <div class="col-4 box2 pt-4">
+                            <a href=""><i class="fas fa-home fa-3x"></i>
+                            <h3 class="d-none d-lg-block d-xl-block">Address</h3>
+                            <p class="d-none d-lg-block d-xl-block">Piazza del Colosseo, 1, 00184 Roma RM</p></a>
+                          </div>
+                          <div class="col-4 box3 pt-4">
+                            <a href="mailto:test@test.com"><i class="fas fa-envelope fa-3x"></i>
+                            <h3 class="d-none d-lg-block d-xl-block">E-mail</h3>
+                            <p class="d-none d-lg-block d-xl-block">test@test.com</p></a>
+                          </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </div>
 
 
