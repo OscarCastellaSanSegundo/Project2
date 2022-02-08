@@ -31,10 +31,19 @@
     padding: 10px;
 }
 
+.colorTabla{
+    background-color: rgb(17, 173, 196);
+}
+
 
 .btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
     background-color: rgb(17, 173, 196);
 }
+
+.botonesTabla{
+    background-color: rgb(228, 217, 93);
+}
+
 
 .botonExpedienteNuevoConRecomendacion{
     width: 100%;

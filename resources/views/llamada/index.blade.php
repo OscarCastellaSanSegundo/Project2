@@ -25,6 +25,9 @@ Llamada
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">
                             <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
                         </div>
+                        <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                        </a>
                     </div>
 
                     <div class="row">
@@ -86,7 +89,7 @@ Llamada
 
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-7">
                             <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
                                 <div class="form-check form-check-inline">
@@ -103,18 +106,21 @@ Llamada
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
-                                    <label class="form-check-label" for="inlineRadio5">Entitat població</label>
+                                    <label class="form-check-label" for="inlineRadio5">Població</label>
                                 </div>
+                                <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                </a>
 
                             </div>
                         </div>
-                        <div class="col-1 gx-0">
+                        {{-- <div class="col-1 gx-0">
 
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                 <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
                             </a>
 
-                        </div>
+                        </div> --}}
                         <div class="col-1 gx-0">
 
                             <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -258,8 +264,8 @@ Llamada
                 <div class="row">
                     <div class="col-8">
 
-                        <table class="table table-primary table-striped tablaExpedientes">
-                            <thead>
+                        <table class="table table-striped tablaExpedientes">
+                            <thead class="table colorTabla">
                             <tr>
                                 <th scope="col">nº</th>
                                 <th scope="col">First</th>
@@ -269,21 +275,28 @@ Llamada
                             </thead>
                             <tbody>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
                                 <td>Jacob</td>
                                 <td>Thornton</td>
-                                <td>@fat</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
                             </tr>
                             </tbody>
                         </table>
