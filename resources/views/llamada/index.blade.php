@@ -14,8 +14,8 @@ Llamada
     <div class="zonaFormulario">
 
         <div>
-            <div class="card" style="width: 100%; margin-top: 10px;">
-                <img class="card-img-top" src="../public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
+            <div class="card bordeRedondo" style="width: 100%; margin-top: 10px;">
+                <img class="card-img-top imagenEmergencia" src="../public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
 
                 <div class="card-body">
                     <h4 class="card-title">Localització de la Emergencia</h4>
@@ -139,10 +139,10 @@ Llamada
 
                     <div class="row">
                         <div class="col">
-                            <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                <div class="card card-body">
+                            <div class="collapse multi-collapse" id="multiCollapseExample1" style="margin-top: 1%">
 
-                                    <div class="form-group row mb-2 gx-2">
+
+                                    <div class="form-group row mb-2 gx-2" >
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control form-control-sm" placeholder="Tipo de via" aria-label="Tipo de via" aria-describedby="button-addon2">
                                         </div>
@@ -169,15 +169,15 @@ Llamada
                                         </a>
                                     </div>
 
-                                </div>
+
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            <div class="collapse multi-collapse" id="multiCollapseExample2">
-                                <div class="card card-body">
+                            <div class="collapse multi-collapse" id="multiCollapseExample2" style="margin-top: 1%">
+
 
                                     <div class="form-group row mb-2 gx-2">
                                         <div class="col-sm-4">
@@ -191,14 +191,14 @@ Llamada
                                         </a>
                                     </div>
 
-                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="collapse multi-collapse" id="multiCollapseExample3">
-                                <div class="card card-body">
+                            <div class="collapse multi-collapse" id="multiCollapseExample3" style="margin-top: 1%">
+
 
                                     <div class="form-group row mb-2 gx-2">
                                         <div class="col-sm-3">
@@ -218,14 +218,14 @@ Llamada
                                         </a>
                                     </div>
 
-                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="collapse multi-collapse" id="multiCollapseExample5">
-                                <div class="card card-body">
+                            <div class="collapse multi-collapse" id="multiCollapseExample5" style="margin-top: 1%">
+
 
                                     <div class="form-group row mb-2 gx-2">
                                         <div class="col-sm-11">
@@ -236,7 +236,7 @@ Llamada
                                         </a>
                                     </div>
 
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -245,7 +245,7 @@ Llamada
             </div>
         </div>
 
-        <div class="card col-12" style="margin-top: 10px">
+        <div class="card col-12 bordeRedondo" style="margin-top: 10px">
             <div class="card-body">
                 <div class="row col-12">
                     <div class="col-8">
@@ -289,10 +289,10 @@ Llamada
                         </table>
                     </div>
                     <div class="col-2">
-                        <button type="button" class="btn btn-primary botonExpedienteNuevoConRecomendacion">Expediente nuevo con recomendacion</button>
+                        <button type="button" class="btn btn-light botonExpedienteNuevoConRecomendacion" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Expediente nuevo con recomendacion</button>
                     </div>
                     <div class="col-2 ">
-                        <button type="button" class="btn btn-primary botonExpedienteNuevo">Expediente nuevo</button>
+                        <button type="button" class="btn btn-light botonExpedienteNuevo">Expediente nuevo</button>
                     </div>
                 </div>
 
@@ -304,43 +304,10 @@ Llamada
 
     </div>
 
-    <div class="zonaMapa">
-
-        <div class="card" style="height: 100%">
-            <div class="card-body">
-                <div class="container-fluid">
-                    <h1 class="text-center">Recomendaciones</h1>
-                    <hr>
-                     <div class="row" >
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-                     </div>
-                        <div class="row text-center">
-                          <div class="col-4 box1 pt-4">
-                            <a href="tel:+123456789"><i class="fas fa-phone fa-3x"></i>
-                            <h3 class="d-none d-lg-block d-xl-block">Phone</h3>
-                            <p class="d-none d-lg-block d-xl-block">+123456789</p></a>
-                          </div>
-                          <div class="col-4 box2 pt-4">
-                            <a href=""><i class="fas fa-home fa-3x"></i>
-                            <h3 class="d-none d-lg-block d-xl-block">Address</h3>
-                            <p class="d-none d-lg-block d-xl-block">Piazza del Colosseo, 1, 00184 Roma RM</p></a>
-                          </div>
-                          <div class="col-4 box3 pt-4">
-                            <a href="mailto:test@test.com"><i class="fas fa-envelope fa-3x"></i>
-                            <h3 class="d-none d-lg-block d-xl-block">E-mail</h3>
-                            <p class="d-none d-lg-block d-xl-block">test@test.com</p></a>
-                          </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="zonaTelefono">
 
         <div>
-            <div class="card" style="width: 100%; margin-top: 10px;">
+            <div class="card bordeRedondo" style="width: 100%; margin-top: 10px;">
                 <div class="card-body row mb-0 cronometro">
                     <h5>Nº Llamada</h5>
                     <div class="col-sm-6 mb-0">
@@ -353,8 +320,8 @@ Llamada
               </div>
         </div>
 
-        <div class="card informacionLlamante" style="width: 100%; margin-top: 10px">
-            <img src="../public/Imagenes/cartaTelefono.png" class="card-img-top" alt="...">
+        <div class="card informacionLlamante bordeRedondo" style="width: 100%; margin-top: 10px">
+            {{-- <img src="../public/Imagenes/cartaTelefono.png" class="card-img-top imagenEmergencia" alt="..."> --}}
             <div class="card-body">
                 <h5 class="card-title">Informació del trucant</h5>
 
@@ -405,7 +372,7 @@ Llamada
         {{-- Procedimiento de llamada --}}
 
         <div>
-            <div class="card procedenciaLlamada" style="width: 100%; margin-top: 10px;">
+            <div class="card procedenciaLlamada bordeRedondo" style="width: 100%; margin-top: 10px;">
                 <div class="card-header">
                   <h5>Procedencia de la llamada</h5>
                 </div>
@@ -485,6 +452,51 @@ Llamada
 
     </div>
 </div>
+
+
+
+<div class="modal fade zonaMapa bordeRedondo" id="exampleModalToggle" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Recomendaciones</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h1 class="text-center">Recomendaciones</h1>
+                <div class="row" >
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="row text-center">
+                    <div class="col-4 box1 pt-4">
+                        <a href="tel:+123456789"><i class="fas fa-phone fa-3x"></i>
+                        <h3 class="d-none d-lg-block d-xl-block">Phone</h3>
+                        <p class="d-none d-lg-block d-xl-block">+123456789</p></a>
+                    </div>
+                    <div class="col-4 box2 pt-4">
+                        <a href=""><i class="fas fa-home fa-3x"></i>
+                        <h3 class="d-none d-lg-block d-xl-block">Address</h3>
+                        <p class="d-none d-lg-block d-xl-block">Piazza del Colosseo, 1, 00184 Roma RM</p></a>
+                    </div>
+                    <div class="col-4 box3 pt-4">
+                        <a href="mailto:test@test.com"><i class="fas fa-envelope fa-3x"></i>
+                        <h3 class="d-none d-lg-block d-xl-block">E-mail</h3>
+                        <p class="d-none d-lg-block d-xl-block">test@test.com</p></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 @endsection

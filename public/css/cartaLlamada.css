@@ -8,28 +8,56 @@
     display: flex;
     /* justify-content: space-between;
     justify-content: center; */
-    justify-content: center;
+    justify-content: space-between;
     /* align-items: center; */
     width:100%;
 }
 
 .zonaTelefono{
-    width: 15%;
+    width: 21%;
     /* margin-left: 15px; */
 }
 
 .zonaFormulario{
-    width: 60%;
+    width: 78%;
 }
 
-.zonaMapa{
-    width: 23%;
-    margin-left: 1%;
-    margin-right: 1%;
+.bordeRedondo{
+    border-radius: 20px 20px 20px 20px;
+}
+
+.imagenEmergencia{
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px;
+}
+
+
+.btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
+    background-color: rgb(17, 173, 196);
+}
+
+.botonExpedienteNuevoConRecomendacion{
+    width: 100%;
+    height: 100%;
+    color: #000;
+    background-color: rgb(228, 217, 93);
+}
+
+.botonExpedienteNuevo{
+    width: 100%;
+    height: 100%;
+    color: #000;
+    background-color: rgb(228, 217, 93);
+    /* background-color: rgb(17, 173, 196); */
+}
+
+/* .zonaMapa{
+    display: flex;
+    justify-content: center;
+    width: 50%;
     margin-top: 10px;
 
-
-}
+} */
 
 /* .provinciaMunicipio{
     display: flex;
