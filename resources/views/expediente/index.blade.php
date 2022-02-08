@@ -21,9 +21,26 @@ Expedients
     <div class="row mb-3">
         <div class="row justify-content-end mt-4">
             <div class="col-12">
-                <div style="background-color:white;">
-                    <h1 style="display: inline">expedients</h1>
-                    <div class="btn-group">
+                <div class="card">
+                    <ul>
+                        <li>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Ordenar per
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about">About</a></li>
+                      </ul>
+                    {{-- <h1 style="display: inline-block">expedients</h1>
+                    <div class="btn-group" style="display: inline-block">
                         <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                           Ordenar per
                         </button>
@@ -33,7 +50,7 @@ Expedients
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </div>
-                    <div class="btn-group">
+                    <div class="btn-group" style="display: inline-block">
                         <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                           Data de creació
                         </button>
@@ -43,7 +60,7 @@ Expedients
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </div>
-                    <div class="btn-group">
+                    <div class="btn-group" style="display: inline-block">
                         <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                           Més filtres
                         </button>
@@ -53,45 +70,11 @@ Expedients
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </div>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                    </form> --}}
                 </div>
             </div>
-            {{-- <div class="col-4 mt-5">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      Ordenar per
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      Data de creació
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      Més filtres
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-2 mt-5">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                  </form>
-            </div> --}}
           </div>
     </div>
     <div class="row">
