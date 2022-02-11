@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/expediente', function () {
+Route::get('/expedientes', function () {
     return view('expediente.index');
 });
 

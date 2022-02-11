@@ -9,7 +9,7 @@
     <link rel="stylesheet" href=" {{ asset('css/inicio.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-dark">
+    {{-- <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">
                 <img src="../public/Imagenes/Logo2Project2.png" alt="" width="60" height="48" class="d-inline-block align-text-top">
@@ -17,7 +17,7 @@
         </a>
           <a class="nav-link" href="#">Cerrar sesion</a>
         </div>
-      </nav>
+      </nav> --}}
 
     <div class="container">
         @yield('contenido')
