@@ -25,7 +25,15 @@ Expedients
                 <div class="card">
                     <ul>
                         <li>
-                            <div class="btn-group">
+                            <div class="btn-group filtros">
+                                <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                  </form>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btn-group filtros">
                                 <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                   Ordenar per
                                 </button>
@@ -36,9 +44,42 @@ Expedients
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="#news">News</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li>
+                            <div class="btn-group filtros">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Ordenar per
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btn-group filtros">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Ordenar per
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btn-group filtros">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Ordenar per
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </li>
                       </ul>
                     {{-- <h1 style="display: inline-block">expedients</h1>
                     <div class="btn-group" style="display: inline-block">

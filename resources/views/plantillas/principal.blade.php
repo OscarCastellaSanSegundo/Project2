@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg me-auto navbar-dark bg-dark" >
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                    <img src="../public/Imagenes/Logo2Project2.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    <img src="{{ asset('Imagenes/Logo2Project2.png') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
                     @yield('tituloNav')
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
