@@ -22,6 +22,25 @@
     width: 100%;
 }
 
+.botonExpedienteFiltro{
+    width: 100%;
+}
+
+@media (min-width: 955px) {
+
+}
+
+.verEditarExpediente{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end ;
+}
+
+.barraNav{
+    display: flex;
+    justify-content: center;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -38,8 +57,7 @@ li {
 
 .filtros {
     display: block;
-    text-align: center;
-    padding: 16px;
+    padding: 8px;
     text-decoration: none;
 }
 

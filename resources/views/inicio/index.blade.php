@@ -10,12 +10,23 @@ Menu
 
 @section('contenido')
     <div class="principal">
-        <div class="divLlamada">
-            <input type="button" onclick="" value="Llamadas" class="boton1">
+        <div class="card cardInicio">
+            <div class="card-body">
+                <div class="divLlamada">
+                    <a href="{{ url('/llamada') }}" class="btn btn-primary fas fa-plus anadirElemento boton1">Llamada</a>
+                </div>
+            </div>
         </div>
-        <div class="divExpediente">
-            <input type="button" onclick="" value="Expedientes" class="boton2">
+        <div class="card cardInicio">
+            <div class="card-body">
+                <div class="divExpediente">
+                    <a href="{{ url('/expedientes') }}" class="btn btn-primary fas fa-plus anadirElemento boton2">Expedientes</a>
+                </div>
+            </div>
         </div>
+
+
+
     </div>
 {{--     <img src="../public/Imagenes/Logo1Vector1.png" alt="" width="180" height="120" class="d-inline-block align-text-top logoBotonInicio">
  --}}@endsection
