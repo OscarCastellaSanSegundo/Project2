@@ -124,29 +124,51 @@ Expedients
 
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header cardHeader">
             Nº expediente: 9839372321&nbsp;&nbsp;&nbsp;&nbsp;Nº trucades: 32
         </div>
-        <div class="card-body">
-            <div class="cuerpoCardExpediente">
+        <div class="card-body cardBody" >
+            <div class="cuerpoExpediente">
                 <div class="zonaMapaCard">
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187.08288259846324!2d2.1730808994327813!3d41.388723494740994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f05d80e233%3A0x999036411babe70f!2sCentro%20de%20Estudios%20Polit%C3%A9cnicos%3A%20Urquinaona!5e0!3m2!1ses!2ses!4v1645014935619!5m2!1ses!2ses" class="imagenMapa" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <div class="zonaLocalizacionIagencias">
-                    <div class="localizacion">
-
-                    </div>
-                    <div class="agenciasDespatxadas">
-
-                    </div>
+                <div class="notaComunaCard">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 90%"></textarea>
                 </div>
             </div>
-            <div class="notaComunaCard">
-
+            <div class="cuerpo2Expediente">
+                <div class="localizacion">
+                    <p class="textoLocalizacion">Calle Josep tarradelles 20</p>
+                </div>
+                <div class="agenciasDespachadas">
+                    <div class="agencia1">
+                        <div class="fotoAgencia">
+                            <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
+                        </div>
+                        <div class="unidadesAgencia">
+                            <h3>99</h3>
+                        </div>
+                    </div>
+                    <div class="agencia2">
+                        <div class="fotoAgencia">
+                            <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
+                        </div>
+                        <div class="unidadesAgencia">
+                            <h3>99</h3>
+                        </div>
+                    </div>
+                    <div class="agencia3">
+                        <div class="fotoAgencia">
+                            <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
+                        </div>
+                        <div class="unidadesAgencia">
+                            <h3>99</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card-footer">
-
+        <div class="card-footer cardFooter">
             <div class="verEditarExpediente">
                 <div>
                     Creacion: 27/08/2020&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;Edicion:&nbsp;23/04/2020<br>
@@ -156,6 +178,8 @@ Expedients
             </div>
         </div>
     </div>
+
+
 
     <div class="card">
         <div class="card-header">
