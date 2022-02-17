@@ -123,7 +123,7 @@ Expedients
 
 
 
-    <div class="card">
+    <div class="card" >
         <div class="card-header cardHeader">
             Nº expediente: 9839372321&nbsp;&nbsp;&nbsp;&nbsp;Nº trucades: 32
         </div>
@@ -174,7 +174,7 @@ Expedients
                     Creacion: 27/08/2020&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;Edicion:&nbsp;23/04/2020<br>
                     Estado: activo
                 </div>
-                <a href="#" class="btn btn-primary ">Ver/Editar</a>
+                <a class="btn btn-primary " data-bs-toggle="modal" href="#abrirExpediente" role="button">Ver/Editar</a>
             </div>
         </div>
     </div>
@@ -254,6 +254,46 @@ Expedients
 
 
 
+</div>
+
+
+<div class="modal fade zonaExpedienteAbierto bordeRedondo" id="abrirExpediente" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="abrirExpedienteLabel" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="abrirExpedienteLabel">Recomendaciones</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h1 class="text-center">Recomendaciones</h1>
+                <div class="row" >
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="row text-center">
+                    <div class="col-4 box1 pt-4">
+                        <a href="tel:+123456789"><i class="fas fa-phone fa-3x"></i>
+                        <h3 class="d-none d-lg-block d-xl-block">Phone</h3>
+                        <p class="d-none d-lg-block d-xl-block">+123456789</p></a>
+                    </div>
+                    <div class="col-4 box2 pt-4">
+                        <a href=""><i class="fas fa-home fa-3x"></i>
+                        <h3 class="d-none d-lg-block d-xl-block">Address</h3>
+                        <p class="d-none d-lg-block d-xl-block">Piazza del Colosseo, 1, 00184 Roma RM</p></a>
+                    </div>
+                    <div class="col-4 box3 pt-4">
+                        <a href="mailto:test@test.com"><i class="fas fa-envelope fa-3x"></i>
+                        <h3 class="d-none d-lg-block d-xl-block">E-mail</h3>
+                        <p class="d-none d-lg-block d-xl-block">test@test.com</p></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
