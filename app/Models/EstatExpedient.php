@@ -11,4 +11,9 @@ class EstatExpedient extends Model
 
     protected $table = 'estats_expedients';
     public $timestamps = false;
+
+    public function expedients()
+    {
+        return $this->hasMany(Expedient::class, 'estats_expedients_id');
+    }
 }

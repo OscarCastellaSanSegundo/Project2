@@ -11,4 +11,14 @@ class Comarca extends Model
 
     protected $table = 'comarques';
     public $timestamps = false;
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class, 'provincies_id');
+    }
+
+    public function municipis()
+    {
+        return $this->hasMany(Municipi::class, 'comarques_id');
+    }
 }

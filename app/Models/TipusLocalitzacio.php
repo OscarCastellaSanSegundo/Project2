@@ -11,4 +11,9 @@ class TipusLocalitzacio extends Model
 
     protected $table = 'tipus_localitzacions';
     public $timestamps = false;
+
+    public function cartesTrucades()
+    {
+        return $this->hasMany(CartaTrucada::class, 'tipus_localitzacions_id');
+    }
 }

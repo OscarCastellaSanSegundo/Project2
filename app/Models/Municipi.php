@@ -11,4 +11,9 @@ class Municipi extends Model
 
     protected $table = 'municipis';
     public $timestamps = false;
+
+    public function comarca()
+    {
+        return $this->belongsTo(Comarca::class, 'comarques_id');
+    }
 }

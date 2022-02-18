@@ -11,4 +11,14 @@ class Provincia extends Model
 
     protected $table = 'provinciess';
     public $timestamps = false;
+
+    public function comarques()
+    {
+        return $this->hasMany(Comarca::class, 'provincies_id');
+    }
+
+    public function cartesTrucada()
+    {
+        return $this->hasMany(CartaTrucada::class, 'provincies_id');
+    }
 }

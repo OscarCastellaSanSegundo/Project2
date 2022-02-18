@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carta_trucada;
+use App\Models\CartaTrucada;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -42,10 +42,10 @@ class CartaTrucadaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Carta_trucada  $carta_trucada
+     * @param  \App\Models\CartaTrucada  $CartaTrucada
      * @return \Illuminate\Http\Response
      */
-    public function show(Carta_trucada $carta_trucada)
+    public function show(CartaTrucada $CartaTrucada)
     {
         //
     }
@@ -53,10 +53,10 @@ class CartaTrucadaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Carta_trucada  $carta_trucada
+     * @param  \App\Models\CartaTrucada  $CartaTrucada
      * @return \Illuminate\Http\Response
      */
-    public function edit(Carta_trucada $carta_trucada)
+    public function edit(CartaTrucada $CartaTrucada)
     {
         //
     }
@@ -65,10 +65,10 @@ class CartaTrucadaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Carta_trucada  $carta_trucada
+     * @param  \App\Models\CartaTrucada  $CartaTrucada
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carta_trucada $carta_trucada)
+    public function update(Request $request, CartaTrucada $CartaTrucada)
     {
         //
     }
@@ -76,10 +76,10 @@ class CartaTrucadaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Carta_trucada  $carta_trucada
+     * @param  \App\Models\CartaTrucada  $CartaTrucada
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Carta_trucada $carta_trucada)
+    public function destroy(CartaTrucada $CartaTrucada)
     {
         //
     }

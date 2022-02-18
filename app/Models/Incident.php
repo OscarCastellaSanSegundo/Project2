@@ -11,4 +11,14 @@ class Incident extends Model
 
     protected $table = 'incidents';
     public $timestamps = false;
+
+    public function tipusIncident()
+    {
+        return $this->belongsTo(TipusIncident::class, 'classes_incidents_id');
+    }
+
+    public function cartesTrucada()
+    {
+        return $this->hasMany(CartaTrucada::class, 'expedients_id');
+    }
 }

@@ -11,4 +11,9 @@ class DadesPersonals extends Model
 
     protected $table = 'dades_personals';
     public $timestamps = false;
+
+    public function cartesTrucades()
+    {
+        return $this->hasMany(CartaTrucada::class, 'dades_personals_id');
+    }
 }

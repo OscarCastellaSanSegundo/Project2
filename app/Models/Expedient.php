@@ -11,4 +11,14 @@ class Expedient extends Model
 
     protected $table = 'expedients';
     public $timestamps = false;
+
+    public function cartesTrucada()
+    {
+        return $this->hasMany(Carta_trucada::class, 'expedients_id');
+    }
+
+    public function estatExpedient()
+    {
+        return $this->belongsTo(EstatExpedient::class, 'estats_expedients_id');
+    }
 }
