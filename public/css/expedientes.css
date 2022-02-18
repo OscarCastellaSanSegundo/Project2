@@ -189,11 +189,13 @@ html, body {
 .tituloExpedienteModal > .Ntrucades{
     text-align:end;
     width: 34%;
+    font-weight: bold;
     margin-right: 5px;
  }
 
  .tituloExpedienteModal > .Nexpediente{
      width: 65%;
+     font-weight: bold;
      text-align: start;
 
  }
@@ -216,6 +218,7 @@ html, body {
 
  .expedienteModal .modal-header{
     height: 6%;
+    font-weight: bold;
  }
 
  .expedienteModal .modal-body{
@@ -224,6 +227,7 @@ html, body {
 
  .expedienteModal .modal-footer{
     height: 10%;
+    font-weight: bold;
  }
 
  .modalBodyExpediente{
