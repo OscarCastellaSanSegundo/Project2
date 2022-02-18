@@ -318,42 +318,132 @@ Expedients
                                     <div class="accordion-body">
                                         <form>
                                             <fieldset disabled>
-                                            <legend>Informacio del trucant</legend>
+                                            <h4>Informacio del trucant</h4>
 
-                                            <div class="form-group row">
-                                                <div class="col-sm-6">
-                                                    <label for="disabledSelect" class="form-label-sm">Nom</label>
+                                            <div class="form-group row mt-0">
+                                                <div class="col-4">
+                                                    <div class="form-group mt-3">
+                                                        <label for="exampleFormControlTextarea1">Nom</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Rodrigo" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <label for="disabledSelect" class="form-label">Cognoms</label>
+                                                <div class="col-5">
+                                                    <div class="form-group mt-3">
+                                                        <label for="exampleFormControlTextarea1">Cognoms</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Gonzalez Gutierrez" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" value="Roberto" aria-label="Disabled input example" disabled readonly>
-                                                </div>
-                                                <div class="col-sm-6 mb-2">
-                                                    <input class="form-control form-control-sm" type="text" value="Guiterrex" aria-label="Disabled input example" disabled readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-sm-6">
-                                                    <label for="disabledSelect" class="form-label">Telefon</label>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <label for="disabledSelect" class="form-label">Relacio de la emergencia</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" value="Guiterrex" aria-label="Disabled input example" disabled readonly>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" value="656339228" aria-label="Disabled input example" disabled readonly>
+                                                <div class="col-3">
+                                                    <div class="form-group mt-3">
+                                                        <label for="exampleFormControlTextarea1">Telefon</label>
+                                                        <input class="form-control form-control-sm" type="text" value="654882339" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
                                                 </div>
                                             </div>
 
+                                            <div class="form-group row mt-2">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Relacio de la emergencia</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Descripcio dels fets</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h4>Procedencia de la trucada</h4>
+
+                                            <div class="form-group row mt-0">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Procedencia</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Barcelona" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Municipi</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Badalona" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mt-2">
+                                                <div class="col-5">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Direccio</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Carrer Vicent verdaguer" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Tipus</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Carrer" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">KM</label>
+                                                        <input class="form-control form-control-sm" type="text" value="373" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Nº</label>
+                                                        <input class="form-control form-control-sm" type="text" value="122" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Pis</label>
+                                                        <input class="form-control form-control-sm" type="text" value="5-2" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Altre</label>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mt-2">
+                                                <div class="col-5">
+                                                    <div class="form-group mt-3">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 ">
+                                                    <div class="form-group mt-3">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mt-3">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mt-3">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mt-3">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mt-3">
+
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                         </form>
                                     </div>
