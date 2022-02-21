@@ -16,4 +16,20 @@ class Municipi extends Model
     {
         return $this->belongsTo(Comarca::class, 'comarques_id');
     }
+
+    public function cartesTrucada()
+    {
+        return $this->hasMany(CartaTrucada::class, 'municipis_id');
+    }
+
+    public function cartesTrucadaTrucada()
+    {
+        return $this->hasMany(CartaTrucada::class, 'municipis_id_trucada');
+    }
+
+    public function agencies()
+    {
+        return $this->hasMany(Agencia::class, 'municipis_id');
+    }
+
 }

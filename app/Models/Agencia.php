@@ -11,4 +11,14 @@ class Agencia extends Model
 
     protected $table = 'agencies';
     public $timestamps = false;
+
+    public function municipi()
+    {
+        return $this->belongsTo(Municipi::class, 'municipis_id');
+    }
+
+    public function cartesTrucadesHasAgencia()
+    {
+        return $this->hasMany(cartesTrucadesHasAgencies::class, 'agencies_id');
+    }
 }

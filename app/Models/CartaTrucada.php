@@ -36,4 +36,19 @@ class CartaTrucada extends Model
     {
         return $this->belongsTo(Provincia::class, 'provincies_id');
     }
+
+    public function municipi()
+    {
+        return $this->belongsTo(Municipi::class, 'municipis_id');
+    }
+
+    public function municipiTrucada()
+    {
+        return $this->belongsTo(Municipi::class, 'municipis_id_trucada');
+    }
+
+    public function cartesTrucadesHasAgencia()
+    {
+        return $this->hasMany(cartesTrucadesHasAgencies::class, 'cartes_trucades_id');
+    }
 }

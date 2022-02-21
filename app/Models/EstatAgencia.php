@@ -11,4 +11,9 @@ class EstatAgencia extends Model
 
     protected $table = 'estats_agencies';
     public $timestamps = false;
+
+    public function cartesTrucadesHasAgencia()
+    {
+        return $this->belongsTo(cartesTrucadesHasAgencies::class, 'estat_agencies_id');
+    }
 }

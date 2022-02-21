@@ -14,7 +14,7 @@ class Expedient extends Model
 
     public function cartesTrucada()
     {
-        return $this->hasMany(Carta_trucada::class, 'expedients_id');
+        return $this->hasMany(CartaTrucada::class, 'expedients_id');
     }
 
     public function estatExpedient()
