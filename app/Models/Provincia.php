@@ -9,7 +9,7 @@ class Provincia extends Model
 {
     use HasFactory;
 
-    protected $table = 'provinciess';
+    protected $table = 'provincies';
     public $timestamps = false;
 
     public function comarques()
