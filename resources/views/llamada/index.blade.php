@@ -18,7 +18,15 @@ Llamada
                 <img class="card-img-top imagenEmergencia" src="../public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
 
                 <div class="card-body">
-                    <h4 class="card-title">Localització de la Emergencia</h4>
+                    <div class="simuladorLlamada">
+                        <div>
+                            <h4 class="card-title">Localització de la Emergencia</h4>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-danger botonSimularLlamada" data-bs-toggle="modal" href="#simularLlamada" role="button">¡Simular Trucada!</button>
+                        </div>
+                    </div>
+
 
                     <div>
                         <div class="form-check form-check-inline">
@@ -254,23 +262,21 @@ Llamada
         <div class="card col-12 bordeRedondo" style="margin-top: 10px">
             <div class="card-body">
                 <div class="row col-12">
-                    <div class="col-8">
+                    <div class="col-12">
                         <h4>Expedients existents</h4>
-                    </div>
-                    <div class="col-4 gx-5">
-                        <h4>Crear expediente</h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12 tablaExpedientesScroll">
 
-                        <table class="table table-striped tablaExpedientes">
+                        <table class="table table-hover tablaExpedientes">
                             <thead class="table colorTabla">
                             <tr>
-                                <th scope="col">nº</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Tipus incident</th>
+                                <th scope="col">Localitzacio</th>
+                                <th scope="col">Direccio</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -278,11 +284,6 @@ Llamada
                                 <th scope="row">2</th>
                                 <td>Jacob</td>
                                 <td>Thornton</td>
-                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
                                 <td>Thornton</td>
                                 <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
                             </tr>
@@ -290,21 +291,57 @@ Llamada
                                 <th scope="row">2</th>
                                 <td>Jacob</td>
                                 <td>Thornton</td>
+                                <td>Thornton</td>
                                 <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
                                 <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>Thornton</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>Thornton</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>Thornton</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>Thornton</td>
+                                <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
                                 <td>Thornton</td>
                                 <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-2">
+
+                </div>
+                <div class="col-12 mt-3">
+                    <h4>Crear expediente</h4>
+                </div>
+                <div class="row col-12 mt-2">
+                    <div class="col-6">
                         <button type="button" class="btn btn-light botonExpedienteNuevoConRecomendacion" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Expediente nuevo con recomendacion</button>
                     </div>
-                    <div class="col-2 ">
+                    <div class="col-6 ">
                         <button type="button" class="btn btn-light botonExpedienteNuevo">Expediente nuevo</button>
                     </div>
                 </div>
@@ -507,7 +544,42 @@ Llamada
     </div>
 </div>
 
+<div class="modal fade" id="simularLlamada" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header tituloSimuladorLlamada">
+            <h4 class="modal-title" id="exampleModalLongTitle">Simular trucada</h4>
+        </div>
+        <div class="modal-body">
+            <div class="bodySimuladorLlamada">
+                <div>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" href="#Llamada" role="button">¡Trucant existent!</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" href="#Llamada" role="button">¡Trucant nou!</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
 
+<div class="modal fade" id="Llamada" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header tituloSimuladorLlamada">
+            <h4 class="modal-title" id="exampleModalLongTitle">Simular trucada</h4>
+        </div>
+        <div class="modal-body">
+            <div class="bodySimuladorLlamada2">
+                <div>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss='modal'>¡Agafar trucada!</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
 
 
 

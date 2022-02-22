@@ -91,3 +91,64 @@ a:link{text-decoration:none;}
   text-decoration: none;
 
 }
+
+.tablaExpedientes th {
+    padding: 0;
+    margin-left: 5px;
+}
+
+.tablaExpedientes button {
+    padding: 2px;
+    align-items: center;
+}
+
+.tablaExpedientes td {
+    padding: 0;
+}
+
+.tablaExpedientesScroll{
+    overflow: auto;
+    height: 150px;
+}
+
+
+.tablaExpedientesScroll thead{
+    position: sticky;
+    top: 0;
+}
+
+.tablaExpedientes tr :last-child{
+    text-align: end;
+}
+
+.simuladorLlamada{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bodySimuladorLlamada{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.bodySimuladorLlamada div{
+    width: 49%;
+}
+
+.bodySimuladorLlamada button{
+    width: 100%;
+}
+
+.tituloSimuladorLlamada{
+    display: flex;
+    justify-content: center;
+
+}
+
+.bodySimuladorLlamada2{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}

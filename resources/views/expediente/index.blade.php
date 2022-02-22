@@ -311,14 +311,22 @@ Expedients
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        ID llamada: 8493928492
+                                        Nº llamada: 8493928492
                                     </button>
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
                                         <form>
                                             <fieldset disabled>
-                                            <h4>Informacio del trucant</h4>
+
+                                            <div class="tempsInformacioModal">
+                                                <div>
+                                                    <h4>Informacio del trucant </h4>
+                                                </div>
+                                                <div class="tempsTrucadaModal">
+                                                    <h2>Temps trucada: 01:22</h2>
+                                                </div>
+                                            </div>
 
                                             <div class="form-group row mt-0">
                                                 <div class="col-4">
@@ -381,66 +389,147 @@ Expedients
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
-                                                    <div class="form-group mb-4">
+                                                    <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Tipus</label>
                                                         <input class="form-control form-control-sm" type="text" value="Carrer" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
-                                                    <div class="form-group mb-4">
+                                                    <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">KM</label>
                                                         <input class="form-control form-control-sm" type="text" value="373" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
-                                                    <div class="form-group mb-4">
+                                                    <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Nº</label>
                                                         <input class="form-control form-control-sm" type="text" value="122" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
-                                                    <div class="form-group mb-4">
+                                                    <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Pis</label>
                                                         <input class="form-control form-control-sm" type="text" value="5-2" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
-                                                    <div class="form-group mb-4">
+                                                    <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Altre</label>
                                                         <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            <div class="row mt-2">
+                                                <div class="col-12">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Informacion del telefono</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Amic del accidentat" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h4>Localitzacio de la emergencia</h4>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true" checked>
+                                                <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
+                                            </div>
+
+                                            <div class="form-group row mt-0">
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Municipi</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Badalona" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Provincia</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Barcelona" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Comarca</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Barcelones" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h4>Tipus de localitzacio</h4>
+
                                             <div class="form-group row mt-2">
                                                 <div class="col-5">
-                                                    <div class="form-group mt-3">
-
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Direccio</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Carrer Vicent verdaguer" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
-                                                <div class="col-3 ">
-                                                    <div class="form-group mt-3">
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group mt-3">
-
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Tipus</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Carrer" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
-                                                    <div class="form-group mt-3">
-
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Nº</label>
+                                                        <input class="form-control form-control-sm" type="text" value="122" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
-                                                    <div class="form-group mt-3">
-
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Pis</label>
+                                                        <input class="form-control form-control-sm" type="text" value="5-2" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
-                                                    <div class="form-group mt-3">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Esc</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Izq" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 gx-1">
+                                                    <div class="form-group mb-1">
+                                                        <label for="exampleFormControlTextarea1">Altre</label>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="form-group row mt-0">
+                                                <div class="col-5">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Nom punt singular</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Pic matagalls" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Altres referencies</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Al costat del refugi" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mt-2">
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Nom carretera</label>
+                                                        <input class="form-control form-control-sm" type="text" value="BV-6574" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">KM</label>
+                                                        <input class="form-control form-control-sm" type="text" value="4732" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Sentit de circulacio</label>
+                                                        <input class="form-control form-control-sm" type="text" value="Barcelona" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
