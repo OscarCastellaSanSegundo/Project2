@@ -1,7 +1,7 @@
 
 .principal{
    width: 90%;
-    height: 600px;
+    height: 80%;
     display: flex;
     margin-top: 6%;
     margin-left: 5%;
@@ -10,7 +10,7 @@
 
 }
 
-body{
+body, html{
     /* background-color: rgb(224, 18, 122); */
     background-image: url("../imagenes/fondo.jpg");
     object-fit:cover;

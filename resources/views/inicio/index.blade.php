@@ -13,14 +13,14 @@ Menu
         <div class="card cardInicio">
             <div class="card-body">
                 <div class="divLlamada">
-                    <a href="{{ url('/llamada') }}" class="btn btn-primary anadirElemento boton1">Llamada</a>
+                    <a href="{{ url('/llamada') }}" class="btn btn-primary anadirElemento boton1">Trucada</a>
                 </div>
             </div>
         </div>
         <div class="card cardInicio">
             <div class="card-body">
                 <div class="divExpediente">
-                    <a href="{{ url('/expedientes') }}" class="btn btn-primary anadirElemento boton2">Expedientes</a>
+                    <a href="{{ url('/expedientes') }}" class="btn btn-primary anadirElemento boton2">Expedients</a>
                 </div>
             </div>
         </div>
