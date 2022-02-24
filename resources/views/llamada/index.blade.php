@@ -22,8 +22,10 @@ Llamada
                         <div>
                             <h4 class="card-title">Localització de la Emergencia</h4>
                         </div>
+
                         <div>
-                            <button type="button" class="btn btn-danger botonSimularLlamada" data-bs-toggle="modal" href="#simularLlamada" role="button">¡Simular Trucada!</button>
+                            <button type="button" class="btn btn-light botonTutorial" data-bs-toggle="modal" href="#tutorial" role="button"><i class="fas fa-phone-alt"></i>¡Tutorial!</i></button>
+                            <button type="button" class="btn btn-danger botonSimularLlamada" data-bs-toggle="modal" href="#simularLlamada" role="button"><i class="fas fa-phone-alt"></i>¡Simular Trucada!</i></button>
                         </div>
                     </div>
 
@@ -34,7 +36,7 @@ Llamada
                             <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                         </a>
                     </div>
 
@@ -546,17 +548,14 @@ Llamada
 
 <div class="modal fade" id="simularLlamada" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header tituloSimuladorLlamada">
-            <h4 class="modal-title" id="exampleModalLongTitle">Simular trucada</h4>
-        </div>
+      <div class="modal-content" style="background-color: rgb(255, 0, 0); height: 100px">
         <div class="modal-body">
             <div class="bodySimuladorLlamada">
                 <div>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" href="#Llamada" role="button">¡Trucant existent!</button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" href="#Llamada" role="button">¡Trucant existent!</button>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" href="#Llamada" role="button">¡Trucant nou!</button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" href="#Llamada" role="button">¡Trucant nou!</button>
                 </div>
             </div>
         </div>
@@ -564,19 +563,18 @@ Llamada
     </div>
 </div>
 
-<div class="modal fade" id="Llamada" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header tituloSimuladorLlamada">
-            <h4 class="modal-title" id="exampleModalLongTitle">Simular trucada</h4>
-        </div>
-        <div class="modal-body">
+<div class="modal fade fondoSimuladorLLamada" id="Llamada" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"  >
+    <div class="modal-dialog modal-dialog-centered" role="document" >
+      <div class="modal-content" style="border-radius: 20px; background-color:rgb(255, 0, 0)">
+        <div class="modal-body tituloSimuladorLlamada">
+            <img class="card-img-top imagenEmergencia" src="../public/Imagenes/Llamada.gif" alt="Card image cap">
             <div class="bodySimuladorLlamada2">
                 <div>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss='modal'>¡Agafar trucada!</button>
+                    <button type="button" class="btn btn-dark botonCogerLlamada" data-bs-dismiss='modal'>¡Agafar trucada!</button>
                 </div>
             </div>
         </div>
+
       </div>
     </div>
 </div>

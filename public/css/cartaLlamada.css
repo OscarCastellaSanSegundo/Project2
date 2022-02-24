@@ -131,24 +131,59 @@ a:link{text-decoration:none;}
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    height: 100%;
 }
 
 .bodySimuladorLlamada div{
     width: 49%;
+    height: 100%;
 }
 
 .bodySimuladorLlamada button{
     width: 100%;
+    height: 100%;
 }
 
 .tituloSimuladorLlamada{
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
 }
+
+.tituloSimuladorLlamada div{
+    width: 100%;
+}
+
+.tituloSimuladorLlamada button{
+    width: 100%;
+}
+
 
 .bodySimuladorLlamada2{
     display: flex;
     justify-content: center;
     flex-direction: row;
+    width: 100%;
+}
+
+.bodySimuladorLlamada2 div{
+    width: 95%;
+}
+
+.botonCogerLlamada{
+    width: 100%;
+    animation: mymove 2s infinite;
+}
+
+@keyframes mymove {
+    0%   {color: #000;}
+    25%  {}
+    50%  {color: rgb(255, 255, 255);}
+    75%  {}
+    100% { color: #000;}
+}
+
+.fondoSimuladorLLamada{
+    background-color: rgba(255, 0, 0, 0.596);
 }

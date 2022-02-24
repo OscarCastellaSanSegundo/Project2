@@ -1,7 +1,7 @@
 .principalExpedientes{
     height: 85%;
     width: 95%;
-    overflow: scroll;
+    overflow: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -14,7 +14,7 @@
     margin-top: 1%;
     height: 49%;
     width: 49%;
-    border-radius: 4%;
+    border-radius: 15px;
 }
 
 .primerDiv{
@@ -270,7 +270,7 @@ html, body {
  .modalExpedienteZonaCartas{
     height: 100%;
     width: 65%;
-    overflow: scroll;
+    overflow: auto;
     padding: 1%;
  }
 
