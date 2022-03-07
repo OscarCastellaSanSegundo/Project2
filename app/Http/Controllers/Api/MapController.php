@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Expedient;
 use App\Http\Controllers\Controller;
+use App\Models\inicio;
 use Illuminate\Http\Request;
 
-class ExpedientController extends Controller
+class MapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +14,6 @@ class ExpedientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $expedients = Expedient::all();
-
-        return view('expediente.index', compact('expedients'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -44,21 +32,10 @@ class ExpedientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Expedient  $expedient
+     * @param  \App\Models\inicio  $inicio
      * @return \Illuminate\Http\Response
      */
-    public function show(Expedient $expedient)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Expedient  $expedient
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Expedient $expedient)
+    public function show(inicio $inicio)
     {
         //
     }
@@ -67,10 +44,10 @@ class ExpedientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Expedient  $expedient
+     * @param  \App\Models\inicio  $inicio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expedient $expedient)
+    public function update(Request $request, inicio $inicio)
     {
         //
     }
@@ -78,10 +55,10 @@ class ExpedientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Expedient  $expedient
+     * @param  \App\Models\inicio  $inicio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Expedient $expedient)
+    public function destroy(inicio $inicio)
     {
         //
     }

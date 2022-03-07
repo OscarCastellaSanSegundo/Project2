@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExpedientController;
 use App\Http\Controllers\UsuariController;
 
 /*
@@ -20,9 +21,9 @@ use App\Http\Controllers\UsuariController;
 });
 
 
-Route::get('/expedientes', function () {
-    return view('expediente.index');
-});
+// Route::get('/expedientes', function () {
+//     return view('expediente.index');
+// });
 
 Route::get('/llamada', function () {
     return view('llamada.index');
@@ -33,6 +34,9 @@ Route::get('/Inicio', function () {
 }); */
 
 Route::get('/login', [UsuariController::class, 'showLogin'])->name('login');
+Route::resource('expedientes', ExpedientController::class );
+
+Route::post('/login', [UsuariController::class, 'login'] );
 Route::get('/logout', [UsuariController::class, 'logout']);
 Route::post('/login', [UsuariController::class, 'login'] );
 
