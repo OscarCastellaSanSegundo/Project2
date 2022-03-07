@@ -122,6 +122,7 @@ Expedients
 <div class="principalExpedientes">
 
 
+@foreach ($expedients as $expedient )
 
     <div class="card" >
         <div class="card-header cardHeader">
@@ -138,7 +139,9 @@ Expedients
             </div>
             <div class="cuerpo2Expediente">
                 <div class="localizacion">
-                    <p class="textoLocalizacion">Carrer Josep tarradelles 20</p>
+                    {{-- @foreach ($expedient->cartesTrucada[0]->municipis_id as $carta_trucada) --}}
+                        <p class="textoLocalizacion">{{ $expedient->cartesTrucada[0]->provincia->nom }}</p>
+                    {{-- @endforeach --}}
                 </div>
                 <div class="agenciasDespachadas">
                     <div class="agencia1">
@@ -181,7 +184,7 @@ Expedients
             </div>
         </div>
     </div>
-
+@endforeach
 
 
     <div class="card">

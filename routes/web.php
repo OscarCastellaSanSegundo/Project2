@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExpedientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/expedientes', function () {
-    return view('expediente.index');
-});
+// Route::get('/expedientes', function () {
+//     return view('expediente.index');
+// });
 
 Route::get('/llamada', function () {
     return view('llamada.index');
@@ -29,3 +30,6 @@ Route::get('/llamada', function () {
 Route::get('/Inicio', function () {
     return view('inicio.index');
 });
+
+Route::resource('expedientes', ExpedientController::class );
+
