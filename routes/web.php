@@ -15,7 +15,7 @@ use App\Http\Controllers\UsuariController;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('inicio.index');
 });
 
@@ -30,17 +30,17 @@ Route::get('/llamada', function () {
 
 Route::get('/Inicio', function () {
     return view('inicio.index');
-});
+}); */
 
-Route::post('/login', [UsuariController::class, 'login'] );
+Route::get('/login', [UsuariController::class, 'showLogin'])->name('login');
 Route::get('/logout', [UsuariController::class, 'logout']);
-Route::get('/login', [UsuariController::class, 'index'])->name('login');
+Route::post('/login', [UsuariController::class, 'login'] );
 
-/* Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
         $user = Auth::user();
 
-        return view('home', compact('user'));
+        return view('inicio.index', compact('user'));
     });
     Route::get('/expedientes', function () {
         $user = Auth::user();
@@ -57,4 +57,4 @@ Route::get('/login', [UsuariController::class, 'index'])->name('login');
         return view('inicio.index', compact('user'));
     });
 
-}); */
+});

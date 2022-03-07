@@ -17,8 +17,16 @@ class UsuariController extends Controller
      */
     public function index()
     {
-        return view('auth.login');
-    }
+/*         return view('auth.login');
+ */    }
+
+ public function showLogin()
+ {
+/*     $user = Usuari::find(2);
+    $user->contrassenya=bcrypt("admin");
+    $user->save(); */
+    return view('auth.login');
+ }
 
     /**
      * Show the form for creating a new resource.
@@ -88,17 +96,17 @@ class UsuariController extends Controller
 
     public function login(Request $request){
         $codi = $request->input('codi');
-        $contrasenya = $request->input('contrasenya');
+        $contrassenya = $request->input('contrassenya');
 
         $user = Usuari::where('codi', $codi)->first();
 
-        if ($user !=null && Hash::check($contrasenya, $user->contrasenya)) {
+        if ($user !=null && Hash::check($contrassenya, $user->contrassenya)) {
             Auth::login($user);
-            $response = redirect('/inicio.index');
+            $response = redirect('/');
         }
         else {
             $request->session()->flash('error', 'Usuari o contrasenya incorrectes');
-            $response = redirect('/login.index')->withInput();
+            $response = redirect('/login')->withInput();
         }
 
         return $response;
@@ -107,6 +115,6 @@ class UsuariController extends Controller
     public function logout(){
 
         Auth::logout();
-        return redirect('/login.index');
+        return redirect('/login');
     }
 }
