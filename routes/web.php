@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpedientController;
+use App\Http\Controllers\UsuariController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +35,29 @@ Route::get('/Inicio', function () {
 
 Route::resource('expedientes', ExpedientController::class );
 
+Route::post('/login', [UsuariController::class, 'login'] );
+Route::get('/logout', [UsuariController::class, 'logout']);
+Route::get('/login', [UsuariController::class, 'index'])->name('login');
+
+/* Route::middleware(['auth'])->group(function () {
+    Route::get('/home', function () {
+        $user = Auth::user();
+
+        return view('home', compact('user'));
+    });
+    Route::get('/expedientes', function () {
+        $user = Auth::user();
+        return view('expediente.index', compact('user'));
+    });
+
+    Route::get('/llamada', function () {
+        $user = Auth::user();
+        return view('llamada.index', compact('user'));
+    });
+
+    Route::get('/Inicio', function () {
+        $user = Auth::user();
+        return view('inicio.index', compact('user'));
+    });
+
+}); */

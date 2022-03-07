@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuari;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsuariController extends Controller
 {
@@ -15,7 +17,7 @@ class UsuariController extends Controller
      */
     public function index()
     {
-        //
+        return view('auth.login');
     }
 
     /**
@@ -82,5 +84,29 @@ class UsuariController extends Controller
     public function destroy(Usuari $usuari)
     {
         //
+    }
+
+    public function login(Request $request){
+        $codi = $request->input('codi');
+        $contrasenya = $request->input('contrasenya');
+
+        $user = Usuari::where('codi', $codi)->first();
+
+        if ($user !=null && Hash::check($contrasenya, $user->contrasenya)) {
+            Auth::login($user);
+            $response = redirect('/inicio.index');
+        }
+        else {
+            $request->session()->flash('error', 'Usuari o contrasenya incorrectes');
+            $response = redirect('/login.index')->withInput();
+        }
+
+        return $response;
+    }
+
+    public function logout(){
+
+        Auth::logout();
+        return redirect('/login.index');
     }
 }
