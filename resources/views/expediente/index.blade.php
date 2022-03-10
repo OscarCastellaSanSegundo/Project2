@@ -121,12 +121,11 @@ Expedients
     </div>
 <div class="principalExpedientes">
 
-
 @foreach ($expedients as $expedient )
 
     <div class="card" >
         <div class="card-header cardHeader">
-            Nº expedient: 9839372321&nbsp;&nbsp;&nbsp;&nbsp;Nº trucades: 32
+            Nº expedient: {{ $expedient->id }}&nbsp;&nbsp;&nbsp;&nbsp;Nº trucades: {{ $expedient->cartesTrucada->count() }}
         </div>
         <div class="card-body cardBody" >
             <div class="cuerpoExpediente">
@@ -174,11 +173,11 @@ Expedients
         <div class="card-footer cardFooter verEditarExpedienteFooter">
             <div class="verEditarExpediente">
                 <div>
-                    Creació: 27/08/2020&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;23/04/2020<br>
-                    Estat: actiu
+                    Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
+                    Estat: {{ $expedient->estatExpedient->estat }}
                 </div>
                 <div>
-                    <a class="btn btn-primary " data-bs-toggle="modal" href="#abrirExpediente" role="button">Veure/Modificar</a>
+                    <a class="btn btn-primary " data-bs-toggle="modal" href="#abrirExpediente{{ $expedient->id }}" role="button">Veure/Modificar</a>
                 </div>
 
             </div>
@@ -197,78 +196,18 @@ Expedients
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-
 
 
 </div>
 
 
-<div class="modal fade bordeRedondo zonaExpedienteAbierto3" id="abrirExpediente" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="abrirExpedienteLabel" tabindex="-1">
+@foreach ($expedients as $expedient )
+<div class="modal fade bordeRedondo zonaExpedienteAbierto3" id="abrirExpediente{{ $expedient->id }}" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="abrirExpediente{{ $expedient->id }}Label" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered zonaExpedienteAbierto2 ">
         <div class="modal-content expedienteModal zonaExpedienteAbierto">
             <div class="modal-header tituloExpedienteModal">
-                <h5 class="modal-title Nexpediente" id="abrirExpedienteLabel">Nº expediente: 83732974291</h5>
-                <h5 class="modal-title Ntrucades">Nº trucades: 32</h5>
+                <h5 class="modal-title Nexpediente" id="abrirExpedienteLabel">Nº expediente: {{ $expedient->id }}</h5>
+                <h5 class="modal-title Ntrucades">Nº trucades: {{ $expedient->cartesTrucada->count() }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -279,7 +218,7 @@ Expedients
                         </div>
                         <div class="modalZonaLocalizacionIconos">
                             <div class="modalLocalizacion">
-                                    <h5>Carrer Josep Vicent 12</h5>
+                                    <h5>{{ $expedient->cartesTrucada[0]->provincia->nom }}</h5>
                             </div>
                             <div class="modalIconos">
                                 <div class="modalAgenciasDespachadas">
@@ -313,14 +252,16 @@ Expedients
                     </div>
                     <div class="modalExpedienteZonaCartas">
 
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                        @foreach ($expedient->cartesTrucada as $cartaTrucada)
+
+                        <div class="accordion accordion-flush" id="accordionFlushExample{{ $cartaTrucada->id }}">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Nº llamada: 8493928492
+                                        Nº llamada: {{ $cartaTrucada->codi_trucada }}
                                     </button>
                                 </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $cartaTrucada->id }}">
                                     <div class="accordion-body">
                                         <form>
                                             <fieldset disabled>
@@ -330,7 +271,7 @@ Expedients
                                                     <h4>Informacio del trucant </h4>
                                                 </div>
                                                 <div class="tempsTrucadaModal">
-                                                    <h2>Temps trucada: 01:22</h2>
+                                                    <h2>Temps trucada: {{ $cartaTrucada->temps_trucada }}</h2>
                                                 </div>
                                             </div>
 
@@ -338,19 +279,19 @@ Expedients
                                                 <div class="col-4">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Nom</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Rodrigo" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-5">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Cognoms</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Gonzalez Gutierrez" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Telefon</label>
-                                                        <input class="form-control form-control-sm" type="text" value="654882339" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->telefon }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -365,7 +306,7 @@ Expedients
                                                 <div class="col-6">
                                                     <div class="form-group mb-4">
                                                         <label for="exampleFormControlTextarea1">Descripcio dels fets</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2">{{ $cartaTrucada->nota_comuna }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -376,13 +317,13 @@ Expedients
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Procedencia</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Barcelona" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->procedencia_trucada }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Municipi</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Badalona" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->municipi->nom }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -391,13 +332,13 @@ Expedients
                                                 <div class="col-5">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Direccio</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Carrer Vicent verdaguer" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->adreca_trucada }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Tipus</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Carrer" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->tipusLocalitzacio->tipus }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
@@ -546,13 +487,15 @@ Expedients
                             </div>
                         </div>
 
+                        @endforeach
+
                     </div>
                 </div>
             </div>
             <div class="modal-footer footerExpedienteAbierto">
                 <div>
-                    Creacion: 27/08/2020&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;Edicion:&nbsp;23/04/2020<br>
-                    Estado: activo
+                    Creacion: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;Edicion:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
+                    Estado: {{ $expedient->estatExpedient->estat }}
                 </div>
                 <div>
                     <a class="btn btn-primary " data-bs-toggle="modal" href="#abrirExpediente" role="button">Cerrar</a>
@@ -561,5 +504,7 @@ Expedients
         </div>
     </div>
 </div>
+
+@endforeach
 
 @endsection
