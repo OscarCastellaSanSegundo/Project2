@@ -22,9 +22,9 @@ class UsuariController extends Controller
 
  public function showLogin()
  {
-/*     $user = Usuari::find(2);
-    $user->contrassenya=bcrypt("admin");
-    $user->save(); */
+    // $user = Usuari::find(1);
+    // $user->contrassenya=bcrypt("1234");
+    // $user->save();
     return view('auth.login');
  }
 
@@ -100,8 +100,8 @@ class UsuariController extends Controller
 
         $user = Usuari::where('codi', $codi)->first();
 
-        // if ($user !=null && Hash::check($contrassenya, $user->contrassenya)) {
-        if ($user !=null && $contrassenya== $user->contrassenya) {
+        if ($user !=null && Hash::check($contrassenya, $user->contrassenya)) {
+        // if ($user !=null && $contrassenya== $user->contrassenya) {
             Auth::login($user);
             $response = redirect('/');
         }
