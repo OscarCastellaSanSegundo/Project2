@@ -60,5 +60,4 @@ Route::middleware(['auth'])->group(function () {
         $user = Auth::user();
         return view('inicio.index', compact('user'));
     });
-
 });

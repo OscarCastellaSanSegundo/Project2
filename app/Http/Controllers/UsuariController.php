@@ -100,7 +100,8 @@ class UsuariController extends Controller
 
         $user = Usuari::where('codi', $codi)->first();
 
-        if ($user !=null && Hash::check($contrassenya, $user->contrassenya)) {
+        // if ($user !=null && Hash::check($contrassenya, $user->contrassenya)) {
+        if ($user !=null && $contrassenya== $user->contrassenya) {
             Auth::login($user);
             $response = redirect('/');
         }
