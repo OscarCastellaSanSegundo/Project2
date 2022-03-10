@@ -46,10 +46,10 @@ Route::middleware(['auth'])->group(function () {
 
         return view('inicio.index', compact('user'));
     });
-    Route::get('/expedientes', function () {
-        $user = Auth::user();
-        return view('expediente.index', compact('user'));
-    });
+    // Route::get('/expedientes', function () {
+    //     $user = Auth::user();
+    //     return view('expediente.index', compact('user'));
+    // });
 
     Route::get('/llamada', function () {
         $user = Auth::user();
