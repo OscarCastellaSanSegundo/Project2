@@ -271,7 +271,7 @@ Expedients
                                                     <h4>Informacio del trucant </h4>
                                                 </div>
                                                 <div class="tempsTrucadaModal">
-                                                    <h2>Temps trucada: {{ $cartaTrucada->temps_trucada }}</h2>
+                                                    <h2>Temps trucada: {{ $cartaTrucada->temps_trucada }}s</h2>
                                                 </div>
                                             </div>
 
@@ -279,13 +279,13 @@ Expedients
                                                 <div class="col-4">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Nom</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->nom_trucada }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-5">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Cognoms</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->cognoms_trucada }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
@@ -371,7 +371,7 @@ Expedients
                                                 <div class="col-12">
                                                     <div class="form-group mb-4">
                                                         <label for="exampleFormControlTextarea1">Informacion del telefono</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Amic del accidentat" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->dadesPersonals->antecedents }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
