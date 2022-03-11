@@ -107,11 +107,11 @@ Llamada
                                     <label class="form-check-label" for="inlineRadio2">Carrer</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample2">
                                     <label class="form-check-label" for="inlineRadio3">Punt singular</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample3">
                                     <label class="form-check-label" for="inlineRadio4">Carretera</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -159,26 +159,11 @@ Llamada
 
 
                                     <div class="form-group row mb-2 gx-2" >
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Tius de via" aria-label="Tipo de via" aria-describedby="button-addon2">
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Direccio" aria-label="Tipo de via" aria-describedby="button-addon2">
                                         </div>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Direcció" aria-label="Direccion" aria-describedby="button-addon2">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <input type="number" class="form-control form-control-sm" placeholder="Nº" aria-label="nº" aria-describedby="button-addon2">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Escala" aria-label="Escalera" aria-describedby="button-addon2">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Pis" aria-label="Piso" aria-describedby="button-addon2">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Porta" aria-label="Puerta" aria-describedby="button-addon2">
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Altres referències (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Altre" aria-label="Direccion" aria-describedby="button-addon2">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
                                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -196,10 +181,10 @@ Llamada
 
 
                                     <div class="form-group row mb-2 gx-2">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-5">
                                             <input type="text" class="form-control form-control-sm" placeholder="Nom del punt singular" aria-label="Nombre del punto singular" aria-describedby="button-addon2">
                                         </div>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-6">
                                             <input type="text" class="form-control form-control-sm" placeholder="Altres referèncias (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
@@ -217,16 +202,10 @@ Llamada
 
 
                                     <div class="form-group row mb-2 gx-2">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             <input type="text" class="form-control form-control-sm" placeholder="Nom de la carretera" aria-label="Nombre de la carretera" aria-describedby="button-addon2">
                                         </div>
-                                        <div class="col-sm-2">
-                                            <input type="number" class="form-control form-control-sm" placeholder="KM" aria-label="KM" aria-describedby="button-addon2">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Sentit de circulació" aria-label="Sentido de la marcha" aria-describedby="button-addon2">
-                                        </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-5">
                                             <input type="text" class="form-control form-control-sm" placeholder="Altres referències (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
@@ -379,33 +358,6 @@ Llamada
 
                 <div class="form-group row mb-2">
                     <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm" placeholder="Nom" aria-label="Nombre" aria-describedby="button-addon2">
-                    </div>
-                    <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                        <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                    </a>
-                </div>
-
-                <div class="form-group row mb-2">
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm" placeholder="Cognoms" aria-label="Apellidos" aria-describedby="button-addon2">
-                    </div>
-                    <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                        <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                    </a>
-                </div>
-
-                <div class="form-group row mb-2">
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm" placeholder="Relació de la emergència" aria-label="Relacion de la emergencia" aria-describedby="button-addon2">
-                    </div>
-                    <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                        <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                    </a>
-                </div>
-
-                <div class="form-group row mb-2">
-                    <div class="col-sm-10">
                         <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2">
                     </div>
                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
@@ -415,7 +367,7 @@ Llamada
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descripció del fets</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
                 </div>
 
             </div>
@@ -456,34 +408,6 @@ Llamada
                             <input type="text" class="form-control form-control-sm" placeholder="Direcció" aria-label="Direccion" aria-describedby="button-addon2">
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                        </a>
-                    </div>
-
-                    <div class="form-inline row mb-2 gx-1">
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control form-control-sm" placeholder="Tipus" aria-label="Tipo" aria-describedby="button-addon2">
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="number" class="form-control form-control-sm" placeholder="KM" aria-label="KM" aria-describedby="button-addon2">
-                        </div>
-
-                        <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
-                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                        </a>
-                    </div>
-
-                    <div class="form-inline row mb-2 gx-1">
-                        <div class="col-sm-3">
-                            <input type="number" class="form-control form-control-sm" placeholder="Nº" aria-label="nº" aria-describedby="button-addon2">
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control form-control-sm" placeholder="Pis" aria-label="Piso" aria-describedby="button-addon2">
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control form-control-sm" placeholder="Altre" aria-label="Otro" aria-describedby="button-addon2">
-                        </div>
-                        <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
                         </a>
                     </div>

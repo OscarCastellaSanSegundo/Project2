@@ -254,14 +254,14 @@ Expedients
 
                         @foreach ($expedient->cartesTrucada as $cartaTrucada)
 
-                        <div class="accordion accordion-flush" id="accordionFlushExample{{ $cartaTrucada->id }}">
+                        <div class="accordion accordion-flush" id="cartaTrucada{{ $cartaTrucada->id }}">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $cartaTrucada->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
                                         Nº llamada: {{ $cartaTrucada->codi_trucada }}
                                     </button>
                                 </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $cartaTrucada->id }}">
+                                <div id="flush-collapseOne{{ $cartaTrucada->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#cartaTrucada{{ $cartaTrucada->id }}">
                                     <div class="accordion-body">
                                         <form>
                                             <fieldset disabled>
@@ -279,13 +279,13 @@ Expedients
                                                 <div class="col-4">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Nom</label>
-                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->nom_trucada }}" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->nom_trucant }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-5">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Cognoms</label>
-                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->cognoms_trucada }}" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->cognoms_trucant }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
@@ -344,19 +344,19 @@ Expedients
                                                 <div class="col-1 gx-1">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">KM</label>
-                                                        <input class="form-control form-control-sm" type="text" value="373" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Nº</label>
-                                                        <input class="form-control form-control-sm" type="text" value="122" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Pis</label>
-                                                        <input class="form-control form-control-sm" type="text" value="5-2" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
@@ -371,35 +371,42 @@ Expedients
                                                 <div class="col-12">
                                                     <div class="form-group mb-4">
                                                         <label for="exampleFormControlTextarea1">Informacion del telefono</label>
-                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->dadesPersonals->antecedents }}" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <h4>Localitzacio de la emergencia</h4>
 
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true" checked>
-                                                <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
-                                            </div>
+                                            @if ('{{ $cartaTrucada->fora_catalunya }}' == true)
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true" >
+                                                    <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
+                                                </div>
+                                            @else
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true" checked>
+                                                    <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
+                                                </div>
+                                            @endif
 
                                             <div class="form-group row mt-0">
                                                 <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Municipi</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Badalona" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->municipi->nom }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Provincia</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Barcelona" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->provincia->nom }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="form-group mb-4">
                                                         <label for="exampleFormControlTextarea1">Comarca</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Barcelones" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->municipi->comarca->nom }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -410,31 +417,31 @@ Expedients
                                                 <div class="col-5">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Direccio</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Carrer Vicent verdaguer" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Tipus</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Carrer" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Nº</label>
-                                                        <input class="form-control form-control-sm" type="text" value="122" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Pis</label>
-                                                        <input class="form-control form-control-sm" type="text" value="5-2" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Esc</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Izq" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-1 gx-1">
@@ -449,13 +456,13 @@ Expedients
                                                 <div class="col-5">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Nom punt singular</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Pic matagalls" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-7">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Altres referencies</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Al costat del refugi" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -464,19 +471,19 @@ Expedients
                                                 <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Nom carretera</label>
-                                                        <input class="form-control form-control-sm" type="text" value="BV-6574" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">KM</label>
-                                                        <input class="form-control form-control-sm" type="text" value="4732" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Sentit de circulacio</label>
-                                                        <input class="form-control form-control-sm" type="text" value="Barcelona" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
