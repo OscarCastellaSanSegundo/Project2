@@ -189,13 +189,13 @@ ul {
     padding: 0;
 }
 
-li a {
+/* li a {
     float: left;
 }
-
-li {
+ */
+/* li {
     float: right;
-  }
+  } */
 
 .filtros {
     display: block;

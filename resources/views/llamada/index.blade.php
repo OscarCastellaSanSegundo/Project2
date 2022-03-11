@@ -345,7 +345,7 @@ Llamada
                         <p>463824284</p>
                     </div>
                     <div class="col-sm-6">
-                        <h2>00:00</h2>
+                        <h2 data-chronometer>00:00</h2>
                     </div>
                 </div>
               </div>
