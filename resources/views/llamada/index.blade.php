@@ -345,7 +345,7 @@ Llamada
                         <p>463824284</p>
                     </div>
                     <div class="col-sm-6">
-                        <h2 data-chronometer>00:00</h2>
+                        <h2 id="crono">0:00</h2>
                     </div>
                 </div>
               </div>
@@ -487,7 +487,7 @@ Llamada
             <img class="card-img-top imagenEmergencia" src="../public/Imagenes/Llamada.gif" alt="Card image cap">
             <div class="bodySimuladorLlamada2">
                 <div>
-                    <button type="button" class="btn btn-dark botonCogerLlamada" data-bs-dismiss='modal'>¡Agafar trucada!</button>
+                    <button type="button" class="btn btn-dark botonCogerLlamada" id="botonCogerLlamada" data-bs-dismiss='modal'>¡Agafar trucada!</button>
                 </div>
             </div>
         </div>
