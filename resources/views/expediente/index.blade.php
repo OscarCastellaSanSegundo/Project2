@@ -24,7 +24,7 @@ Expedients
             <div class="col-11">
                 <div class="card">
                     <ul>
-                        <li>
+                        <li class="col-2">
                             <div class="btn-group filtros">
                                 <form class="d-flex">
                                     <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
@@ -32,7 +32,7 @@ Expedients
                                   </form>
                             </div>
                         </li>
-                        <li>
+                        <li class="col-2">
                             <div class="btn-group filtros">
                                 <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false">
                                   Ordenar per
@@ -44,7 +44,7 @@ Expedients
                                 </ul>
                             </div>
                         </li>
-                        <li>
+                        <li class="col-2">
                             <div class="btn-group filtros">
                                 <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false"">
                                   Ordenar per
@@ -56,7 +56,7 @@ Expedients
                                 </ul>
                             </div>
                         </li>
-                        <li>
+                        <li class="col-2">
                             <div class="btn-group filtros">
                                 <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false">
                                   Ordenar per
@@ -68,7 +68,7 @@ Expedients
                                 </ul>
                             </div>
                         </li>
-                        <li>
+                        <li class="col-2">
                             <div class="btn-group filtros ">
                                 <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false">
                                   Ordenar per
@@ -173,8 +173,27 @@ Expedients
         <div class="card-footer cardFooter verEditarExpedienteFooter">
             <div class="verEditarExpediente">
                 <div>
-                    Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
-                    Estat: {{ $expedient->estatExpedient->estat }}
+                    <div>
+                        Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
+                    </div>
+                    <div style="display: flex;">
+                        <div>
+                            Estat: {{ $expedient->estatExpedient->estat }}
+                        </div>
+                        @if ($expedient->estatExpedient->id  == 1)
+                            <div style="width: 18px; height: 18px; background-color: green; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 2)
+                            <div style="width: 18px; height: 18px; background-color: yellow; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 3)
+                            <div style="width: 18px; height: 18px; background-color: #665D1D; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 4)
+                            <div style="width: 18px; height: 18px; background-color: blue; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 5)
+                            <div style="width: 18px; height: 18px; background-color: purple; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @else
+                            <div style="width: 18px; height: 18px; background-color: rgb(0, 0, 0); margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @endif
+                    </div>
                 </div>
                 <div>
                     <a class="btn btn-primary " data-bs-toggle="modal" href="#abrirExpediente{{ $expedient->id }}" role="button">Veure/Modificar</a>
@@ -186,6 +205,126 @@ Expedients
 @endforeach
 
 
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Featured0
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
     <div class="card">
         <div class="card-header">
             Featured0
@@ -276,19 +415,13 @@ Expedients
                                             </div>
 
                                             <div class="form-group row mt-0">
-                                                <div class="col-4">
+                                                <div class="col-6">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Nom</label>
-                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->nom_trucant }}" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->nom_trucada }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="form-group mt-3">
-                                                        <label for="exampleFormControlTextarea1">Cognoms</label>
-                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->cognoms_trucant }}" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
+                                                <div class="col-6">
                                                     <div class="form-group mt-3">
                                                         <label for="exampleFormControlTextarea1">Telefon</label>
                                                         <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->telefon }}" aria-label="Disabled input example" disabled readonly>
@@ -297,21 +430,13 @@ Expedients
                                             </div>
 
                                             <div class="form-group row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Relacio de la emergencia</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group mb-4">
                                                         <label for="exampleFormControlTextarea1">Descripcio dels fets</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2">{{ $cartaTrucada->nota_comuna }}</textarea>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4">{{ $cartaTrucada->nota_comuna }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <h4>Procedencia de la trucada</h4>
 
                                             <div class="form-group row mt-0">
                                                 <div class="col-6">
@@ -329,40 +454,10 @@ Expedients
                                             </div>
 
                                             <div class="form-group row mt-2">
-                                                <div class="col-5">
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Direccio</label>
                                                         <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->adreca_trucada }}" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Tipus</label>
-                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->tipusLocalitzacio->tipus }}" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">KM</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Nº</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Pis</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Altre</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -371,21 +466,21 @@ Expedients
                                                 <div class="col-12">
                                                     <div class="form-group mb-4">
                                                         <label for="exampleFormControlTextarea1">Informacion del telefono</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->dadesPersonals->antecedents }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <h4>Localitzacio de la emergencia</h4>
 
-                                            @if ('{{ $cartaTrucada->fora_catalunya }}' == true)
+                                            @if ($cartaTrucada->fora_catalunya  == true)
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true" >
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true" checked>
                                                     <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
                                                 </div>
                                             @else
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true" checked>
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" value="true">
                                                     <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
                                                 </div>
                                             @endif
@@ -414,79 +509,69 @@ Expedients
                                             <h4>Tipus de localitzacio</h4>
 
                                             <div class="form-group row mt-2">
-                                                <div class="col-5">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Direccio</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
+                                                <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1">Tipus</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->tipusLocalitzacio->tipus }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
-                                                <div class="col-1 gx-1">
+                                                <div class="col-8">
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Nº</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Pis</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Esc</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-1 gx-1">
-                                                    <div class="form-group mb-1">
-                                                        <label for="exampleFormControlTextarea1">Altre</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row mt-0">
-                                                <div class="col-5">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Nom punt singular</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-7">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Altres referencies</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                        <label for="exampleFormControlTextarea1">Detall</label>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->detall_localitzacio }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row mt-2">
-                                                <div class="col-4">
+                                                <div class="col-7">
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Nom carretera</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                        <label for="exampleFormControlTextarea1">Descripció</label>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->descripcio_localitzacio }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">KM</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Sentit de circulacio</label>
-                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                <div class="col-5">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Altre</label>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->altres_ref_localitzacio }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <h4>Tipus d'incident</h4>
+
+                                            <div class="form-group row mt-2">
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Tipus</label>
+                                                        <input class="form-control form-control-sm" type="text" value="" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="form-group mb-4">
+                                                        <label for="exampleFormControlTextarea1">Incident</label>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->incident->descripcio }}" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h4>Trucada atesa per:</h4>
+
+                                            <div class="form-group row mt-2">
+                                                <div class="col-5">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Nom</label>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->usuari->nom }}" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Cognoms</label>
+                                                        <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->usuari->cognoms }}" aria-label="Disabled input example" disabled readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
 
                                         </form>
                                     </div>

@@ -14,7 +14,7 @@ Llamada
     <div class="zonaFormulario">
 
         <div>
-            <div class="card bordeRedondo" style="width: 100%; margin-top: 10px;">
+            <div class="card bordeRedondo zoomCardGrande" style="width: 100%; margin-top: 10px;">
                 <img class="card-img-top imagenEmergencia" src="../public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
 
                 <div class="card-body">
@@ -83,13 +83,10 @@ Llamada
                         <div class="col-8">
                             <h4>Tipus de localització</h4>
                         </div>
-                        <div class="col-4">
-                            <h4>Tipus d'incident</h4>
-                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-1" style="margin-right: 15px">
+                        <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
                             <div class="col provinciaMunicipio">
 
                                 <div class="form-check form-check-inline ">
@@ -99,7 +96,7 @@ Llamada
 
                             </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-xl-7 col-sm-9">
                             <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
                                 <div class="form-check form-check-inline">
@@ -124,33 +121,6 @@ Llamada
 
                             </div>
                         </div>
-                        {{-- <div class="col-1 gx-0">
-
-                            <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
-                            </a>
-
-                        </div> --}}
-                        <div class="col-1 gx-0">
-
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                <option selected>Tipus</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-
-                        </div>
-                        <div class="col-2 gx-0">
-
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                <option selected>Incident</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-
-                        </div>
                     </div>
 
                     <div class="row">
@@ -159,10 +129,13 @@ Llamada
 
 
                                     <div class="form-group row mb-2 gx-2" >
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Direccio" aria-label="Tipo de via" aria-describedby="button-addon2">
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Descripció" aria-label="Tipo de via" aria-describedby="button-addon2">
                                         </div>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Detall" aria-label="Direccion" aria-describedby="button-addon2">
+                                        </div>
+                                        <div class="col-sm-3">
                                             <input type="text" class="form-control form-control-sm" placeholder="Altre" aria-label="Direccion" aria-describedby="button-addon2">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
@@ -218,7 +191,7 @@ Llamada
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col mb-3">
                             <div class="collapse multi-collapse" id="multiCollapseExample5" style="margin-top: 1%">
 
 
@@ -236,11 +209,45 @@ Llamada
                         </div>
                     </div>
 
+                    <div class="col-4 mb-2">
+                        <h4>Tipus d'incident</h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-5">
+
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Tipus</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+
+                        </div>
+                        <div class="col-6">
+
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Incident</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+
+                        </div>
+                        <div class="col-1">
+
+                            <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                                <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                            </a>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="card col-12 bordeRedondo" style="margin-top: 10px">
+        <div class="card col-12 bordeRedondo zoomCardGrande" style="margin-top: 10px">
             <div class="card-body">
                 <div class="row col-12">
                     <div class="col-12">
@@ -338,7 +345,7 @@ Llamada
     <div class="zonaTelefono">
 
         <div>
-            <div class="card bordeRedondo" style="width: 100%; margin-top: 10px;">
+            <div class="card bordeRedondo zoomCard" style="width: 99%; margin-top: 10px;">
                 <div class="card-body row mb-0 cronometro">
                     <h5>Nº Trucada</h5>
                     <div class="col-sm-6 mb-0">
@@ -351,11 +358,19 @@ Llamada
               </div>
         </div>
 
-        <div class="card informacionLlamante bordeRedondo" style="width: 100%; margin-top: 10px">
+        <div class="card informacionLlamante bordeRedondo zoomCard" style="width: 100%; margin-top: 10px">
             {{-- <img src="../public/Imagenes/cartaTelefono.png" class="card-img-top imagenEmergencia" alt="..."> --}}
             <div class="card-body">
                 <h5 class="card-title">Informació del trucant</h5>
 
+                <div class="form-group row mb-2">
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2">
+                    </div>
+                    <a class="col-sm-2 col-navbar-brand-sm" href="#">
+                        <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                    </a>
+                </div>
                 <div class="form-group row mb-2">
                     <div class="col-sm-10">
                         <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2">
@@ -376,7 +391,7 @@ Llamada
         {{-- Procedimiento de llamada --}}
 
         <div>
-            <div class="card procedenciaLlamada bordeRedondo" style="width: 100%; margin-top: 10px;">
+            <div class="card procedenciaLlamada bordeRedondo zoomCard" style="width: 100%; margin-top: 10px;">
                 <div class="card-header">
                   <h5>Procedència de la trucada</h5>
                 </div>

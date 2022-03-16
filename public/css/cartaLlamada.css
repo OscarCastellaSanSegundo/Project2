@@ -22,6 +22,24 @@
     width: 78%;
 }
 
+.zoomCardGrande{
+    transition: 0.25s;
+}
+
+.zoomCardGrande:hover{
+    transition: 0.25s;
+    transform: scale(1.003)
+}
+
+.zoomCard{
+    transition: 0.25s;
+}
+
+.zoomCard:hover{
+    transition: 0.25s;
+    transform: scale(1.01)
+}
+
 .bordeRedondo{
     border-radius: 20px 20px 20px 20px;
 }

@@ -22,9 +22,24 @@ body, html{
 
 }
 
-.cardInicio{
-    width: 49%;
-    border-radius: 45px 45px 45px 45px;
+.principal .cardInicio{
+    width: 47%;
+    border-radius: 30px;
+    background-color: #ffffff00;
+    border: none;
+    -webkit-box-shadow: 0px 0px 41px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 41px -12px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 41px -12px rgba(0,0,0,0.75);
+    transition: 0.5s;
+}
+
+.principal .cardInicio:hover{
+    transition: 0.5s;
+    transform: scale(1.05)
+}
+
+.principal .cardInicio a{
+    border-radius: 30px;
 }
 
 .boton1, .boton2{

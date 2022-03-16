@@ -10,19 +10,15 @@ Menu
 
 @section('contenido')
     <div class="principal">
-        <div class="card cardInicio">
-            <div class="card-body">
-                <div class="divLlamada">
+
+                <div class="divLlamada cardInicio">
                     <a href="{{ url('/llamada') }}" class="btn btn-primary anadirElemento boton1">Trucada</a>
                 </div>
-            </div>
-        </div>
-        <div class="card cardInicio">
-            <div class="card-body">
-                <div class="divExpediente">
+
+    
+                <div class="divExpediente cardInicio">
                     <a href="{{ url('/expedientes') }}" class="btn btn-primary anadirElemento boton2">Expedients</a>
-                </div>
-            </div>
+
         </div>
 
 

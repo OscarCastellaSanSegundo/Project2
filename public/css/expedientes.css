@@ -10,11 +10,23 @@
 
 }
 
+.principalExpedientes .card:hover{
+    transition: 0.25s;
+    transform: scale(1.02)
+}
+
+.barraNav ul{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+
 .principalExpedientes .card{
     margin-top: 1%;
     height: 49%;
     width: 49%;
     border-radius: 15px;
+    transition: 0.25s;
 }
 
 .principalExpedientes .card-header{
