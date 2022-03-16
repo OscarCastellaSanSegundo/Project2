@@ -20,3 +20,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('inicio', MapController::class);
+Route::apiResource('agencia', AgenciaController::class);
+Route::apiResource('cartaTrucada', CartaTrucadaController::class);
+Route::apiResource('cartesTrucadesHasAgencies', CartesTrucadesHasAgenciesController::class);
+Route::apiResource('comarca', ComarcaController::class);
+Route::apiResource('dadesPersonals', DadesPersonalsController::class);
+Route::apiResource('estatAgencia', EstatAgenciaController::class);
+Route::apiResource('estatExpedient', EstatExpedientController::class);
+Route::apiResource('expedient', ExpedientController::class);
+Route::apiResource('incident', IncidentController::class);
+Route::apiResource('municipi', MunicipiController::class);
+Route::apiResource('perfil', PerfilController::class);
+Route::apiResource('provincia', ProvinciaController::class);
+Route::apiResource('tipusIncident', TipusIncidentController::class);
+Route::apiResource('tipusLocalitzacio', TipusLocalitzacioController::class);
+Route::apiResource('usuari', UsuariController::class);
+
