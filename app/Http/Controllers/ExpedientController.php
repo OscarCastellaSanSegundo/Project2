@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expedient;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ExpedientController extends Controller
 {
@@ -16,8 +17,9 @@ class ExpedientController extends Controller
     public function index()
     {
         $expedients = Expedient::all();
+        $user = Auth::user();
 
-        return view('expediente.index', compact('expedients'));
+        return view('expediente.index', compact('expedients', 'user'));
     }
 
     /**

@@ -34,7 +34,7 @@ Route::get('/Inicio', function () {
 }); */
 
 Route::get('/login', [UsuariController::class, 'showLogin'])->name('login');
-Route::resource('expedientes', ExpedientController::class );
+/* Route::resource('expedientes', ExpedientController::class ); */
 
 Route::post('/login', [UsuariController::class, 'login'] );
 Route::get('/logout', [UsuariController::class, 'logout']);
@@ -60,4 +60,5 @@ Route::middleware(['auth'])->group(function () {
         $user = Auth::user();
         return view('inicio.index', compact('user'));
     });
+    Route::resource('expedientes', ExpedientController::class );
 });
