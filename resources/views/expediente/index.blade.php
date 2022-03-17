@@ -120,8 +120,36 @@ Expedients
           </div>
     </div>
 <div class="principalExpedientes">
+    <?php
+        // $ambulancia = false;
+        // $policia = false;
+        // $bomberos = false;
+    ?>
+
 
 @foreach ($expedients as $expedient )
+
+@foreach ($expedient->cartesTrucada as $cartaTrucada )
+
+    @if ( ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id > 0 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 117) ||
+    ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 264 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 470) )
+        {{ $policia = true }}
+    @elseif ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 118 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 263)
+        {{ $bomberos = true }}
+    @endif
+
+    <?php
+        // $ambulancia = false;
+        // $policia = false;
+
+        // if ( ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id > 0 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 117) ||
+        // ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 264 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 470)  ) {
+        //     $policia = true;
+        // } else if ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 118 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 263) {
+        //     $bomberos = true;
+        // }
+    ?>
+@endforeach
 
     <div class="card" >
         <div class="card-header cardHeader">
@@ -142,13 +170,18 @@ Expedients
                         <p class="textoLocalizacion">{{ $expedient->cartesTrucada[0]->provincia->nom }}</p>
                     {{-- @endforeach --}}
                 </div>
+
                 <div class="agenciasDespachadas">
                     <div class="agencia1">
                         <div class="fotoAgencia">
                             <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
                         </div>
                         <div class="unidadesAgencia">
-                            <h4>99</h4>
+                            @if ($policia == true)
+                                <h4>1</h4>
+                            @else
+                                <h4>99</h4>
+                            @endif
                         </div>
                     </div>
                     <div class="agencia2">
@@ -156,7 +189,11 @@ Expedients
                             <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
                         </div>
                         <div class="unidadesAgencia">
-                            <h4>99</h4>
+                            @if ($bomberos == true)
+                                <h4>1</h4>
+                            @else
+                                <h4>99</h4>
+                            @endif
                         </div>
                     </div>
                     <div class="agencia3">
@@ -164,7 +201,11 @@ Expedients
                             <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
                         </div>
                         <div class="unidadesAgencia">
-                            <h4>99</h4>
+                            @if ($ambulancia == true)
+                                <h4>1</h4>
+                            @else
+                                <h4>99</h4>
+                            @endif
                         </div>
                     </div>
                 </div>
