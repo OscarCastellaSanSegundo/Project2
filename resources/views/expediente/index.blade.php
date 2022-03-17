@@ -23,15 +23,24 @@ Expedients
         <div class="row barraNav">
             <div class="col-12">
                 <div class="card">
-                    <div class="col-8">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-primary">Left</button>
-                            <button type="button" class="btn btn-primary">Middle</button>
-                            <button type="button" class="btn btn-primary">Right</button>
+                    <div class="col-5" >
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <button type="button" class="btn btn-primary">1</button>
+                            <button type="button" class="btn btn-primary">2</button>
+
+                            <div class="btn-group" role="group">
+                              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                              </ul>
+                            </div>
                           </div>
                     </div>
 
-                    <ul>
+                    {{-- <ul>
                         <li class="col-2">
                             <div class="btn-group filtros">
                                 <form class="d-flex">
@@ -88,41 +97,7 @@ Expedients
                                 </ul>
                             </div>
                         </li>
-                      </ul>
-                    {{-- <h1 style="display: inline-block">expedients</h1>
-                    <div class="btn-group" style="display: inline-block">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                          Ordenar per
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                    <div class="btn-group" style="display: inline-block">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                          Data de creació
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                    <div class="btn-group" style="display: inline-block">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                          Més filtres
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                    </form> --}}
+                      </ul> --}}
                 </div>
             </div>
           </div>
@@ -162,7 +137,13 @@ Expedients
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187.08288259846324!2d2.1730808994327813!3d41.388723494740994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f05d80e233%3A0x999036411babe70f!2sCentro%20de%20Estudios%20Polit%C3%A9cnicos%3A%20Urquinaona!5e0!3m2!1ses!2ses!4v1645014935619!5m2!1ses!2ses" class="imagenMapa" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="notaComunaCard">
-                    <textarea class="form-control" placeholder="Descripció de la incidència" id="floatingTextarea2" style="height: 90%"></textarea>
+                    @foreach ( $expedient->cartesTrucada as $cartaTrucada )
+                    <div class="notaComunaExpedientScroll">
+                        <p style="margin: 4px;">{{ $cartaTrucada->nota_comuna }}</p>
+                    </div>
+                    @endforeach
+                    
+                    {{-- <textarea class="form-control" placeholder="{{ $cartaTrucada->nota_comuna }}" id="floatingTextarea2" rows="auto" disabled></textarea> --}}
                 </div>
             </div>
             <div class="cuerpo2Expediente">
@@ -179,17 +160,11 @@ Expedients
                             <div class="fotoAgencia">
                                 <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
                             </div>
-                            <div class="unidadesAgencia">
-                                    <h4>1</h4>
-                            </div>
                         </div>
                     @else
-                        <div class="agencia1" style="opacity: 30%;">
+                        <div class="agencia1" style="opacity: 40%; filter: grayscale(100%);">
                             <div class="fotoAgencia">
                                 <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
-                            </div>
-                            <div class="unidadesAgencia">
-                                <h4></h4>
                             </div>
                         </div>
                     @endif
@@ -197,19 +172,13 @@ Expedients
                     @if ($bomberos == true)
                         <div class="agencia2">
                             <div class="fotoAgencia">
-                                <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
-                            </div>
-                            <div class="unidadesAgencia">
-                                    <h4>1</h4>
+                                <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia" style="">
                             </div>
                         </div>
                     @else
-                        <div class="agencia2" style="opacity: 30%;">
+                        <div class="agencia2" style="opacity: 40%; filter: grayscale(100%);">
                             <div class="fotoAgencia">
                                 <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
-                            </div>
-                            <div class="unidadesAgencia">
-                                <h4></h4>
                             </div>
                         </div>
                     @endif
@@ -219,17 +188,11 @@ Expedients
                             <div class="fotoAgencia">
                                 <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
                             </div>
-                            <div class="unidadesAgencia">
-                                    <h4>1</h4>
-                            </div>
                         </div>
                     @else
-                        <div class="agencia3" style="opacity: 30%;">
+                        <div class="agencia3" style="opacity: 40%; filter: grayscale(100%);">
                             <div class="fotoAgencia">
                                 <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
-                            </div>
-                            <div class="unidadesAgencia">
-                                    <h4></h4>
                             </div>
                         </div>
                     @endif
