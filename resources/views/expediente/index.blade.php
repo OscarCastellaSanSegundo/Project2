@@ -19,10 +19,18 @@ Expedients
 @section('contenido')
 
 
-    <div class="row mb-2 mt-2">
+    <div class="row mb-2 mt-2" style="display: flex; justify-content: center">
         <div class="row barraNav">
-            <div class="col-11">
+            <div class="col-12">
                 <div class="card">
+                    <div class="col-8">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary">Left</button>
+                            <button type="button" class="btn btn-primary">Middle</button>
+                            <button type="button" class="btn btn-primary">Right</button>
+                          </div>
+                    </div>
+
                     <ul>
                         <li class="col-2">
                             <div class="btn-group filtros">
@@ -121,35 +129,28 @@ Expedients
     </div>
 <div class="principalExpedientes">
     <?php
-        // $ambulancia = false;
-        // $policia = false;
-        // $bomberos = false;
+        $ambulancia = false;
+        $policia = false;
+        $bomberos = false;
     ?>
 
 
 @foreach ($expedients as $expedient )
 
-@foreach ($expedient->cartesTrucada as $cartaTrucada )
+    @foreach ($expedient->cartesTrucada as $cartaTrucada )
 
-    @if ( ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id > 0 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 117) ||
-    ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 264 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 470) )
-        {{ $policia = true }}
-    @elseif ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 118 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 263)
-        {{ $bomberos = true }}
-    @endif
+        @foreach ($cartaTrucada->cartesTrucadesHasAgencia as $cartaHasAgencia )
 
-    <?php
-        // $ambulancia = false;
-        // $policia = false;
+            @if ( ($cartaHasAgencia->agencia->id > 0 && $cartaHasAgencia->agencia->id <= 117) ||
+            ($cartaHasAgencia->agencia->id >= 264 && $cartaHasAgencia->agencia->id <= 470) )
+                <?php $policia = true ?>
+            @elseif ($cartaHasAgencia->agencia->id >= 118 && $cartaHasAgencia->agencia->id <= 263)
+                <?php $bomberos = true ?>
+            @endif
 
-        // if ( ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id > 0 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 117) ||
-        // ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 264 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 470)  ) {
-        //     $policia = true;
-        // } else if ($cartaTrucada->cartesTrucadesHasAgencia->agencia->id >= 118 && $cartaTrucada->cartesTrucadesHasAgencia->agencia->id <= 263) {
-        //     $bomberos = true;
-        // }
-    ?>
-@endforeach
+        @endforeach
+
+    @endforeach
 
     <div class="card" >
         <div class="card-header cardHeader">
@@ -172,42 +173,67 @@ Expedients
                 </div>
 
                 <div class="agenciasDespachadas">
-                    <div class="agencia1">
-                        <div class="fotoAgencia">
-                            <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
+
+                    @if ($policia == true)
+                        <div class="agencia1">
+                            <div class="fotoAgencia">
+                                <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
+                            </div>
+                            <div class="unidadesAgencia">
+                                    <h4>1</h4>
+                            </div>
                         </div>
-                        <div class="unidadesAgencia">
-                            @if ($policia == true)
-                                <h4>1</h4>
-                            @else
-                                <h4>99</h4>
-                            @endif
+                    @else
+                        <div class="agencia1" style="opacity: 30%;">
+                            <div class="fotoAgencia">
+                                <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
+                            </div>
+                            <div class="unidadesAgencia">
+                                <h4></h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="agencia2">
-                        <div class="fotoAgencia">
-                            <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
+                    @endif
+
+                    @if ($bomberos == true)
+                        <div class="agencia2">
+                            <div class="fotoAgencia">
+                                <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
+                            </div>
+                            <div class="unidadesAgencia">
+                                    <h4>1</h4>
+                            </div>
                         </div>
-                        <div class="unidadesAgencia">
-                            @if ($bomberos == true)
-                                <h4>1</h4>
-                            @else
-                                <h4>99</h4>
-                            @endif
+                    @else
+                        <div class="agencia2" style="opacity: 30%;">
+                            <div class="fotoAgencia">
+                                <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
+                            </div>
+                            <div class="unidadesAgencia">
+                                <h4></h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="agencia3">
-                        <div class="fotoAgencia">
-                            <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
+                    @endif
+
+                    @if ($ambulancia == true)
+                        <div class="agencia3">
+                            <div class="fotoAgencia">
+                                <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
+                            </div>
+                            <div class="unidadesAgencia">
+                                    <h4>1</h4>
+                            </div>
                         </div>
-                        <div class="unidadesAgencia">
-                            @if ($ambulancia == true)
-                                <h4>1</h4>
-                            @else
-                                <h4>99</h4>
-                            @endif
+                    @else
+                        <div class="agencia3" style="opacity: 30%;">
+                            <div class="fotoAgencia">
+                                <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
+                            </div>
+                            <div class="unidadesAgencia">
+                                    <h4></h4>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>
