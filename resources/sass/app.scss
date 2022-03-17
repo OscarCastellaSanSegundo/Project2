@@ -2,7 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+//@import 'variables';
+@import "~bootswatch/dist/flatly/variables";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+//Bootswatch
+@import "~bootswatch/dist/flatly/bootswatch";
