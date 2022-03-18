@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Perfil;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\PerfilResource;
 
 class PerfilController extends Controller
 {
@@ -15,7 +16,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+        $perfils = Perfil::all();
+        return PerfilResource::collection($perfils);
     }
 
     /**
@@ -37,7 +39,7 @@ class PerfilController extends Controller
      */
     public function show(Perfil $perfil)
     {
-        //
+        return new PerfilResource($perfil);
     }
 
     /**

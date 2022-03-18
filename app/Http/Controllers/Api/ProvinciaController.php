@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Provincia;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ProvinciaResource;
 
 class ProvinciaController extends Controller
 {
@@ -15,7 +16,8 @@ class ProvinciaController extends Controller
      */
     public function index()
     {
-        //
+        $provincies = Provincia::all();
+        return ProvinciaResource::collection($provincies);
     }
 
     /**
@@ -35,9 +37,9 @@ class ProvinciaController extends Controller
      * @param  \App\Models\Provincia  $provincia
      * @return \Illuminate\Http\Response
      */
-    public function show(Provincia $provincia)
+    public function show(Provincia $provincium)
     {
-        //
+        return new ProvinciaResource($provincium);
     }
 
     /**
@@ -47,7 +49,7 @@ class ProvinciaController extends Controller
      * @param  \App\Models\Provincia  $provincia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provincia $provincia)
+    public function update(Request $request, Provincia $provincium)
     {
         //
     }
@@ -58,7 +60,7 @@ class ProvinciaController extends Controller
      * @param  \App\Models\Provincia  $provincia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Provincia $provincia)
+    public function destroy(Provincia $provincium)
     {
         //
     }

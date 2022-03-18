@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\CartaTrucada;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\CartaTrucadaResource;
 
 class CartaTrucadaController extends Controller
 {
@@ -15,7 +16,8 @@ class CartaTrucadaController extends Controller
      */
     public function index()
     {
-        //
+        $cartesTrucada = CartaTrucada::all();
+        return CartaTrucadaResource::collection($cartesTrucada);
     }
 
     /**
@@ -37,7 +39,7 @@ class CartaTrucadaController extends Controller
      */
     public function show(CartaTrucada $cartaTrucada)
     {
-        //
+        return new CartaTrucadaResource($cartaTrucada);
     }
 
     /**

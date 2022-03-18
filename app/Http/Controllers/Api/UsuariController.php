@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Usuari;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UsuariResource;
 
 class UsuariController extends Controller
 {
@@ -15,7 +16,8 @@ class UsuariController extends Controller
      */
     public function index()
     {
-        //
+        $usuaris = Usuari::all();
+        return UsuariResource::collection($usuaris);
     }
 
     /**
@@ -37,7 +39,9 @@ class UsuariController extends Controller
      */
     public function show(Usuari $usuari)
     {
-        //
+        return new UsuariResource($usuari);
+
+
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\EstatAgencia;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\EstatAgenciaResource;
 
 class EstatAgenciaController extends Controller
 {
@@ -15,7 +16,8 @@ class EstatAgenciaController extends Controller
      */
     public function index()
     {
-        //
+        $estatAgencies = EstatAgencia::all();
+        return EstatAgenciaResource::collection($estatAgencies);
     }
 
     /**
@@ -35,9 +37,9 @@ class EstatAgenciaController extends Controller
      * @param  \App\Models\EstatAgencia  $estatAgencia
      * @return \Illuminate\Http\Response
      */
-    public function show(EstatAgencia $estatAgencia)
+    public function show(EstatAgencia $estatAgencium)
     {
-        //
+        return new EstatAgenciaResource($estatAgencium);
     }
 
     /**
@@ -47,7 +49,7 @@ class EstatAgenciaController extends Controller
      * @param  \App\Models\EstatAgencia  $estatAgencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EstatAgencia $estatAgencia)
+    public function update(Request $request, EstatAgencia $estatAgencium)
     {
         //
     }
@@ -58,7 +60,7 @@ class EstatAgenciaController extends Controller
      * @param  \App\Models\EstatAgencia  $estatAgencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EstatAgencia $estatAgencia)
+    public function destroy(EstatAgencia $estatAgencium)
     {
         //
     }

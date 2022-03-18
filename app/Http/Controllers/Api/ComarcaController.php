@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Comarca;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ComarcaResource;
 
 class ComarcaController extends Controller
 {
@@ -15,7 +16,8 @@ class ComarcaController extends Controller
      */
     public function index()
     {
-        //
+        $comarques = Comarca::all();
+        return ComarcaResource::collection($comarques);
     }
 
     /**
@@ -37,7 +39,7 @@ class ComarcaController extends Controller
      */
     public function show(Comarca $comarca)
     {
-        //
+        return new ComarcaResource($comarca);
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Municipi;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\MunicipiResource;
 
 class MunicipiController extends Controller
 {
@@ -15,7 +16,8 @@ class MunicipiController extends Controller
      */
     public function index()
     {
-        //
+        $municipis = Municipi::all();
+        return MunicipiResource::collection($municipis);
     }
 
     /**
@@ -37,7 +39,7 @@ class MunicipiController extends Controller
      */
     public function show(Municipi $municipi)
     {
-        //
+        return new MunicipiResource($municipi);
     }
 
     /**

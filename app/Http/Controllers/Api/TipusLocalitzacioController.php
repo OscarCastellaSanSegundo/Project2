@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use App\Models\TipusLocalitzacio;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Resources\TipusLocalitzacioResource;
 
 class TipusLocalitzacioController extends Controller
 {
@@ -15,7 +16,8 @@ class TipusLocalitzacioController extends Controller
      */
     public function index()
     {
-        //
+        $tipusLocalitzacions = TipusLocalitzacio::all();
+        return TipusLocalitzacioResource::collection($tipusLocalitzacions);
     }
 
     /**
@@ -37,7 +39,7 @@ class TipusLocalitzacioController extends Controller
      */
     public function show(TipusLocalitzacio $tipusLocalitzacio)
     {
-        //
+        return new TipusLocalitzacioResource($tipusLocalitzacio);
     }
 
     /**

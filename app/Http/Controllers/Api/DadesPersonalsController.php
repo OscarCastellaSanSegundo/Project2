@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use App\Models\DadesPersonals;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Resources\DadesPersonalsResource;
 
 class DadesPersonalsController extends Controller
 {
@@ -15,7 +16,8 @@ class DadesPersonalsController extends Controller
      */
     public function index()
     {
-        //
+        $dadesPersonals = DadesPersonals::all();
+        return DadesPersonalsResource::collection($dadesPersonals);
     }
 
     /**
@@ -35,9 +37,9 @@ class DadesPersonalsController extends Controller
      * @param  \App\Models\DadesPersonals  $dadesPersonals
      * @return \Illuminate\Http\Response
      */
-    public function show(DadesPersonals $dadesPersonals)
+    public function show(DadesPersonals $dadesPersonal)
     {
-        //
+        return new DadesPersonalsResource($dadesPersonal);
     }
 
     /**
@@ -47,7 +49,7 @@ class DadesPersonalsController extends Controller
      * @param  \App\Models\DadesPersonals  $dadesPersonals
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DadesPersonals $dadesPersonals)
+    public function update(Request $request, DadesPersonals $dadesPersonal)
     {
         //
     }
@@ -58,7 +60,7 @@ class DadesPersonalsController extends Controller
      * @param  \App\Models\DadesPersonals  $dadesPersonals
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DadesPersonals $dadesPersonals)
+    public function destroy(DadesPersonals $dadesPersonal)
     {
         //
     }

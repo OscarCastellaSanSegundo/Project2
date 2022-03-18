@@ -37,9 +37,9 @@ class AgenciaController extends Controller
      * @param  \App\Models\Agencia  $agencia
      * @return \Illuminate\Http\Response
      */
-    public function show(Agencia $agencia)
+    public function show(Agencia $agencium)
     {
-        //
+        return new AgenciaResource($agencium);
     }
 
     /**
@@ -49,7 +49,7 @@ class AgenciaController extends Controller
      * @param  \App\Models\Agencia  $agencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Agencia $agencia)
+    public function update(Request $request, Agencia $agencium)
     {
         //
     }
@@ -60,7 +60,7 @@ class AgenciaController extends Controller
      * @param  \App\Models\Agencia  $agencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Agencia $agencia)
+    public function destroy(Agencia $agencium)
     {
         //
     }

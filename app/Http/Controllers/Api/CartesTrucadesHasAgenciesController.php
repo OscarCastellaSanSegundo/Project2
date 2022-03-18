@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\CartesTrucadesHasAgencies;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\CartesTrucadesHasAgencies;
+use App\Http\Resources\CartesTrucadesHasAgenciesResource;
 
 class CartesTrucadesHasAgenciesController extends Controller
 {
@@ -15,7 +16,8 @@ class CartesTrucadesHasAgenciesController extends Controller
      */
     public function index()
     {
-        //
+        $cartesTrucadesHasAgencies = CartesTrucadesHasAgencies::all();
+        return CartesTrucadesHasAgenciesResource::collection($cartesTrucadesHasAgencies);
     }
 
     /**
@@ -35,9 +37,9 @@ class CartesTrucadesHasAgenciesController extends Controller
      * @param  \App\Models\CartesTrucadesHasAgencies  $cartesTrucadesHasAgencies
      * @return \Illuminate\Http\Response
      */
-    public function show(CartesTrucadesHasAgencies $cartesTrucadesHasAgencies)
+    public function show(CartesTrucadesHasAgencies $cartesTrucadesHasAgency)
     {
-        //
+        return new CartesTrucadesHasAgenciesResource($cartesTrucadesHasAgency);
     }
 
     /**
@@ -47,7 +49,7 @@ class CartesTrucadesHasAgenciesController extends Controller
      * @param  \App\Models\CartesTrucadesHasAgencies  $cartesTrucadesHasAgencies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CartesTrucadesHasAgencies $cartesTrucadesHasAgencies)
+    public function update(Request $request, CartesTrucadesHasAgencies $cartesTrucadesHasAgency)
     {
         //
     }
@@ -58,7 +60,7 @@ class CartesTrucadesHasAgenciesController extends Controller
      * @param  \App\Models\CartesTrucadesHasAgencies  $cartesTrucadesHasAgencies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CartesTrucadesHasAgencies $cartesTrucadesHasAgencies)
+    public function destroy(CartesTrucadesHasAgencies $cartesTrucadesHasAgency)
     {
         //
     }
