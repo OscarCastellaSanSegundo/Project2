@@ -15,11 +15,7 @@
     transform: scale(1.02)
 }
 
-.barraNav ul{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row-reverse;
-}
+
 
 .principalExpedientes .card{
     margin-top: 1%;
@@ -152,6 +148,64 @@ box-shadow: 0px 0px 13px -7px rgba(0,0,0,0.75);
 
 .barraNav .card{
     border-radius: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.barraNav{
+    display: flex;
+    justify-content: center;
+}
+
+.barraNav .card .columna{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+
+.barraNav .card button{
+    /* width: 160px; */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.principalExpedientes::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.principalExpedientes::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.principalExpedientes::-webkit-scrollbar-button:increment,.principalExpedientes::-webkit-scrollbar-button {
+    display: none;
+
+
+}
+
+.principalExpedientes::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    width: 20px;
+    border-radius: 20px;
+    /* border: 2px solid #ffffff; */
+}
+
+.principalExpedientes::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: black;
+    background-size: 2px;
+
+    margin: 200px;
+}
+
+/* ::-webkit-scrollbar {display: none;} */
+
+.buscarRadius{
+    border-radius: 15px 0px 0px 15px;
+}
+
+#btnGroupDrop1{
+    border-radius: 0px 15px 15px 0px;
 }
 
 .primerDiv  .navbar{
@@ -206,11 +260,6 @@ box-shadow: 0px 0px 13px -7px rgba(0,0,0,0.75);
 .unidadesAgencia h4 {
     display: flex;
     align-items: center;
-}
-
-.barraNav{
-    display: flex;
-    justify-content: center;
 }
 
 ul {

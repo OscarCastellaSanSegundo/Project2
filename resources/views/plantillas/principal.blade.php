@@ -10,6 +10,7 @@
     <link rel="stylesheet" href=" {{ asset('css/inicio.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/cartaLlamada.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/expedientes.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <script src=" {{ asset('js/script.js') }}"></script>
 
 </head>

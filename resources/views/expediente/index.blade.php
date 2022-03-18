@@ -23,21 +23,95 @@ Expedients
         <div class="row barraNav">
             <div class="col-12">
                 <div class="card">
-                    <div class="col-5" >
+                    <div class="col-10 columna" >
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                            <button type="button" class="btn btn-primary">1</button>
-                            <button type="button" class="btn btn-primary">2</button>
+
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop6" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Tipús de localització
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop6">
+                                  <li><a class="dropdown-item" href="#">Carrer</a></li>
+                                  <li><a class="dropdown-item" href="#">Entitat població</a></li>
+                                  <li><a class="dropdown-item" href="#">Punt singular</a></li>
+                                  <li><a class="dropdown-item" href="#">Carretera</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop5" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Tipús d'incident
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop5">
+                                  <li><a class="dropdown-item" href="#">Accident</a></li>
+                                  <li><a class="dropdown-item" href="#">Assistència sanitària</a></li>
+                                  <li><a class="dropdown-item" href="#">Incendi</a></li>
+                                  <li><a class="dropdown-item" href="#">Fuita (Aigua, gas, altres)</a></li>
+                                  <li><a class="dropdown-item" href="#">Altres incidències</a></li>
+                                  <li><a class="dropdown-item" href="#">Seguretat</a></li>
+                                  <li><a class="dropdown-item" href="#">Trànsit</a></li>
+                                  <li><a class="dropdown-item" href="#">Civisme</a></li>
+                                  <li><a class="dropdown-item" href="#">Medi ambient</a></li>
+                                  <li><a class="dropdown-item" href="#">Meteorologia</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop4" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Provincia
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                  <li><a class="dropdown-item" href="#">Barcelona</a></li>
+                                  <li><a class="dropdown-item" href="#">Girona</a></li>
+                                  <li><a class="dropdown-item" href="#">Tarragona</a></li>
+                                  <li><a class="dropdown-item" href="#">Lleida</a></li>
+                                  <li><a class="dropdown-item" href="#">Fora Catalunya</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Agencies enviades
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                                  <li><a class="dropdown-item" href="#">Policia</a></li>
+                                  <li><a class="dropdown-item" href="#">Ambulància</a></li>
+                                  <li><a class="dropdown-item" href="#">Bombers</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Estat expedient
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                                  <li><a class="dropdown-item" href="#">En procés</a></li>
+                                  <li><a class="dropdown-item" href="#">Sol·licitat</a></li>
+                                  <li><a class="dropdown-item" href="#">Acceptat</a></li>
+                                  <li><a class="dropdown-item" href="#">Tancat</a></li>
+                                  <li><a class="dropdown-item" href="#">Immobilitzat</a></li>
+                                </ul>
+                            </div>
 
                             <div class="btn-group" role="group">
                               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Data
                               </button>
                               <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                                <li><a class="dropdown-item" href="#">Mes recents</a></li>
+                                <li><a class="dropdown-item" href="#">Mes antics</a></li>
                               </ul>
                             </div>
-                          </div>
+
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-primary buscarRadius"><i class="bi bi-search"></i></button>
+                                <input type="text" class="form-control " placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                            </div>
+                        </div>
                     </div>
 
                     {{-- <ul>
@@ -142,7 +216,7 @@ Expedients
                         <p style="margin: 4px;">{{ $cartaTrucada->nota_comuna }}</p>
                     </div>
                     @endforeach
-                    
+
                     {{-- <textarea class="form-control" placeholder="{{ $cartaTrucada->nota_comuna }}" id="floatingTextarea2" rows="auto" disabled></textarea> --}}
                 </div>
             </div>
