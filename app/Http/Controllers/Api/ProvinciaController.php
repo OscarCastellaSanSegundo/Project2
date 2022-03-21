@@ -39,6 +39,7 @@ class ProvinciaController extends Controller
      */
     public function show(Provincia $provincium)
     {
+        $provincium = Provincia::with('comarques', 'cartesTrucada')->find($provincium->id);
         return new ProvinciaResource($provincium);
     }
 

@@ -39,6 +39,7 @@ class TipusLocalitzacioController extends Controller
      */
     public function show(TipusLocalitzacio $tipusLocalitzacio)
     {
+        $tipusLocalitzacio = TipusLocalitzacio::with('cartesTrucades')->find($tipusLocalitzacio->id);
         return new TipusLocalitzacioResource($tipusLocalitzacio);
     }
 

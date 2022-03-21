@@ -39,6 +39,7 @@ class PerfilController extends Controller
      */
     public function show(Perfil $perfil)
     {
+        $perfil = Perfil::with('usuaris')->find($perfil->id);
         return new PerfilResource($perfil);
     }
 

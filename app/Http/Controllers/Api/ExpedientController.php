@@ -39,6 +39,7 @@ class ExpedientController extends Controller
      */
     public function show(Expedient $expedient)
     {
+        $expedient = Expedient::with('cartesTrucada', 'estatExpedient')->find($expedient->id);
         return new ExpedientResource($expedient);
     }
 

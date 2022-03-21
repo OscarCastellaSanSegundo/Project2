@@ -39,6 +39,7 @@ class EstatExpedientController extends Controller
      */
     public function show(EstatExpedient $estatExpedient)
     {
+        $estatExpedient = EstatExpedient::with('expedients')->find($estatExpedient->id);
         return new EstatExpedientResource($estatExpedient);
     }
 

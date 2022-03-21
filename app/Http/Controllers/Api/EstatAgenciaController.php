@@ -39,6 +39,7 @@ class EstatAgenciaController extends Controller
      */
     public function show(EstatAgencia $estatAgencium)
     {
+        $estatAgencium = EstatAgencia::with('cartesTrucadesHasAgencia')->find($estatAgencium->id);
         return new EstatAgenciaResource($estatAgencium);
     }
 

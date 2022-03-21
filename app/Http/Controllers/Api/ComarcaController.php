@@ -39,6 +39,7 @@ class ComarcaController extends Controller
      */
     public function show(Comarca $comarca)
     {
+        $comarca = Comarca::with('provincia', 'municipis')->find($comarca->id);
         return new ComarcaResource($comarca);
     }
 

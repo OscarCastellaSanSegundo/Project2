@@ -39,6 +39,7 @@ class AgenciaController extends Controller
      */
     public function show(Agencia $agencium)
     {
+        $agencium = Agencia::with('municipi', 'cartesTrucadesHasAgencia')->find($agencium->id);
         return new AgenciaResource($agencium);
     }
 

@@ -39,6 +39,7 @@ class CartaTrucadaController extends Controller
      */
     public function show(CartaTrucada $cartaTrucada)
     {
+        $cartaTrucada = CartaTrucada::with('dadesPersonals', 'TipusLocalitzacio', 'usuari', 'incident', 'provincia', 'municipi', 'municipiTrucada', 'cartesTrucadesHasAgencia')->find($cartaTrucada->id);
         return new CartaTrucadaResource($cartaTrucada);
     }
 

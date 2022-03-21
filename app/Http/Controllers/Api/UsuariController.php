@@ -39,6 +39,7 @@ class UsuariController extends Controller
      */
     public function show(Usuari $usuari)
     {
+        $usuari = Usuari::with('perfil', 'cartesTrucades')->find($usuari->id);
         return new UsuariResource($usuari);
 
 

@@ -39,6 +39,7 @@ class IncidentController extends Controller
      */
     public function show(Incident $incident)
     {
+        $incident = Incident::with('tipusIncident', 'cartesTrucada')->find($incident->id);
         return new IncidentResource($incident);
     }
 

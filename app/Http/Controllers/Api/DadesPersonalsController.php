@@ -39,6 +39,7 @@ class DadesPersonalsController extends Controller
      */
     public function show(DadesPersonals $dadesPersonal)
     {
+        $dadesPersonal = DadesPersonals::with('cartesTrucades')->find($dadesPersonal->id);
         return new DadesPersonalsResource($dadesPersonal);
     }
 

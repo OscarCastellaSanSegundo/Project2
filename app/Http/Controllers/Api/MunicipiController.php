@@ -39,6 +39,7 @@ class MunicipiController extends Controller
      */
     public function show(Municipi $municipi)
     {
+        $municipi = Municipi::with('comarca', 'cartesTrucada', 'cartesTrucadaTrucada', 'agencies')->find($municipi->id);
         return new MunicipiResource($municipi);
     }
 
