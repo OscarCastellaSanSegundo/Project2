@@ -22,88 +22,93 @@ Expedients
     <div class="row mb-2 mt-2" style="display: flex; justify-content: center">
         <div class="row barraNav">
             <div class="col-12">
+                <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
                 <div class="card">
+
                     <div class="col-10 columna" >
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop6" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Tipús de localització
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop6">
-                                  <li><a class="dropdown-item" href="#">Carrer</a></li>
-                                  <li><a class="dropdown-item" href="#">Entitat població</a></li>
-                                  <li><a class="dropdown-item" href="#">Punt singular</a></li>
-                                  <li><a class="dropdown-item" href="#">Carretera</a></li>
-                                </ul>
-                            </div>
 
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop5" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Tipús d'incident
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop5">
-                                  <li><a class="dropdown-item" href="#">Accident</a></li>
-                                  <li><a class="dropdown-item" href="#">Assistència sanitària</a></li>
-                                  <li><a class="dropdown-item" href="#">Incendi</a></li>
-                                  <li><a class="dropdown-item" href="#">Fuita (Aigua, gas, altres)</a></li>
-                                  <li><a class="dropdown-item" href="#">Altres incidències</a></li>
-                                  <li><a class="dropdown-item" href="#">Seguretat</a></li>
-                                  <li><a class="dropdown-item" href="#">Trànsit</a></li>
-                                  <li><a class="dropdown-item" href="#">Civisme</a></li>
-                                  <li><a class="dropdown-item" href="#">Medi ambient</a></li>
-                                  <li><a class="dropdown-item" href="#">Meteorologia</a></li>
-                                </ul>
-                            </div>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop6" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Tipús de localització
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop6">
+                                        <li><button class="dropdown-item" type="submit" id="carrer">Carrer</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="entitatPoblacio">Entitat Població</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="puntSingular">Punt singular</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="carretera">Carretera</button></li>
+                                    </ul>
+                                </div>
 
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop4" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Provincia
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop4">
-                                  <li><a class="dropdown-item" href="#">Barcelona</a></li>
-                                  <li><a class="dropdown-item" href="#">Girona</a></li>
-                                  <li><a class="dropdown-item" href="#">Tarragona</a></li>
-                                  <li><a class="dropdown-item" href="#">Lleida</a></li>
-                                  <li><a class="dropdown-item" href="#">Fora Catalunya</a></li>
-                                </ul>
-                            </div>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop5" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Tipús d'incident
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop5">
+                                        <li><a type="submit" id="accident" class="dropdown-item" href="#">Accident</a></li>
+                                        <li><a type="submit" id="assistenciaSanitaria" class="dropdown-item" href="#">Assistència sanitària</a></li>
+                                        <li><a type="submit" id="incendi" class="dropdown-item" href="#">Incendi</a></li>
+                                        <li><a class="dropdown-item" href="#">Fuita (Aigua, gas, altres)</a></li>
+                                        <li><a class="dropdown-item" href="#">Altres incidències</a></li>
+                                        <li><a class="dropdown-item" href="#">Seguretat</a></li>
+                                        <li><a class="dropdown-item" href="#">Trànsit</a></li>
+                                        <li><a class="dropdown-item" href="#">Civisme</a></li>
+                                        <li><a class="dropdown-item" href="#">Medi ambient</a></li>
+                                        <li><a class="dropdown-item" href="#">Meteorologia</a></li>
+                                    </ul>
+                                </div>
 
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Agencies enviades
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop3">
-                                  <li><a class="dropdown-item" href="#">Policia</a></li>
-                                  <li><a class="dropdown-item" href="#">Ambulància</a></li>
-                                  <li><a class="dropdown-item" href="#">Bombers</a></li>
-                                </ul>
-                            </div>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop4" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Provincia
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                    <li><a class="dropdown-item" href="#">Barcelona</a></li>
+                                    <li><a class="dropdown-item" href="#">Girona</a></li>
+                                    <li><a class="dropdown-item" href="#">Tarragona</a></li>
+                                    <li><a class="dropdown-item" href="#">Lleida</a></li>
+                                    <li><a class="dropdown-item" href="#">Fora Catalunya</a></li>
+                                    </ul>
+                                </div>
 
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Estat expedient
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-                                  <li><a class="dropdown-item" href="#">En procés</a></li>
-                                  <li><a class="dropdown-item" href="#">Sol·licitat</a></li>
-                                  <li><a class="dropdown-item" href="#">Acceptat</a></li>
-                                  <li><a class="dropdown-item" href="#">Tancat</a></li>
-                                  <li><a class="dropdown-item" href="#">Immobilitzat</a></li>
-                                </ul>
-                            </div>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Agencies enviades
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                                    <li><a class="dropdown-item" href="#">Policia</a></li>
+                                    <li><a class="dropdown-item" href="#">Ambulància</a></li>
+                                    <li><a class="dropdown-item" href="#">Bombers</a></li>
+                                    </ul>
+                                </div>
 
-                            <div class="btn-group" role="group">
-                              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Data
-                              </button>
-                              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <li><a class="dropdown-item" href="#">Mes recents</a></li>
-                                <li><a class="dropdown-item" href="#">Mes antics</a></li>
-                              </ul>
-                            </div>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Estat expedient
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                                    <li><a class="dropdown-item" href="#">En procés</a></li>
+                                    <li><a class="dropdown-item" href="#">Sol·licitat</a></li>
+                                    <li><a class="dropdown-item" href="#">Acceptat</a></li>
+                                    <li><a class="dropdown-item" href="#">Tancat</a></li>
+                                    <li><a class="dropdown-item" href="#">Immobilitzat</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Data
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <li><a class="dropdown-item" href="#">Mes recents</a></li>
+                                    <li><a class="dropdown-item" href="#">Mes antics</a></li>
+                                </ul>
+                                </div>
+
 
                         </div>
+
                     </div>
                     <div class="col-2">
                         <div class="btn-group" role="group" aria-label="Basic example">
@@ -114,65 +119,10 @@ Expedients
                         </div>
                     </div>
 
-                    {{-- <ul>
-                        <li class="col-2">
-                            <div class="btn-group filtros">
-                                <form class="d-flex">
-                                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                                    <button class="btn btn-primary" type="submit">Buscar</button>
-                                  </form>
-                            </div>
-                        </li>
-                        <li class="col-2">
-                            <div class="btn-group filtros">
-                                <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Ordenar per
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="col-2">
-                            <div class="btn-group filtros">
-                                <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false"">
-                                  Ordenar per
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="col-2">
-                            <div class="btn-group filtros">
-                                <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Ordenar per
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="col-2">
-                            <div class="btn-group filtros ">
-                                <button type="button" class="btn btn-info dropdown-toggle botonExpedienteFiltro" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Ordenar per
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                      </ul> --}}
+
                 </div>
+
+            </form>
             </div>
           </div>
     </div>
@@ -309,136 +259,7 @@ Expedients
 @endforeach
 
 
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured0
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+
 
 
 </div>
@@ -465,30 +286,47 @@ Expedients
                             </div>
                             <div class="modalIconos">
                                 <div class="modalAgenciasDespachadas">
-                                    <div class="agencia1">
-                                        <div class="fotoAgencia">
-                                            <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
+                                    @if ($policia == true)
+                                        <div class="agencia1">
+                                            <div class="fotoAgencia">
+                                                <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
+                                            </div>
                                         </div>
-                                        <div class="unidadesAgencia">
-                                            <h3>99</h3>
+                                    @else
+                                        <div class="agencia1" style="opacity: 40%; filter: grayscale(100%);">
+                                            <div class="fotoAgencia">
+                                                <img src="../public/imagenes/cochePolicia.png" class="imagenAgencia">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="agencia2">
-                                        <div class="fotoAgencia">
-                                            <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
+                                    @endif
+
+                                    @if ($bomberos == true)
+                                        <div class="agencia2">
+                                            <div class="fotoAgencia">
+                                                <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia" style="">
+                                            </div>
                                         </div>
-                                        <div class="unidadesAgencia">
-                                            <h3>99</h3>
+                                    @else
+                                        <div class="agencia2" style="opacity: 40%; filter: grayscale(100%);">
+                                            <div class="fotoAgencia">
+                                                <img src="../public/imagenes/camionBomberos.png" class="imagenAgencia">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="agencia3">
-                                        <div class="fotoAgencia">
-                                            <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
+                                    @endif
+
+                                    @if ($ambulancia == true)
+                                        <div class="agencia3">
+                                            <div class="fotoAgencia">
+                                                <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
+                                            </div>
                                         </div>
-                                        <div class="unidadesAgencia">
-                                            <h3>99</h3>
+                                    @else
+                                        <div class="agencia3" style="opacity: 40%; filter: grayscale(100%);">
+                                            <div class="fotoAgencia">
+                                                <img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgencia">
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -690,8 +528,27 @@ Expedients
             </div>
             <div class="modal-footer footerExpedienteAbierto">
                 <div>
-                    Creacion: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;Edicion:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
-                    Estado: {{ $expedient->estatExpedient->estat }}
+                    <div>
+                        Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
+                    </div>
+                    <div style="display: flex;">
+                        <div>
+                            Estat: {{ $expedient->estatExpedient->estat }}
+                        </div>
+                        @if ($expedient->estatExpedient->id  == 1)
+                            <div style="width: 18px; height: 18px; background-color: green; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 2)
+                            <div style="width: 18px; height: 18px; background-color: yellow; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 3)
+                            <div style="width: 18px; height: 18px; background-color: #665D1D; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 4)
+                            <div style="width: 18px; height: 18px; background-color: blue; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @elseif ($expedient->estatExpedient->id  == 5)
+                            <div style="width: 18px; height: 18px; background-color: purple; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @else
+                            <div style="width: 18px; height: 18px; background-color: rgb(0, 0, 0); margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                        @endif
+                    </div>
                 </div>
                 <div>
                     <a class="btn btn-primary " data-bs-toggle="modal" href="#abrirExpediente" role="button">Cerrar</a>
