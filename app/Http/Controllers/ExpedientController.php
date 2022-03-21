@@ -15,9 +15,21 @@ class ExpedientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   $actiu = $request->input('actiuBuscar');
+    {   $carrer = $request->input('carrer');
 
-        $expedients = Expedient::all();
+        if ($carrer == 'carrer') {
+
+            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
+                $query->where('tipus_localitzacions_id', '=', 1);
+            })->get();
+
+        }else{
+            // $cicles = Cicle::all();
+            $expedients = Expedient::all();
+        }
+
+
+
         $user = Auth::user();
 
         return view('expediente.index', compact('expedients', 'user'));
