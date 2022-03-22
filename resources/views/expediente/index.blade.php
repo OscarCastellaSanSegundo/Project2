@@ -22,104 +22,129 @@ Expedients
     <div class="row mb-2 mt-2" style="display: flex; justify-content: center">
         <div class="row barraNav">
             <div class="col-12">
+
                 <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
-                <div class="card">
+                    <div class="card">
+                        <div class="col-10 columna" >
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 
-                    <div class="col-10 columna" >
-                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <div class="btn-group" role="group">
+                                    <button id="mostrarTot" type="submit" value="mostrarTot" name="mostrarTot" class="btn btn-primary" >
+                                    buscar
+                                    </button>
+                                </div>
 
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop6" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Tipús de localització
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop6">
-                                    <li><button class="dropdown-item" type="submit" id="carrer" name="carrer" value="carrer">Carrer</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="entitatPoblacio">Entitat Població</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="puntSingular">Punt singular</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="carretera">Carretera</button></li>
-                                </ul>
+                                <div class="btn-group" role="group">
+                                    <button id="mostrarTot" type="submit" value="mostrarTot" name="mostrarTot" class="btn btn-primary" >
+                                    Mostrar Tot
+                                    </button>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop6" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Tipús de localització
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop6">
+                                        <li><div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="true" name="carrer1" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                              carrer
+                                            </label>
+                                          </div>
+                                        </li>
+                                        <li><div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="true" name="entitatPoblacio1" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                              entitat poblacio
+                                            </label>
+                                          </div>
+                                        </li>
+                                        <li><button class="dropdown-item" type="submit" id="carrer" name="carrer" value="true">Carrer</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="entitatPoblacio" name="entitatPoblacio" value="true">Entitat Població</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="puntSingular" name="puntSingular" value="true">Punt singular</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="carretera" name="carretera" value="true">Carretera</button></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop5" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Tipús d'incident
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop5">
+                                        <li><button class="dropdown-item" type="submit" id="accident">Accident</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="assistenciaSanitaria">Assistencia sanitària</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="incendi">Incendi</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="fuita">Fuita (Aigua, gas, altres)</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="altresIncidencies">Altres incidencies</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="seguretat">Seguretat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="transit">Transit</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="civisme">Civisme</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="mediAmbient">Medi ambient</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="meteorologia">Meteorologia</button></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop4" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Provincia
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                        <li><button class="dropdown-item" type="submit" id="barcelona">Barcelona</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="girona">Girona</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="tarragona">Tarragona</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="lleida">Lleida</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="foraCatalunya">Fora Catalunya</button></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Agencies enviades
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                                        <li><button class="dropdown-item" type="submit" id="policia">Policia</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="ambulancia">Ambulància</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="bombers">Bombers</button></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Estat expedient
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                                        <li><button class="dropdown-item" type="submit" id="enProces">En proces</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="solicitat">Sol·licitat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="acceptat">Acceptat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="tancat">Tancat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="immobilitzat">Immobilitzat</button></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Data
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <li><button class="dropdown-item" type="submit" id="carrer">Mes recents</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="carrer">Mes antics</button></li>
+                                    </ul>
+                                </div>
                             </div>
 
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop5" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Tipús d'incident
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop5">
-                                    <li><button class="dropdown-item" type="submit" id="accident">Accident</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="assistenciaSanitaria">Assistencia sanitària</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="incendi">Incendi</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="fuita">Fuita (Aigua, gas, altres)</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="altresIncidencies">Altres incidencies</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="seguretat">Seguretat</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="transit">Transit</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="civisme">Civisme</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="mediAmbient">Medi ambient</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="meteorologia">Meteorologia</button></li>
-                                </ul>
-                            </div>
-
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop4" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Provincia
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop4">
-                                    <li><button class="dropdown-item" type="submit" id="barcelona">Barcelona</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="girona">Girona</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="tarragona">Tarragona</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="lleida">Lleida</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="foraCatalunya">Fora Catalunya</button></li>
-                                </ul>
-                            </div>
-
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Agencies enviades
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop3">
-                                    <li><button class="dropdown-item" type="submit" id="policia">Policia</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="ambulancia">Ambulància</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="bombers">Bombers</button></li>
-                                </ul>
-                            </div>
-
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Estat expedient
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-                                    <li><button class="dropdown-item" type="submit" id="enProces">En proces</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="solicitat">Sol·licitat</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="acceptat">Acceptat</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="tancat">Tancat</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="immobilitzat">Immobilitzat</button></li>
-                                </ul>
-                            </div>
-
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Data
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <li><button class="dropdown-item" type="submit" id="carrer">Mes recents</button></li>
-                                    <li><button class="dropdown-item" type="submit" id="carrer">Mes antics</button></li>
-                                </ul>
+                        </div>
+                        <div class="col-2">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-primary buscarRadius"><i class="bi bi-search"></i></button>
+                                    <input type="text" class="form-control " placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                                </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-2">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <div class="input-group">
-                                <button type="button" class="btn btn-primary buscarRadius"><i class="bi bi-search"></i></button>
-                                <input type="text" class="form-control " placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
-                            </div>
-                        </div>
-                    </div>
+                </form>
 
-
-                </div>
-
-            </form>
             </div>
           </div>
     </div>
