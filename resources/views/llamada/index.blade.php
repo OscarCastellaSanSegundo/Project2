@@ -32,8 +32,8 @@ Llamada
 
                     <div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">
-                            <label class="form-check-label" for="inlineCheckbox1">Fora de Catalunya</label>
+                            <input class="form-check-input" type="checkbox" id="foraCatalunya" value="foraCatalunya" name="foraCatalunya" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">
+                            <label class="form-check-label" for="foraCatalunya">Fora de Catalunya</label>
                             <example-component>
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
@@ -47,11 +47,11 @@ Llamada
 
                                 <div class="form-group row mb-2">
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Provincia" aria-describedby="button-addon2">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Provincia" aria-describedby="button-addon2" name="municipis_id">
 
                                     </div>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Comarca" aria-label="Comarca" aria-describedby="button-addon2"> {{-- la comarca se envia? --}}
 
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@ Llamada
 
                                 <div class="form-group row mb-2">
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control form-control-sm" placeholder="Comarca" aria-label="Comarca" aria-describedby="button-addon2">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Comarca" aria-describedby="button-addon2" name="provincies_id">
                                     </div>
                                 </div>
 
@@ -177,7 +177,7 @@ Llamada
 
                                     <div class="form-group row mb-2 gx-2">
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Nom de la carretera" aria-label="Nombre de la carretera" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Nom de la carretera" aria-label="Nombre de la carretera" aria-describedby="button-addon2"> {{-- no encuentro esto --}}
                                         </div>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control form-control-sm" placeholder="Altres referències (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
@@ -198,7 +198,7 @@ Llamada
 
                                     <div class="form-group row mb-2 gx-2">
                                         <div class="col-sm-11">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Altres referències (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Otras referencias" aria-describedby="button-addon2" name="">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
                                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -350,10 +350,12 @@ Llamada
                 <div class="card-body row mb-0 cronometro">
                     <h5>Nº Trucada</h5>
                     <div class="col-sm-6 mb-0">
-                        <p>463824284</p>
+                        <p id="codiTrucadaP"></p>
+                        <input id="codiTrucada" name="codi" type="hidden" value="falta">
                     </div>
                     <div class="col-sm-6">
                         <h2 id="crono">0:00</h2>
+                        <input name="tempsTrucada" type="hidden" value="falta">
                     </div>
                 </div>
               </div>
@@ -366,7 +368,7 @@ Llamada
 
                 <div class="form-group row mb-2">
                     <div class="col-sm-10">
-                        <input type="number" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2">
+                        <input type="text" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2" id="nomTrucada" name="nomTrucada">
                     </div>
                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
                         <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -374,7 +376,7 @@ Llamada
                 </div>
                 <div class="form-group row mb-2">
                     <div class="col-sm-10">
-                        <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2">
+                        <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon">
                     </div>
                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
                         <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -382,8 +384,8 @@ Llamada
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Descripció del fets</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    <label for="exampleFormControlTextarea1" id="notaComuna">Nota comuna</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" id="notaComuna" name="notaComuna"></textarea>
                 </div>
 
             </div>
@@ -400,10 +402,10 @@ Llamada
 
                     <div class="form-group row mb-2 gx-1">
                         <div class="col-sm-5">
-                            <input type="text" class="form-control form-control-sm" placeholder="Procedència" aria-label="Procedencia" aria-describedby="button-addon2">
+                            <input type="text" class="form-control form-control-sm" placeholder="Procedència" aria-label="Procedencia" aria-describedby="button-addon2" id="procedenciaTrucada" name="procedenciaTrucada">
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipio" aria-describedby="button-addon2">
+                            <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipio" aria-describedby="button-addon2" id="municipiTrucada" name="municipiTrucada">
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -421,7 +423,7 @@ Llamada
 
                     <div class="form-group row mb-2 gx-3">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control form-control-sm" placeholder="Direcció" aria-label="Direccion" aria-describedby="button-addon2">
+                            <input type="text" class="form-control form-control-sm" placeholder="Adreça" aria-label="Direccion" aria-describedby="button-addon2" id="adrecaTrucada" name="adrecaTrucada">
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">

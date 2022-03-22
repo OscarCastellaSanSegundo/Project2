@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
         segundos = 00,
         llamadaCrono,
         crono = document.getElementById("crono");
-        boton = document.getElementById("botonCogerLlamada");
+        boton = document.getElementById("botonCogerLlamada"),
+        codigoLlamada = document.getElementById("codiTrucadaP"),
+        codigo = 0;
 
     function cronometro() {
 
@@ -25,6 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function llamarTimer() {
         llamadaCrono = setInterval(cronometro, 1000);
+    }
+
+    crearCodigo();
+
+    function crearCodigo() {
+
+        codigo = Date.now();
+        let codigoFinal = String(codigo).slice(-8)
+        codigoLlamada.innerHTML = codigoFinal;
+
+
     }
 
 
