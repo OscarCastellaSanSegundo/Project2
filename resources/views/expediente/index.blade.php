@@ -9,11 +9,11 @@ Expedients
 @endsection
 
 @section('menu1')
-Trucada
+<a class="nav-link" aria-current="page" href="{{ url('/') }}"> Inici</a>
 @endsection
 
 @section('menu2')
-Expedients
+<a class="nav-link" aria-current="page" href="{{ url('/llamada') }}">Trucada</a>
 @endsection
 
 @section('contenido')
@@ -279,8 +279,6 @@ Expedients
         </div>
     </div>
 @endforeach
-
-
 
 
 

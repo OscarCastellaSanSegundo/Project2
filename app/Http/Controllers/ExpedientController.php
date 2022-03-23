@@ -57,35 +57,60 @@ class ExpedientController extends Controller
         // $carretera = $request->input('carretera');
         // $carretera = $request->input('carretera');
 
+        $arrayGeneral = [];
 
         foreach ($array as $value) {
-            $contador = 0;
+            $contador = 1;
 
             switch ($value){
 
                 case 'carrer1':
 
-                    if ($carrer1 == 'true' && $contador == 0) {
-                        $resultado2 = "->orWhere('tipus_localitzacions_id', '=', 1)";
+                    if ($carrer1 == 'true') {
 
-                        $resultado = Expedient::whereHas('cartesTrucada', function ($query, $resultado2) {
-                            $query->where('tipus_localitzacions_id', '=', 1)->orWhere('tipus_localitzacions_id', '=', 2);
-                        })->get();
                         $contador++;
+                        $arrayElemento = [
+                            "texto" => "tipus_localitzacions_id",
+                            "id" => 1
+                        ];
+                        array_push($arrayGeneral, $arrayElemento);
+
                     }
                     break;
 
                 case 'entitatPoblacio1':
 
-                    if ($carrer1 == 'true' && $contador == 0) {
-
-
+                    if ($entitatPoblacio1 == 'true') {
+                        $contador++;
+                        $arrayElemento = [
+                            "texto" => "tipus_localitzacions_id",
+                            "id" => 2
+                        ];
+                        array_push($arrayGeneral, $arrayElemento);
                     }
                     break;
 
             }
 
         }
+
+        // $resultado = Expedient::whereHas('cartesTrucada', function ($query) {
+
+
+        //     for ($i=0; $i < count($arrayGeneral); $i++) {
+        //         if ($i == 0) {
+        //             $query->where($arrayGeneral[$i]['texto'], '=', $arrayGeneral[$i]['id']);
+        //         }
+        //         // else {
+        //         //     $query->orWhere($arrayGeneral[$i]['texto'], '=', $arrayGeneral[$i]['id']);
+        //         // }
+        //     }
+
+
+        // })->get();
+
+
+
 
 
         if ($mostrarTot == 'mostrarTot') {

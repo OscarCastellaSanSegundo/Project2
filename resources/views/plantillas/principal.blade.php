@@ -30,14 +30,14 @@
                 <div class="collapse navbar-collapse justify-content-end me-2" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">@yield('menu1')</a>
+                            @yield('menu1')
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">@yield('menu2')</a>
+                            @yield('menu2')
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Usuari
+                            {{ Auth::user()->codi }}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{{ url('/logout') }}">Tancar sessió</a></li>
