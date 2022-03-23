@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         codigoLlamada = document.getElementById("codiTrucadaP"),
         codigo = 0;
 
+        document.getElementById("temps_trucada").setAttribute('value',segundosContador); /* por hacer */
+
     function cronometro() {
 
         segundos++;
@@ -36,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function crearCodigo() {
 
         codigo = Date.now();
-        let codigoFinal = String(codigo).slice(-8)
+        let codigoFinal = String(codigo).slice(-10)
         codigoLlamada.innerHTML = codigoFinal;
 
 

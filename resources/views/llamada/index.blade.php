@@ -371,7 +371,7 @@ Llamada
                     </div>
                     <div class="col-sm-6">
                         <h2 id="crono">0:00</h2>
-                        <input name="temps_trucada" type="hidden" value="falta">
+                        <input name="temps_trucada" type="hidden" value="" id="temps_trucada">
                     </div>
                 </div>
               </div>
