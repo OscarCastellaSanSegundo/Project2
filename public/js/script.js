@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let minutos = 00,
         segundos = 00,
+        segundosContador = 00,
         llamadaCrono,
         crono = document.getElementById("crono");
         boton = document.getElementById("botonCogerLlamada"),
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function cronometro() {
 
         segundos++;
+        segundosContador++;
 
         if (segundos < 10) {
             segundos = `0` + segundos;
