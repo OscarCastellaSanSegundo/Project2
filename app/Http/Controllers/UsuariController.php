@@ -22,7 +22,7 @@ class UsuariController extends Controller
 
  public function showLogin()
  {
-    // $user = Usuari::find(1);
+    // $user = Usuari::find(5);
     // $user->contrassenya=bcrypt("1234");
     // $user->save();
     return view('auth.login');
