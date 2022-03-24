@@ -13,7 +13,7 @@ Llamada
 @endsection
 
 @section('menu2')
-<a class="nav-link" aria-current="page" href="{{ url('/expedients') }}">Expedients</a>
+<a class="nav-link" aria-current="page" href="{{ url('/expedientes') }}">Expedients</a>
 @endsection
 
 @section('usuario')
@@ -118,7 +118,7 @@ Llamada
                             <div class="col provinciaMunicipio">
 
                                 <div class="form-check form-check-inline ">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
+                                    <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
                                     <label class="form-check-label" for="inlineRadio1">Provincia</label>
                                 </div>
 
@@ -128,19 +128,19 @@ Llamada
                             <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+                                    <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" value="option2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
                                     <label class="form-check-label" for="inlineRadio2">Carrer</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample2">
+                                    <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample2">
                                     <label class="form-check-label" for="inlineRadio3">Punt singular</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample3">
+                                    <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio4" value="option4" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample3">
                                     <label class="form-check-label" for="inlineRadio4">Carretera</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
+                                    <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio5" value="option5" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
                                     <label class="form-check-label" for="inlineRadio5">Població</label>
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
@@ -158,13 +158,13 @@ Llamada
 
                                     <div class="form-group row mb-2 gx-2" >
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Descripció" aria-label="Tipo de via" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Descripció" aria-label="Descripció" aria-describedby="button-addon2" name="descripcio_localitzacio">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Detall" aria-label="Direccion" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Detall" aria-label="Detall" aria-describedby="button-addon2" name="detall_localitzacio">
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="text" class="form-control form-control-sm" placeholder="Altre" aria-label="Direccion" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Altres referències" aria-describedby="button-addon2" name="altres_ref_localitzacio">
                                         </div>
                                         <a class="col-sm-1 col-navbar-brand-sm" href="#">
                                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
@@ -254,7 +254,7 @@ Llamada
                         </div>
                         <div class="col-6">
 
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example"  name="incidents_id">
                                 <option selected>Incident</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -383,6 +383,7 @@ Llamada
                     <div class="col-sm-6">
                         <h2 id="crono">0:00</h2>
                         <input name="temps_trucada" type="hidden" value="" id="temps_trucada">
+                        <input name="usuaris_id" type="hidden" value="{{ Auth::user()->id }}" id="temps_trucada">
                     </div>
                 </div>
               </div>
