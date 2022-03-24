@@ -42,7 +42,7 @@ body, html{
     border-radius: 30px;
 }
 
-.boton1, .boton2{
+.boton1, .boton2, .boton3{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +72,17 @@ body, html{
     border-radius: 45px 45px 45px 45px;
 }
 
-.divLlamada, .divExpediente{
+.boton3{
+    width: 100%;
+    height: 100%;
+    background-image: url("../Videos/video_2-min.gif");
+    background-size: cover;
+    font-size: 300%;
+    color: #ffffff;
+    border-radius: 45px 45px 45px 45px;
+}
+
+.divLlamada, .divExpediente, .divUsuarios{
     width: 100%;
     height: 100%;
 }

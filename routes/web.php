@@ -61,9 +61,9 @@ Route::middleware(['auth'])->group(function () {
         return view('inicio.index', compact('user'));
     });
 
-    Route::get('/inicioAdmin', function () {
+    Route::get('/gestionUsuarios', function () {
         $user = Auth::user();
-        return view('inicio.indexAdmin', compact('user'));
+        return view('administracion.index', compact('user'));
     });
     Route::resource('expedientes', ExpedientController::class );
 });
