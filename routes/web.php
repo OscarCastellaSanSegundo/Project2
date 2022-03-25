@@ -66,4 +66,5 @@ Route::middleware(['auth'])->group(function () {
         return view('administracion.index', compact('user'));
     });
     Route::resource('expedientes', ExpedientController::class );
+    Route::resource('usuarios', UsuariController::class );
 });

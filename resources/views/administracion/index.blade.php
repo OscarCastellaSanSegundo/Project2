@@ -33,20 +33,24 @@ Expedients
 
 @section('contenido')
 
-
-
 <div class="principalAdmin">
-    <div class="row mb-2 mt-2" style="display: flex; justify-content: center; width: 90%">
+    <div class="row mb-2 mt-2" style="display: flex; justify-content: center; width: 100%">
         <div class="row">
 
-                <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
+                <form action="{{ action([App\Http\Controllers\UsuariController::class, 'index']) }}">
                     <div class="card cardFiltrosAdmin">
                         <div class="btn-group divFiltrosAdmin" role="group" aria-label="Button group with nested dropdown">
                             <div class="btn-group butonGroupFiltrosAdmin" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-primary primerBotonAdmin">Mostrar Todo</button>
-                                <button type="button" class="btn btn-primary">Operador</button>
-                                <button type="button" class="btn btn-primary">Supervisores</button>
-                                <button type="button" class="btn btn-primary ultimoBotonAdmin">Administradores</button>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <div class="input-group">
+                                        <button type="submit" class="btn btn-primary primerBotonAdmin"><i class="bi bi-search"></i></button>
+                                        <input type="text" class="form-control " placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="border-radius: 15px 15px 0px 0px">Mostrar Todo</button>
+                                <button type="submit" class="btn btn-primary" style="border-radius: 15px 15px 0px 0px">Operador</button>
+                                <button type="submit" class="btn btn-primary" style="border-radius: 15px 15px 0px 0px">Supervisores</button>
+                                <button type="submit" class="btn btn-primary ultimoBotonAdmin" style="border-radius: 15px 15px 0px 0px">Administradores</button>
                             </div>
                         </div>
                     </div>
@@ -57,33 +61,104 @@ Expedients
 
     <div class="contenedorUsuarios">
 
-        <div class="card">
-            <div class="card-body bodyCardListadoUsuarios">
-              <div class="divAdminElementos">
-                <p>1</p>
-              </div>
-              <div class="divAdminElementos">
-                <p>CabraAbracadabra</p>
-              </div>
-              <div class="divAdminElementos">
-                <p>Oscar</p>
-              </div>
-              <div  class="divAdminElementos">
-                <p>Castella</p>
-              </div>
-              <div class="divAdminElementos">
-                <p>ADMIN</p>
-              </div>
-              <div class="divAdminElementos">
-                <p>Editar</p>
-              </div>
-              <div class="divAdminElementos">
-                <p>Borrar</p>
-              </div>
+        @foreach ($usuarios as $usuario)
+
+
+        <a href="">
+            <div class="card" style="margin-top: 5px; border-radius: 18px" >
+                <div class="card-body bodyCardListadoUsuarios">
+                    <div class="informacionUsuario">
+                            <div class="divAdminElementosInfo" style="width: 60px">
+                                ID: {{ $usuario->id }}
+                            </div>
+                            <div class="divAdminElementosInfo" style="width: 200px">
+                                Codi: {{ $usuario->codi }}
+                            </div>
+                            <div class="divAdminElementosInfo" style="width: 150px">
+                                Nom: {{ $usuario->nom }}
+                            </div>
+                            <div  class="divAdminElementosInfo" style="width: 300px">
+                                Cognoms: {{ $usuario->cognoms }}
+                            </div>
+                            <div class="divAdminElementosInfo" style="width: 135px">
+                                @if ($usuario->perfils_id == 1)
+                                    OPERADOR
+                                @elseif ($usuario->perfils_id == 2)
+                                    SUPERVISOR
+                                @else
+                                    ADMINISTRADOR
+                                @endif
+                            </div>
+                    </div>
+                    <div class="editarBorrarUsuario">
+                        <div class="divAdminElementos">
+                            <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 5px 15px 15px 5px" value="{{ $usuario->id }}"><i class="fas fa-edit"></i> Editar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </a>
+
+        @endforeach
+
 
     </div>
+    <form action="">
+        <div class="card botonAnadirUsuario">
+            <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-plus"></i> Añadir Usuario</button>
+            </div>
+        </div>
+    </form>
+
 </div>
+
+
+<form action="{{ action([App\Http\Controllers\UsuariController::class, 'store']) }}" method="POST">
+    @csrf
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Crear usuari</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Nom" id="nomUsuari" name="nomUsuari" value="{{ old('nomUsuari') }}" required>
+                    <label for="floatingInput">Nom d'usuari</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Nom" id="nom" name="nom" value="{{ old('nom') }}" required>
+                    <label for="floatingInput">Nom</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Cognoms" id="cognoms" name="cognoms" value="{{ old('cognoms') }}" required>
+                    <label for="floatingInput">Cognoms</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" placeholder="Password" id="password" name="password" value="{{ old('password') }}" required>
+                    <label for="floatingPassword">Contrasenya</label>
+                </div>
+                <div class="form-floating">
+                    <select class="form-select" aria-label="Floating label select example" id="tipusUsuari" name="tipusUsuari" value="{{ old('tipusUsuari') }}" required>
+                    <option selected value="1">Operador</option>
+                    <option value="2">Supervisor</option>
+                    <option value="3">Administrador</option>
+                    </select>
+                    <label for="floatingSelect">Tipus d'usuari</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
 
 @endsection

@@ -17,8 +17,12 @@ class UsuariController extends Controller
      */
     public function index()
     {
-/*         return view('auth.login');
- */    }
+        $user = Auth::user();
+        $usuarios = Usuari::all();
+
+        return view('administracion.index', compact('usuarios', 'user'));
+
+    }
 
  public function showLogin()
  {
@@ -46,7 +50,32 @@ class UsuariController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nomUsuari = $request->input('nomUsuari');
+        $nom = $request->input('nom');
+        $cognoms = $request->input('cognoms');
+        $password = $request->input('password');
+        $tipusUsuari = $request->input('tipusUsuari');
+
+        if ($nomUsuari == "" || $nom == "" || $cognoms == "" || $password == "") {
+            $request->session()->flash('errorSubmit', 'No has rellenado todos los campos');
+            $response = redirect()->action([CicleController::class, 'create'])->withInput();
+            $resultado = $response;
+        }else {
+
+            $usuari = new Usuari();
+
+            $usuari->codi = $nomUsuari;
+            $usuari->contrassenya=bcrypt($password);
+            $usuari->nom = $nom;
+            $usuari->cognoms = $cognoms;
+            $usuari->perfils_id = $tipusUsuari;
+
+            $usuari->save();
+
+            $resultado = redirect()->action([UsuariController::class, 'index']);
+        }
+
+        return $resultado;
     }
 
     /**

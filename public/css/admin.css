@@ -1,6 +1,6 @@
 .principalAdmin{
     width: 100%;
-    height: 90%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,6 +10,7 @@
 .contenedorUsuarios{
     width: 90%;
     height: 90%;
+    margin-top: 10px;
 }
 
 .primerBotonAdmin{
@@ -28,7 +29,7 @@
 }
 
 .divFiltrosAdmin{
-    margin-left: 30px;
+    margin-left: 80px;
     bottom: 45px;
 }
 
@@ -41,8 +42,43 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 2px;
+    padding-left: 10px;
+
 }
 
 .divAdminElementos{
-    display: block;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.divAdminElementosInfo{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.editarBorrarUsuario{
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+    justify-content: flex-end;
+}
+
+.informacionUsuario{
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    justify-content: space-between;
+}
+
+.editarUsuarioBoton{
+    margin-right: 15px;
+}
+
+.botonAnadirUsuario{
+    position: fixed;
+    bottom: 50px;
+    right: 120px;
 }

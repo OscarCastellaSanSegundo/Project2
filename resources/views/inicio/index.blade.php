@@ -50,7 +50,7 @@ $codigoUsuario = Auth::user()->perfils_id;
             </div>
 
             <div class="divUsuarios cardInicio" style="width: 32%;">
-                <a href="{{ url('/gestionUsuarios') }}" class="btn btn-primary anadirElemento boton3" style="background-position: center;">Administració usuaris</a>
+                <a href="{{ url('/usuarios') }}" class="btn btn-primary anadirElemento boton3" style="background-position: center;">Administració usuaris</a>
             </div>
 
         </div>
