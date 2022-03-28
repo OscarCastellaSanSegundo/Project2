@@ -11,6 +11,7 @@
     width: 90%;
     height: 90%;
     margin-top: 10px;
+    overflow: auto;
 }
 
 .primerBotonAdmin{
@@ -110,9 +111,15 @@
 
 .cardInformacionUsuarioAdmin:hover{
     transform: scale(1.01);
-    animation: 2s;
+    transition: 0.5s;
 }
 
 .cardInformacionUsuarioAdmin{
-    animation: 2s;
+    transition: 0.5s;
+    width: 98%;
+}
+
+.aCardUsuarioAdmin{
+    display: flex;
+    justify-content: center;
 }

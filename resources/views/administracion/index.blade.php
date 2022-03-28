@@ -57,9 +57,9 @@ Expedients
 
 
                                 @if ($operadoresTrue == true)
-                                    <button type="submit" class="btn btn-primary botonMostrarOperadoresAdmin2" id="mostrarOperadores" value="true" name="mostrarOperadores" style="border-radius: 15px 15px 0px 0px">Operador</button>
+                                    <button type="submit" class="btn btn-primary botonMostrarOperadoresAdmin2" id="mostrarOperadores" value="true" name="mostrarOperadores" style="border-radius: 15px 15px 0px 0px">Operadores</button>
                                 @else
-                                    <button type="submit" class="btn btn-primary botonMostrarOperadoresAdmin" id="mostrarOperadores" value="true" name="mostrarOperadores" style="border-radius: 15px 15px 0px 0px">Operador</button>
+                                    <button type="submit" class="btn btn-primary botonMostrarOperadoresAdmin" id="mostrarOperadores" value="true" name="mostrarOperadores" style="border-radius: 15px 15px 0px 0px">Operadores</button>
                                 @endif
 
 
@@ -89,7 +89,7 @@ Expedients
         @foreach ($usuarios as $usuario)
 
 
-        <a href="">
+        <a href="" class="aCardUsuarioAdmin"">
             <div class="card cardInformacionUsuarioAdmin" style="margin-top: 5px; border-radius: 18px" >
                 <div class="card-body bodyCardListadoUsuarios">
                     <div class="informacionUsuario">
@@ -125,6 +125,57 @@ Expedients
         </a>
 
         @endforeach
+
+        <div style="margin-left: 15px; margin-top: 5px" class="accordion accordion-flush" id="accordionFlushExample">
+            <div style="width: 99%; background-color: transparent;" class="accordion-item">
+              <h2 class="accordion-header" style="display: flex" id="flush-headingOne">
+                <button style="border-radius: 15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <div class="informacionUsuario">
+                        <div class="divAdminElementosInfo" style="width: 60px">
+                            ID: {{ $usuario->id }}
+                        </div>
+                        <div class="divAdminElementosInfo" style="width: 200px">
+                            Codi: {{ $usuario->codi }}
+                        </div>
+                        <div class="divAdminElementosInfo" style="width: 150px">
+                            Nom: {{ $usuario->nom }}
+                        </div>
+                        <div  class="divAdminElementosInfo" style="width: 300px">
+                            Cognoms: {{ $usuario->cognoms }}
+                        </div>
+                        <div class="divAdminElementosInfo" style="width: 135px">
+                            @if ($usuario->perfils_id == 1)
+                                OPERADOR
+                            @elseif ($usuario->perfils_id == 2)
+                                SUPERVISOR
+                            @else
+                                ADMINISTRADOR
+                            @endif
+                        </div>
+                        <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 15px 15px 15px 15px" value="{{ $usuario->id }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><i class="fas fa-edit"></i> Editar</button>
+                    </div>
+                </button>
+              </h2>
+              <div id="flush-collapseOne" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" >
+                    Nº Llamadas cogidas: <br>
+                    Tiempo medio por llamada: <br>
+                    Tiempo maximo de una llamada: <br>
+                    Tiempo minimo de una llamada: <br>
+                    Cartas de llamada creadas: <br><br>
+
+                    Ambulancias enviadas: <br>
+                    Policias enviados: <br>
+                    Bomberos enviados: <br><br>
+
+                    Tutorial visto: <br>
+                    Fecha creacion usuario: <br>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
 
 
     </div>
