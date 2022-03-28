@@ -82,3 +82,32 @@
     bottom: 50px;
     right: 120px;
 }
+
+.botonMostrarTodoAdmin{
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    border-color: white;
+}
+
+.botonMostrarOperadoresAdmin{
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    border-color: white;
+}
+
+.botonMostrarSupervisoresAdmin{
+    color: #000;
+    border-color: white;
+    background-color: rgb(255, 255, 255);
+}
+
+.botonMostrarAdministradoresAdmin{
+    color: #000;
+    border-color: white;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.cardInformacionUsuarioAdmin{
+    
+}

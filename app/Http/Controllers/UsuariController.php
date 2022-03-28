@@ -15,12 +15,47 @@ class UsuariController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $usuarios = Usuari::all();
 
-        return view('administracion.index', compact('usuarios', 'user'));
+
+
+        $todo = $request->input('mostrarTodo');
+        $operadores = $request->input('mostrarOperadores');
+        $supervisores = $request->input('mostrarSupervisores');
+        $admin = $request->input('mostrarAdmin');
+        $adminTrue = false;
+        $supervisoresTrue = false;
+        $operadoresTrue = false;
+        $todoTrue = false;
+
+        if ($todo == 'true') {
+
+            $usuarios = Usuari::all();
+            $todoTrue = true;
+
+        }else if ($operadores == 'true') {
+
+            $usuarios = Usuari::where('perfils_id','=', 1)->get();
+            $operadoresTrue = true;
+
+        }else if ($supervisores == 'true') {
+
+            $usuarios = Usuari::where('perfils_id','=', 2)->get();
+            $supervisoresTrue = true;
+
+        }else if ($admin == 'true') {
+
+            $usuarios = Usuari::where('perfils_id','=', 3)->get();
+            $adminTrue = true;
+
+        }else{
+            $usuarios = Usuari::all();
+        }
+
+
+        return view('administracion.index', compact('usuarios', 'user', 'adminTrue', 'supervisoresTrue', 'operadoresTrue', 'todoTrue' ));
 
     }
 
