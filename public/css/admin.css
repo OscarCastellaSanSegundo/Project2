@@ -108,6 +108,11 @@
 }
 
 
+.cardInformacionUsuarioAdmin:hover{
+    transform: scale(1.01);
+    animation: 2s;
+}
+
 .cardInformacionUsuarioAdmin{
-    
+    animation: 2s;
 }
