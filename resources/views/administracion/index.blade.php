@@ -32,6 +32,16 @@ Expedients
 @endsection
 
 @section('contenido')
+@php
+    $resultado = null;
+    $contadorCartes = null;
+    $tiempoMaxLlamada = null;
+    $tiempoMinLlamada = null;
+    $tiempo = null;
+    $totalTiempo = null;
+    $policiaEnviada = null;
+    $bomberosEnviados = null;
+@endphp
 
 <div class="principalAdmin">
     <div class="row mb-2 mt-2" style="display: flex; justify-content: center; width: 100%">
@@ -89,47 +99,11 @@ Expedients
         @foreach ($usuarios as $usuario)
 
 
-        <a href="" class="aCardUsuarioAdmin"">
-            <div class="card cardInformacionUsuarioAdmin" style="margin-top: 5px; border-radius: 18px" >
-                <div class="card-body bodyCardListadoUsuarios">
-                    <div class="informacionUsuario">
-                            <div class="divAdminElementosInfo" style="width: 60px">
-                                ID: {{ $usuario->id }}
-                            </div>
-                            <div class="divAdminElementosInfo" style="width: 200px">
-                                Codi: {{ $usuario->codi }}
-                            </div>
-                            <div class="divAdminElementosInfo" style="width: 150px">
-                                Nom: {{ $usuario->nom }}
-                            </div>
-                            <div  class="divAdminElementosInfo" style="width: 300px">
-                                Cognoms: {{ $usuario->cognoms }}
-                            </div>
-                            <div class="divAdminElementosInfo" style="width: 135px">
-                                @if ($usuario->perfils_id == 1)
-                                    OPERADOR
-                                @elseif ($usuario->perfils_id == 2)
-                                    SUPERVISOR
-                                @else
-                                    ADMINISTRADOR
-                                @endif
-                            </div>
-                    </div>
-                    <div class="editarBorrarUsuario">
-                        <div class="divAdminElementos">
-                            <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 5px 15px 15px 5px" value="{{ $usuario->id }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><i class="fas fa-edit"></i> Editar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        @endforeach
 
         <div style="margin-left: 15px; margin-top: 5px" class="accordion accordion-flush" id="accordionFlushExample">
             <div style="width: 99%; background-color: transparent;" class="accordion-item">
               <h2 class="accordion-header" style="display: flex" id="flush-headingOne">
-                <button style="border-radius: 15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <button style="border-radius: 15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $usuario->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
                     <div class="informacionUsuario">
                         <div class="divAdminElementosInfo" style="width: 60px">
                             ID: {{ $usuario->id }}
@@ -153,28 +127,77 @@ Expedients
                             @endif
                         </div>
 
-                        <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 15px 15px 15px 15px" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne2"><i class="fas fa-edit"></i> Editar</button>
+                        <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 15px 15px 15px 15px" data-bs-toggle="collapse" data-bs-target="#flush-collapseEdit{{ $usuario->id }}"><i class="fas fa-edit"></i> Editar</button>
                     </div>
                 </button>
               </h2>
-              <div id="flush-collapseOne" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div id="flush-collapseOne{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body" >
-                    Nº Llamadas cogidas: <br>
-                    Tiempo medio por llamada: <br>
-                    Tiempo maximo de una llamada: <br>
-                    Tiempo minimo de una llamada: <br>
-                    Cartas de llamada creadas: <br><br>
+                    <div class="col-3">
+                        @foreach ($usuario->cartesTrucades as $carta)
+                            @php
+                                $resultado = $resultado + $carta->temps_trucada;
+                                $tiempo = $carta->temps_trucada;
+                                $totalTiempo = $totalTiempo + $tiempo;
+                                if ($tiempoMaxLlamada < $tiempo) {
+                                    $tiempoMaxLlamada = $tiempo;
+                                }
+                                if ($tiempoMinLlamada > $tiempo || $tiempoMinLlamada == null) {
+                                    $tiempoMinLlamada = $tiempo;
+                                }
+                            @endphp
+                        @endforeach
+                            @php
+                                $contadorCartes = $usuario->cartesTrucades->count();
+                                if ($contadorCartes == 0) {
+                                    # code...
+                                }else{
+                                    $resultado = $resultado / $contadorCartes;
+                                }
+                            @endphp
 
-                    Ambulancias enviadas: <br>
-                    Policias enviados: <br>
-                    Bomberos enviados: <br><br>
+                        Nº trucades agafades: {{ $usuario->cartesTrucades->count() }}<br>
+                        Temps mitg per trucada: {{ $resultado }}s<br>
+                        Temps maxim d'una trucada: {{ $tiempoMaxLlamada }}s<br>
+                        Temps minim d'una trucada: {{ $tiempoMinLlamada }}s<br>
+                        Total de temps al telefon: {{ $totalTiempo }}s<br><br>
 
-                    Tutorial visto: <br>
-                    Fecha creacion usuario: <br>
+                        @foreach ($usuario->cartesTrucades as $carta)
 
+                            @foreach ($carta->cartesTrucadesHasAgencia as $cartaHasAgencia )
+                            <?php $resultado = $cartaHasAgencia->count(); ?>
+                                @if ( ($cartaHasAgencia->agencia->id > 0 && $cartaHasAgencia->agencia->id <= 117) ||
+                                ($cartaHasAgencia->agencia->id >= 264 && $cartaHasAgencia->agencia->id <= 470) )
+                                    <?php $policiaEnviada++ ?>
+                                @elseif ($cartaHasAgencia->agencia->id >= 118 && $cartaHasAgencia->agencia->id <= 263)
+                                    <?php $bomberosEnviados++ ?>
+                                @endif
+
+                            @endforeach
+                        @endforeach
+                        Total de trucades amb recomanació: {{ $resultado }}<br>
+                        Trucades amb ambulancias sol·licitades: <br>
+                        Trucades amb policias sol·licitats: {{ $policiaEnviada }}<br>
+                        Trucades amb bombers sol·licitats: {{ $bomberosEnviados }}<br><br>
+
+                        Tutorial vist: <br>
+                        Data de creació d'usuari: <br>
+                        @php
+                            $resultado = null;
+                            $tiempoMaxLlamada = null;
+                            $tiempoMinLlamada = null;
+                            $tiempo = null;
+                            $totalTiempo = null;
+                            $bomberosEnviados = null;
+                            $policiaEnviada = null;
+                        @endphp
+                    </div>
+                    <div class="col-9">
+
+                    </div>
                 </div>
             </div>
-            <div id="flush-collapseOne2" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseEdit{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body" >
                     <form class="row g-3" action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuario' => $usuario->id]) }}" method="GET">
                         @csrf
@@ -235,6 +258,8 @@ Expedients
             </div>
 
         </div>
+
+        @endforeach
     </div>
 
 
