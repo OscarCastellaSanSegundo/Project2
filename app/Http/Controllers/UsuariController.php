@@ -130,9 +130,30 @@ class UsuariController extends Controller
      * @param  \App\Models\Usuari  $usuari
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuari $usuari)
+    public function edit($id, Request $request, Usuari $usuari)
     {
-        //
+
+        $nomUsuari = $request->input('usuari');
+        $nom = $request->input('nomUsuari');
+        $cognoms = $request->input('cognomsUsuari');
+        $tipusUsuari = $request->input('tipusUsuari');
+        $password = $request->input('contraUsuari');
+
+        $usuarioNuevo = Usuari::find($id);
+        $usuarioNuevo->codi = $nomUsuari;
+        $usuarioNuevo->nom = $nom;
+        $usuarioNuevo->cognoms = $cognoms;
+        $usuarioNuevo->perfils_id = $tipusUsuari;
+
+        if ($password == null) {
+
+        }else{
+            $usuarioNuevo->contrassenya=bcrypt($password);
+        }
+
+        $usuarioNuevo->save();
+
+        return redirect()->action([UsuariController::class, 'index']);
     }
 
     /**

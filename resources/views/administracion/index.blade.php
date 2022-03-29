@@ -135,7 +135,7 @@ Expedients
                             ID: {{ $usuario->id }}
                         </div>
                         <div class="divAdminElementosInfo" style="width: 200px">
-                            Codi: {{ $usuario->codi }}
+                            Usuari: {{ $usuario->codi }}
                         </div>
                         <div class="divAdminElementosInfo" style="width: 150px">
                             Nom: {{ $usuario->nom }}
@@ -152,7 +152,8 @@ Expedients
                                 ADMINISTRADOR
                             @endif
                         </div>
-                        <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 15px 15px 15px 15px" value="{{ $usuario->id }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><i class="fas fa-edit"></i> Editar</button>
+
+                        <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 15px 15px 15px 15px" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne2"><i class="fas fa-edit"></i> Editar</button>
                     </div>
                 </button>
               </h2>
@@ -172,9 +173,69 @@ Expedients
                     Fecha creacion usuario: <br>
 
                 </div>
-              </div>
             </div>
+            <div id="flush-collapseOne2" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" >
+                    <form class="row g-3" action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuario' => $usuario->id]) }}" method="GET">
+                        @csrf
+                        <div class="col-md-1">
+                            <label for="validationDefault02" class="form-label">ID</label>
+                            <input type="text" class="form-control" id="idUsuari" name="idUsuari" value="{{ $usuario->id }}" disabled>
+                          </div>
+                        <div class="col-md-4">
+                          <label for="validationDefault02" class="form-label">Usuari</label>
+                          <input type="text" class="form-control" id="usuari" name="usuari" value="{{ $usuario->codi }}" required>
+                        </div>
+                        <div class="col-md-3">
+                          <label for="validationDefaultUsername" class="form-label">Nom</label>
+                          <div class="input-group">
+                            {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
+                            <input type="text" class="form-control" id="nomUsuari" name="nomUsuari" value="{{ $usuario->nom }}" aria-describedby="inputGroupPrepend2" required>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationDefaultUsername" class="form-label">Cognoms</label>
+                            <div class="input-group">
+                              {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
+                              <input type="text" class="form-control" id="cognomsUsuari" name="cognomsUsuari" value="{{ $usuario->cognoms }}" aria-describedby="inputGroupPrepend2" required>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                          <label for="validationDefault04" class="form-label">Tipus d'usuari</label>
+                          <select class="form-select" id="tipusUsuari" name="tipusUsuari" required>
+                            @if ($usuario->perfils_id == 1)
+                                <option selected value="1" >Operador</option>
+                                <option value="2">Supervisor</option>
+                                <option value="3">Administrador</option>
+                            @elseif ($usuario->perfils_id == 2)
+                                <option value="1">Operador</option>
+                                <option selected value="2">Supervisor</option>
+                                <option value="3">Administrador</option>
+                            @elseif ($usuario->perfils_id == 3)
+                                <option value="1">Operador</option>
+                                <option selected value="2">Supervisor</option>
+                                <option value="3">Administrador</option>
+                            @endif
+
+                          </select>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="validationDefaultUsername" class="form-label">Nova contrassenya (Opcional)</label>
+                            <div class="input-group">
+                              {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
+                              <input type="password" class="form-control" id="contraUsuari" name="contraUsuari" value="" aria-describedby="inputGroupPrepend2">
+                            </div>
+                        </div>
+                        <div class="col-2" style="display: flex; align-items: end">
+                            <label for="validationDefault04" class="form-label"></label>
+                          <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
+    </div>
 
 
 
@@ -237,51 +298,6 @@ Expedients
 </div>
 </form>
 
-<form action="{{ action([App\Http\Controllers\UsuariController::class, 'index']) }}" method="POST">
-    @csrf
-<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
 
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Crear usuari</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="Nom" id="nomUsuari" name="nomUsuari" value="{{ old('nomUsuari') }}" required>
-                    <label for="floatingInput">Nom d'usuari</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="Nom" id="nom" name="nom" value="{{ old('nom') }}" required>
-                    <label for="floatingInput">Nom</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="Cognoms" id="cognoms" name="cognoms" value="{{ old('cognoms') }}" required>
-                    <label for="floatingInput">Cognoms</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" placeholder="Password" id="password" name="password" value="{{ old('password') }}" required>
-                    <label for="floatingPassword">Contrasenya</label>
-                </div>
-                <div class="form-floating">
-                    <select class="form-select" aria-label="Floating label select example" id="tipusUsuari" name="tipusUsuari" value="{{ old('tipusUsuari') }}" required>
-                    <option selected value="1">Operador</option>
-                    <option value="2">Supervisor</option>
-                    <option value="3">Administrador</option>
-                    </select>
-                    <label for="floatingSelect">Tipus d'usuari</label>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Editar</button>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
 
 @endsection
