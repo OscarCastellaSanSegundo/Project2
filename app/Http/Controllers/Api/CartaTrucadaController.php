@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Clases\Utilitat;
+use App\Models\Expedient;
 use App\Models\CartaTrucada;
 use Illuminate\Http\Request;
+use App\Models\DadesPersonals;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
+use App\Models\CartesTrucadesHasAgencies;
 use App\Http\Resources\CartaTrucadaResource;
 
 class CartaTrucadaController extends Controller
@@ -48,10 +53,40 @@ class CartaTrucadaController extends Controller
         $cartaTrucada->altres_ref_localitzacio = $request->input('altres_ref_localitzacio');
         $cartaTrucada->incidents_id = $request->input('incidents_id');
         $cartaTrucada->nota_comuna = $request->input('nota_comuna');
-        $cartaTrucada->expedients_id = $request->input('expedients_id');
-        $cartaTrucada->usuaris_id = $request->input('usuaris_id');
+        $cartaTrucada->usuaris_id = Auth::user()->id;
+
+
+        $cartesTrucadesHasAgencies = new CartesTrucadesHasAgencies();
+        /* $cartesTrucadesHasAgencies->cartes_trucades_id = $request->input('cartes_trucades_id'); */
+        $cartesTrucadesHasAgencies->agencies_id = $request->input('agencies_id');
+        $cartesTrucadesHasAgencies->estats_agencies_id = $request->input('estats_agencies_id');
+
+
+        $dadesPersonals = new DadesPersonals();
+        $dadesPersonals->telefon = $request->input('telefon');
+        $dadesPersonals->adreca = $request->input('adreca');
+        $dadesPersonals->antecedents = $request->input('antecedents');
+
+
+        $expedient = new Expedient();
+        $expedient->data_creacio = $request->input('data_creacio');
+        $expedient->data_ultima_modificacio = $request->input('data_ultima_modificacio');
+        $expedient->estats_expedients_id = $request->input('estats_expedients_id');
+
 
         try {
+            DB::transaction(function() use ($cartaTrucada, $cartesTrucadesHasAgencies, $dadesPersonals, $expedient) {
+
+                $dadesPersonals->save();
+                $expedient->save();
+
+                $cartaTrucada->dades_personals_id = $dadesPersonals->id;
+                $cartaTrucada->expedients_id = $expedient->id;
+                $cartaTrucada->save();
+
+                $cartesTrucadesHasAgencies->cartes_trucades_id = $cartaTrucada->id;
+                $cartesTrucadesHasAgencies->save();
+            });
             $cartaTrucada->save();
             $response = (new CartaTrucadaResource($cartaTrucada))
                         ->response()
