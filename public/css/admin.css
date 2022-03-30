@@ -123,3 +123,8 @@
     display: flex;
     justify-content: center;
 }
+
+.graficoEstadisticasUser{
+    display: flex;
+    justify-content: space-between;
+}

@@ -98,9 +98,7 @@ Expedients
 
         @foreach ($usuarios as $usuario)
 
-
-
-        <div style="margin-left: 15px; margin-top: 5px" class="accordion accordion-flush" id="accordionFlushExample">
+        <div style="margin-left: 15px; margin-top: 5px" class="accordion accordion-flush" id="accordionFlushExample{{ $usuario->id }}">
             <div style="width: 99%; background-color: transparent;" class="accordion-item">
               <h2 class="accordion-header" style="display: flex" id="flush-headingOne">
                 <button style="border-radius: 15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $usuario->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -131,30 +129,31 @@ Expedients
                     </div>
                 </button>
               </h2>
-              <div id="flush-collapseOne{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body" >
-                    <div class="col-3">
+              <div id="flush-collapseOne{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $usuario->id }}">
+                <div class="accordion-body graficoEstadisticasUser" >
+                    <div class="col-4">
                         @foreach ($usuario->cartesTrucades as $carta)
-                            @php
+                            <?php
                                 $resultado = $resultado + $carta->temps_trucada;
                                 $tiempo = $carta->temps_trucada;
                                 $totalTiempo = $totalTiempo + $tiempo;
-                                if ($tiempoMaxLlamada < $tiempo) {
-                                    $tiempoMaxLlamada = $tiempo;
-                                }
-                                if ($tiempoMinLlamada > $tiempo || $tiempoMinLlamada == null) {
-                                    $tiempoMinLlamada = $tiempo;
-                                }
-                            @endphp
+                            ?>
+
+                            @if ($tiempoMaxLlamada < $tiempo)
+                                <?php $tiempoMaxLlamada = $tiempo; ?>
+                            @endif
+
+                            @if ($tiempoMinLlamada > $tiempo || $tiempoMinLlamada == null)
+                                <?php $tiempoMinLlamada = $tiempo; ?>
+                            @endif
+
                         @endforeach
-                            @php
-                                $contadorCartes = $usuario->cartesTrucades->count();
-                                if ($contadorCartes == 0) {
-                                    # code...
-                                }else{
-                                    $resultado = $resultado / $contadorCartes;
-                                }
-                            @endphp
+                            <?php $contadorCartes = $usuario->cartesTrucades->count(); ?>
+
+                            @if ($contadorCartes == 0)
+                            @else
+                                <?php $resultado = $resultado / $contadorCartes; ?>
+                            @endif
 
                         Nº trucades agafades: {{ $usuario->cartesTrucades->count() }}<br>
                         Temps mitg per trucada: {{ $resultado }}s<br>
@@ -175,6 +174,7 @@ Expedients
 
                             @endforeach
                         @endforeach
+
                         Total de trucades amb recomanació: {{ $resultado }}<br>
                         Trucades amb ambulancias sol·licitades: <br>
                         Trucades amb policias sol·licitats: {{ $policiaEnviada }}<br>
@@ -182,7 +182,7 @@ Expedients
 
                         Tutorial vist: <br>
                         Data de creació d'usuari: <br>
-                        @php
+                        <?php
                             $resultado = null;
                             $tiempoMaxLlamada = null;
                             $tiempoMinLlamada = null;
@@ -190,14 +190,20 @@ Expedients
                             $totalTiempo = null;
                             $bomberosEnviados = null;
                             $policiaEnviada = null;
-                        @endphp
+                        ?>
                     </div>
-                    <div class="col-9">
+                    <div class="col-lg-8" style="display: flex; align-items:flex-end; margin-right: 32px;">
+                        <div class="col-7">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                        <div class="col-5">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
 
-                    </div>
                 </div>
             </div>
-            <div id="flush-collapseEdit{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseEdit{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $usuario->id }}">
                 <div class="accordion-body" >
                     <form class="row g-3" action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuario' => $usuario->id]) }}" method="GET">
                         @csrf
@@ -324,5 +330,124 @@ Expedients
 </form>
 
 
+<script>
+    const data = {
+        labels: [
+            'Barcelona',
+            'Girona',
+            'Lleida',
+            'Tarragona'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50, 100, 60],
+            backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(20, 50, 235)',
+            'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+
+
+
+    const data2 = {
+    labels: [
+            'Accidents',
+            'Assistència sanitària',
+            'Incendi',
+            'Fuita (Aigua, gas, altres)',
+            'Altres incidències',
+            'Seguretat',
+            'Trànsit',
+            'Civisme',
+            'Medi ambient',
+            'Meteorologia'
+        ],
+    datasets: [{
+        label: 'My First Dataset',
+        data: [65, 59, 80, 81, 56, 55, 40, 30, 20, 10],
+        backgroundColor: [
+        'rgba(92, 67, 14, 0.2)',
+        'rgba(0, 0, 255, 0.2)',
+        'rgba(255, 0, 0, 0.2)',
+        'rgba(56, 113, 187, 0.2)', //
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+        ],
+        borderColor: [
+        'rgb(92, 67, 14, 0.8)',
+        'rgb(0, 0, 255, 0.8)',
+        'rgb(255, 0, 0, 0.8)',
+        'rgb(56, 113, 187, 0.8)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+        ],
+        borderWidth: 1
+    }]
+    };
+
+
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        },
+    };
+
+    // const data2 = {
+    //     labels: [
+    //         'Red',
+    //         'Blue',
+    //         'Yellow'
+    //     ],
+    //     datasets: [{
+    //         label: 'My First Dataset',
+    //         data: [300, 50, 100],
+    //         backgroundColor: [
+    //         'rgb(255, 99, 132)',
+    //         'rgb(54, 162, 235)',
+    //         'rgb(255, 205, 86)'
+    //         ],
+    //         hoverOffset: 4
+    //     }]
+    // };
+
+    // const config2 = {
+    //     type: 'doughnut',
+    //     data: data2,
+    // };
+
+    const myChart2 = new Chart(
+      document.getElementById('myChart2'),
+      config2
+    );
+
+
+
+
+
+</script>
 
 @endsection

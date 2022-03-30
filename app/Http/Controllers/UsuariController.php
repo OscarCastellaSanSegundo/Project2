@@ -152,6 +152,7 @@ class UsuariController extends Controller
         }
 
         $usuarioNuevo->save();
+        $usuari = Usuari::all();
 
         return redirect()->action([UsuariController::class, 'index']);
     }
