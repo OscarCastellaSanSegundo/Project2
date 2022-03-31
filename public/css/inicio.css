@@ -106,3 +106,11 @@ body, html{
     width:100%;
     position:absolute;
     }
+
+
+    /* ----- */
+
+    .principalEstadisticas{
+        width: 90%;
+        height: 90%;
+    }

@@ -69,6 +69,11 @@ Route::middleware(['auth'])->group(function () {
         $user = Auth::user();
         return view('administracion.index', compact('user'));
     });
+
+    Route::get('/estadisticas', function () {
+        $user = Auth::user();
+        return view('estadisticas.index', compact('user'));
+    });
     Route::resource('expedientes', ExpedientController::class );
     Route::resource('usuarios', UsuariController::class );
 });

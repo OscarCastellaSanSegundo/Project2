@@ -1,11 +1,11 @@
 @extends('plantillas.principal')
 
 @section('titulo')
-Gestion de expedientes
+Administració d'usuaris
 @endsection
 
 @section('tituloNav')
-Expedients
+Administració
 @endsection
 
 @section('menu1')
@@ -99,170 +99,261 @@ Expedients
         @foreach ($usuarios as $usuario)
 
         <div style="margin-left: 15px; margin-top: 5px" class="accordion accordion-flush" id="accordionFlushExample{{ $usuario->id }}">
-            <div style="width: 99%; background-color: transparent;" class="accordion-item">
-              <h2 class="accordion-header" style="display: flex" id="flush-headingOne">
-                <button style="border-radius: 15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $usuario->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
-                    <div class="informacionUsuario">
-                        <div class="divAdminElementosInfo" style="width: 60px">
-                            ID: {{ $usuario->id }}
+            <div style="width: 99%; background-color: transparent;" class="accordion-item cardInformacionUsuarioAdmin">
+                <h2 class="accordion-header" style="display: flex" id="flush-headingOne">
+                    <button style="border-radius: 15px; margin-right: 5px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $usuario->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <div class="informacionUsuario">
+                            <div class="divAdminElementosInfo" style="width: 60px">
+                                ID: {{ $usuario->id }}
+                            </div>
+                            <div class="divAdminElementosInfo" style="width: 200px">
+                                Usuari: {{ $usuario->codi }}
+                            </div>
+                            <div class="divAdminElementosInfo" style="width: 150px">
+                                Nom: {{ $usuario->nom }}
+                            </div>
+                            <div  class="divAdminElementosInfo" style="width: 300px">
+                                Cognoms: {{ $usuario->cognoms }}
+                            </div>
+                            <div class="divAdminElementosInfo" style="width: 135px">
+                                @if ($usuario->perfils_id == 1)
+                                    OPERADOR
+                                @elseif ($usuario->perfils_id == 2)
+                                    SUPERVISOR
+                                @else
+                                    ADMINISTRADOR
+                                @endif
+                            </div>
+                            <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 15px 15px 15px 15px" data-bs-toggle="collapse" data-bs-target="#flush-collapseEdit{{ $usuario->id }}"><i class="fas fa-edit"></i> Editar</button>
                         </div>
-                        <div class="divAdminElementosInfo" style="width: 200px">
-                            Usuari: {{ $usuario->codi }}
-                        </div>
-                        <div class="divAdminElementosInfo" style="width: 150px">
-                            Nom: {{ $usuario->nom }}
-                        </div>
-                        <div  class="divAdminElementosInfo" style="width: 300px">
-                            Cognoms: {{ $usuario->cognoms }}
-                        </div>
-                        <div class="divAdminElementosInfo" style="width: 135px">
-                            @if ($usuario->perfils_id == 1)
-                                OPERADOR
-                            @elseif ($usuario->perfils_id == 2)
-                                SUPERVISOR
-                            @else
-                                ADMINISTRADOR
-                            @endif
-                        </div>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $usuario->id }}">
+                    <div class="accordion-body graficoEstadisticasUser" >
 
-                        <button type="submit" class="btn btn-warning" style="width: 100px; border-radius: 15px 15px 15px 15px" data-bs-toggle="collapse" data-bs-target="#flush-collapseEdit{{ $usuario->id }}"><i class="fas fa-edit"></i> Editar</button>
-                    </div>
-                </button>
-              </h2>
-              <div id="flush-collapseOne{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $usuario->id }}">
-                <div class="accordion-body graficoEstadisticasUser" >
-                    <div class="col-4">
-                        @foreach ($usuario->cartesTrucades as $carta)
-                            <?php
-                                $resultado = $resultado + $carta->temps_trucada;
-                                $tiempo = $carta->temps_trucada;
-                                $totalTiempo = $totalTiempo + $tiempo;
-                            ?>
+                        <div class="col-4" style="margin-right: 10px">
+                            @foreach ($usuario->cartesTrucades as $carta)
+                                <?php
+                                    $resultado = $resultado + $carta->temps_trucada;
+                                    $tiempo = $carta->temps_trucada;
+                                    $totalTiempo = $totalTiempo + $tiempo;
+                                ?>
 
-                            @if ($tiempoMaxLlamada < $tiempo)
-                                <?php $tiempoMaxLlamada = $tiempo; ?>
-                            @endif
+                                @if ($tiempoMaxLlamada < $tiempo)
+                                    <?php $tiempoMaxLlamada = $tiempo; ?>
+                                @endif
 
-                            @if ($tiempoMinLlamada > $tiempo || $tiempoMinLlamada == null)
-                                <?php $tiempoMinLlamada = $tiempo; ?>
-                            @endif
-
-                        @endforeach
-                            <?php $contadorCartes = $usuario->cartesTrucades->count(); ?>
-
-                            @if ($contadorCartes == 0)
-                            @else
-                                <?php $resultado = $resultado / $contadorCartes; ?>
-                            @endif
-
-                        Nº trucades agafades: {{ $usuario->cartesTrucades->count() }}<br>
-                        Temps mitg per trucada: {{ $resultado }}s<br>
-                        Temps maxim d'una trucada: {{ $tiempoMaxLlamada }}s<br>
-                        Temps minim d'una trucada: {{ $tiempoMinLlamada }}s<br>
-                        Total de temps al telefon: {{ $totalTiempo }}s<br><br>
-
-                        @foreach ($usuario->cartesTrucades as $carta)
-
-                            @foreach ($carta->cartesTrucadesHasAgencia as $cartaHasAgencia )
-                            <?php $resultado = $cartaHasAgencia->count(); ?>
-                                @if ( ($cartaHasAgencia->agencia->id > 0 && $cartaHasAgencia->agencia->id <= 117) ||
-                                ($cartaHasAgencia->agencia->id >= 264 && $cartaHasAgencia->agencia->id <= 470) )
-                                    <?php $policiaEnviada++ ?>
-                                @elseif ($cartaHasAgencia->agencia->id >= 118 && $cartaHasAgencia->agencia->id <= 263)
-                                    <?php $bomberosEnviados++ ?>
+                                @if ($tiempoMinLlamada > $tiempo || $tiempoMinLlamada == null)
+                                    <?php $tiempoMinLlamada = $tiempo; ?>
                                 @endif
 
                             @endforeach
-                        @endforeach
+                                <?php $contadorCartes = $usuario->cartesTrucades->count(); ?>
 
-                        Total de trucades amb recomanació: {{ $resultado }}<br>
-                        Trucades amb ambulancias sol·licitades: <br>
-                        Trucades amb policias sol·licitats: {{ $policiaEnviada }}<br>
-                        Trucades amb bombers sol·licitats: {{ $bomberosEnviados }}<br><br>
+                                @if ($contadorCartes == 0)
+                                @else
+                                    <?php $resultado = $resultado / $contadorCartes; ?>
+                                @endif
 
-                        Tutorial vist: <br>
-                        Data de creació d'usuari: <br>
-                        <?php
-                            $resultado = null;
-                            $tiempoMaxLlamada = null;
-                            $tiempoMinLlamada = null;
-                            $tiempo = null;
-                            $totalTiempo = null;
-                            $bomberosEnviados = null;
-                            $policiaEnviada = null;
-                        ?>
-                    </div>
-                    <div class="col-lg-8" style="display: flex; align-items:flex-end; margin-right: 32px;">
-                        <div class="col-7">
-                            <canvas id="myChart2"></canvas>
-                        </div>
-                        <div class="col-5">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr style="background-color:rgba(220, 221, 196, 0.589); box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 75%);">
+                                        <td>Nº trucades agafades:</td>
+                                        <td>{{ $usuario->cartesTrucades->count() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Temps mitg per trucada:</td>
+                                        <td>
+                                            @if ($resultado == null)
+                                                0 s
+                                            @else
+                                                {{ $resultado }} s
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Temps maxim d'una trucada:</td>
+                                        <td>
+                                            @if ($tiempoMaxLlamada == null)
+                                                0 s
+                                            @else
+                                                {{ $tiempoMaxLlamada }} s
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Temps minim d'una trucada:</td>
+                                        <td>
+                                            @if ($tiempoMinLlamada == null)
+                                                0 s
+                                            @else
+                                                {{ $tiempoMinLlamada }} s
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total de temps al telefon:</td>
+                                        <td>
+                                            @if ($totalTiempo == null)
+                                                0 s
+                                            @else
+                                                {{ $totalTiempo }} s
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                </div>
-            </div>
-            <div id="flush-collapseEdit{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $usuario->id }}">
-                <div class="accordion-body" >
-                    <form class="row g-3" action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuario' => $usuario->id]) }}" method="GET">
-                        @csrf
-                        <div class="col-md-1">
-                            <label for="validationDefault02" class="form-label">ID</label>
-                            <input type="text" class="form-control" id="idUsuari" name="idUsuari" value="{{ $usuario->id }}" disabled>
-                          </div>
-                        <div class="col-md-4">
-                          <label for="validationDefault02" class="form-label">Usuari</label>
-                          <input type="text" class="form-control" id="usuari" name="usuari" value="{{ $usuario->codi }}" required>
+                            {{-- Nº trucades agafades: {{ $usuario->cartesTrucades->count() }}<br>
+                            Temps mitg per trucada: {{ $resultado }}s<br>
+                            Temps maxim d'una trucada: {{ $tiempoMaxLlamada }}s<br>
+                            Temps minim d'una trucada: {{ $tiempoMinLlamada }}s<br>
+                            Total de temps al telefon: {{ $totalTiempo }}s<br><br> --}}
+
+                            @foreach ($usuario->cartesTrucades as $carta)
+
+                                @foreach ($carta->cartesTrucadesHasAgencia as $cartaHasAgencia )
+                                <?php $resultado = $cartaHasAgencia->count(); ?>
+                                    @if ( ($cartaHasAgencia->agencia->id > 0 && $cartaHasAgencia->agencia->id <= 117) ||
+                                    ($cartaHasAgencia->agencia->id >= 264 && $cartaHasAgencia->agencia->id <= 470) )
+                                        <?php $policiaEnviada++ ?>
+                                    @elseif ($cartaHasAgencia->agencia->id >= 118 && $cartaHasAgencia->agencia->id <= 263)
+                                        <?php $bomberosEnviados++ ?>
+                                    @endif
+
+                                @endforeach
+                            @endforeach
+                                    <tr style="background-color:rgba(220, 221, 196, 0.589); box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 75%);">
+                                        <td>Total de trucades amb recomanació:</td>
+                                        <td>
+                                            @if ($resultado == null)
+                                                0
+                                            @else
+                                                {{ $resultado }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trucades amb ambulancias sol·licitades:</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trucades amb policies sol·licitats:</td>
+                                        <td>
+                                            @if ($policiaEnviada == null)
+                                                0
+                                            @else
+                                                {{ $policiaEnviada }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trucades amb bombers sol·licitats:</td>
+                                        <td>
+                                            @if ($bomberosEnviados == null)
+                                                0
+                                            @else
+                                                {{ $bomberosEnviados }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color:rgba(220, 221, 196, 0.589); box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 75%);">
+                                        <td>Tutorial vist:</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="background-color:rgba(220, 221, 196, 0.589); box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 75%);">
+                                        <td>Data de creació d'usuari:</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            {{-- Total de trucades amb recomanació: {{ $resultado }}<br>
+                            Trucades amb ambulancias sol·licitades: <br>
+                            Trucades amb policias sol·licitats: {{ $policiaEnviada }}<br>
+                            Trucades amb bombers sol·licitats: {{ $bomberosEnviados }}<br><br>
+
+                            Tutorial vist: <br>
+                            Data de creació d'usuari: <br> --}}
+                            <?php
+                                $resultado = null;
+                                $tiempoMaxLlamada = null;
+                                $tiempoMinLlamada = null;
+                                $tiempo = null;
+                                $totalTiempo = null;
+                                $bomberosEnviados = null;
+                                $policiaEnviada = null;
+                            ?>
                         </div>
-                        <div class="col-md-3">
-                          <label for="validationDefaultUsername" class="form-label">Nom</label>
-                          <div class="input-group">
-                            {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
-                            <input type="text" class="form-control" id="nomUsuari" name="nomUsuari" value="{{ $usuario->nom }}" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationDefaultUsername" class="form-label">Cognoms</label>
-                            <div class="input-group">
-                              {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
-                              <input type="text" class="form-control" id="cognomsUsuari" name="cognomsUsuari" value="{{ $usuario->cognoms }}" aria-describedby="inputGroupPrepend2" required>
+                        <div class="col-lg-8" style="display: flex; align-items:flex-end; margin-right: 32px;">
+                            <div class="col-7">
+                                <canvas id="myChart2"></canvas>
+                            </div>
+                            <div class="col-5">
+                                <canvas id="myChart"></canvas>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                          <label for="validationDefault04" class="form-label">Tipus d'usuari</label>
-                          <select class="form-select" id="tipusUsuari" name="tipusUsuari" required>
-                            @if ($usuario->perfils_id == 1)
-                                <option selected value="1" >Operador</option>
-                                <option value="2">Supervisor</option>
-                                <option value="3">Administrador</option>
-                            @elseif ($usuario->perfils_id == 2)
-                                <option value="1">Operador</option>
-                                <option selected value="2">Supervisor</option>
-                                <option value="3">Administrador</option>
-                            @elseif ($usuario->perfils_id == 3)
-                                <option value="1">Operador</option>
-                                <option selected value="2">Supervisor</option>
-                                <option value="3">Administrador</option>
-                            @endif
 
-                          </select>
-                        </div>
-                        <div class="col-md-5">
-                            <label for="validationDefaultUsername" class="form-label">Nova contrassenya (Opcional)</label>
-                            <div class="input-group">
-                              {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
-                              <input type="password" class="form-control" id="contraUsuari" name="contraUsuari" value="" aria-describedby="inputGroupPrepend2">
-                            </div>
-                        </div>
-                        <div class="col-2" style="display: flex; align-items: end">
-                            <label for="validationDefault04" class="form-label"></label>
-                          <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Guardar</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+                <div id="flush-collapseEdit{{ $usuario->id }}" style="background-color: white; width: 99%; border-radius: 15px" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample{{ $usuario->id }}">
+                    <div class="accordion-body" >
+                        <form class="row g-3" action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuario' => $usuario->id]) }}" method="GET">
+                            @csrf
+                            <div class="col-md-1">
+                                <label for="validationDefault02" class="form-label">ID</label>
+                                <input type="text" class="form-control" id="idUsuari" name="idUsuari" value="{{ $usuario->id }}" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationDefault02" class="form-label">Usuari</label>
+                                <input type="text" class="form-control" id="usuari" name="usuari" value="{{ $usuario->codi }}" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="validationDefaultUsername" class="form-label">Nom</label>
+                                <div class="input-group">
+                                    {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
+                                    <input type="text" class="form-control" id="nomUsuari" name="nomUsuari" value="{{ $usuario->nom }}" aria-describedby="inputGroupPrepend2" required>
+                                </div>
+                            </div>
 
+                            <div class="col-md-4">
+                                <label for="validationDefaultUsername" class="form-label">Cognoms</label>
+                                <div class="input-group">
+                                {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
+                                    <input type="text" class="form-control" id="cognomsUsuari" name="cognomsUsuari" value="{{ $usuario->cognoms }}" aria-describedby="inputGroupPrepend2" required>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="validationDefault04" class="form-label">Tipus d'usuari</label>
+                                <select class="form-select" id="tipusUsuari" name="tipusUsuari" required>
+                                    @if ($usuario->perfils_id == 1)
+                                        <option selected value="1" >Operador</option>
+                                        <option value="2">Supervisor</option>
+                                        <option value="3">Administrador</option>
+                                    @elseif ($usuario->perfils_id == 2)
+                                        <option value="1">Operador</option>
+                                        <option selected value="2">Supervisor</option>
+                                        <option value="3">Administrador</option>
+                                    @elseif ($usuario->perfils_id == 3)
+                                        <option value="1">Operador</option>
+                                        <option selected value="2">Supervisor</option>
+                                        <option value="3">Administrador</option>
+                                    @endif
+
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="validationDefaultUsername" class="form-label">Nova contrassenya (Opcional)</label>
+                                <div class="input-group">
+                                {{-- <span class="input-group-text" id="inputGroupPrepend2">@</span> --}}
+                                    <input type="password" class="form-control" id="contraUsuari" name="contraUsuari" value="" aria-describedby="inputGroupPrepend2">
+                                </div>
+                            </div>
+                            <div class="col-2" style="display: flex; align-items: end">
+                                <label for="validationDefault04" class="form-label"></label>
+                                <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
         </div>
 
         @endforeach
@@ -402,8 +493,6 @@ Expedients
     }]
     };
 
-
-
     const config2 = {
         type: 'bar',
         data: data2,
@@ -415,29 +504,6 @@ Expedients
         }
         },
     };
-
-    // const data2 = {
-    //     labels: [
-    //         'Red',
-    //         'Blue',
-    //         'Yellow'
-    //     ],
-    //     datasets: [{
-    //         label: 'My First Dataset',
-    //         data: [300, 50, 100],
-    //         backgroundColor: [
-    //         'rgb(255, 99, 132)',
-    //         'rgb(54, 162, 235)',
-    //         'rgb(255, 205, 86)'
-    //         ],
-    //         hoverOffset: 4
-    //     }]
-    // };
-
-    // const config2 = {
-    //     type: 'doughnut',
-    //     data: data2,
-    // };
 
     const myChart2 = new Chart(
       document.getElementById('myChart2'),
