@@ -69,7 +69,7 @@
                                 <div class="col-1">
 
                                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                        <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                        <img alt="" width="20" height="20" v-bind:src="require('../public/Imagenes/informacion.png')">
                                     </a>
 
                                 </div>
@@ -353,14 +353,13 @@
                             <div class="col-sm-6">
                                 <h2 id="crono">0:00</h2>
                                 <input name="temps_trucada" type="hidden" value="" id="temps_trucada">
-                                <input name="usuaris_id" type="hidden" value="{{ Auth::user()->id }}" id="temps_trucada">
+<!--                                 <input name="usuaris_id" type="hidden" value="{{ Auth::user()->id }}" id="temps_trucada"> -->
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="card informacionLlamante bordeRedondo zoomCard" style="width: 100%; margin-top: 10px">
-                    {{-- <img src="../public/Imagenes/cartaTelefono.png" class="card-img-top imagenEmergencia" alt="..."> --}}
                     <div class="card-body">
                         <h5 class="card-title">Informació del trucant</h5>
 
@@ -499,7 +498,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document" >
                 <div class="modal-content" style="border-radius: 20px; background-color:rgb(255, 0, 0)">
                     <div class="modal-body tituloSimuladorLlamada">
-                        <img class="card-img-top imagenEmergencia" src="../public/Imagenes/Llamada.gif" alt="Card image cap">
+                        <img class="card-img-top imagenEmergencia" src="../public/Imagenes/Llamada.gif" alt="Card image cap" >
                         <div class="bodySimuladorLlamada2">
                             <div>
                                 <button type="button" class="btn btn-dark botonCogerLlamada" id="botonCogerLlamada" data-bs-dismiss='modal'>¡Agafar trucada!</button>

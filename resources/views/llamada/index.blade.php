@@ -53,7 +53,6 @@ Llamada
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="fora_catalunya" value="fora_catalunya" name="fora_catalunya" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">
                             <label class="form-check-label" for="fora_catalunya">Fora de Catalunya</label>
-                            <example-component>
                         </div>
                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
                             <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">

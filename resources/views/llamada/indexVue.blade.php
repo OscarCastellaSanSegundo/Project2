@@ -29,7 +29,7 @@ Llamada
 
 @section('contenido')
 
-<example-component></example-component>
+<trucada-component></trucada-component>
 
 
 @endsection
