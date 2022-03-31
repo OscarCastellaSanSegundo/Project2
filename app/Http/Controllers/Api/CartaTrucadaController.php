@@ -75,7 +75,7 @@ class CartaTrucadaController extends Controller
 
 
         try {
-            DB::transaction(function() use ($cartaTrucada, $cartesTrucadesHasAgencies, $dadesPersonals, $expedient) {
+            DB::beginTransaction();
 
                 $dadesPersonals->save();
                 $expedient->save();
@@ -86,13 +86,14 @@ class CartaTrucadaController extends Controller
 
                 $cartesTrucadesHasAgencies->cartes_trucades_id = $cartaTrucada->id;
                 $cartesTrucadesHasAgencies->save();
-            });
             $cartaTrucada->save();
             $response = (new CartaTrucadaResource($cartaTrucada))
                         ->response()
                         ->setStatusCode(201);
+            DB::commit();
 
         } catch (QueryException $ex) {
+            DB::rollBack();
             $mensaje = Utilitat::errorMessage($ex);
             $response = \response()
                         ->json(['error' => $mensaje], 400);

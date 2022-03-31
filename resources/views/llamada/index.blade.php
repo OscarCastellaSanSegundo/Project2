@@ -43,8 +43,8 @@ Llamada
                         </div>
 
                         <div>
-                            <button type="button" class="btn btn-light botonTutorial" data-bs-toggle="modal" href="#tutorial" role="button"><i class="fas fa-phone-alt"></i>¡Tutorial!</i></button>
-                            <button type="button" class="btn btn-danger botonSimularLlamada" data-bs-toggle="modal" href="#simularLlamada" role="button"><i class="fas fa-phone-alt"></i>¡Simular Trucada!</i></button>
+                            <button type="button" class="btn btn-light botonTutorial" data-bs-toggle="modal" href="#tutorial" role="button">¡Tutorial!</button>
+                            <button type="button" class="btn btn-danger botonSimularLlamada" data-bs-toggle="modal" href="#simularLlamada" role="button">¡Simular Trucada!</button>
                         </div>
                     </div>
 
@@ -413,7 +413,7 @@ Llamada
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1" id="nota_comuna">Nota comuna</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" id="nota_comuna" name="nota_comuna"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="nota_comuna"></textarea>
                 </div>
 
             </div>

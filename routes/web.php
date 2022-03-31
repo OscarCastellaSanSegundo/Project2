@@ -33,6 +33,10 @@ Route::get('/Inicio', function () {
     return view('inicio.index');
 }); */
 
+Route::get('/llamadaVue', function () {
+    return view('llamada.indexVue');
+});
+
 Route::get('/login', [UsuariController::class, 'showLogin'])->name('login');
 // Route::resource('expedientes', ExpedientController::class );
 

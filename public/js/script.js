@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         codigo = 0;
 
 
-        crearCodigo();
+/*         crearCodigo(); */
 
-        document.getElementById("temps_trucada").setAttribute('value',segundosContador); /* por hacer */
+/*         document.getElementById("temps_trucada").setAttribute('value',segundosContador); */
 
     function cronometro() {
 
