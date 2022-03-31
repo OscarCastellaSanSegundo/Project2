@@ -28556,38 +28556,97 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "principalCarta" }, [
-      _c("div", { staticClass: "zonaFormulario" }, [
-        _c("div", [
-          _c(
-            "div",
-            {
-              staticClass: "card bordeRedondo zoomCardGrande",
-              staticStyle: { width: "100%", "margin-top": "10px" },
-            },
-            [
-              _c("img", {
-                staticClass: "card-img-top imagenEmergencia",
-                attrs: {
-                  src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/EMERGENCIA3.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                  alt: "Card image cap",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _vm._m(0),
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "principalCarta" }, [
+        _c("div", { staticClass: "zonaFormulario" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                staticClass: "card bordeRedondo zoomCardGrande",
+                staticStyle: { width: "100%", "margin-top": "10px" },
+              },
+              [
+                _c("img", {
+                  staticClass: "card-img-top imagenEmergencia",
+                  attrs: {
+                    src: "/public/Imagenes/EMERGENCIA3.png",
+                    alt: "Card image cap",
+                  },
+                }),
                 _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(2),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "simuladorLlamada" }, [
+                    _c("div", [
+                      _c("h4", { staticClass: "card-title" }, [
+                        _vm._v("Localització de la Emergencia"),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-light botonTutorial",
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "modal",
+                            href: "#tutorial",
+                            role: "button",
+                          },
+                        },
+                        [_vm._v("¡Tutorial!")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger botonSimularLlamada",
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "modal",
+                            href: "#simularLlamada",
+                            role: "button",
+                          },
+                        },
+                        [_vm._v("¡Simular Trucada!")]
+                      ),
+                    ]),
+                  ]),
                   _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-1" }, [
+                  _c("div", [
+                    _c("div", { staticClass: "form-check form-check-inline" }, [
+                      _c("input", {
+                        staticClass: "form-check-input",
+                        attrs: {
+                          type: "checkbox",
+                          id: "fora_catalunya",
+                          value: "fora_catalunya",
+                          name: "fora_catalunya",
+                          "data-bs-toggle": "collapse",
+                          "data-bs-target": "#multiCollapseExample4",
+                          "aria-expanded": "false",
+                          "aria-controls": "multiCollapseExample4",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "fora_catalunya" },
+                        },
+                        [_vm._v("Fora de Catalunya")]
+                      ),
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "a",
                       {
@@ -28597,1542 +28656,1464 @@ var render = function () {
                       [
                         _c("img", {
                           attrs: {
+                            src: "/public/Imagenes/informacion.png",
                             alt: "",
                             width: "20",
                             height: "20",
-                            src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                            "data-toggle": "popover",
+                            title: "Popover title",
+                            "data-content":
+                              "And here's some amazing content. It's very engaging. Right?",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-4" }, [
+                      _c("div", { staticClass: "col provinciaMunicipio" }, [
+                        _c("div", { staticClass: "form-group row mb-2" }, [
+                          _c("div", { staticClass: "col-sm-12" }, [
+                            _c("input", {
+                              staticClass: "form-control form-control-sm",
+                              attrs: {
+                                type: "text",
+                                placeholder: "Municipi",
+                                "aria-label": "Provincia",
+                                "aria-describedby": "button-addon2",
+                                name: "municipis_id",
+                              },
+                            }),
+                          ]),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-3" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse show multi-collapse",
+                          attrs: { id: "multiCollapseExample4" },
+                        },
+                        [
+                          _c("div", { staticClass: "form-group row mb-2" }, [
+                            _c("div", { staticClass: "col-sm-12" }, [
+                              _c("input", {
+                                staticClass: "form-control form-control-sm",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Comarca",
+                                  "aria-label": "Comarca",
+                                  "aria-describedby": "button-addon2",
+                                },
+                              }),
+                            ]),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4" }, [
+                      _c("div", { staticClass: "col provinciaMunicipio" }, [
+                        _c("div", { staticClass: "form-group row mb-2" }, [
+                          _c("div", { staticClass: "col-sm-12" }, [
+                            _c("input", {
+                              staticClass: "form-control form-control-sm",
+                              attrs: {
+                                type: "text",
+                                placeholder: "Provincia",
+                                "aria-label": "Provincia",
+                                "aria-describedby": "button-addon2",
+                                name: "provincies_id",
+                              },
+                            }),
+                          ]),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-1" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "col-sm-2 col-navbar-brand-sm",
+                          attrs: { href: "#" },
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              alt: "",
+                              width: "20",
+                              height: "20",
+                              src: "/public/Imagenes/informacion.png",
+                            },
+                          }),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-8" }, [
+                      _c("h4", [_vm._v("Tipus de localització")]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-xl-1 col-sm-2",
+                        staticStyle: { "margin-right": "15px" },
+                      },
+                      [
+                        _c("div", { staticClass: "col provinciaMunicipio" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-check form-check-inline " },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: {
+                                  type: "radio",
+                                  name: "tipus_localitzacions_id",
+                                  id: "inlineRadio1",
+                                  value: "option1",
+                                  "data-bs-toggle": "collapse",
+                                  "data-bs-target": "#multiCollapseExample5",
+                                  "aria-expanded": "false",
+                                  "aria-controls": "multiCollapseExample5",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-check-label",
+                                  attrs: { for: "inlineRadio1" },
+                                },
+                                [_vm._v("Provincia")]
+                              ),
+                            ]
+                          ),
+                        ]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-xl-7 col-sm-9" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse show multi-collapse",
+                          attrs: { id: "multiCollapseExample4" },
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-check form-check-inline" },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: {
+                                  type: "radio",
+                                  name: "tipus_localitzacions_id",
+                                  id: "inlineRadio2",
+                                  value: "option2",
+                                  "data-bs-toggle": "collapse",
+                                  "data-bs-target": "#multiCollapseExample1",
+                                  "aria-expanded": "false",
+                                  "aria-controls": "multiCollapseExample1",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-check-label",
+                                  attrs: { for: "inlineRadio2" },
+                                },
+                                [_vm._v("Carrer")]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-check form-check-inline" },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: {
+                                  type: "radio",
+                                  name: "tipus_localitzacions_id",
+                                  id: "inlineRadio3",
+                                  value: "option3",
+                                  "data-bs-toggle": "collapse",
+                                  "data-bs-target": "#multiCollapseExample1",
+                                  "aria-expanded": "false",
+                                  "aria-controls": "multiCollapseExample2",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-check-label",
+                                  attrs: { for: "inlineRadio3" },
+                                },
+                                [_vm._v("Punt singular")]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-check form-check-inline" },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: {
+                                  type: "radio",
+                                  name: "tipus_localitzacions_id",
+                                  id: "inlineRadio4",
+                                  value: "option4",
+                                  "data-bs-toggle": "collapse",
+                                  "data-bs-target": "#multiCollapseExample1",
+                                  "aria-expanded": "false",
+                                  "aria-controls": "multiCollapseExample3",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-check-label",
+                                  attrs: { for: "inlineRadio4" },
+                                },
+                                [_vm._v("Carretera")]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-check form-check-inline" },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: {
+                                  type: "radio",
+                                  name: "tipus_localitzacions_id",
+                                  id: "inlineRadio5",
+                                  value: "option5",
+                                  "data-bs-toggle": "collapse",
+                                  "data-bs-target": "#multiCollapseExample5",
+                                  "aria-expanded": "false",
+                                  "aria-controls": "multiCollapseExample5",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-check-label",
+                                  attrs: { for: "inlineRadio5" },
+                                },
+                                [_vm._v("Població")]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "col-sm-2 col-navbar-brand-sm",
+                              attrs: { href: "#" },
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src: "/public/Imagenes/informacion.png",
+                                  alt: "",
+                                  width: "20",
+                                  height: "20",
+                                },
+                              }),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse multi-collapse",
+                          staticStyle: { "margin-top": "1%" },
+                          attrs: { id: "multiCollapseExample1" },
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-group row mb-2 gx-2" },
+                            [
+                              _c("div", { staticClass: "col-sm-4" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Descripció",
+                                    "aria-label": "Descripció",
+                                    "aria-describedby": "button-addon2",
+                                    name: "descripcio_localitzacio",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-4" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Detall",
+                                    "aria-label": "Detall",
+                                    "aria-describedby": "button-addon2",
+                                    name: "detall_localitzacio",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-3" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Altres referències",
+                                    "aria-label": "Altres referències",
+                                    "aria-describedby": "button-addon2",
+                                    name: "altres_ref_localitzacio",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "col-sm-1 col-navbar-brand-sm",
+                                  attrs: { href: "#" },
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/public/Imagenes/informacion.png",
+                                      alt: "",
+                                      width: "20",
+                                      height: "20",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v("\n\n                            {{-- "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse multi-collapse",
+                          staticStyle: { "margin-top": "1%" },
+                          attrs: { id: "multiCollapseExample2" },
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-group row mb-2 gx-2" },
+                            [
+                              _c("div", { staticClass: "col-sm-5" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Nom del punt singular",
+                                    "aria-label": "Nombre del punto singular",
+                                    "aria-describedby": "button-addon2",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-6" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder:
+                                      "Altres referèncias (Opcional)",
+                                    "aria-label": "Otras referencias",
+                                    "aria-describedby": "button-addon2",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "col-sm-1 col-navbar-brand-sm",
+                                  attrs: { href: "#" },
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/public/Imagenes/informacion.png",
+                                      alt: "",
+                                      width: "20",
+                                      height: "20",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" --}}\n                            {{-- "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse multi-collapse",
+                          staticStyle: { "margin-top": "1%" },
+                          attrs: { id: "multiCollapseExample3" },
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-group row mb-2 gx-2" },
+                            [
+                              _c("div", { staticClass: "col-sm-6" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Nom de la carretera",
+                                    "aria-label": "Nombre de la carretera",
+                                    "aria-describedby": "button-addon2",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-5" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder:
+                                      "Altres referències (Opcional)",
+                                    "aria-label": "Otras referencias",
+                                    "aria-describedby": "button-addon2",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "col-sm-1 col-navbar-brand-sm",
+                                  attrs: { href: "#" },
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/public/Imagenes/informacion.png",
+                                      alt: "",
+                                      width: "20",
+                                      height: "20",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" --}}\n                            "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col mb-3" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse multi-collapse",
+                          staticStyle: { "margin-top": "1%" },
+                          attrs: { id: "multiCollapseExample5" },
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-group row mb-2 gx-2" },
+                            [
+                              _c("div", { staticClass: "col-sm-11" }, [
+                                _c("input", {
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Altres referències",
+                                    "aria-label": "Otras referencias",
+                                    "aria-describedby": "button-addon2",
+                                    name: "",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "col-sm-1 col-navbar-brand-sm",
+                                  attrs: { href: "#" },
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/public/Imagenes/informacion.png",
+                                      alt: "",
+                                      width: "20",
+                                      height: "20",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 mb-2" }, [
+                    _c("h4", [_vm._v("Tipus d'incident")]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-5" }, [
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-select form-select-sm",
+                          attrs: { "aria-label": ".form-select-sm example" },
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Tipus"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("One"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("Two"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3" } }, [
+                            _vm._v("Three"),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6" }, [
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-select form-select-sm",
+                          attrs: {
+                            "aria-label": ".form-select-sm example",
+                            name: "incidents_id",
+                          },
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Incident"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("One"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("Two"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3" } }, [
+                            _vm._v("Three"),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-1" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "col-sm-2 col-navbar-brand-sm",
+                          attrs: { href: "#" },
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "/public/Imagenes/informacion.png",
+                              alt: "",
+                              width: "20",
+                              height: "20",
+                            },
+                          }),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                ]),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "card col-12 bordeRedondo zoomCardGrande",
+              staticStyle: { "margin-top": "10px" },
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row col-12" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("h4", [_vm._v("Expedients existents")]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12 tablaExpedientesScroll" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table table-hover tablaExpedientes" },
+                      [
+                        _c("thead", { staticClass: "table colorTabla" }, [
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("Data"),
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("Tipus d'incident"),
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("Localització"),
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("Direcció"),
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "row" } }, [
+                              _vm._v("2"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Jacob")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-light botonesTabla",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("Seleccionar")]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "row" } }, [
+                              _vm._v("2"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Jacob")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-light botonesTabla",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("Seleccionar")]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "row" } }, [
+                              _vm._v("2"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Jacob")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-light botonesTabla",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("Seleccionar")]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "row" } }, [
+                              _vm._v("2"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Jacob")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-light botonesTabla",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("Seleccionar")]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "row" } }, [
+                              _vm._v("2"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Jacob")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-light botonesTabla",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("Seleccionar")]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "row" } }, [
+                              _vm._v("2"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Jacob")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-light botonesTabla",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("Seleccionar")]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "row" } }, [
+                              _vm._v("2"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Jacob")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Thornton")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-light botonesTabla",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("Seleccionar")]
+                              ),
+                            ]),
+                          ]),
+                        ]),
+                      ]
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-12 mt-3" }, [
+                  _c("h4", [_vm._v("Crear expedient")]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row col-12 mt-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-light botonExpedienteNuevoConRecomendacion",
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          href: "#exampleModalToggle",
+                          role: "button",
+                        },
+                      },
+                      [_vm._v("Expedient nou amb recomanació")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6 " }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-light botonExpedienteNuevo",
+                        attrs: { type: "button" },
+                      },
+                      [_vm._v("Expedient nou")]
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "zonaTelefono" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                staticClass: "card bordeRedondo zoomCard",
+                staticStyle: { width: "99%", "margin-top": "10px" },
+              },
+              [
+                _c("div", { staticClass: "card-body row mb-0 cronometro" }, [
+                  _c("h5", [_vm._v("Nº Trucada")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-6 mb-0" }, [
+                    _c("p", { attrs: { id: "codiTrucadaP" } }),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        id: "codiTrucada",
+                        name: "codi_trucada",
+                        type: "hidden",
+                        value: "falta",
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-6" }, [
+                    _c("h2", { attrs: { id: "crono" } }, [_vm._v("0:00")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        name: "temps_trucada",
+                        type: "hidden",
+                        value: "",
+                        id: "temps_trucada",
+                      },
+                    }),
+                  ]),
+                ]),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "card informacionLlamante bordeRedondo zoomCard",
+              staticStyle: { width: "100%", "margin-top": "10px" },
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "card-title" }, [
+                  _vm._v("Informació del trucant"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row mb-2" }, [
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      staticClass: "form-control form-control-sm",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Nom",
+                        "aria-label": "Nom",
+                        "aria-describedby": "button-addon2",
+                        name: "nom_trucada",
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "col-sm-2 col-navbar-brand-sm",
+                      attrs: { href: "#" },
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/public/Imagenes/informacion.png",
+                          alt: "",
+                          width: "20",
+                          height: "20",
+                        },
+                      }),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row mb-2" }, [
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      staticClass: "form-control form-control-sm",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Telèfon",
+                        "aria-label": "Telefono",
+                        "aria-describedby": "button-addon2",
+                        id: "telefon",
+                        name: "telefon",
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "col-sm-2 col-navbar-brand-sm",
+                      attrs: { href: "#" },
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/public/Imagenes/informacion.png",
+                          alt: "",
+                          width: "20",
+                          height: "20",
+                        },
+                      }),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "exampleFormControlTextarea1",
+                        id: "nota_comuna",
+                      },
+                    },
+                    [_vm._v("Nota comuna")]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    staticClass: "form-control",
+                    attrs: {
+                      id: "exampleFormControlTextarea1",
+                      rows: "6",
+                      name: "nota_comuna",
+                    },
+                  }),
+                ]),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "div",
+              {
+                staticClass: "card procedenciaLlamada bordeRedondo zoomCard",
+                staticStyle: { width: "100%", "margin-top": "10px" },
+              },
+              [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("h5", [_vm._v("Procedència de la trucada")]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "form-group row mb-2 gx-1" }, [
+                    _c("div", { staticClass: "col-sm-5" }, [
+                      _c("input", {
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Procedència",
+                          "aria-label": "Procedencia",
+                          "aria-describedby": "button-addon2",
+                          name: "procedencia_trucada",
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-5" }, [
+                      _c("input", {
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Origen",
+                          "aria-label": "Origen",
+                          "aria-describedby": "button-addon2",
+                          name: "origen_trucada",
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm gx-4",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: "/public/Imagenes/informacion.png",
+                            alt: "",
+                            width: "20",
+                            height: "20",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Municipi",
+                          "aria-label": "Municipi",
+                          "aria-describedby": "button-addon2",
+                          name: "municipis_id_trucada",
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: "/public/Imagenes/informacion.png",
+                            alt: "",
+                            width: "20",
+                            height: "20",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Adreça",
+                          "aria-label": "Direccion",
+                          "aria-describedby": "button-addon2",
+                          name: "dades_personals_id_adreca",
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: "/public/Imagenes/informacion.png",
+                            alt: "",
+                            width: "20",
+                            height: "20",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row mb-2" }, [
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Informació del telèfon",
+                          "aria-label": "Informacion del telefono",
+                          "aria-describedby": "button-addon2",
+                          name: "dades_personals_id_antecedents",
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm gx-2",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: "/public/Imagenes/informacion.png",
+                            alt: "",
+                            width: "20",
+                            height: "20",
                           },
                         }),
                       ]
                     ),
                   ]),
                 ]),
-                _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
-                _vm._m(6),
-                _vm._v(" "),
-                _vm._m(7),
-                _vm._v("\n\n                            {{-- "),
-                _vm._m(8),
-                _vm._v(" --}}\n                            {{-- "),
-                _vm._m(9),
-                _vm._v(" --}}\n                            "),
-                _vm._m(10),
-                _vm._v(" "),
-                _vm._m(11),
-                _vm._v(" "),
-                _vm._m(12),
+              ]
+            ),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade zonaMapa bordeRedondo",
+          attrs: {
+            id: "exampleModalToggle",
+            "data-bs-backdrop": "static",
+            "aria-hidden": "true",
+            "aria-labelledby": "exampleModalToggleLabel",
+            tabindex: "-1",
+          },
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog modal-xl modal-dialog-centered" },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v("Recomanacions"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("iframe", {
+                      staticStyle: { border: "0" },
+                      attrs: {
+                        src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977",
+                        width: "100%",
+                        height: "400",
+                        frameborder: "0",
+                        allowfullscreen: "",
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row text-center" }, [
+                    _c("div", { staticClass: "col-4 box1 pt-4" }, [
+                      _c("a", { attrs: { href: "tel:+123456789" } }, [
+                        _c("span", [
+                          _c("img", {
+                            staticClass: "imagenAgenciaRecomendacion",
+                            attrs: { src: "/public/imagenes/cochePolicia.png" },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "h3",
+                          { staticClass: "d-none d-lg-block d-xl-block" },
+                          [_vm._v("Policia")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "d-none d-lg-block d-xl-block" },
+                          [_vm._v("Veure policies disponibles")]
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4 box2 pt-4" }, [
+                      _c("a", { attrs: { href: "" } }, [
+                        _c("span", [
+                          _c("img", {
+                            staticClass: "imagenAgenciaRecomendacion2",
+                            attrs: {
+                              src: "/public/imagenes/furgonAmbulancia.png",
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "h3",
+                          { staticClass: "d-none d-lg-block d-xl-block" },
+                          [_vm._v("Ambulància")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "d-none d-lg-block d-xl-block" },
+                          [_vm._v("Veure ambulàncies disponibles")]
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4 box3 pt-4" }, [
+                      _c("a", { attrs: { href: "mailto:test@test.com" } }, [
+                        _c("span", [
+                          _c("img", {
+                            staticClass: "imagenAgenciaRecomendacion3",
+                            attrs: {
+                              src: "/public/imagenes/camionBomberos.png",
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "h3",
+                          { staticClass: "d-none d-lg-block d-xl-block" },
+                          [_vm._v("Bombers")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "d-none d-lg-block d-xl-block" },
+                          [_vm._v("Veure bombers disponibles")]
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-light crearExpedienteRecomendacion",
+                      attrs: {
+                        "data-bs-target": "#exampleModalToggle2",
+                        "data-bs-toggle": "modal",
+                      },
+                    },
+                    [_vm._v("Crear expedient")]
+                  ),
+                ]),
               ]),
             ]
           ),
-        ]),
-        _vm._v(" "),
-        _vm._m(13),
-      ]),
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(14),
-    ]),
-    _vm._v(" "),
-    _vm._m(15),
-    _vm._v(" "),
-    _vm._m(16),
-    _vm._v(" "),
-    _vm._m(17),
-  ])
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "simuladorLlamada" }, [
-      _c("div", [
-        _c("h4", { staticClass: "card-title" }, [
-          _vm._v("Localització de la Emergencia"),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-light botonTutorial",
-            attrs: {
-              type: "button",
-              "data-bs-toggle": "modal",
-              href: "#tutorial",
-              role: "button",
-            },
-          },
-          [_vm._v("¡Tutorial!")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-danger botonSimularLlamada",
-            attrs: {
-              type: "button",
-              "data-bs-toggle": "modal",
-              href: "#simularLlamada",
-              role: "button",
-            },
-          },
-          [_vm._v("¡Simular Trucada!")]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "form-check form-check-inline" }, [
-        _c("input", {
-          staticClass: "form-check-input",
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
           attrs: {
-            type: "checkbox",
-            id: "fora_catalunya",
-            value: "fora_catalunya",
-            name: "fora_catalunya",
-            "data-bs-toggle": "collapse",
-            "data-bs-target": "#multiCollapseExample4",
-            "aria-expanded": "false",
-            "aria-controls": "multiCollapseExample4",
+            id: "simularLlamada",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalCenterTitle",
+            "aria-hidden": "true",
           },
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "form-check-label", attrs: { for: "fora_catalunya" } },
-          [_vm._v("Fora de Catalunya")]
-        ),
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "col-sm-2 col-navbar-brand-sm", attrs: { href: "#" } },
+        },
         [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-              alt: "",
-              width: "20",
-              height: "20",
-              "data-toggle": "popover",
-              title: "Popover title",
-              "data-content":
-                "And here's some amazing content. It's very engaging. Right?",
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" },
             },
-          }),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
-      _c("div", { staticClass: "col provinciaMunicipio" }, [
-        _c("div", { staticClass: "form-group row mb-2" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("input", {
-              staticClass: "form-control form-control-sm",
-              attrs: {
-                type: "text",
-                placeholder: "Municipi",
-                "aria-label": "Provincia",
-                "aria-describedby": "button-addon2",
-                name: "municipis_id",
-              },
-            }),
-          ]),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
-      _c(
-        "div",
-        {
-          staticClass: "collapse show multi-collapse",
-          attrs: { id: "multiCollapseExample4" },
-        },
-        [
-          _c("div", { staticClass: "form-group row mb-2" }, [
-            _c("div", { staticClass: "col-sm-12" }, [
-              _c("input", {
-                staticClass: "form-control form-control-sm",
-                attrs: {
-                  type: "text",
-                  placeholder: "Comarca",
-                  "aria-label": "Comarca",
-                  "aria-describedby": "button-addon2",
-                },
-              }),
-            ]),
-          ]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
-      _c("div", { staticClass: "col provinciaMunicipio" }, [
-        _c("div", { staticClass: "form-group row mb-2" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("input", {
-              staticClass: "form-control form-control-sm",
-              attrs: {
-                type: "text",
-                placeholder: "Provincia",
-                "aria-label": "Provincia",
-                "aria-describedby": "button-addon2",
-                name: "provincies_id",
-              },
-            }),
-          ]),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-8" }, [
-        _c("h4", [_vm._v("Tipus de localització")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        {
-          staticClass: "col-xl-1 col-sm-2",
-          staticStyle: { "margin-right": "15px" },
-        },
-        [
-          _c("div", { staticClass: "col provinciaMunicipio" }, [
-            _c("div", { staticClass: "form-check form-check-inline " }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: {
-                  type: "radio",
-                  name: "tipus_localitzacions_id",
-                  id: "inlineRadio1",
-                  value: "option1",
-                  "data-bs-toggle": "collapse",
-                  "data-bs-target": "#multiCollapseExample5",
-                  "aria-expanded": "false",
-                  "aria-controls": "multiCollapseExample5",
-                },
-              }),
-              _vm._v(" "),
+            [
               _c(
-                "label",
+                "div",
                 {
-                  staticClass: "form-check-label",
-                  attrs: { for: "inlineRadio1" },
-                },
-                [_vm._v("Provincia")]
-              ),
-            ]),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xl-7 col-sm-9" }, [
-        _c(
-          "div",
-          {
-            staticClass: "collapse show multi-collapse",
-            attrs: { id: "multiCollapseExample4" },
-          },
-          [
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: {
-                  type: "radio",
-                  name: "tipus_localitzacions_id",
-                  id: "inlineRadio2",
-                  value: "option2",
-                  "data-bs-toggle": "collapse",
-                  "data-bs-target": "#multiCollapseExample1",
-                  "aria-expanded": "false",
-                  "aria-controls": "multiCollapseExample1",
-                },
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "inlineRadio2" },
-                },
-                [_vm._v("Carrer")]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: {
-                  type: "radio",
-                  name: "tipus_localitzacions_id",
-                  id: "inlineRadio3",
-                  value: "option3",
-                  "data-bs-toggle": "collapse",
-                  "data-bs-target": "#multiCollapseExample1",
-                  "aria-expanded": "false",
-                  "aria-controls": "multiCollapseExample2",
-                },
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "inlineRadio3" },
-                },
-                [_vm._v("Punt singular")]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: {
-                  type: "radio",
-                  name: "tipus_localitzacions_id",
-                  id: "inlineRadio4",
-                  value: "option4",
-                  "data-bs-toggle": "collapse",
-                  "data-bs-target": "#multiCollapseExample1",
-                  "aria-expanded": "false",
-                  "aria-controls": "multiCollapseExample3",
-                },
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "inlineRadio4" },
-                },
-                [_vm._v("Carretera")]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check form-check-inline" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: {
-                  type: "radio",
-                  name: "tipus_localitzacions_id",
-                  id: "inlineRadio5",
-                  value: "option5",
-                  "data-bs-toggle": "collapse",
-                  "data-bs-target": "#multiCollapseExample5",
-                  "aria-expanded": "false",
-                  "aria-controls": "multiCollapseExample5",
-                },
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "inlineRadio5" },
-                },
-                [_vm._v("Població")]
-              ),
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "col-sm-2 col-navbar-brand-sm",
-                attrs: { href: "#" },
-              },
-              [
-                _c("img", {
-                  attrs: {
-                    src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                    alt: "",
-                    width: "20",
-                    height: "20",
+                  staticClass: "modal-content",
+                  staticStyle: {
+                    "background-color": "rgb(255, 0, 0)",
+                    height: "100px",
                   },
-                }),
-              ]
-            ),
-          ]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c(
-          "div",
-          {
-            staticClass: "collapse multi-collapse",
-            staticStyle: { "margin-top": "1%" },
-            attrs: { id: "multiCollapseExample1" },
-          },
-          [
-            _c("div", { staticClass: "form-group row mb-2 gx-2" }, [
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Descripció",
-                    "aria-label": "Descripció",
-                    "aria-describedby": "button-addon2",
-                    name: "descripcio_localitzacio",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Detall",
-                    "aria-label": "Detall",
-                    "aria-describedby": "button-addon2",
-                    name: "detall_localitzacio",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-3" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Altres referències",
-                    "aria-label": "Altres referències",
-                    "aria-describedby": "button-addon2",
-                    name: "altres_ref_localitzacio",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "col-sm-1 col-navbar-brand-sm",
-                  attrs: { href: "#" },
                 },
                 [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                      alt: "",
-                      width: "20",
-                      height: "20",
-                    },
-                  }),
-                ]
-              ),
-            ]),
-          ]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c(
-          "div",
-          {
-            staticClass: "collapse multi-collapse",
-            staticStyle: { "margin-top": "1%" },
-            attrs: { id: "multiCollapseExample2" },
-          },
-          [
-            _c("div", { staticClass: "form-group row mb-2 gx-2" }, [
-              _c("div", { staticClass: "col-sm-5" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Nom del punt singular",
-                    "aria-label": "Nombre del punto singular",
-                    "aria-describedby": "button-addon2",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Altres referèncias (Opcional)",
-                    "aria-label": "Otras referencias",
-                    "aria-describedby": "button-addon2",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "col-sm-1 col-navbar-brand-sm",
-                  attrs: { href: "#" },
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                      alt: "",
-                      width: "20",
-                      height: "20",
-                    },
-                  }),
-                ]
-              ),
-            ]),
-          ]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c(
-          "div",
-          {
-            staticClass: "collapse multi-collapse",
-            staticStyle: { "margin-top": "1%" },
-            attrs: { id: "multiCollapseExample3" },
-          },
-          [
-            _c("div", { staticClass: "form-group row mb-2 gx-2" }, [
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Nom de la carretera",
-                    "aria-label": "Nombre de la carretera",
-                    "aria-describedby": "button-addon2",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-5" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Altres referències (Opcional)",
-                    "aria-label": "Otras referencias",
-                    "aria-describedby": "button-addon2",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "col-sm-1 col-navbar-brand-sm",
-                  attrs: { href: "#" },
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                      alt: "",
-                      width: "20",
-                      height: "20",
-                    },
-                  }),
-                ]
-              ),
-            ]),
-          ]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col mb-3" }, [
-        _c(
-          "div",
-          {
-            staticClass: "collapse multi-collapse",
-            staticStyle: { "margin-top": "1%" },
-            attrs: { id: "multiCollapseExample5" },
-          },
-          [
-            _c("div", { staticClass: "form-group row mb-2 gx-2" }, [
-              _c("div", { staticClass: "col-sm-11" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Altres referències",
-                    "aria-label": "Otras referencias",
-                    "aria-describedby": "button-addon2",
-                    name: "",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "col-sm-1 col-navbar-brand-sm",
-                  attrs: { href: "#" },
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                      alt: "",
-                      width: "20",
-                      height: "20",
-                    },
-                  }),
-                ]
-              ),
-            ]),
-          ]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 mb-2" }, [
-      _c("h4", [_vm._v("Tipus d'incident")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-5" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-select form-select-sm",
-            attrs: { "aria-label": ".form-select-sm example" },
-          },
-          [
-            _c("option", { attrs: { selected: "" } }, [_vm._v("Tipus")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("One")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Two")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("Three")]),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-select form-select-sm",
-            attrs: {
-              "aria-label": ".form-select-sm example",
-              name: "incidents_id",
-            },
-          },
-          [
-            _c("option", { attrs: { selected: "" } }, [_vm._v("Incident")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("One")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Two")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("Three")]),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-1" }, [
-        _c(
-          "a",
-          { staticClass: "col-sm-2 col-navbar-brand-sm", attrs: { href: "#" } },
-          [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                alt: "",
-                width: "20",
-                height: "20",
-              },
-            }),
-          ]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "card col-12 bordeRedondo zoomCardGrande",
-        staticStyle: { "margin-top": "10px" },
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row col-12" }, [
-            _c("div", { staticClass: "col-12" }, [
-              _c("h4", [_vm._v("Expedients existents")]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12 tablaExpedientesScroll" }, [
-              _c(
-                "table",
-                { staticClass: "table table-hover tablaExpedientes" },
-                [
-                  _c("thead", { staticClass: "table colorTabla" }, [
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "col" } }, [_vm._v("Data")]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Tipus d'incident"),
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Localització"),
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("Direcció"),
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Jacob")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light botonesTabla",
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Seleccionar")]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Jacob")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light botonesTabla",
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Seleccionar")]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Jacob")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light botonesTabla",
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Seleccionar")]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Jacob")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light botonesTabla",
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Seleccionar")]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Jacob")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light botonesTabla",
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Seleccionar")]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Jacob")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light botonesTabla",
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Seleccionar")]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Jacob")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Thornton")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light botonesTabla",
-                            attrs: { type: "submit" },
-                          },
-                          [_vm._v("Seleccionar")]
-                        ),
-                      ]),
-                    ]),
-                  ]),
-                ]
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 mt-3" }, [
-            _c("h4", [_vm._v("Crear expedient")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row col-12 mt-2" }, [
-            _c("div", { staticClass: "col-6" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "btn btn-light botonExpedienteNuevoConRecomendacion",
-                  attrs: {
-                    type: "button",
-                    "data-bs-toggle": "modal",
-                    href: "#exampleModalToggle",
-                    role: "button",
-                  },
-                },
-                [_vm._v("Expedient nou amb recomanació")]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6 " }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-light botonExpedienteNuevo",
-                  attrs: { type: "button" },
-                },
-                [_vm._v("Expedient nou")]
-              ),
-            ]),
-          ]),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "zonaTelefono" }, [
-      _c("div", [
-        _c(
-          "div",
-          {
-            staticClass: "card bordeRedondo zoomCard",
-            staticStyle: { width: "99%", "margin-top": "10px" },
-          },
-          [
-            _c("div", { staticClass: "card-body row mb-0 cronometro" }, [
-              _c("h5", [_vm._v("Nº Trucada")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 mb-0" }, [
-                _c("p", { attrs: { id: "codiTrucadaP" } }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: {
-                    id: "codiTrucada",
-                    name: "codi_trucada",
-                    type: "hidden",
-                    value: "falta",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("h2", { attrs: { id: "crono" } }, [_vm._v("0:00")]),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: {
-                    name: "temps_trucada",
-                    type: "hidden",
-                    value: "",
-                    id: "temps_trucada",
-                  },
-                }),
-              ]),
-            ]),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "card informacionLlamante bordeRedondo zoomCard",
-          staticStyle: { width: "100%", "margin-top": "10px" },
-        },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h5", { staticClass: "card-title" }, [
-              _vm._v("Informació del trucant"),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row mb-2" }, [
-              _c("div", { staticClass: "col-sm-10" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Nom",
-                    "aria-label": "Nom",
-                    "aria-describedby": "button-addon2",
-                    name: "nom_trucada",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "col-sm-2 col-navbar-brand-sm",
-                  attrs: { href: "#" },
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                      alt: "",
-                      width: "20",
-                      height: "20",
-                    },
-                  }),
-                ]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group row mb-2" }, [
-              _c("div", { staticClass: "col-sm-10" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-sm",
-                  attrs: {
-                    type: "number",
-                    placeholder: "Telèfon",
-                    "aria-label": "Telefono",
-                    "aria-describedby": "button-addon2",
-                    id: "telefon",
-                    name: "telefon",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "col-sm-2 col-navbar-brand-sm",
-                  attrs: { href: "#" },
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                      alt: "",
-                      width: "20",
-                      height: "20",
-                    },
-                  }),
-                ]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  attrs: {
-                    for: "exampleFormControlTextarea1",
-                    id: "nota_comuna",
-                  },
-                },
-                [_vm._v("Nota comuna")]
-              ),
-              _vm._v(" "),
-              _c("textarea", {
-                staticClass: "form-control",
-                attrs: {
-                  id: "exampleFormControlTextarea1",
-                  rows: "6",
-                  name: "nota_comuna",
-                },
-              }),
-            ]),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "div",
-          {
-            staticClass: "card procedenciaLlamada bordeRedondo zoomCard",
-            staticStyle: { width: "100%", "margin-top": "10px" },
-          },
-          [
-            _c("div", { staticClass: "card-header" }, [
-              _c("h5", [_vm._v("Procedència de la trucada")]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "form-group row mb-2 gx-1" }, [
-                _c("div", { staticClass: "col-sm-5" }, [
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Procedència",
-                      "aria-label": "Procedencia",
-                      "aria-describedby": "button-addon2",
-                      name: "procedencia_trucada",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-5" }, [
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Origen",
-                      "aria-label": "Origen",
-                      "aria-describedby": "button-addon2",
-                      name: "origen_trucada",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "col-sm-2 col-navbar-brand-sm gx-4",
-                    attrs: { href: "#" },
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                        alt: "",
-                        width: "20",
-                        height: "20",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Municipi",
-                      "aria-label": "Municipi",
-                      "aria-describedby": "button-addon2",
-                      name: "municipis_id_trucada",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "col-sm-2 col-navbar-brand-sm",
-                    attrs: { href: "#" },
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                        alt: "",
-                        width: "20",
-                        height: "20",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Adreça",
-                      "aria-label": "Direccion",
-                      "aria-describedby": "button-addon2",
-                      name: "dades_personals_id_adreca",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "col-sm-2 col-navbar-brand-sm",
-                    attrs: { href: "#" },
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                        alt: "",
-                        width: "20",
-                        height: "20",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-2" }, [
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Informació del telèfon",
-                      "aria-label": "Informacion del telefono",
-                      "aria-describedby": "button-addon2",
-                      name: "dades_personals_id_antecedents",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "col-sm-2 col-navbar-brand-sm gx-2",
-                    attrs: { href: "#" },
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/Imagenes/informacion.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                        alt: "",
-                        width: "20",
-                        height: "20",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
-            ]),
-          ]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade zonaMapa bordeRedondo",
-        attrs: {
-          id: "exampleModalToggle",
-          "data-bs-backdrop": "static",
-          "aria-hidden": "true",
-          "aria-labelledby": "exampleModalToggleLabel",
-          tabindex: "-1",
-        },
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-xl modal-dialog-centered" },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-body" }, [
-                _c("h1", { staticClass: "text-center" }, [
-                  _vm._v("Recomanacions"),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("iframe", {
-                    staticStyle: { border: "0" },
-                    attrs: {
-                      src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977",
-                      width: "100%",
-                      height: "400",
-                      frameborder: "0",
-                      allowfullscreen: "",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row text-center" }, [
-                  _c("div", { staticClass: "col-4 box1 pt-4" }, [
-                    _c("a", { attrs: { href: "tel:+123456789" } }, [
-                      _c("span", [
-                        _c("img", {
-                          staticClass: "imagenAgenciaRecomendacion",
-                          attrs: {
-                            src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/imagenes/cochePolicia.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                          },
-                        }),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "h3",
-                        { staticClass: "d-none d-lg-block d-xl-block" },
-                        [_vm._v("Policia")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "d-none d-lg-block d-xl-block" }, [
-                        _vm._v("Veure policies disponibles"),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-4 box2 pt-4" }, [
-                    _c("a", { attrs: { href: "" } }, [
-                      _c("span", [
-                        _c("img", {
-                          staticClass: "imagenAgenciaRecomendacion2",
-                          attrs: {
-                            src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/imagenes/furgonAmbulancia.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                          },
-                        }),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "h3",
-                        { staticClass: "d-none d-lg-block d-xl-block" },
-                        [_vm._v("Ambulància")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "d-none d-lg-block d-xl-block" }, [
-                        _vm._v("Veure ambulàncies disponibles"),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-4 box3 pt-4" }, [
-                    _c("a", { attrs: { href: "mailto:test@test.com" } }, [
-                      _c("span", [
-                        _c("img", {
-                          staticClass: "imagenAgenciaRecomendacion3",
-                          attrs: {
-                            src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../public/imagenes/camionBomberos.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                          },
-                        }),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "h3",
-                        { staticClass: "d-none d-lg-block d-xl-block" },
-                        [_vm._v("Bombers")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "d-none d-lg-block d-xl-block" }, [
-                        _vm._v("Veure bombers disponibles"),
-                      ]),
-                    ]),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-light crearExpedienteRecomendacion",
-                    attrs: {
-                      "data-bs-target": "#exampleModalToggle2",
-                      "data-bs-toggle": "modal",
-                    },
-                  },
-                  [_vm._v("Crear expedient")]
-                ),
-              ]),
-            ]),
-          ]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "simularLlamada",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalCenterTitle",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" },
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "modal-content",
-                staticStyle: {
-                  "background-color": "rgb(255, 0, 0)",
-                  height: "100px",
-                },
-              },
-              [
-                _c("div", { staticClass: "modal-body" }, [
-                  _c("div", { staticClass: "bodySimuladorLlamada" }, [
-                    _c("div", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-dark",
-                          attrs: {
-                            type: "button",
-                            "data-bs-toggle": "modal",
-                            href: "#Llamada",
-                            role: "button",
-                          },
-                        },
-                        [_vm._v("¡Trucant existent!")]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-dark",
-                          attrs: {
-                            type: "button",
-                            "data-bs-toggle": "modal",
-                            href: "#Llamada",
-                            role: "button",
-                          },
-                        },
-                        [_vm._v("¡Trucant nou!")]
-                      ),
-                    ]),
-                  ]),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade fondoSimuladorLLamada",
-        attrs: {
-          id: "Llamada",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalCenterTitle",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" },
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "modal-content",
-                staticStyle: {
-                  "border-radius": "20px",
-                  "background-color": "rgb(255, 0, 0)",
-                },
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "modal-body tituloSimuladorLlamada" },
-                  [
-                    _c("img", {
-                      staticClass: "card-img-top imagenEmergencia",
-                      attrs: {
-                        src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@../public/Imagenes/Llamada.gif'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                        alt: "Card image cap",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "bodySimuladorLlamada2" }, [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "bodySimuladorLlamada" }, [
                       _c("div", [
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-dark botonCogerLlamada",
+                            staticClass: "btn btn-dark",
                             attrs: {
                               type: "button",
-                              id: "botonCogerLlamada",
-                              "data-bs-dismiss": "modal",
+                              "data-bs-toggle": "modal",
+                              href: "#Llamada",
+                              role: "button",
                             },
                           },
-                          [_vm._v("¡Agafar trucada!")]
+                          [_vm._v("¡Trucant existent!")]
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-dark",
+                            attrs: {
+                              type: "button",
+                              "data-bs-toggle": "modal",
+                              href: "#Llamada",
+                              role: "button",
+                            },
+                          },
+                          [_vm._v("¡Trucant nou!")]
                         ),
                       ]),
                     ]),
-                  ]
-                ),
-              ]
-            ),
-          ]
-        ),
-      ]
-    )
+                  ]),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade fondoSimuladorLLamada",
+          attrs: {
+            id: "Llamada",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalCenterTitle",
+            "aria-hidden": "true",
+          },
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-content",
+                  staticStyle: {
+                    "border-radius": "20px",
+                    "background-color": "rgb(255, 0, 0)",
+                  },
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "modal-body tituloSimuladorLlamada" },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top imagenEmergencia",
+                        attrs: {
+                          src: "/public/Imagenes/Llamada.gif",
+                          alt: "Card image cap",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "bodySimuladorLlamada2" }, [
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-dark botonCogerLlamada",
+                              attrs: {
+                                type: "button",
+                                id: "botonCogerLlamada",
+                                "data-bs-dismiss": "modal",
+                              },
+                            },
+                            [_vm._v("¡Agafar trucada!")]
+                          ),
+                        ]),
+                      ]),
+                    ]
+                  ),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+    ])
   },
 ]
 render._withStripped = true

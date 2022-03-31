@@ -5,7 +5,7 @@
 
                 <div>
                     <div class="card bordeRedondo zoomCardGrande" style="width: 100%; margin-top: 10px;">
-                        <img class="card-img-top imagenEmergencia" src="../public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
+                        <img class="card-img-top imagenEmergencia" src="/public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
 
                         <div class="card-body">
                             <div class="simuladorLlamada">
@@ -26,7 +26,7 @@
                                     <label class="form-check-label" for="fora_catalunya">Fora de Catalunya</label>
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                                 </a>
                             </div>
 
@@ -69,7 +69,7 @@
                                 <div class="col-1">
 
                                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                        <img alt="" width="20" height="20" v-bind:src="require('../public/Imagenes/informacion.png')">
+                                        <img alt="" width="20" height="20" src="/public/Imagenes/informacion.png">
                                     </a>
 
                                 </div>
@@ -114,7 +114,7 @@
                                             <label class="form-check-label" for="inlineRadio5">Població</label>
                                         </div>
                                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                            <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                            <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                         </a>
 
                                     </div>
@@ -137,7 +137,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Altres referències" aria-describedby="button-addon2" name="altres_ref_localitzacio">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                                 </a>
                                             </div>
 
@@ -159,7 +159,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referèncias (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                                 </a>
                                             </div>
 
@@ -180,7 +180,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referències (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                                 </a>
                                             </div>
 
@@ -198,7 +198,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Otras referencias" aria-describedby="button-addon2" name="">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                                 </a>
                                             </div>
 
@@ -235,7 +235,7 @@
                                 <div class="col-1">
 
                                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                        <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                        <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                     </a>
 
                                 </div>
@@ -368,7 +368,7 @@
                                 <input type="text" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2" name="nom_trucada">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                             </a>
                         </div>
                         <div class="form-group row mb-2">
@@ -376,7 +376,7 @@
                                 <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                             </a>
                         </div>
 
@@ -404,7 +404,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Origen" aria-label="Origen" aria-describedby="button-addon2" name="origen_trucada">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
-                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -413,7 +413,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipi" aria-describedby="button-addon2" name="municipis_id_trucada">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -422,7 +422,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Adreça" aria-label="Direccion" aria-describedby="button-addon2" name="dades_personals_id_adreca">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -431,7 +431,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Informació del telèfon" aria-label="Informacion del telefono" aria-describedby="button-addon2" name="dades_personals_id_antecedents">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm gx-2" href="#">
-                                    <img src="../public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -456,17 +456,17 @@
                         </div>
                         <div class="row text-center">
                             <div class="col-4 box1 pt-4">
-                                <a href="tel:+123456789"><span><img src="../public/imagenes/cochePolicia.png" class="imagenAgenciaRecomendacion"></span>
+                                <a href="tel:+123456789"><span><img src="/public/imagenes/cochePolicia.png" class="imagenAgenciaRecomendacion"></span>
                                 <h3 class="d-none d-lg-block d-xl-block">Policia</h3>
                                 <p class="d-none d-lg-block d-xl-block">Veure policies disponibles</p></a>
                             </div>
                             <div class="col-4 box2 pt-4">
-                                <a href=""><span><img src="../public/imagenes/furgonAmbulancia.png" class="imagenAgenciaRecomendacion2"></span>
+                                <a href=""><span><img src="/public/imagenes/furgonAmbulancia.png" class="imagenAgenciaRecomendacion2"></span>
                                 <h3 class="d-none d-lg-block d-xl-block">Ambulància</h3>
                                 <p class="d-none d-lg-block d-xl-block">Veure ambulàncies disponibles</p></a>
                             </div>
                             <div class="col-4 box3 pt-4">
-                                <a href="mailto:test@test.com"><span><img src="../public/imagenes/camionBomberos.png" class="imagenAgenciaRecomendacion3"></span>
+                                <a href="mailto:test@test.com"><span><img src="/public/imagenes/camionBomberos.png" class="imagenAgenciaRecomendacion3"></span>
                                 <h3 class="d-none d-lg-block d-xl-block">Bombers</h3>
                                 <p class="d-none d-lg-block d-xl-block">Veure bombers disponibles</p></a>
                             </div>
@@ -498,7 +498,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document" >
                 <div class="modal-content" style="border-radius: 20px; background-color:rgb(255, 0, 0)">
                     <div class="modal-body tituloSimuladorLlamada">
-                        <img class="card-img-top imagenEmergencia" src="../public/Imagenes/Llamada.gif" alt="Card image cap" >
+                        <img class="card-img-top imagenEmergencia" src="./public/Imagenes/Llamada.gif" alt="Card image cap" >
                         <div class="bodySimuladorLlamada2">
                             <div>
                                 <button type="button" class="btn btn-dark botonCogerLlamada" id="botonCogerLlamada" data-bs-dismiss='modal'>¡Agafar trucada!</button>
