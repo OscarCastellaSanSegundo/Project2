@@ -2,4 +2,42 @@
 .principalEstadisticas{
     width: 90%;
     height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.principalEstadisticas div{
+    width: 45%;
+}
+
+.grafico1{
+    background-color: antiquewhite;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.grafico2{
+    background-color: antiquewhite;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.grafico3{
+    background-color: antiquewhite;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.generalEstadisticas{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.grafico2i3 div{
+    width: 100%;
+    height: 35%;
 }
