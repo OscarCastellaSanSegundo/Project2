@@ -7,25 +7,32 @@
     justify-content: space-between;
 }
 
-.principalEstadisticas div{
-    width: 45%;
+
+.carroselEstadisticas{
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .grafico1{
     background-color: antiquewhite;
-    border-radius: 15px;
+    border-radius: 30px;
     padding: 20px;
+    width: 99%;
+    border: 10px solid rgb(0, 0, 0);
 }
 
 .grafico2{
     background-color: antiquewhite;
-    border-radius: 15px;
+    border: 10px solid rgb(0, 0, 0);
+    border-radius: 30px;
     padding: 20px;
+    width: 99%;
 }
 
 .grafico3{
     background-color: antiquewhite;
-    border-radius: 15px;
+    border-radius: 30px;
     padding: 20px;
 }
 
@@ -40,4 +47,9 @@
 .grafico2i3 div{
     width: 100%;
     height: 35%;
+}
+
+.carrouselInnerEstadisticas{
+    width: 80%;
+    margin-left: 10%;
 }

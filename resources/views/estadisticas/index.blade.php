@@ -32,9 +32,42 @@ Expedients
 @endsection
 
 @section('contenido')
+
 <div class="generalEstadisticas">
     <div class="principalEstadisticas">
-        <div class="grafico2i3">
+        <div id="carouselExampleCaptions" class="carousel slide carroselEstadisticas" data-bs-ride="carousel">
+            <div class="carousel-indicators" style="margin-bottom: -20px;">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 50px; height: 7px;"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" style="width: 50px; height: 7px;"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" style="width: 50px; height: 7px;"></button>
+            </div>
+            <div class="carousel-inner carrouselInnerEstadisticas">
+              <div class="carousel-item active grafico1" data-bs-interval="999999999">
+                    <div>
+                        <canvas id="myChart2" ></canvas>
+                    </div>
+              </div>
+              <div class="carousel-item grafico1" data-bs-interval="999999999">
+                <div>
+                    <canvas id="myChart3" ></canvas>
+                </div>
+              </div>
+              <div class="carousel-item grafico2" data-bs-interval="999999999">
+                <div style="width: 50%; margin-left: 25%">
+                    <canvas id="myChart" ></canvas>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true" style="width: 45px; height: 90px"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true" style="width: 45px; height: 90px"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        {{-- <div class="grafico2i3">
             <div>
                 <canvas id="myChart2" class="grafico1"></canvas>
             </div>
@@ -44,7 +77,7 @@ Expedients
         </div>
         <div>
             <canvas id="myChart" class="grafico2"></canvas>
-        </div>
+        </div> --}}
     </div>
 </div>
 
