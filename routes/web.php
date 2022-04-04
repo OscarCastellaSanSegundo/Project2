@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ExpedientController;
 use App\Http\Controllers\UsuariController;
+use App\Http\Controllers\ExpedientController;
+use App\Http\Controllers\EstadisticasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,10 +71,11 @@ Route::middleware(['auth'])->group(function () {
         return view('administracion.index', compact('user'));
     });
 
-    Route::get('/estadisticas', function () {
-        $user = Auth::user();
-        return view('estadisticas.index', compact('user'));
-    });
+    // Route::get('/estadisticas', function () {
+    //     $user = Auth::user();
+    //     return view('estadisticas.index', compact('user'));
+    // });
+    Route::resource('estadisticas', EstadisticasController::class );
     Route::resource('expedientes', ExpedientController::class );
     Route::resource('usuarios', UsuariController::class );
 });
