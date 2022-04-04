@@ -5,12 +5,16 @@
 
                 <div>
                     <div class="card bordeRedondo zoomCardGrande" style="width: 100%; margin-top: 10px;">
-                        <img class="card-img-top imagenEmergencia" src="/public/Imagenes/EMERGENCIA3.png" alt="Card image cap">
+                        <img class="card-img-top imagenEmergencia" :src="imagenCabecera" alt="Card image cap">
 
                         <div class="card-body">
                             <div class="simuladorLlamada">
                                 <div>
                                     <h4 class="card-title">Localització de la Emergencia</h4>
+                                    <div>
+                                        <vue-bootstrap-typeahead @hit="onMunicipiSel" :serializer="serializarValor"
+                                        v-model="busquedaMunicipi" :data="municipis" placeholder="municipis" />
+                                    </div>
                                 </div>
 
                                 <div>
@@ -26,7 +30,7 @@
                                     <label class="form-check-label" for="fora_catalunya">Fora de Catalunya</label>
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                                 </a>
                             </div>
 
@@ -60,6 +64,9 @@
 
                                         <div class="form-group row mb-2">
                                             <div class="col-sm-12">
+                                                <select class="form-control" name="provincies_id" id="provincies_id">
+                                                    <option v-for="provincia in provincies" :key="provincia.id" :value="provincia.id">{{ provincia.nom }}</option>
+                                                </select>
                                                 <input type="text" class="form-control form-control-sm" placeholder="Provincia" aria-label="Provincia" aria-describedby="button-addon2" name="provincies_id">
                                             </div>
                                         </div>
@@ -69,7 +76,7 @@
                                 <div class="col-1">
 
                                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                        <img alt="" width="20" height="20" src="/public/Imagenes/informacion.png">
+                                        <img alt="" width="20" height="20" :src="imagenHelpbox">
                                     </a>
 
                                 </div>
@@ -114,7 +121,7 @@
                                             <label class="form-check-label" for="inlineRadio5">Població</label>
                                         </div>
                                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                            <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                            <img :src="imagenHelpbox" alt="" width="20" height="20">
                                         </a>
 
                                     </div>
@@ -137,7 +144,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Altres referències" aria-describedby="button-addon2" name="altres_ref_localitzacio">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
                                                 </a>
                                             </div>
 
@@ -146,48 +153,7 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="row">
-                                <div class="col">
-                                    <div class="collapse multi-collapse" id="multiCollapseExample2" style="margin-top: 1%">
 
-
-                                            <div class="form-group row mb-2 gx-2">
-                                                <div class="col-sm-5">
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Nom del punt singular" aria-label="Nombre del punto singular" aria-describedby="button-addon2">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Altres referèncias (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
-                                                </div>
-                                                <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
-                                                </a>
-                                            </div>
-
-
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col">
-                                    <div class="collapse multi-collapse" id="multiCollapseExample3" style="margin-top: 1%">
-
-
-                                            <div class="form-group row mb-2 gx-2">
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Nom de la carretera" aria-label="Nombre de la carretera" aria-describedby="button-addon2">
-                                                </div>
-                                                <div class="col-sm-5">
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Altres referències (Opcional)" aria-label="Otras referencias" aria-describedby="button-addon2">
-                                                </div>
-                                                <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
-                                                </a>
-                                            </div>
-
-
-                                    </div>
-                                </div>
-                            </div> --}}
                             <div class="row">
                                 <div class="col mb-3">
                                     <div class="collapse multi-collapse" id="multiCollapseExample5" style="margin-top: 1%">
@@ -198,7 +164,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Otras referencias" aria-describedby="button-addon2" name="">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
                                                 </a>
                                             </div>
 
@@ -214,11 +180,8 @@
                             <div class="row">
                                 <div class="col-5">
 
-                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                        <option selected>Tipus</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select class="form-control" name="tipus_incident" id="tipus_incident">
+                                        <option v-for="tipusIncident in tipusIncidents" :key="tipusIncident.id" :value="tipusIncident.id">{{ tipusIncident.descripcio }}</option>
                                     </select>
 
                                 </div>
@@ -235,7 +198,7 @@
                                 <div class="col-1">
 
                                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                        <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                        <img :src="imagenHelpbox" alt="" width="20" height="20">
                                     </a>
 
                                 </div>
@@ -368,7 +331,7 @@
                                 <input type="text" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2" name="nom_trucada">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                <img :src="imagenHelpbox" alt="" width="20" height="20">
                             </a>
                         </div>
                         <div class="form-group row mb-2">
@@ -376,7 +339,7 @@
                                 <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                <img :src="imagenHelpbox" alt="" width="20" height="20">
                             </a>
                         </div>
 
@@ -404,7 +367,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Origen" aria-label="Origen" aria-describedby="button-addon2" name="origen_trucada">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
-                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -413,7 +376,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipi" aria-describedby="button-addon2" name="municipis_id_trucada">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -422,7 +385,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Adreça" aria-label="Direccion" aria-describedby="button-addon2" name="dades_personals_id_adreca">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -431,7 +394,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Informació del telèfon" aria-label="Informacion del telefono" aria-describedby="button-addon2" name="dades_personals_id_antecedents">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm gx-2" href="#">
-                                    <img src="/public/Imagenes/informacion.png" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
                                 </a>
                             </div>
 
@@ -456,17 +419,17 @@
                         </div>
                         <div class="row text-center">
                             <div class="col-4 box1 pt-4">
-                                <a href="tel:+123456789"><span><img src="/public/imagenes/cochePolicia.png" class="imagenAgenciaRecomendacion"></span>
+                                <a href="tel:+123456789"><span><img :src="imagenPolicia" class="imagenAgenciaRecomendacion"></span>
                                 <h3 class="d-none d-lg-block d-xl-block">Policia</h3>
                                 <p class="d-none d-lg-block d-xl-block">Veure policies disponibles</p></a>
                             </div>
                             <div class="col-4 box2 pt-4">
-                                <a href=""><span><img src="/public/imagenes/furgonAmbulancia.png" class="imagenAgenciaRecomendacion2"></span>
+                                <a href=""><span><img :src="imagenAmbulancia" class="imagenAgenciaRecomendacion2"></span>
                                 <h3 class="d-none d-lg-block d-xl-block">Ambulància</h3>
                                 <p class="d-none d-lg-block d-xl-block">Veure ambulàncies disponibles</p></a>
                             </div>
                             <div class="col-4 box3 pt-4">
-                                <a href="mailto:test@test.com"><span><img src="/public/imagenes/camionBomberos.png" class="imagenAgenciaRecomendacion3"></span>
+                                <a href="mailto:test@test.com"><span><img :src="imagenBomberos" class="imagenAgenciaRecomendacion3"></span>
                                 <h3 class="d-none d-lg-block d-xl-block">Bombers</h3>
                                 <p class="d-none d-lg-block d-xl-block">Veure bombers disponibles</p></a>
                             </div>
@@ -498,7 +461,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document" >
                 <div class="modal-content" style="border-radius: 20px; background-color:rgb(255, 0, 0)">
                     <div class="modal-body tituloSimuladorLlamada">
-                        <img class="card-img-top imagenEmergencia" src="./public/Imagenes/Llamada.gif" alt="Card image cap" >
+                        <img class="card-img-top imagenEmergencia" :src="imagenEmergencia" alt="Card image cap" >
                         <div class="bodySimuladorLlamada2">
                             <div>
                                 <button type="button" class="btn btn-dark botonCogerLlamada" id="botonCogerLlamada" data-bs-dismiss='modal'>¡Agafar trucada!</button>
@@ -516,13 +479,111 @@
 
         data(){
             return{
-                cicles:[]
+                imagenEmergencia: 'http://localhost/Project2/public/imagenes/Llamada.gif',
+                imagenCabecera: 'http://localhost/Project2/public/imagenes/EMERGENCIA3.png',
+                imagenHelpbox: 'http://localhost/Project2/public/imagenes/informacion.png',
+                imagenPolicia: 'http://localhost/Project2/public/imagenes/cochePolicia.png',
+                imagenAmbulancia: 'http://localhost/Project2/public/imagenes/furgonAmbulancia.png',
+                imagenBomberos: 'http://localhost/Project2/public/imagenes/camionBomberos.png',
+                municipis: [],
+                provincies: [],
+                comarques: [],
+                tipusIncidents: [],
+                incidents: [],
+                expedients: [],
+                busquedaMunicipi: "",
+                municipiSel: {},
+                comarcaId: null,
+                comarca: {}
+
+            }
+        },
+        methods: {
+            selectAll(){
+                let me = this;
+                axios
+                    .get('/provincia')
+                    .then( response => {
+                        me.provincies = response.data;
+                    })
+                    .catch( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+
+                let me2 = this;
+                axios
+                    .get('/municipi')
+                    .then( response => {
+                        me2.municipis = response.data;
+                    })
+                    .catch( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+
+                let me3 = this;
+                axios
+                    .get('/comarca')
+                    .then( response => {
+                        me3.comarques = response.data;
+                    })
+                    .catch( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+
+                let me4 = this;
+                axios
+                    .get('/tipusIncident')
+                    .then( response => {
+                        me4.tipusIncidents = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+
+                let me5 = this;
+                axios
+                    .get('/incident')
+                    .then( response => {
+                        me5.incidents = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+                let me6 = this;
+                axios
+                    .get('/expedient')
+                    .then( response => {
+                        me6.expedients = response.data;
+                    })
+                    .finally(() => this.loading = false)
+
+
+            },
+            // Función que convierte el objeto a cadena. Es llamado para mostrarse en la lista
+            serializarValor(municipi) {
+                return municipi.nom;
+            },
+            onMunicipiSel(municipi) {
+                this.municipiSel = municipi;
+                this.comarcaId = municipi.comarques_id;
+                selComarca();
+            },
+            selComarca(){
+                this.comarca = comarques[this.comarcaId];
             }
         },
         created(){
-
-
-
+            this.selectAll();
         },
 
         mounted() {
