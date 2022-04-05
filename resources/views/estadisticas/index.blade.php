@@ -129,7 +129,7 @@ Expedients
             'Accidents',
             'Assistència sanitària',
             'Incendi',
-            'Fuita (Aigua, gas, altres)',
+            'Fuita',
             'Altres incidències',
             'Seguretat',
             'Trànsit',

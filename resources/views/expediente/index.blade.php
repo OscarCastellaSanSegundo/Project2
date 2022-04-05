@@ -41,12 +41,6 @@ Expedients
 
                                 <div class="btn-group" role="group">
                                     <button id="mostrarTot" type="submit" value="mostrarTot" name="mostrarTot" class="btn btn-primary" >
-                                    buscar
-                                    </button>
-                                </div>
-
-                                <div class="btn-group" role="group">
-                                    <button id="mostrarTot" type="submit" value="mostrarTot" name="mostrarTot" class="btn btn-primary" >
                                     Mostrar Tot
                                     </button>
                                 </div>
@@ -318,8 +312,7 @@ Expedients
                         </div>
                     @endif
 
-                    <?php $policia = null ?>
-                    <?php $bomberos = null ?>
+
                 </div>
             </div>
         </div>
@@ -355,14 +348,16 @@ Expedients
             </div>
         </div>
     </div>
-@endforeach
 
 
 
-</div>
 
 
-@foreach ($expedients as $expedient )
+
+
+
+
+
 <div class="modal fade bordeRedondo zonaExpedienteAbierto3" id="abrirExpediente{{ $expedient->id }}" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="abrirExpediente{{ $expedient->id }}Label" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered zonaExpedienteAbierto2 ">
         <div class="modal-content expedienteModal zonaExpedienteAbierto">
@@ -424,6 +419,9 @@ Expedients
                                             </div>
                                         </div>
                                     @endif
+
+                                    <?php $policia = null ?>
+                                    <?php $bomberos = null ?>
                                 </div>
                             </div>
                         </div>
@@ -449,7 +447,7 @@ Expedients
                                                     <h4>Informació del trucant </h4>
                                                 </div>
                                                 <div class="tempsTrucadaModal">
-                                                    <h2>Temps trucada: {{ $cartaTrucada->temps_trucada }}s</h2>
+                                                    Temps trucada: {{ $cartaTrucada->temps_trucada }}s
                                                 </div>
                                             </div>
 
@@ -655,6 +653,10 @@ Expedients
     </div>
 </div>
 
+<?php $policia = null ?>
+<?php $bomberos = null ?>
+
 @endforeach
+</div>
 
 @endsection
