@@ -413,7 +413,14 @@
 
                             <h1 class="text-center">Recomanacions</h1>
                             <div class="row" >
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+<!--                   
+                  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+                   <div id="map"></div> -->
+
+
+                         
+                         
                             </div>
                             <div class="row text-center">
                                 <div class="col-4 box1 pt-4">
@@ -472,8 +479,50 @@
         </form>
     </div>
 </template>
+        <style>
+        #marker {
+        background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        }
+        
+        .mapboxgl-popup {
+        max-width: 200px;
+        }
+        </style>
 
-<script>
+        <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        </style>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wxbTF5ejhrMGcwcjNwbzNtNDF6eHhrZyJ9.6m-p-hYwQ54P0zV-vn7Qfw';
+        const monument = [-77.0353, 38.8895];
+        const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: monument,
+        zoom: 15
+        });
+        
+        // create the popup
+        const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Construction on the Washington Monument began in 1848.'
+        );
+        
+        // create DOM element for the marker
+        const el = document.createElement('div');
+        el.id = 'marker';
+        
+        // create the marker
+        new mapboxgl.Marker(el)
+        .setLngLat(monument)
+        .setPopup(popup) // sets a popup on this marker
+        .addTo(map);
     export default {
 
         data(){
