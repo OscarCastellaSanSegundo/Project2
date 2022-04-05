@@ -90,6 +90,7 @@
     border-radius: 6px;
     display: flex;
     margin-top: 3px;
+    border-radius: 15px;
 }
 
 .imagenMapa{
@@ -139,11 +140,23 @@ box-shadow: 0px 0px 13px -7px rgba(0,0,0,0.75);
     width: 32%;
     height: 100%;
     border-radius: 15px;
-    border: black 2px solid;
+
     /* filter: brightness(50%); */
     /* filter: opacity(60%); */
     display: flex;
     flex-direction: row;
+}
+
+.agencia1{
+    border: rgb(61, 89, 180) 2px solid;
+}
+
+.agencia2{
+    border: rgb(255, 0, 0) 2px solid;
+}
+
+.agencia3{
+    border: rgb(251, 255, 0) 2px solid;
 }
 
 .barraNav .card{
@@ -169,34 +182,36 @@ box-shadow: 0px 0px 13px -7px rgba(0,0,0,0.75);
     padding-right: 20px;
 }
 
-.principalExpedientes::-webkit-scrollbar {
+::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
-.principalExpedientes::-webkit-scrollbar:vertical {
+::-webkit-scrollbar:vertical {
     width: 10px;
 }
 
-.principalExpedientes::-webkit-scrollbar-button:increment,.principalExpedientes::-webkit-scrollbar-button {
+::-webkit-scrollbar-button:increment,::-webkit-scrollbar-button {
     display: none;
 
 
 }
 
-.principalExpedientes::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: #ffffff;
     width: 20px;
     border-radius: 20px;
     /* border: 2px solid #ffffff; */
 }
 
-.principalExpedientes::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: black;
     background-size: 2px;
 
     margin: 200px;
 }
+
+
 
 /* ::-webkit-scrollbar {display: none;} */
 
@@ -245,6 +260,10 @@ box-shadow: 0px 0px 13px -7px rgba(0,0,0,0.75);
 .verEditarExpedienteFooter{
     padding: 0;
     display: inline-grid;
+}
+
+.verEditarExpedienteFooter .verEditarExpediente a{
+    border-radius: 20px;
 }
 
 .verEditarExpediente{
@@ -314,6 +333,10 @@ html, body {
      justify-content: space-between;
  }
 
+ .footerExpedienteAbierto a{
+    border-radius: 20px;
+}
+
  .zonaExpedienteAbierto{
      height: 80%;
  }
@@ -381,6 +404,17 @@ html, body {
     padding: 1%;
  }
 
+ .modalExpedienteZonaCartas .accordion-header button{
+    border-radius: 15px !important;
+    background-color: #ececec80;
+    margin-top: 5px;
+    border: 1px solid rgb(184, 184, 184);
+ }
+
+ .modalExpedienteZonaCartas input{
+    border-radius: 10px;
+ }
+
  .modalMapaExpediente{
      width: 100%;
      height: 100%;
@@ -402,6 +436,39 @@ html, body {
 }
 
 .tempsTrucadaModal{
-    background-color: rgb(5, 172, 5);
-    padding: 5px;
+    background-color: rgb(138 231 138);
+    padding: 10px;
+    font-size: x-large;
+    border-radius: 30px;
+    font-weight: 600;
+    border: 2px solid #20cc20;
+}
+
+.modalExpedienteZonaCartas::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.modalExpedienteZonaCartas::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.modalExpedienteZonaCartas::-webkit-scrollbar-button:increment,::-webkit-scrollbar-button {
+    display: none;
+
+
+}
+
+.modalExpedienteZonaCartas::-webkit-scrollbar-thumb {
+    background-color: #d3c8c8;
+    width: 20px;
+    border-radius: 20px;
+    /* border: 2px solid #ffffff; */
+}
+
+.modalExpedienteZonaCartas::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: black;
+    background-size: 2px;
+
+    margin: 200px;
 }

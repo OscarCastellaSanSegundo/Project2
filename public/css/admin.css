@@ -128,3 +128,32 @@
     display: flex;
     justify-content: space-between;
 }
+
+.informacionTablaUsuarioAdmin{
+    font-weight: 600;
+    font-size: larger;
+    padding: 3px;
+    margin-left: 26px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+
+}
+
+@media screen and (max-width: 1334px) {
+    .informacionTablaUsuarioAdmin{
+        width: 74%;
+    }
+  }
+
+  @media screen and (min-width: 1335px) {
+    .informacionTablaUsuarioAdmin{
+        width: 76%;
+    }
+  }
+
+  @media screen and (min-width: 1700px) {
+    .informacionTablaUsuarioAdmin{
+        width: 77%;
+    }
+  }
