@@ -53,7 +53,7 @@ Expedients
 
                                 <div class="btn-group" role="group">
                                     <button id="btnGroupDrop6" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Tipús de localització
+                                    Tipus de localització
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop6">
                                         <li><div class="form-check">
@@ -66,7 +66,7 @@ Expedients
                                         <li><div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="true" name="entitatPoblacio1" id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
-                                              entitat poblacio
+                                              entitat població
                                             </label>
                                           </div>
                                         </li>
@@ -79,16 +79,16 @@ Expedients
 
                                 <div class="btn-group" role="group">
                                     <button id="btnGroupDrop5" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Tipús d'incident
+                                    Tipus d'incident
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop5">
                                         <li><button class="dropdown-item" type="submit" id="accident">Accident</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="assistenciaSanitaria">Assistencia sanitària</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="assistenciaSanitaria">Assistència sanitària</button></li>
                                         <li><button class="dropdown-item" type="submit" id="incendi">Incendi</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="fuita">Fuita (Aigua, gas, altres)</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="altresIncidencies">Altres incidencies</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="fuita">Fuita </button></li>
+                                        <li><button class="dropdown-item" type="submit" id="altresIncidencies">Altres incidències</button></li>
                                         <li><button class="dropdown-item" type="submit" id="seguretat">Seguretat</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="transit">Transit</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="transit">Trànsit</button></li>
                                         <li><button class="dropdown-item" type="submit" id="civisme">Civisme</button></li>
                                         <li><button class="dropdown-item" type="submit" id="mediAmbient">Medi ambient</button></li>
                                         <li><button class="dropdown-item" type="submit" id="meteorologia">Meteorologia</button></li>
@@ -110,7 +110,7 @@ Expedients
 
                                 <div class="btn-group" role="group">
                                     <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Agencies enviades
+                                    Agències enviades
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop3">
                                         <li><button class="dropdown-item" type="submit" id="policia">Policia</button></li>
@@ -124,7 +124,7 @@ Expedients
                                     Estat expedient
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-                                        <li><button class="dropdown-item" type="submit" id="enProces">En proces</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="enProces">En procès</button></li>
                                         <li><button class="dropdown-item" type="submit" id="solicitat">Sol·licitat</button></li>
                                         <li><button class="dropdown-item" type="submit" id="acceptat">Acceptat</button></li>
                                         <li><button class="dropdown-item" type="submit" id="tancat">Tancat</button></li>
@@ -137,8 +137,8 @@ Expedients
                                         Data
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <li><button class="dropdown-item" type="submit" id="carrer">Mes recents</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="carrer">Mes antics</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="carrer">Més recents</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="carrer">Més antics</button></li>
                                     </ul>
                                 </div>
                             </div>
@@ -367,7 +367,7 @@ Expedients
     <div class="modal-dialog modal-xl modal-dialog-centered zonaExpedienteAbierto2 ">
         <div class="modal-content expedienteModal zonaExpedienteAbierto">
             <div class="modal-header tituloExpedienteModal">
-                <h5 class="modal-title Nexpediente" id="abrirExpedienteLabel">Nº expediente: {{ $expedient->id }}</h5>
+                <h5 class="modal-title Nexpediente" id="abrirExpedienteLabel">Nº expedient: {{ $expedient->id }}</h5>
                 <h5 class="modal-title Ntrucades">Nº trucades: {{ $expedient->cartesTrucada->count() }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -436,7 +436,7 @@ Expedients
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $cartaTrucada->id }}" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Nº llamada: {{ $cartaTrucada->codi_trucada }}
+                                        Nº Trucada: {{ $cartaTrucada->codi_trucada }}
                                     </button>
                                 </h2>
                                 <div id="flush-collapseOne{{ $cartaTrucada->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#cartaTrucada{{ $cartaTrucada->id }}">
@@ -446,7 +446,7 @@ Expedients
 
                                             <div class="tempsInformacioModal">
                                                 <div>
-                                                    <h4>Informacio del trucant </h4>
+                                                    <h4>Informació del trucant </h4>
                                                 </div>
                                                 <div class="tempsTrucadaModal">
                                                     <h2>Temps trucada: {{ $cartaTrucada->temps_trucada }}s</h2>
@@ -462,7 +462,7 @@ Expedients
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group mt-3">
-                                                        <label for="exampleFormControlTextarea1">Telefon</label>
+                                                        <label for="exampleFormControlTextarea1">Telèfon</label>
                                                         <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->telefon }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
@@ -471,7 +471,7 @@ Expedients
                                             <div class="form-group row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group mb-4">
-                                                        <label for="exampleFormControlTextarea1">Descripcio dels fets</label>
+                                                        <label for="exampleFormControlTextarea1">Descripció dels fets</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4">{{ $cartaTrucada->nota_comuna }}</textarea>
                                                     </div>
                                                 </div>
@@ -480,7 +480,7 @@ Expedients
                                             <div class="form-group row mt-0">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Procedencia</label>
+                                                        <label for="exampleFormControlTextarea1">Procedència</label>
                                                         <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->procedencia_trucada }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
@@ -495,7 +495,7 @@ Expedients
                                             <div class="form-group row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Direccio</label>
+                                                        <label for="exampleFormControlTextarea1">Direcció</label>
                                                         <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->adreca_trucada }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
@@ -504,13 +504,13 @@ Expedients
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group mb-4">
-                                                        <label for="exampleFormControlTextarea1">Informacion del telefono</label>
+                                                        <label for="exampleFormControlTextarea1">Informació del telefon</label>
                                                         <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->dadesPersonals->antecedents }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <h4>Localitzacio de la emergencia</h4>
+                                            <h4>Localització emergència</h4>
 
                                             @if ($cartaTrucada->fora_catalunya  == true)
                                                 <div class="form-check form-check-inline">
@@ -533,7 +533,7 @@ Expedients
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlTextarea1">Provincia</label>
+                                                        <label for="exampleFormControlTextarea1">Província</label>
                                                         <input class="form-control form-control-sm" type="text" value="{{ $cartaTrucada->provincia->nom }}" aria-label="Disabled input example" disabled readonly>
                                                     </div>
                                                 </div>
