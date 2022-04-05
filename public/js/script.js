@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         codigo = 0;
 
 
-/*         crearCodigo(); */
+        crearCodigo();
 
 /*         document.getElementById("temps_trucada").setAttribute('value',segundosContador); */
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function crearCodigo() {
 
         codigo = Date.now();
-        let codigoFinal = String(codigo).slice(-10)
+        let codigoFinal = String(codigo).slice(-12)
         codigoLlamada.innerHTML = codigoFinal;
     }
 
