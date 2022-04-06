@@ -5761,6 +5761,8 @@ __webpack_require__.r(__webpack_exports__);
       estatExpedients: [],
       agencies: [],
       dadesPersonals: [],
+      cartesTrucada: [],
+      cartesTrucada2: {},
       busquedaMunicipi: "",
       municipiSel: {},
       comarcaId: "",
@@ -5864,24 +5866,54 @@ __webpack_require__.r(__webpack_exports__);
       var me6 = this;
       axios.get('/expedient').then(function (response) {
         me6.expedients = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
       })["finally"](function () {
         return _this.loading = false;
       });
       var me7 = this;
       axios.get('/estatExpedient').then(function (response) {
         me7.estatExpedients = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
       })["finally"](function () {
         return _this.loading = false;
       });
       var me8 = this;
       axios.get('/agencia').then(function (response) {
         me8.agencies = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
       })["finally"](function () {
         return _this.loading = false;
       });
       var me9 = this;
       axios.get('/dadesPersonals').then(function (response) {
         me9.dadesPersonals = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
+      })["finally"](function () {
+        return _this.loading = false;
+      });
+      var me10 = this;
+      axios.get('/cartaTrucada').then(function (response) {
+        me10.cartesTrucada = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
+      })["finally"](function () {
+        return _this.loading = false;
+      });
+      var me11 = this;
+      axios.get('/cartaTrucada/1').then(function (response) {
+        me11.cartesTrucada2 = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
       })["finally"](function () {
         return _this.loading = false;
       });
@@ -5892,9 +5924,23 @@ __webpack_require__.r(__webpack_exports__);
     },
     onMunicipiSel: function onMunicipiSel(municipi) {
       this.municipiSel = municipi;
-      this.comarcaId = municipi.comarques_id;
-      this.comarcaNom = this.comarques[this.comarcaId - 2].nom;
-      this.provinciaNom = this.provincies[this.comarques[this.comarcaId - 1].provincies_id - 1].nom;
+      var i = 0;
+
+      while (this.comarques.length > i) {
+        if (municipi.comarques_id == this.comarques[i].id) {
+          this.comarcaId = municipi.comarques_id - 2;
+          this.comarcaNom = this.comarques[this.comarcaId].nom;
+          this.cartaTrucada.provincies_id = this.provincies[this.comarques[this.comarcaId].provincies_id].id;
+        }
+
+        i++;
+      }
+
+      this.cartaTrucada.municipis_id = municipi.id;
+      /*                 this.comarcaId = municipi.comarques_id; */
+
+      this.comarcaNom = this.comarques[this.comarcaId].nom;
+      this.provinciaNom = this.provincies[this.comarques[this.comarcaId].provincies_id - 1].nom;
     },
     onIncidentSel: function onIncidentSel(id) {
       var i = 0;
@@ -5926,6 +5972,10 @@ __webpack_require__.r(__webpack_exports__);
       this.codi = Date.now();
       this.cartaTrucada.codi_trucada = String(this.codi).slice(-12);
       /*             codigoLlamada.innerHTML = codigoFinal; */
+    },
+    pasarIdExpedientes: function pasarIdExpedientes(id) {
+      this.cartaTrucada.expedients_id = id;
+      console.log(id);
     }
   },
   created: function created() {
@@ -11061,7 +11111,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*         #marker {\r\n        background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');\r\n        background-size: cover;\r\n        width: 50px;\r\n        height: 50px;\r\n        border-radius: 50%;\r\n        cursor: pointer;\r\n        }\r\n\r\n        .mapboxgl-popup {\r\n        max-width: 200px;\r\n        } */\r\n        ", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*         #marker {\n        background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');\n        background-size: cover;\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        cursor: pointer;\n        }\n\n        .mapboxgl-popup {\n        max-width: 200px;\n        } */\n        ", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11085,7 +11135,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*         body { margin: 0; padding: 0; }\r\n        #map { position: absolute; top: 0; bottom: 0; width: 100%; } */\r\n        ", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*         body { margin: 0; padding: 0; }\n        #map { position: absolute; top: 0; bottom: 0; width: 100%; } */\n        ", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29573,7 +29623,7 @@ var render = function () {
                         staticClass: "form-control",
                         attrs: { name: "tipus_incident", id: "tipus_incident" },
                         on: {
-                          input: function ($event) {
+                          click: function ($event) {
                             return _vm.onIncidentSel(_vm.tipusIncidentId)
                           },
                           change: function ($event) {
@@ -29609,10 +29659,37 @@ var render = function () {
                     _c(
                       "select",
                       {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cartaTrucada.incidents_id,
+                            expression: "cartaTrucada.incidents_id",
+                          },
+                        ],
                         staticClass: "form-select",
                         attrs: {
                           "aria-label": ".form-select-sm example",
                           name: "incidents_id",
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.cartaTrucada,
+                              "incidents_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
                         },
                       },
                       _vm._l(_vm.incidentsIdSel, function (incident) {
@@ -29694,7 +29771,23 @@ var render = function () {
                                 _vm._v(_vm._s(expedient.estats_expedients_id)),
                               ]),
                               _vm._v(" "),
-                              _vm._m(10, true),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-light botonesTabla",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.pasarIdExpedientes(
+                                          expedient.id
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("Seleccionar")]
+                                ),
+                              ]),
                             ]
                           )
                         }),
@@ -29705,9 +29798,9 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _vm._m(11),
+              _vm._m(10),
               _vm._v(" "),
-              _vm._m(12),
+              _vm._m(11),
             ]),
           ]
         ),
@@ -29758,7 +29851,7 @@ var render = function () {
                   }),
                 ]),
                 _vm._v(" "),
-                _vm._m(13),
+                _vm._m(12),
               ]),
             ]
           ),
@@ -29774,60 +29867,6 @@ var render = function () {
             _c("div", { staticClass: "card-body" }, [
               _c("h5", { staticClass: "card-title" }, [
                 _vm._v("Informació del trucant"),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-2" }, [
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.cartaTrucada.nom_trucada,
-                        expression: "cartaTrucada.nom_trucada",
-                      },
-                    ],
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Nom",
-                      "aria-label": "Nom",
-                      "aria-describedby": "button-addon2",
-                      name: "nom_trucada",
-                    },
-                    domProps: { value: _vm.cartaTrucada.nom_trucada },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.cartaTrucada,
-                          "nom_trucada",
-                          $event.target.value
-                        )
-                      },
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "col-sm-2 col-navbar-brand-sm",
-                    attrs: { href: "#" },
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: _vm.imagenHelpbox,
-                        alt: "",
-                        width: "20",
-                        height: "20",
-                      },
-                    }),
-                  ]
-                ),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group row mb-2" }, [
@@ -29874,6 +29913,60 @@ var render = function () {
                         _vm.$set(
                           _vm.cartaTrucada,
                           "telefon",
+                          $event.target.value
+                        )
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "col-sm-2 col-navbar-brand-sm",
+                    attrs: { href: "#" },
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.imagenHelpbox,
+                        alt: "",
+                        width: "20",
+                        height: "20",
+                      },
+                    }),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-2" }, [
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.cartaTrucada.nom_trucada,
+                        expression: "cartaTrucada.nom_trucada",
+                      },
+                    ],
+                    staticClass: "form-control form-control-sm",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Nom",
+                      "aria-label": "Nom",
+                      "aria-describedby": "button-addon2",
+                      name: "nom_trucada",
+                    },
+                    domProps: { value: _vm.cartaTrucada.nom_trucada },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.cartaTrucada,
+                          "nom_trucada",
                           $event.target.value
                         )
                       },
@@ -29954,7 +30047,7 @@ var render = function () {
               staticStyle: { width: "100%", "margin-top": "10px" },
             },
             [
-              _vm._m(14),
+              _vm._m(13),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "form-group row mb-2 gx-1" }, [
@@ -30046,7 +30139,41 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
-                  _vm._m(15),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cartaTrucada.municipis_id_trucada,
+                          expression: "cartaTrucada.municipis_id_trucada",
+                        },
+                      ],
+                      staticClass: "form-control form-control-sm",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Municipi",
+                        "aria-label": "Municipi",
+                        "aria-describedby": "button-addon2",
+                        name: "municipis_id_trucada",
+                      },
+                      domProps: {
+                        value: _vm.cartaTrucada.municipis_id_trucada,
+                      },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.cartaTrucada,
+                            "municipis_id_trucada",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -30122,7 +30249,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row mb-2" }, [
-                  _vm._m(16),
+                  _vm._m(14),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -30257,7 +30384,7 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    _vm._m(17),
+    _vm._m(15),
     _vm._v(" "),
     _c(
       "div",
@@ -30301,7 +30428,7 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(18),
+                    _vm._m(16),
                   ]
                 ),
               ]
@@ -30416,7 +30543,7 @@ var staticRenderFns = [
           type: "radio",
           name: "tipus_localitzacions_id",
           id: "inlineRadio2",
-          value: "option2",
+          value: "1",
           "data-bs-toggle": "collapse",
           "data-bs-target": "#multiCollapseExample1",
           "aria-expanded": "false",
@@ -30533,9 +30660,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "table colorTabla" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Data")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Codi")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tipus d'incident")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Data de creació")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Localització")]),
         _vm._v(" "),
@@ -30543,21 +30670,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-light botonesTabla",
-          attrs: { type: "submit" },
-        },
-        [_vm._v("Seleccionar")]
-      ),
     ])
   },
   function () {
@@ -30624,23 +30736,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("h5", [_vm._v("Procedència de la trucada")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-10" }, [
-      _c("input", {
-        staticClass: "form-control form-control-sm",
-        attrs: {
-          type: "text",
-          placeholder: "Municipi",
-          "aria-label": "Municipi",
-          "aria-describedby": "button-addon2",
-          name: "municipis_id_trucada",
-        },
-      }),
     ])
   },
   function () {
@@ -42928,7 +43023,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\xampp\\\\htdocs\\\\Project2"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\xampp\\\\htdocs\\\\Project2","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

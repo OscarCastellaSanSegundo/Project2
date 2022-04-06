@@ -102,7 +102,7 @@
                                     <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" value="option2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" value="1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
                                             <label class="form-check-label" for="inlineRadio2">Carrer</label>
                                         </div>
                                         <div class="form-check form-check-inline">
@@ -177,14 +177,14 @@
                             <div class="row">
                                 <div class="col-5">
 
-                                    <select class="form-control" name="tipus_incident" id="tipus_incident" v-model="tipusIncidentId" @input="onIncidentSel(tipusIncidentId)">
-                                        <option v-for="tipusIncident in tipusIncidents" :key="tipusIncident.id" :value="tipusIncident.id">{{ tipusIncident.descripcio }}</option>
+                                    <select class="form-control" name="tipus_incident" id="tipus_incident" v-model="tipusIncidentId" @click="onIncidentSel(tipusIncidentId)">
+                                        <option v-for="tipusIncident in tipusIncidents" :key="tipusIncident.id" :value="tipusIncident.id" >{{ tipusIncident.descripcio }}</option>
                                     </select>
 
                                 </div>
                                 <div class="col-6">
 
-                                    <select class="form-select" aria-label=".form-select-sm example"  name="incidents_id">
+                                    <select class="form-select" aria-label=".form-select-sm example"  name="incidents_id" v-model="cartaTrucada.incidents_id">
                                         <option v-for="incident in incidentsIdSel" :key="incident.id" :value="incident.id">{{ incident.descripcio }}</option>
                                     </select>
 
@@ -215,8 +215,8 @@
                                 <table class="table table-hover tablaExpedientes">
                                     <thead class="table colorTabla">
                                     <tr>
-                                        <th scope="col">Data</th>
-                                        <th scope="col">Tipus d'incident</th>
+                                        <th scope="col">Codi</th>
+                                        <th scope="col">Data de creació</th>
                                         <th scope="col">Localització</th>
                                         <th scope="col">Direcció</th>
                                         <th scope="col"></th>
@@ -227,7 +227,7 @@
                                         <th scope="row">{{ expedient.id }}</th>
                                         <td>{{ expedient.data_creacio }}</td>
                                         <td>{{ expedient.estats_expedients_id }}</td>
-                                        <td><button class="btn btn-light botonesTabla" type="submit">Seleccionar</button></td>
+                                        <td><button class="btn btn-light botonesTabla" type="button" @click="pasarIdExpedientes(expedient.id)">Seleccionar</button></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -279,7 +279,7 @@
 
                         <div class="form-group row mb-2">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2" name="nom_trucada" v-model="cartaTrucada.nom_trucada">
+                                <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon" v-model="cartaTrucada.telefon" v-on:keyup.enter="buscarTelefon(cartaTrucada.telefon)">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                 <img :src="imagenHelpbox" alt="" width="20" height="20">
@@ -287,7 +287,7 @@
                         </div>
                         <div class="form-group row mb-2">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon" v-model="cartaTrucada.telefon" v-on:keyup.enter="buscarTelefon(cartaTrucada.telefon)">
+                                <input type="text" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2" name="nom_trucada" v-model="cartaTrucada.nom_trucada">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                 <img :src="imagenHelpbox" alt="" width="20" height="20">
@@ -324,7 +324,7 @@
 
                             <div class="form-group row mb-2 gx-3">
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipi" aria-describedby="button-addon2" name="municipis_id_trucada">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipi" aria-describedby="button-addon2" name="municipis_id_trucada" v-model="cartaTrucada.municipis_id_trucada">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                     <img :src="imagenHelpbox" alt="" width="20" height="20">
@@ -494,6 +494,8 @@
                 estatExpedients: [],
                 agencies: [],
                 dadesPersonals: [],
+                cartesTrucada: [],
+                cartesTrucada2: {},
                 busquedaMunicipi: "",
                 municipiSel: {},
                 comarcaId: "",
@@ -612,12 +614,20 @@
                     .then( response => {
                         me6.expedients = response.data;
                     })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
                     .finally(() => this.loading = false)
                 let me7 = this;
                 axios
                     .get('/estatExpedient')
                     .then( response => {
                         me7.estatExpedients = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
                     })
                     .finally(() => this.loading = false)
                 let me8 = this;
@@ -626,12 +636,42 @@
                     .then( response => {
                         me8.agencies = response.data;
                     })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
                     .finally(() => this.loading = false)
                 let me9 = this;
                 axios
                     .get('/dadesPersonals')
                     .then( response => {
                         me9.dadesPersonals = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+                let me10 = this;
+                axios
+                    .get('/cartaTrucada')
+                    .then( response => {
+                        me10.cartesTrucada = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+                let me11 = this;
+                axios
+                    .get('/cartaTrucada/1')
+                    .then( response => {
+                        me11.cartesTrucada2 = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
                     })
                     .finally(() => this.loading = false)
 
@@ -643,20 +683,32 @@
             },
             onMunicipiSel(municipi){
                 this.municipiSel = municipi;
-                this.comarcaId = municipi.comarques_id;
-                this.comarcaNom = this.comarques[this.comarcaId-2].nom;
-                this.provinciaNom = this.provincies[this.comarques[this.comarcaId-1].provincies_id-1].nom;
+                var i = 0;
+                while(this.comarques.length > i){
+                    if(municipi.comarques_id == this.comarques[i].id){
+                        this.comarcaId = municipi.comarques_id-2;
+                        this.comarcaNom = this.comarques[this.comarcaId].nom;
+                        this.cartaTrucada.provincies_id = this.provincies[this.comarques[this.comarcaId].provincies_id].id;
+                    }
+                    i++;
+
+                }
+                this.cartaTrucada.municipis_id = municipi.id;
+/*                 this.comarcaId = municipi.comarques_id; */
+                this.comarcaNom = this.comarques[this.comarcaId].nom;
+                this.provinciaNom = this.provincies[this.comarques[this.comarcaId].provincies_id-1].nom;
             },
             onIncidentSel(id){
                 var i = 0;
                 if (this.incidentsIdSel != null) {
-                    this.incidentsIdSel.splice(0,this.incidentsIdSel.length)
+                    this.incidentsIdSel.splice(0,this.incidentsIdSel.length);
                 }
                 while(this.incidents.length > i){
                     if(this.incidents[i].classes_incidents_id == id){
                         this.incidentsIdSel.push(this.incidents[i]);
                     }
                     i++;
+
                 }
             },
             buscarTelefon (telefon){
@@ -673,6 +725,11 @@
                 this.cartaTrucada.codi_trucada = String(this.codi).slice(-12);
     /*             codigoLlamada.innerHTML = codigoFinal; */
             },
+            pasarIdExpedientes(id){
+                this.cartaTrucada.expedients_id = id;
+                console.log(id)
+            }
+
         },
         created(){
             this.selectAll();
