@@ -22,7 +22,7 @@
 
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="fora_catalunya" value="fora_catalunya" name="fora_catalunya" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">
+                                    <input class="form-check-input" type="checkbox" id="fora_catalunya" value="fora_catalunya" name="fora_catalunya" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4" v-model="cartaTrucada.fora_catalunya">
                                     <label class="form-check-label" for="fora_catalunya">Fora de Catalunya</label>
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
@@ -158,7 +158,7 @@
 
                                             <div class="form-group row mb-2 gx-2">
                                                 <div class="col-sm-11">
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Otras referencias" aria-describedby="button-addon2" name="">
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Otras referencias" aria-describedby="button-addon2" name="" v-model="cartaTrucada.altres_ref_localitzacio">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
                                                     <img :src="imagenHelpbox" alt="" width="20" height="20">
@@ -496,6 +496,7 @@
                 dadesPersonals: [],
                 busquedaMunicipi: "",
                 municipiSel: {},
+                comarcaId: "",
                 comarcaNom: "",
                 provinciaNom: "",
                 incidentsIdSel: [],
@@ -513,7 +514,7 @@
                     nom_trucada: "",
                     municipis_id_trucada: "",
                     adreca_trucada: "",
-                    fora_catalunya: "",
+                    fora_catalunya: false,
                     provincies_id: "",
                     municipis_id: "",
                     tipus_localitzacions_id: "",
@@ -643,12 +644,20 @@
             onMunicipiSel(municipi){
                 this.municipiSel = municipi;
                 this.comarcaId = municipi.comarques_id;
-                this.comarcaNom = this.comarques[this.comarcaId].nom;
-                this.provinciaNom = this.provincies[this.comarques[this.comarcaId].provincies_id].nom;
+                this.comarcaNom = this.comarques[this.comarcaId-2].nom;
+                this.provinciaNom = this.provincies[this.comarques[this.comarcaId-1].provincies_id-1].nom;
             },
             onIncidentSel(id){
-                this.incidentsIdSel = this.incidents.filter(incident => incident.classes_incidents_id = id);
-                console.log(this.filter);
+                var i = 0;
+                if (this.incidentsIdSel != null) {
+                    this.incidentsIdSel.splice(0,this.incidentsIdSel.length)
+                }
+                while(this.incidents.length > i){
+                    if(this.incidents[i].classes_incidents_id == id){
+                        this.incidentsIdSel.push(this.incidents[i]);
+                    }
+                    i++;
+                }
             },
             buscarTelefon (telefon){
                 var i = 0;

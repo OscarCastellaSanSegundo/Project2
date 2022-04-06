@@ -5763,6 +5763,7 @@ __webpack_require__.r(__webpack_exports__);
       dadesPersonals: [],
       busquedaMunicipi: "",
       municipiSel: {},
+      comarcaId: "",
       comarcaNom: "",
       provinciaNom: "",
       incidentsIdSel: [],
@@ -5780,7 +5781,7 @@ __webpack_require__.r(__webpack_exports__);
         nom_trucada: "",
         municipis_id_trucada: "",
         adreca_trucada: "",
-        fora_catalunya: "",
+        fora_catalunya: false,
         provincies_id: "",
         municipis_id: "",
         tipus_localitzacions_id: "",
@@ -5892,14 +5893,23 @@ __webpack_require__.r(__webpack_exports__);
     onMunicipiSel: function onMunicipiSel(municipi) {
       this.municipiSel = municipi;
       this.comarcaId = municipi.comarques_id;
-      this.comarcaNom = this.comarques[this.comarcaId].nom;
-      this.provinciaNom = this.provincies[this.comarques[this.comarcaId].provincies_id].nom;
+      this.comarcaNom = this.comarques[this.comarcaId - 2].nom;
+      this.provinciaNom = this.provincies[this.comarques[this.comarcaId - 1].provincies_id - 1].nom;
     },
     onIncidentSel: function onIncidentSel(id) {
-      this.incidentsIdSel = this.incidents.filter(function (incident) {
-        return incident.classes_incidents_id = id;
-      });
-      console.log(this.filter);
+      var i = 0;
+
+      if (this.incidentsIdSel != null) {
+        this.incidentsIdSel.splice(0, this.incidentsIdSel.length);
+      }
+
+      while (this.incidents.length > i) {
+        if (this.incidents[i].classes_incidents_id == id) {
+          this.incidentsIdSel.push(this.incidents[i]);
+        }
+
+        i++;
+      }
     },
     buscarTelefon: function buscarTelefon(telefon) {
       var i = 0;
@@ -29054,7 +29064,74 @@ var render = function () {
                 _vm._m(0),
                 _vm._v(" "),
                 _c("div", [
-                  _vm._m(1),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cartaTrucada.fora_catalunya,
+                          expression: "cartaTrucada.fora_catalunya",
+                        },
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "checkbox",
+                        id: "fora_catalunya",
+                        value: "fora_catalunya",
+                        name: "fora_catalunya",
+                        "data-bs-toggle": "collapse",
+                        "data-bs-target": "#multiCollapseExample4",
+                        "aria-expanded": "false",
+                        "aria-controls": "multiCollapseExample4",
+                      },
+                      domProps: {
+                        checked: Array.isArray(_vm.cartaTrucada.fora_catalunya)
+                          ? _vm._i(
+                              _vm.cartaTrucada.fora_catalunya,
+                              "fora_catalunya"
+                            ) > -1
+                          : _vm.cartaTrucada.fora_catalunya,
+                      },
+                      on: {
+                        change: function ($event) {
+                          var $$a = _vm.cartaTrucada.fora_catalunya,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "fora_catalunya",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.cartaTrucada,
+                                  "fora_catalunya",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.cartaTrucada,
+                                  "fora_catalunya",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.cartaTrucada, "fora_catalunya", $$c)
+                          }
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "fora_catalunya" },
+                      },
+                      [_vm._v("Fora de Catalunya")]
+                    ),
+                  ]),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -29216,10 +29293,10 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(3),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-xl-7 col-sm-9" }, [
                     _c(
@@ -29229,13 +29306,13 @@ var render = function () {
                         attrs: { id: "multiCollapseExample4" },
                       },
                       [
+                        _vm._m(3),
+                        _vm._v(" "),
                         _vm._m(4),
                         _vm._v(" "),
                         _vm._m(5),
                         _vm._v(" "),
                         _vm._m(6),
-                        _vm._v(" "),
-                        _vm._m(7),
                         _vm._v(" "),
                         _c(
                           "a",
@@ -29417,7 +29494,43 @@ var render = function () {
                       },
                       [
                         _c("div", { staticClass: "form-group row mb-2 gx-2" }, [
-                          _vm._m(8),
+                          _c("div", { staticClass: "col-sm-11" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value:
+                                    _vm.cartaTrucada.altres_ref_localitzacio,
+                                  expression:
+                                    "cartaTrucada.altres_ref_localitzacio",
+                                },
+                              ],
+                              staticClass: "form-control form-control-sm",
+                              attrs: {
+                                type: "text",
+                                placeholder: "Altres referències",
+                                "aria-label": "Otras referencias",
+                                "aria-describedby": "button-addon2",
+                                name: "",
+                              },
+                              domProps: {
+                                value: _vm.cartaTrucada.altres_ref_localitzacio,
+                              },
+                              on: {
+                                input: function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.cartaTrucada,
+                                    "altres_ref_localitzacio",
+                                    $event.target.value
+                                  )
+                                },
+                              },
+                            }),
+                          ]),
                           _vm._v(" "),
                           _c(
                             "a",
@@ -29442,7 +29555,7 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(9),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-5" }, [
@@ -29549,7 +29662,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "card-body" }, [
-              _vm._m(10),
+              _vm._m(8),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12 tablaExpedientesScroll" }, [
@@ -29557,7 +29670,7 @@ var render = function () {
                     "table",
                     { staticClass: "table table-hover tablaExpedientes" },
                     [
-                      _vm._m(11),
+                      _vm._m(9),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -29581,7 +29694,7 @@ var render = function () {
                                 _vm._v(_vm._s(expedient.estats_expedients_id)),
                               ]),
                               _vm._v(" "),
-                              _vm._m(12, true),
+                              _vm._m(10, true),
                             ]
                           )
                         }),
@@ -29592,9 +29705,9 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _vm._m(13),
+              _vm._m(11),
               _vm._v(" "),
-              _vm._m(14),
+              _vm._m(12),
             ]),
           ]
         ),
@@ -29645,7 +29758,7 @@ var render = function () {
                   }),
                 ]),
                 _vm._v(" "),
-                _vm._m(15),
+                _vm._m(13),
               ]),
             ]
           ),
@@ -29841,7 +29954,7 @@ var render = function () {
               staticStyle: { width: "100%", "margin-top": "10px" },
             },
             [
-              _vm._m(16),
+              _vm._m(14),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "form-group row mb-2 gx-1" }, [
@@ -29933,7 +30046,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
-                  _vm._m(17),
+                  _vm._m(15),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -30009,7 +30122,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row mb-2" }, [
-                  _vm._m(18),
+                  _vm._m(16),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -30144,7 +30257,7 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    _vm._m(19),
+    _vm._m(17),
     _vm._v(" "),
     _c(
       "div",
@@ -30188,7 +30301,7 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(20),
+                    _vm._m(18),
                   ]
                 ),
               ]
@@ -30240,32 +30353,6 @@ var staticRenderFns = [
           [_vm._v("¡Simular Trucada!")]
         ),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "checkbox",
-          id: "fora_catalunya",
-          value: "fora_catalunya",
-          name: "fora_catalunya",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample4",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample4",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "fora_catalunya" } },
-        [_vm._v("Fora de Catalunya")]
-      ),
     ])
   },
   function () {
@@ -30420,23 +30507,6 @@ var staticRenderFns = [
         { staticClass: "form-check-label", attrs: { for: "inlineRadio5" } },
         [_vm._v("Població")]
       ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-11" }, [
-      _c("input", {
-        staticClass: "form-control form-control-sm",
-        attrs: {
-          type: "text",
-          placeholder: "Altres referències",
-          "aria-label": "Otras referencias",
-          "aria-describedby": "button-addon2",
-          name: "",
-        },
-      }),
     ])
   },
   function () {
