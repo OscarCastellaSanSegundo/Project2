@@ -180,7 +180,7 @@ Expedients
 
     <div class="card" >
         <div class="card-header cardHeader">
-            Nº expedient: {{ $expedient->id }}&nbsp;&nbsp;&nbsp;&nbsp;Nº trucades: {{ $expedient->cartesTrucada->count() }}
+            &nbsp;&nbsp;Nº expedient: {{ $expedient->id }}&nbsp;&nbsp;&nbsp;&nbsp;Nº trucades: {{ $expedient->cartesTrucada->count() }}
         </div>
         <div class="card-body cardBody" >
             <div class="cuerpoExpediente">
@@ -199,7 +199,7 @@ Expedients
             </div>
             <div class="cuerpo2Expediente">
                 <div class="localizacion">
-                        <p class="textoLocalizacion">{{ $expedient->cartesTrucada[0]->provincia->nom }}</p>
+                        <div class="textoLocalizacion">{{ $expedient->cartesTrucada[0]->provincia->nom }}</div>
                 </div>
 
                 <div class="agenciasDespachadas">
@@ -320,11 +320,11 @@ Expedients
             <div class="verEditarExpediente">
                 <div>
                     <div>
-                        Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
+                        &nbsp;Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
                     </div>
                     <div style="display: flex;">
                         <div>
-                            Estat: {{ $expedient->estatExpedient->estat }}
+                            &nbsp;Estat: {{ $expedient->estatExpedient->estat }}
                         </div>
                         @if ($expedient->estatExpedient->id  == 1)
                             <div style="width: 18px; height: 18px; background-color: green; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
