@@ -34,9 +34,9 @@ Route::get('/Inicio', function () {
     return view('inicio.index');
 }); */
 
-Route::get('/llamadaVue', function () {
+/* Route::get('/llamadaVue', function () {
     return view('llamada.indexVue');
-});
+}); */
 
 Route::get('/login', [UsuariController::class, 'showLogin'])->name('login');
 // Route::resource('expedientes', ExpedientController::class );
@@ -56,10 +56,10 @@ Route::middleware(['auth'])->group(function () {
     //      return view('expediente.index', compact('user'));
     // });
 
-    Route::get('/llamada', function () {
+/*     Route::get('/llamada', function () {
         $user = Auth::user();
         return view('llamada.index', compact('user'));
-    });
+    }); */
 
     Route::get('/inicio', function () {
         $user = Auth::user();
@@ -69,6 +69,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/gestionUsuarios', function () {
         $user = Auth::user();
         return view('administracion.index', compact('user'));
+    });
+    Route::get('/llamada', function () {
+        $user = Auth::user();
+        return view('llamada.indexVue', compact('user'));
     });
 
     // Route::get('/estadisticas', function () {
