@@ -15,7 +15,7 @@ Menu
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
                         <div class="col-md-6 d-flex align-items-center justify-content-center">
-                            <img src="../public/imagenes/Logo1Vector1.png" class="img-fluid" alt="..." width="400px">
+                            <img src="../public/imagenes/Logo1Vector.png" class="img-fluid" alt="..." width="400px">
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">

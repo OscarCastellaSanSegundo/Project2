@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                        <img src="{{ asset('Imagenes/Logo2Project2.png') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                        <img src="{{ asset('Imagenes/Logo1Vector.png') }}" alt="" width="38" height="24" class="d-inline-block align-text-top">
                         @yield('tituloNav')
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +43,9 @@
                         </li>
                         <li>
                             @yield('menu3')
+                        </li>
+                        <li>
+                            @yield('menu4')
                         </li>
                         @yield('usuario')
 

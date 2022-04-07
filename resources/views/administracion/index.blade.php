@@ -420,16 +420,9 @@ Administració
 </div>
 </form>
 
-<?php
-    $contador = null;
-    $contador2 = null;
-?>
+
 
 <script>
-    for (let i = 0; index < array.length; index++) {
-        const element = array[index];
-
-    }
 
     const data = {
         labels: [
@@ -519,11 +512,6 @@ Administració
       config2
     );
 
-
-
-<?php
-    $contador++
-?>
 
 </script>
 

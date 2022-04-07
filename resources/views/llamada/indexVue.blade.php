@@ -1,3 +1,6 @@
+<?php
+$codigoUsuario = Auth::user()->perfils_id;
+?>
 @extends('plantillas.principal')
 
 @section('titulo')
@@ -9,11 +12,31 @@ Llamada
 @endsection
 
 @section('menu1')
-<a class="nav-link" aria-current="page" href="{{ url('/') }}"> Inici</a>
+    <a class="nav-link" aria-current="page" href="{{ url('/') }}"> Inici</a>
 @endsection
 
 @section('menu2')
-<a class="nav-link" aria-current="page" href="{{ url('/expedientes') }}">Expedients</a>
+    @if ($codigoUsuario == 3 || $codigoUsuario == 2)
+        <a class="nav-link" aria-current="page" href="{{ url('/expedientes') }}">Trucada</a>
+    @else
+
+    @endif
+@endsection
+
+@section('menu3')
+    @if ($codigoUsuario == 3 || $codigoUsuario == 2)
+        <a class="nav-link" aria-current="page" href="{{ url('/estadisticas') }}">Estadístiques</a>
+    @else
+
+    @endif
+@endsection
+
+@section('menu4')
+    @if ($codigoUsuario == 3)
+        <a class="nav-link" aria-current="page" href="{{ url('/usuarios') }}">Administració</a>
+    @else
+
+    @endif
 @endsection
 
 @section('usuario')

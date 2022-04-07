@@ -1,3 +1,6 @@
+<?php
+$codigoUsuario = Auth::user()->perfils_id;
+?>
 @extends('plantillas.principal')
 
 @section('titulo')
