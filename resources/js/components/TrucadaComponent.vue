@@ -366,11 +366,7 @@
 
                         <h1 class="text-center">Recomanacions</h1>
                         <div class="row" >
-<!--
-                <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
-                <div id="map"></div> -->
-
+                            <mapa></mapa>
 
 
 

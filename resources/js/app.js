@@ -21,7 +21,7 @@ window.Vue = require('vue').default;
 
 
 Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
-
+Vue.component('mapa', require('./components/mapa.vue').default);
 Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 
 /**
