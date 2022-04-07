@@ -9,15 +9,19 @@ Administració
 @endsection
 
 @section('menu1')
-<a class="nav-link" aria-current="page" href="{{ url('/') }}"> Inici</a>
+    <a class="nav-link" aria-current="page" href="{{ url('/') }}"> Inici</a>
 @endsection
 
 @section('menu2')
-<a class="nav-link" aria-current="page" href="{{ url('/llamada') }}">Trucada</a>
+    <a class="nav-link" aria-current="page" href="{{ url('/llamada') }}">Trucada</a>
 @endsection
 
 @section('menu3')
-<a class="nav-link" aria-current="page" href="{{ url('/expedientes') }}">Expedients</a>
+    <a class="nav-link" aria-current="page" href="{{ url('/expedientes') }}">Expedients</a>
+@endsection
+
+@section('menu4')
+    <a class="nav-link" aria-current="page" href="{{ url('/estadisticas') }}">Estadístiques</a>
 @endsection
 
 @section('usuario')

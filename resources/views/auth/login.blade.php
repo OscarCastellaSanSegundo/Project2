@@ -30,11 +30,11 @@ Menu
 
                                     <div class="form-outline mb-4">
                                         <input type="password" id="contrassenya" class="form-control form-control-lg" name="contrassenya" value="{{ old('contrassenya') }}"/>
-                                        <label class="form-label" for="contrassenya">Password</label>
+                                        <label class="form-label" for="contrassenya">Contrassenya</label>
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Iniciar sessió</button>
                                     </div>
                                 </form>
                             </div>

@@ -42,7 +42,7 @@ $codigoUsuario = Auth::user()->perfils_id;
         </div>
         <div class="secundarioInicio">
             <div class="divUsuarios cardInicio" style="width: 91%; margin-top: 30px">
-                <a href="{{ url('/estadisticas') }}" class="btn btn-primary anadirElemento boton4" style="background-position: center;">Estadísticas</a>
+                <a href="{{ url('/estadisticas') }}" class="btn btn-primary anadirElemento boton4" style="background-position: center;">Estadístiques</a>
             </div>
         </div>
     @elseif ($codigoUsuario == 3)
@@ -58,13 +58,13 @@ $codigoUsuario = Auth::user()->perfils_id;
             </div>
 
             <div class="divUsuarios cardInicio" style="width: 32%;">
-                <a href="{{ url('/usuarios') }}" class="btn btn-primary anadirElemento boton3" style="background-position: center;">Administració usuaris</a>
+                <a href="{{ url('/usuarios') }}" class="btn btn-primary anadirElemento boton3" style="background-position: center;">Administració d'usuaris</a>
             </div>
 
         </div>
         <div class="secundarioInicio">
             <div class="divUsuarios cardInicio" style="width: 91%; margin-top: 30px">
-                <a href="{{ url('/estadisticas') }}" class="btn btn-primary anadirElemento boton4" style="background-position: center;">Estadísticas</a>
+                <a href="{{ url('/estadisticas') }}" class="btn btn-primary anadirElemento boton4" style="background-position: center;">Estadístiques</a>
             </div>
         </div>
     @else
