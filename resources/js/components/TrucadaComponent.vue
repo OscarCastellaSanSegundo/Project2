@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
+<!--                                 <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
                                     <div class="col provinciaMunicipio">
 
                                         <div class="form-check form-check-inline ">
@@ -97,15 +97,16 @@
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="col-xl-7 col-sm-9">
+                                </div> -->
+                                <div class="col-xl-8 col-sm-11">
                                     <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" value="1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
-                                            <label class="form-check-label" for="inlineRadio2">Carrer</label>
+                                        <div class="form-check form-check-inline" v-for="tipusLocalitzacio in tipusLocalitzacions" :key="tipusLocalitzacio.id" :value="tipusLocalitzacio.id">
+                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" :value="tipusLocalitzacio.id"  v-model= "cartaTrucada.tipus_localitzacions_id" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample1" v-if="tipusLocalitzacio.id == 5 || tipusLocalitzacio.id == 3">
+                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" :value="tipusLocalitzacio.id"  v-model= "cartaTrucada.tipus_localitzacions_id" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1" v-else>
+                                            <label class="form-check-label" for="inlineRadio2">{{ tipusLocalitzacio.tipus }}</label>
                                         </div>
-                                        <div class="form-check form-check-inline">
+                                        <!-- <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample2">
                                             <label class="form-check-label" for="inlineRadio3">Punt singular</label>
                                         </div>
@@ -116,7 +117,7 @@
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio5" value="option5" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
                                             <label class="form-check-label" for="inlineRadio5">Població</label>
-                                        </div>
+                                        </div> -->
                                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                             <img :src="imagenHelpbox" alt="" width="20" height="20">
                                         </a>
@@ -366,7 +367,6 @@
 
                         <h1 class="text-center">Recomanacions</h1>
                         <div class="row" >
-                            <mapa></mapa>
 
 
 
@@ -491,6 +491,7 @@
                 agencies: [],
                 dadesPersonals: [],
                 cartesTrucada: [],
+                tipusLocalitzacions: [],
                 cartesTrucada2: {},
                 busquedaMunicipi: "",
                 municipiSel: {},
@@ -661,15 +662,27 @@
                     .finally(() => this.loading = false)
                 let me11 = this;
                 axios
-                    .get('/cartaTrucada/1')
+                    .get('/tipusLocalitzacio')
                     .then( response => {
-                        me11.cartesTrucada2 = response.data;
+                        me11.tipusLocalitzacions = response.data;
                     })
                     .catch ( error => {
                         console.log(error)
                         this.errored = true;
                     })
                     .finally(() => this.loading = false)
+                let me12 = this;
+                axios
+                    .get('/cartaTrucada/1')
+                    .then( response => {
+                        me12.cartesTrucada2 = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+
 
 
             },

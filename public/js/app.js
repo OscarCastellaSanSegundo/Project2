@@ -5715,10 +5715,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /*             mapboxgl.accessToken = 'pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wxbTF5ejhrMGcwcjNwbzNtNDF6eHhrZyJ9.6m-p-hYwQ54P0zV-vn7Qfw';
         const monument = [-77.0353, 38.8895];
@@ -5762,6 +5758,7 @@ __webpack_require__.r(__webpack_exports__);
       agencies: [],
       dadesPersonals: [],
       cartesTrucada: [],
+      tipusLocalitzacions: [],
       cartesTrucada2: {},
       busquedaMunicipi: "",
       municipiSel: {},
@@ -5909,8 +5906,17 @@ __webpack_require__.r(__webpack_exports__);
         return _this.loading = false;
       });
       var me11 = this;
+      axios.get('/tipusLocalitzacio').then(function (response) {
+        me11.tipusLocalitzacions = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
+      })["finally"](function () {
+        return _this.loading = false;
+      });
+      var me12 = this;
       axios.get('/cartaTrucada/1').then(function (response) {
-        me11.cartesTrucada2 = response.data;
+        me12.cartesTrucada2 = response.data;
       })["catch"](function (error) {
         console.log(error);
         _this.errored = true;
@@ -6014,6 +6020,8 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('trucada-component', (__webpack_require__(/*! ./components/TrucadaComponent.vue */ "./resources/js/components/TrucadaComponent.vue")["default"]));
+/* Vue.component('mapa', require('./components/mapa.vue').default); */
+
 Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -11111,7 +11119,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*         #marker {\n        background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');\n        background-size: cover;\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        cursor: pointer;\n        }\n\n        .mapboxgl-popup {\n        max-width: 200px;\n        } */\n        ", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*         #marker {\n        background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');\n        background-size: cover;\n        width: 50px;\n        height: 50px;\n        border-radius: 50%;\n        cursor: pointer;\n        }\n\n        .mapboxgl-popup {\n        max-width: 200px;\n        } */\n        ", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11135,7 +11143,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*         body { margin: 0; padding: 0; }\n        #map { position: absolute; top: 0; bottom: 0; width: 100%; } */\n        ", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*         body { margin: 0; padding: 0; }\n        #map { position: absolute; top: 0; bottom: 0; width: 100%; } */\n        ", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29346,9 +29354,7 @@ var render = function () {
                 _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-xl-7 col-sm-9" }, [
+                  _c("div", { staticClass: "col-xl-8 col-sm-11" }, [
                     _c(
                       "div",
                       {
@@ -29356,13 +29362,116 @@ var render = function () {
                         attrs: { id: "multiCollapseExample4" },
                       },
                       [
-                        _vm._m(3),
-                        _vm._v(" "),
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _vm._m(5),
-                        _vm._v(" "),
-                        _vm._m(6),
+                        _vm._l(
+                          _vm.tipusLocalitzacions,
+                          function (tipusLocalitzacio) {
+                            return _c(
+                              "div",
+                              {
+                                key: tipusLocalitzacio.id,
+                                staticClass: "form-check form-check-inline",
+                                attrs: { value: tipusLocalitzacio.id },
+                              },
+                              [
+                                tipusLocalitzacio.id == 5 ||
+                                tipusLocalitzacio.id == 3
+                                  ? _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.cartaTrucada
+                                              .tipus_localitzacions_id,
+                                          expression:
+                                            "cartaTrucada.tipus_localitzacions_id",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name: "tipus_localitzacions_id",
+                                        id: "inlineRadio2",
+                                        "data-bs-toggle": "collapse",
+                                        "data-bs-target":
+                                          "#multiCollapseExample5",
+                                        "aria-expanded": "false",
+                                        "aria-controls":
+                                          "multiCollapseExample1",
+                                      },
+                                      domProps: {
+                                        value: tipusLocalitzacio.id,
+                                        checked: _vm._q(
+                                          _vm.cartaTrucada
+                                            .tipus_localitzacions_id,
+                                          tipusLocalitzacio.id
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.cartaTrucada,
+                                            "tipus_localitzacions_id",
+                                            tipusLocalitzacio.id
+                                          )
+                                        },
+                                      },
+                                    })
+                                  : _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.cartaTrucada
+                                              .tipus_localitzacions_id,
+                                          expression:
+                                            "cartaTrucada.tipus_localitzacions_id",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name: "tipus_localitzacions_id",
+                                        id: "inlineRadio2",
+                                        "data-bs-toggle": "collapse",
+                                        "data-bs-target":
+                                          "#multiCollapseExample1",
+                                        "aria-expanded": "false",
+                                        "aria-controls":
+                                          "multiCollapseExample1",
+                                      },
+                                      domProps: {
+                                        value: tipusLocalitzacio.id,
+                                        checked: _vm._q(
+                                          _vm.cartaTrucada
+                                            .tipus_localitzacions_id,
+                                          tipusLocalitzacio.id
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.cartaTrucada,
+                                            "tipus_localitzacions_id",
+                                            tipusLocalitzacio.id
+                                          )
+                                        },
+                                      },
+                                    }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-check-label",
+                                    attrs: { for: "inlineRadio2" },
+                                  },
+                                  [_vm._v(_vm._s(tipusLocalitzacio.tipus))]
+                                ),
+                              ]
+                            )
+                          }
+                        ),
                         _vm._v(" "),
                         _c(
                           "a",
@@ -29381,7 +29490,8 @@ var render = function () {
                             }),
                           ]
                         ),
-                      ]
+                      ],
+                      2
                     ),
                   ]),
                 ]),
@@ -29605,7 +29715,7 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(7),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-5" }, [
@@ -29739,7 +29849,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "card-body" }, [
-              _vm._m(8),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12 tablaExpedientesScroll" }, [
@@ -29747,7 +29857,7 @@ var render = function () {
                     "table",
                     { staticClass: "table table-hover tablaExpedientes" },
                     [
-                      _vm._m(9),
+                      _vm._m(4),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -29798,9 +29908,9 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _vm._m(10),
+              _vm._m(5),
               _vm._v(" "),
-              _vm._m(11),
+              _vm._m(6),
             ]),
           ]
         ),
@@ -29851,7 +29961,7 @@ var render = function () {
                   }),
                 ]),
                 _vm._v(" "),
-                _vm._m(12),
+                _vm._m(7),
               ]),
             ]
           ),
@@ -30047,7 +30157,7 @@ var render = function () {
               staticStyle: { width: "100%", "margin-top": "10px" },
             },
             [
-              _vm._m(13),
+              _vm._m(8),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "form-group row mb-2 gx-1" }, [
@@ -30249,7 +30359,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row mb-2" }, [
-                  _vm._m(14),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -30384,7 +30494,7 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    _vm._m(15),
+    _vm._m(10),
     _vm._v(" "),
     _c(
       "div",
@@ -30428,7 +30538,7 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(16),
+                    _vm._m(11),
                   ]
                 ),
               ]
@@ -30490,150 +30600,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-8" }, [
         _c("h4", [_vm._v("Tipus de localització")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "col-xl-1 col-sm-2",
-        staticStyle: { "margin-right": "15px" },
-      },
-      [
-        _c("div", { staticClass: "col provinciaMunicipio" }, [
-          _c("div", { staticClass: "form-check form-check-inline " }, [
-            _c("input", {
-              staticClass: "form-check-input",
-              attrs: {
-                type: "radio",
-                name: "tipus_localitzacions_id",
-                id: "inlineRadio1",
-                value: "option1",
-                "data-bs-toggle": "collapse",
-                "data-bs-target": "#multiCollapseExample5",
-                "aria-expanded": "false",
-                "aria-controls": "multiCollapseExample5",
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "inlineRadio1" },
-              },
-              [_vm._v("Provincia")]
-            ),
-          ]),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio2",
-          value: "1",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample1",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample1",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio2" } },
-        [_vm._v("Carrer")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio3",
-          value: "option3",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample1",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample2",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio3" } },
-        [_vm._v("Punt singular")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio4",
-          value: "option4",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample1",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample3",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio4" } },
-        [_vm._v("Carretera")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio5",
-          value: "option5",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample5",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample5",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio5" } },
-        [_vm._v("Població")]
-      ),
     ])
   },
   function () {
