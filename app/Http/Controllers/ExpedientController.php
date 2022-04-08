@@ -16,106 +16,54 @@ class ExpedientController extends Controller
      */
     public function index(Request $request)
     {
-        $carrer1 = $request->input('carrer1');
-        $entitatPoblacio1 = $request->input('entitatPoblacio1');
-
-        $array = array("carrer1", "entitatPoblacio1");
 
         $mostrarTot = $request->input('mostrarTot');
+
         $carrer = $request->input('carrer');
         $entitatPoblacio = $request->input('entitatPoblacio');
         $puntSingular = $request->input('puntSingular');
         $carretera = $request->input('carretera');
+        $provincia = $request->input('provincia');
 
-        // $accident = $request->input('accident');
-        // $assistenciaSanitaria = $request->input('assistenciaSanitaria');
-        // $incendi = $request->input('incendi');
-        // $fuita = $request->input('fuita');
-        // $altresIncidencies = $request->input('altresIncidencies');
-        // $seguretat = $request->input('seguretat');
-        // $transit = $request->input('transit');
-        // $civisme = $request->input('civisme');
-        // $mediAmbient = $request->input('mediAmbient');
-        // $meteorologia = $request->input('meteorologia');
+        $accident = $request->input('accident');
+        $assistenciaSanitaria = $request->input('assistenciaSanitaria');
+        $incendi = $request->input('incendi');
+        $fuita = $request->input('fuita');
+        $altresIncidencies = $request->input('altresIncidencies');
+        $seguretat = $request->input('seguretat');
+        $transit = $request->input('transit');
+        $civisme = $request->input('civisme');
+        $mediAmbient = $request->input('mediAmbient');
+        $meteorologia = $request->input('meteorologia');
 
-        // $barcelona = $request->input('barcelona');
-        // $girona = $request->input('girona');
-        // $tarragona = $request->input('tarragona');
-        // $lleida = $request->input('lleida');
-        // $foraCatalunya = $request->input('foraCatalunya');
+        $barcelona = $request->input('barcelona');
+        $girona = $request->input('girona');
+        $tarragona = $request->input('tarragona');
+        $lleida = $request->input('lleida');
+        $foraCatalunya = $request->input('foraCatalunya');
 
-        // $policia = $request->input('policia');
-        // $ambulancia = $request->input('ambulancia');
-        // $bombers = $request->input('bombers');
+        $policia = $request->input('policia');
+        $ambulancia = $request->input('ambulancia');
+        $bombers = $request->input('bombers');
 
-        // $enProces = $request->input('enProces');
-        // $solicitat = $request->input('solicitat');
-        // $acceptat = $request->input('acceptat');
-        // $tancat = $request->input('tancat');
-        // $immobilitzat = $request->input('immobilitzat');
+        $enProces = $request->input('enProces');
+        $solicitat = $request->input('solicitat');
+        $acceptat = $request->input('acceptat');
+        $tancat = $request->input('tancat');
+        $immobilitzat = $request->input('immobilitzat');
 
-        // $carretera = $request->input('carretera');
-        // $carretera = $request->input('carretera');
+        $creacioMesRecents = $request->input('creacioMesRecents');
+        $creacioMesAntics = $request->input('creacioMesAntics');
+        $edicioMesRecents = $request->input('edicioMesRecents');
+        $edicioMesAntics = $request->input('edicioMesAntics');
 
         $arrayGeneral = [];
-
-        foreach ($array as $value) {
-            $contador = 1;
-
-            switch ($value){
-
-                case 'carrer1':
-
-                    if ($carrer1 == 'true') {
-
-                        $contador++;
-                        $arrayElemento = [
-                            "texto" => "tipus_localitzacions_id",
-                            "id" => 1
-                        ];
-                        array_push($arrayGeneral, $arrayElemento);
-
-                    }
-                    break;
-
-                case 'entitatPoblacio1':
-
-                    if ($entitatPoblacio1 == 'true') {
-                        $contador++;
-                        $arrayElemento = [
-                            "texto" => "tipus_localitzacions_id",
-                            "id" => 2
-                        ];
-                        array_push($arrayGeneral, $arrayElemento);
-                    }
-                    break;
-
-            }
-
-        }
-
-        // $resultado = Expedient::whereHas('cartesTrucada', function ($query) {
-
-
-        //     for ($i=0; $i < count($arrayGeneral); $i++) {
-        //         if ($i == 0) {
-        //             $query->where($arrayGeneral[$i]['texto'], '=', $arrayGeneral[$i]['id']);
-        //         }
-        //         // else {
-        //         //     $query->orWhere($arrayGeneral[$i]['texto'], '=', $arrayGeneral[$i]['id']);
-        //         // }
-        //     }
-
-
-        // })->get();
-
-
-
-
 
         if ($mostrarTot == 'mostrarTot') {
 
             $expedients = Expedient::all();
+
+
 
         }else if ($carrer == 'true') {
 
@@ -141,155 +89,215 @@ class ExpedientController extends Controller
                 $query->where('tipus_localitzacions_id', '=', 4);
             })->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($provincia == 'true') {
+
+            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
+                $query->where('tipus_localitzacions_id', '=', 5);
+            })->get();
+
+
+
+
+        }else if ($accident == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 1)
+                ->get();
+
+        }else if ($assistenciaSanitaria == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 2)
+                ->get();
+
+        }else if ($incendi == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 3)
+                ->get();
+
+        }else if ($fuita == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 4)
+                ->get();
+
+        }else if ($altresIncidencies == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 5)
+                ->get();
+
+        }else if ($seguretat == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 6)
+                ->get();
+
+        }else if ($transit == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 7)
+                ->get();
+
+        }else if ($civisme == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 8)
+                ->get();
+
+        }else if ($mediAmbient == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 9)
+                ->get();
+
+        }else if ($meteorologia == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->where('incidents.classes_incidents_id', '=', 10)
+                ->get();
+
+
+
+
+        }else if ($barcelona == 'true') {
+
+            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
+                $query->where('provincies_id', '=', 1);
+            })->get();
+
+        }else if ($girona == 'true') {
+
+            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
+                $query->where('provincies_id', '=', 2);
+            })->get();
+
+        }else if ($tarragona == 'true') {
+
+            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
+                $query->where('provincies_id', '=', 3);
+            })->get();
+
+        }else if ($lleida == 'true') {
+
+            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
+                $query->where('provincies_id', '=', 4);
+            })->get();
+
+        }else if ($foraCatalunya == 'true') {
+
+            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
+                $query->where('fora_catalunya', '=', 1);
+            })->get();
+
+
+
+
+
+        }else if ($policia == 'true') {
+
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('cartes_trucades_has_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
+                // ->join('estats_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
+                ->Where('cartes_trucades_has_agencies.agencies_id', '>', 0, 'and', 'cartes_trucades_has_agencies.agencies_id' ,'<=', 117)
+                ->orWhere('cartes_trucades_has_agencies.agencies_id', '>=', 264, 'and', 'cartes_trucades_has_agencies.agencies_id' ,'<=', 470)
+                ->get();
+
+        }else if ($ambulancia == 'true') {
 
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('tipus_localitzacions_id', '=', 4);
             })->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($bombers == 'true') {
 
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('tipus_localitzacions_id', '=', 4);
             })->get();
 
-        }else if ($carretera == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
 
-        }else if ($carretera == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($enProces == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                where('estats_expedients_id', '=', 1)
+                ->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($solicitat == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                where('estats_expedients_id', '=', 2)
+                ->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($acceptat == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                where('estats_expedients_id', '=', 3)
+                ->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($tancat == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                where('estats_expedients_id', '=', 4)
+                ->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($immobilitzat == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                where('estats_expedients_id', '=', 5)
+                ->get();
 
-        }else if ($carretera == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
 
-        }else if ($carretera == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($creacioMesRecents == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                orderBy('data_creacio', 'desc')
+                ->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($creacioMesAntics == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                orderBy('data_creacio', 'asc')
+                ->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($edicioMesRecents == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                orderBy('data_ultima_modificacio', 'desc')
+                ->get();
 
-        }else if ($carretera == 'true') {
+        }else if ($edicioMesAntics == 'true') {
 
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
-
-        }else if ($carretera == 'true') {
-
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                orderBy('data_ultima_modificacio', 'asc')
+                ->get();
 
         }else{
 

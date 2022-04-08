@@ -51,7 +51,7 @@ Expedients
 
                 <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
                     <div class="card">
-                        <div class="col-10 columna" >
+                        <div class="col-12 columna" >
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 
                                 <div class="btn-group" role="group">
@@ -65,24 +65,11 @@ Expedients
                                     Tipus de localització
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop6">
-                                        <li><div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="true" name="carrer1" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                              carrer
-                                            </label>
-                                          </div>
-                                        </li>
-                                        <li><div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="true" name="entitatPoblacio1" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                              entitat població
-                                            </label>
-                                          </div>
-                                        </li>
                                         <li><button class="dropdown-item" type="submit" id="carrer" name="carrer" value="true">Carrer</button></li>
                                         <li><button class="dropdown-item" type="submit" id="entitatPoblacio" name="entitatPoblacio" value="true">Entitat Població</button></li>
                                         <li><button class="dropdown-item" type="submit" id="puntSingular" name="puntSingular" value="true">Punt singular</button></li>
                                         <li><button class="dropdown-item" type="submit" id="carretera" name="carretera" value="true">Carretera</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="provincia" name="provincia" value="true">Provincia</button></li>
                                     </ul>
                                 </div>
 
@@ -91,16 +78,16 @@ Expedients
                                     Tipus d'incident
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop5">
-                                        <li><button class="dropdown-item" type="submit" id="accident">Accident</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="assistenciaSanitaria">Assistència sanitària</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="incendi">Incendi</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="fuita">Fuita </button></li>
-                                        <li><button class="dropdown-item" type="submit" id="altresIncidencies">Altres incidències</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="seguretat">Seguretat</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="transit">Trànsit</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="civisme">Civisme</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="mediAmbient">Medi ambient</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="meteorologia">Meteorologia</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="accident" name="accident" value="true">Accident</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="assistenciaSanitaria" name="assistenciaSanitaria" value="true">Assistència sanitària</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="incendi" name="incendi" value="true">Incendi</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="fuita" name="fuita" value="true">Fuita </button></li>
+                                        <li><button class="dropdown-item" type="submit" id="altresIncidencies" name="altresIncidencies" value="true">Altres incidències</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="seguretat" name="seguretat" value="true">Seguretat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="transit" name="transit" value="true">Trànsit</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="civisme" name="civisme" value="true">Civisme</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="mediAmbient" name="mediAmbient" value="true">Medi ambient</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="meteorologia" name="meteorologia" value="true">Meteorologia</button></li>
                                     </ul>
                                 </div>
 
@@ -109,11 +96,11 @@ Expedients
                                     Provincia
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop4">
-                                        <li><button class="dropdown-item" type="submit" id="barcelona">Barcelona</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="girona">Girona</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="tarragona">Tarragona</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="lleida">Lleida</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="foraCatalunya">Fora Catalunya</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="barcelona" name="barcelona" value="true">Barcelona</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="girona" name="girona" value="true">Girona</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="tarragona" name="tarragona" value="true">Tarragona</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="lleida" name="lleida" value="true">Lleida</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="foraCatalunya" name="foraCatalunya" value="true">Fora Catalunya</button></li>
                                     </ul>
                                 </div>
 
@@ -122,9 +109,9 @@ Expedients
                                     Agències enviades
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop3">
-                                        <li><button class="dropdown-item" type="submit" id="policia">Policia</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="ambulancia">Ambulància</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="bombers">Bombers</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="policia" name="policia" value="true">Policia</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="ambulancia" name="ambulancia" value="true">Ambulància</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="bombers" name="bombers" value="true">Bombers</button></li>
                                     </ul>
                                 </div>
 
@@ -133,11 +120,11 @@ Expedients
                                     Estat expedient
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-                                        <li><button class="dropdown-item" type="submit" id="enProces">En procès</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="solicitat">Sol·licitat</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="acceptat">Acceptat</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="tancat">Tancat</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="immobilitzat">Immobilitzat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="enProces" name="enProces" value="true">En procès</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="solicitat" name="solicitat" value="true">Sol·licitat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="acceptat" name="acceptat" value="true">Acceptat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="tancat" name="tancat" value="true">Tancat</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="immobilitzat" name="immobilitzat" value="true">Immobilitzat</button></li>
                                     </ul>
                                 </div>
 
@@ -146,21 +133,16 @@ Expedients
                                         Data
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <li><button class="dropdown-item" type="submit" id="carrer">Més recents</button></li>
-                                        <li><button class="dropdown-item" type="submit" id="carrer">Més antics</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="creacioMesRecents" name="creacioMesRecents" value="true">Data creació: més recents</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="creacioMesAntics" name="creacioMesAntics" value="true">Data creació: més antics</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="edicioMesRecents" name="edicioMesRecents" value="true">Data ultima edició: més recents</button></li>
+                                        <li><button class="dropdown-item" type="submit" id="edicioMesAntics" name="edicioMesAntics" value="true">Data ultima edició: més antics</button></li>
                                     </ul>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="col-2">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-primary buscarRadius"><i class="bi bi-search"></i></button>
-                                    <input type="text" class="form-control " placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
-                                </div>
-                            </div>
-                        </div>
+
 
                     </div>
                 </form>
@@ -641,24 +623,39 @@ Expedients
                     <div>
                         Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
                     </div>
-                    <div style="display: flex;">
-                        <div>
-                            Estat: {{ $expedient->estatExpedient->estat }}
+                    <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
+                        <div style="display: flex;">
+                            <div>
+                                Estat: {{ $expedient->estatExpedient->estat }}
+                            </div>
+                            @if ($expedient->estatExpedient->id  == 1)
+                                <div style="width: 18px; height: 18px; background-color: green; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                            @elseif ($expedient->estatExpedient->id  == 2)
+                                <div style="width: 18px; height: 18px; background-color: yellow; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                            @elseif ($expedient->estatExpedient->id  == 3)
+                                <div style="width: 18px; height: 18px; background-color: #665D1D; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                            @elseif ($expedient->estatExpedient->id  == 4)
+                                <div style="width: 18px; height: 18px; background-color: blue; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                            @elseif ($expedient->estatExpedient->id  == 5)
+                                <div style="width: 18px; height: 18px; background-color: purple; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                            @else
+                                <div style="width: 18px; height: 18px; background-color: rgb(0, 0, 0); margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
+                            @endif
+                            <div>
+                                <select class="form-select form-select-sm cambiarEstadoExpediente" id="cambiarEstado" name="cambiarEstado" aria-label=".form-select-sm example">
+                                    <option selected>Cambiar</option>
+                                    <option value="1">En procés</option>
+                                    <option value="2">Sol·licitat</option>
+                                    <option value="3">Acceptat</option>
+                                    <option value="4">Tancat</option>
+                                    <option value="5">Immobilitzat</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary botonEditarEstadoExpediente"><i class="fas fa-edit"></i></button>
+                            </div>
                         </div>
-                        @if ($expedient->estatExpedient->id  == 1)
-                            <div style="width: 18px; height: 18px; background-color: green; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
-                        @elseif ($expedient->estatExpedient->id  == 2)
-                            <div style="width: 18px; height: 18px; background-color: yellow; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
-                        @elseif ($expedient->estatExpedient->id  == 3)
-                            <div style="width: 18px; height: 18px; background-color: #665D1D; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
-                        @elseif ($expedient->estatExpedient->id  == 4)
-                            <div style="width: 18px; height: 18px; background-color: blue; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
-                        @elseif ($expedient->estatExpedient->id  == 5)
-                            <div style="width: 18px; height: 18px; background-color: purple; margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
-                        @else
-                            <div style="width: 18px; height: 18px; background-color: rgb(0, 0, 0); margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
-                        @endif
-                    </div>
+                    </form>
                 </div>
                 <div>
                     <a class="btn btn-primary " data-bs-toggle="modal" href="#abrirExpediente" role="button">Cerrar</a>
