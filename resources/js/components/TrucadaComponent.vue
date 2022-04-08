@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
+<!--                                 <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
                                     <div class="col provinciaMunicipio">
 
                                         <div class="form-check form-check-inline ">
@@ -97,15 +97,16 @@
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="col-xl-7 col-sm-9">
+                                </div> -->
+                                <div class="col-xl-8 col-sm-11">
                                     <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" value="1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
-                                            <label class="form-check-label" for="inlineRadio2">Carrer</label>
+                                        <div class="form-check form-check-inline" v-for="tipusLocalitzacio in tipusLocalitzacions" :key="tipusLocalitzacio.id" :value="tipusLocalitzacio.id">
+                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" :value="tipusLocalitzacio.id"  v-model= "cartaTrucada.tipus_localitzacions_id" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample1" v-if="tipusLocalitzacio.id == 5 || tipusLocalitzacio.id == 3">
+                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" :value="tipusLocalitzacio.id"  v-model= "cartaTrucada.tipus_localitzacions_id" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1" v-else>
+                                            <label class="form-check-label" for="inlineRadio2">{{ tipusLocalitzacio.tipus }}</label>
                                         </div>
-                                        <div class="form-check form-check-inline">
+                                        <!-- <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample2">
                                             <label class="form-check-label" for="inlineRadio3">Punt singular</label>
                                         </div>
@@ -116,7 +117,7 @@
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio5" value="option5" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
                                             <label class="form-check-label" for="inlineRadio5">Població</label>
-                                        </div>
+                                        </div> -->
                                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                             <img :src="imagenHelpbox" alt="" width="20" height="20">
                                         </a>
@@ -370,7 +371,7 @@
                 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
                 <div id="map"></div> -->
-
+<app></app>
 
 
 
@@ -431,51 +432,11 @@
         </div>
     </div>
 </template>
-        <style>
-/*         #marker {
-        background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
-        background-size: cover;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        }
 
-        .mapboxgl-popup {
-        max-width: 200px;
-        } */
-        </style>
-
-        <style>
-/*         body { margin: 0; padding: 0; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; } */
-        </style>
-        <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
-        <script>
-/*             mapboxgl.accessToken = 'pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wxbTF5ejhrMGcwcjNwbzNtNDF6eHhrZyJ9.6m-p-hYwQ54P0zV-vn7Qfw';
-        const monument = [-77.0353, 38.8895];
-        const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10',
-        center: monument,
-        zoom: 15
-        }); */
-
-        // create the popup
-/*         const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-        'Construction on the Washington Monument began in 1848.'
-        ); */
-
-        // create DOM element for the marker
-/*         const el = document.createElement('div');
-        el.id = 'marker'; */
-
-        // create the marker
-/*         new mapboxgl.Marker(el)
-        .setLngLat(monument)
-        .setPopup(popup)
-        .addTo(map); */
+<script>
+import app from './app.vue';
     export default {
+  components: { app },
 
         data(){
             return{
@@ -495,6 +456,7 @@
                 agencies: [],
                 dadesPersonals: [],
                 cartesTrucada: [],
+                tipusLocalitzacions: [],
                 cartesTrucada2: {},
                 busquedaMunicipi: "",
                 municipiSel: {},
@@ -665,15 +627,27 @@
                     .finally(() => this.loading = false)
                 let me11 = this;
                 axios
-                    .get('/cartaTrucada/1')
+                    .get('/tipusLocalitzacio')
                     .then( response => {
-                        me11.cartesTrucada2 = response.data;
+                        me11.tipusLocalitzacions = response.data;
                     })
                     .catch ( error => {
                         console.log(error)
                         this.errored = true;
                     })
                     .finally(() => this.loading = false)
+                let me12 = this;
+                axios
+                    .get('/cartaTrucada/1')
+                    .then( response => {
+                        me12.cartesTrucada2 = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+
 
 
             },
