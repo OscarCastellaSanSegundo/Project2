@@ -51,8 +51,12 @@ Expedients
 
                 <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
                     <div class="card">
+<<<<<<< HEAD
 
                         <div class="col-10 columna" >
+=======
+                        <div class="col-12 columna" >
+>>>>>>> 8940c473169d8d048add4f08a84098a29fabd2c0
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 
                                 <div class="btn-group" role="group">
@@ -143,8 +147,6 @@ Expedients
                             </div>
 
                         </div>
-                        <div class="col-2">
-                            <div class="btn-group" style="margin-right: 5px" role="group" aria-label="Basic example">
                                 <div class="input-group">
                                     <button type="submit" class="btn btn-primary buscarExpedientesFiltros"><i class="bi bi-search"></i></button>
                                     <input type="text" name="buscarExpedientes" id="buscarExpedientes" class="form-control " placeholder="Buscar expedients" aria-label="Input group example" aria-describedby="btnGroupAddon">
@@ -159,12 +161,6 @@ Expedients
                         </div>
 
 
-                    </div>
-                </form>
-
-            </div>
-          </div>
-    </div>
 <div class="principalExpedientes">
     <?php
         $ambulancia = false;
@@ -638,8 +634,12 @@ Expedients
                     <div>
                         Creació: {{ $expedient->data_creacio }}&nbsp;&nbsp;&nbsp;&nbsp; Ultima&nbsp;edició:&nbsp;{{ $expedient->data_ultima_modificacio }}<br>
                     </div>
+<<<<<<< HEAD
                     <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'edit'], ['expediente' => $expedient->id]) }}" method="GET">
                         @csrf
+=======
+                    <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
+>>>>>>> 8940c473169d8d048add4f08a84098a29fabd2c0
                         <div style="display: flex;">
                             <div>
                                 Estat: {{ $expedient->estatExpedient->estat }}
@@ -658,6 +658,7 @@ Expedients
                                 <div style="width: 18px; height: 18px; background-color: rgb(0, 0, 0); margin-left: 9px; border-radius: 45px; margin-top: 4px;"></div>
                             @endif
                             <div>
+<<<<<<< HEAD
                                 <select required class="form-select form-select-sm cambiarEstadoExpediente" id="cambiarEstado" name="cambiarEstado" aria-label=".form-select-sm example">
                                     @if ($expedient->estats_expedients_id == 1)
                                         <option disabled value="abrirExpediente{{ $expedient->id }}">Seleccionar</option>
@@ -692,6 +693,15 @@ Expedients
                                         <option selected value="5">Immobilitzat</option>
                                     @endif
 
+=======
+                                <select class="form-select form-select-sm cambiarEstadoExpediente" id="cambiarEstado" name="cambiarEstado" aria-label=".form-select-sm example">
+                                    <option selected>Cambiar</option>
+                                    <option value="1">En procés</option>
+                                    <option value="2">Sol·licitat</option>
+                                    <option value="3">Acceptat</option>
+                                    <option value="4">Tancat</option>
+                                    <option value="5">Immobilitzat</option>
+>>>>>>> 8940c473169d8d048add4f08a84098a29fabd2c0
                                 </select>
                             </div>
                             <div>

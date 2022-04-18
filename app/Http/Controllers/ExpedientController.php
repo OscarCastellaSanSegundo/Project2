@@ -112,6 +112,8 @@ class ExpedientController extends Controller
 
 
 
+
+
         }else if ($carrer == 'true') {
 
             $filtroActivado = true;
