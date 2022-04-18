@@ -51,12 +51,8 @@ Expedients
 
                 <form action="{{ action([App\Http\Controllers\ExpedientController::class, 'index']) }}">
                     <div class="card">
-<<<<<<< HEAD
 
                         <div class="col-10 columna" >
-=======
-                        <div class="col-12 columna" >
->>>>>>> 8940c473169d8d048add4f08a84098a29fabd2c0
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 
                                 <div class="btn-group" role="group">
@@ -144,22 +140,27 @@ Expedients
                                         <li><button class="dropdown-item" type="submit" id="edicioMesAntics" name="edicioMesAntics" value="true">Data ultima edició: més antics</button></li>
                                     </ul>
                                 </div>
-                            </div>
 
-                        </div>
-                                <div class="input-group">
-                                    <button type="submit" class="btn btn-primary buscarExpedientesFiltros"><i class="bi bi-search"></i></button>
-                                    <input type="text" name="buscarExpedientes" id="buscarExpedientes" class="form-control " placeholder="Buscar expedients" aria-label="Input group example" aria-describedby="btnGroupAddon">
-                                </div>
                             </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-primary buscarExpedientesFiltros"><i class="bi bi-search"></i></button>
+                                <input type="text" name="buscarExpedientes" id="buscarExpedientes" class="form-control " placeholder="Buscar expedients" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                            </div>
+                        </div>
                             {{-- <div class="btn-group" style="margin-right: 5px" role="group" aria-label="Basic example">
                                 <div class="input-group">
                                     <button type="submit" class="btn btn-primary buscarLlamadasFiltros"><i class="bi bi-search"></i></button>
                                     <input type="text" name="buscarLlamadas" id="buscarLlamadas" class="form-control " placeholder="Buscar trucades" aria-label="Input group example" aria-describedby="btnGroupAddon">
                                 </div>
                             </div> --}}
-                        </div>
-
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 <div class="principalExpedientes">
     <?php
