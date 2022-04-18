@@ -22,6 +22,7 @@ class UsuariController extends Controller
 
 
         $todo = $request->input('mostrarTodo');
+        $buscarUsuarios = $request->input('buscarUsuarios');
         $operadores = $request->input('mostrarOperadores');
         $supervisores = $request->input('mostrarSupervisores');
         $admin = $request->input('mostrarAdmin');
@@ -49,6 +50,14 @@ class UsuariController extends Controller
 
             $usuarios = Usuari::where('perfils_id','=', 3)->get();
             $adminTrue = true;
+
+        }else if ($buscarUsuarios != 'null') {
+
+            $usuarios = Usuari::where('id', 'LIKE', '%'.$buscarUsuarios.'%')
+            ->orWhere('codi', 'LIKE', '%'.$buscarUsuarios.'%')
+            ->orWhere('nom', 'LIKE', '%'.$buscarUsuarios.'%')
+            ->orWhere('cognoms', 'LIKE', '%'.$buscarUsuarios.'%')
+            ->get();
 
         }else{
             $usuarios = Usuari::all();

@@ -59,7 +59,7 @@ Administració
                                 <div class="btn-group" style="margin-right: 5px" role="group" aria-label="Basic example">
                                     <div class="input-group">
                                         <button type="submit" class="btn btn-primary primerBotonAdmin"><i class="bi bi-search"></i></button>
-                                        <input type="text" class="form-control " placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                                        <input type="text" name="buscarUsuarios" id="buscarUsuarios" class="form-control " placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
                                     </div>
                                 </div>
 
