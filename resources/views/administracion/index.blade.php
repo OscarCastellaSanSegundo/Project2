@@ -289,10 +289,10 @@ Administració
                         </div>
                         <div class="col-lg-8" style="display: flex; align-items:flex-end; margin-right: 32px;">
                             <div class="col-7">
-                                <canvas id="myChart2"></canvas>
+                                <canvas id="primerGrafico{{$usuario->id}}"></canvas>
                             </div>
                             <div class="col-5">
-                                <canvas id="myChart"></canvas>
+                                <canvas id="segundoGrafico{{$usuario->id}}"></canvas>
                             </div>
                         </div>
 
@@ -424,100 +424,136 @@ Administració
 </div>
 </form>
 
+{{-- <div class="col-7">
+    <canvas id="myChart2{{$usuario->id}}"></canvas>
+</div>
+<div class="col-5">
+    <canvas id="myChart{{$usuario->id}}"></canvas>
+</div> --}}
+<?php
+    $contador = 0;
+    $numeroUsuarios = count($usuarios)
+?>
 
+@foreach ($usuarios as $usuario)
+<?php
+        $grafico1 = null;
+        $grafico1 =  "\"segundoGrafico";
+        $grafico1 .= $usuario->id;
+        $grafico1 .= "\"";
 
+        $grafico2 = null;
+        $grafico2 =  "\"primerGrafico";
+        $grafico2 .= $usuario->id;
+        $grafico2 .= "\"";
+?>
 <script>
 
-    const data = {
+    for (let i = 1; i <= <?php echo $numeroUsuarios ?>; i++) { // si se quita el for no tira
+
+
+        const data = {
+            labels: [
+                'Barcelona',
+                'Girona',
+                'Lleida',
+                'Tarragona',
+                'Fora Catalunya'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [<?php echo $datosUsuariosProvincias[$contador][0] ?>,<?php echo $datosUsuariosProvincias[$contador][1] ?> , <?php echo $datosUsuariosProvincias[$contador][2] ?>,
+                <?php echo $datosUsuariosProvincias[$contador][3] ?>, <?php echo $datosUsuariosProvincias[$contador][4] ?>],
+                backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(20, 50, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(20, 30, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+        };
+
+        const myChart = new Chart(
+            document.getElementById(<?php echo $grafico1 ?>),
+            config
+        );
+
+
+
+
+        const data2 = {
         labels: [
-            'Barcelona',
-            'Girona',
-            'Lleida',
-            'Tarragona'
-        ],
+                'Accidents',
+                'Assistència sanitària',
+                'Incendi',
+                'Fuita (Aigua, gas, altres)',
+                'Altres incidències',
+                'Seguretat',
+                'Trànsit',
+                'Civisme',
+                'Medi ambient',
+                'Meteorologia'
+            ],
         datasets: [{
             label: 'My First Dataset',
-            data: [300, 50, 100, 60],
+            data: [<?php echo $datosUsuariosIncidentes[$contador][0] ?>, <?php echo $datosUsuariosIncidentes[$contador][1] ?>, <?php echo $datosUsuariosIncidentes[$contador][2] ?>,
+            <?php echo $datosUsuariosIncidentes[$contador][3] ?>, <?php echo $datosUsuariosIncidentes[$contador][4] ?>, <?php echo $datosUsuariosIncidentes[$contador][5] ?>,
+            <?php echo $datosUsuariosIncidentes[$contador][6] ?>, <?php echo $datosUsuariosIncidentes[$contador][7] ?>, <?php echo $datosUsuariosIncidentes[$contador][8] ?>,
+            <?php echo $datosUsuariosIncidentes[$contador][9] ?>],
             backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(20, 50, 235)',
-            'rgb(255, 205, 86)'
+            'rgba(92, 67, 14, 0.2)',
+            'rgba(0, 0, 255, 0.2)',
+            'rgba(255, 0, 0, 0.2)',
+            'rgba(56, 113, 187, 0.2)', //
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'
             ],
-            hoverOffset: 4
+            borderColor: [
+            'rgb(92, 67, 14, 0.8)',
+            'rgb(0, 0, 255, 0.8)',
+            'rgb(255, 0, 0, 0.8)',
+            'rgb(56, 113, 187, 0.8)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)'
+            ],
+            borderWidth: 1
         }]
-    };
+        };
 
-    const config = {
-        type: 'doughnut',
-        data: data,
-    };
-
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-
-
-
-
-    const data2 = {
-    labels: [
-            'Accidents',
-            'Assistència sanitària',
-            'Incendi',
-            'Fuita (Aigua, gas, altres)',
-            'Altres incidències',
-            'Seguretat',
-            'Trànsit',
-            'Civisme',
-            'Medi ambient',
-            'Meteorologia'
-        ],
-    datasets: [{
-        label: 'My First Dataset',
-        data: [65, 59, 80, 81, 56, 55, 40, 30, 20, 10],
-        backgroundColor: [
-        'rgba(92, 67, 14, 0.2)',
-        'rgba(0, 0, 255, 0.2)',
-        'rgba(255, 0, 0, 0.2)',
-        'rgba(56, 113, 187, 0.2)', //
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
-        ],
-        borderColor: [
-        'rgb(92, 67, 14, 0.8)',
-        'rgb(0, 0, 255, 0.8)',
-        'rgb(255, 0, 0, 0.8)',
-        'rgb(56, 113, 187, 0.8)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-        ],
-        borderWidth: 1
-    }]
-    };
-
-    const config2 = {
-        type: 'bar',
-        data: data2,
-        options: {
-        scales: {
-            y: {
-            beginAtZero: true
+        const config2 = {
+            type: 'bar',
+            data: data2,
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
             }
-        }
-        },
-    };
+            },
+        };
 
-    const myChart2 = new Chart(
-      document.getElementById('myChart2'),
-      config2
-    );
+        const myChart2 = new Chart(
+        document.getElementById(<?php echo  $grafico2 ?>),
+        config2
+        );
+    }
+
 
 
 </script>
+
+<?php $contador++ ?>
+
+@endforeach
 
 
 @endsection

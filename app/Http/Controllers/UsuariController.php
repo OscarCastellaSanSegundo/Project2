@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuari;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,131 @@ class UsuariController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
+        $users = Usuari::all();
 
+
+        $datosUsuariosIncidentes = array();
+        $datosUsuariosProvincias = array();
+
+        foreach ($users as $userActual) {
+            $incidentes = array();
+            $provincies = array();
+
+            $barcelona = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('provincies', 'cartes_trucades.provincies_id', '=', 'provincies.id')
+                ->select('provincies.*')
+                ->where('provincies.id', '=', 1)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $girona = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('provincies', 'cartes_trucades.provincies_id', '=', 'provincies.id')
+                ->select('provincies.*')
+                ->where('provincies.id', '=', 2)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $lleida = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('provincies', 'cartes_trucades.provincies_id', '=', 'provincies.id')
+                ->select('provincies.*')
+                ->where('provincies.id', '=', 3)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $tarragona = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('provincies', 'cartes_trucades.provincies_id', '=', 'provincies.id')
+                ->select('provincies.*')
+                ->where('provincies.id', '=', 4)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $foraCatalunya = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->select('cartes_trucades.*')
+                ->where('cartes_trucades.fora_catalunya', '=', 1)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+
+
+
+            $accident = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 1)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $assistenciaSanitaria = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 2)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $incendi = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 3)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $fuita = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 4)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $altres = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 5)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $seguretat = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 6)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $transit = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 7)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $civisme = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 8)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $mediAmbient = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 9)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+            $meteo = Usuari::
+                join('cartes_trucades', 'usuaris.id', '=', 'cartes_trucades.usuaris_id')
+                ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
+                ->select('incidents.*')
+                ->where('incidents.classes_incidents_id', '=', 10)
+                ->where('usuaris.id', '=', $userActual->id)
+                ->count();
+
+            array_push($incidentes, $accident, $assistenciaSanitaria, $incendi, $fuita, $altres, $seguretat, $transit, $civisme, $mediAmbient, $meteo);
+            array_push($provincies, $barcelona, $girona, $lleida, $tarragona, $foraCatalunya);
+            array_push($datosUsuariosIncidentes, $incidentes);
+            array_push($datosUsuariosProvincias, $provincies);
+            unset($incidentes);
+            unset($provincies);
+        }
 
 
         $todo = $request->input('mostrarTodo');
@@ -64,7 +189,7 @@ class UsuariController extends Controller
         }
 
 
-        return view('administracion.index', compact('usuarios', 'user', 'adminTrue', 'supervisoresTrue', 'operadoresTrue', 'todoTrue' ));
+        return view('administracion.index', compact('usuarios', 'user', 'adminTrue', 'supervisoresTrue', 'operadoresTrue', 'todoTrue', 'datosUsuariosProvincias', 'datosUsuariosIncidentes'));
 
     }
 
