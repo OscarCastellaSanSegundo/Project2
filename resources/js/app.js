@@ -16,14 +16,21 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.component('pop-component', require('./components/popComponent.vue').default); 
 
 
 Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
-/* Vue.component('mapa', require('./components/mapa.vue').default); */
+Vue.component('map-component', require('./components/MapComponent.vue').default); 
+
+
+
 
 Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
