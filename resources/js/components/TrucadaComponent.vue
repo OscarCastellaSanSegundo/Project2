@@ -431,7 +431,7 @@
         </div>
     </div>
 </template>
-      
+
 <script>
 import app from '../app.vue';
     export default {
