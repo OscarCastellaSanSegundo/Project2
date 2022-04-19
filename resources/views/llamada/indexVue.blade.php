@@ -53,8 +53,7 @@ Llamada
 @section('contenido')
 
 <trucada-component></trucada-component>
-<map-component></map-component>
-<pop-component></pop-component>
+
 
 
 
