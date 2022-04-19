@@ -1,15 +1,15 @@
 <template>
-  <h1>Mapa comoponent</h1>
   <div id="map" />
-  <button id="test-reactivity" @click="title = 'Popup info changed!'">  change popup title!</button>
-
 </template>
 
 <script>
+
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { onMounted, createApp, defineComponent, ref, nextTick } from "vue";
-import popupContent from "@/components/pop-Component.vue";
+import { onMounted } from "vue";
+import { onMounted, createApp, defineComponent, ref, nextTick } from "vue";  // ---> fallo de vue
+import pop from "@/components/pop.vue";
+
 export default {
   setup() {
     const title = ref("EU Border Region");
@@ -39,17 +39,17 @@ export default {
         map.on("click", "eu-fill", function(e) {
           new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML('<div id="pop-Component"></div>')
+            .setHTML('<div id="pop"></div>')
             .addTo(map);
           const newPopup = defineComponent({
-            extends: popupContent,
+            extends: pop,
             setup() {
               // const title = 'EU border region'
               return { title };
             },
           });
           nextTick(() => {
-            createApp(newPopup).mount('#pop-Component');
+            createApp(newPopup).mount('#pop');
           });
         });
       });
@@ -100,11 +100,11 @@ button#test-reactivity:hover {
   outline: 0;
   box-shadow: 0 0 40px 40px #e74c3c inset;
 }
-div.mapboxgl-popup-content {
+div.mapboxgl-pop {
   font-family: 'Montserrat', sans-serif;
   padding-top: 22px;
 }
-button.mapboxgl-popup-close-button {
+button.mapboxgl-pop-close-button {
   font-size: 18px;
 }
 </style>

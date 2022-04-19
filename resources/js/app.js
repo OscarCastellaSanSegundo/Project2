@@ -8,6 +8,12 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import { createApp } from 'vue'
+import map from './map.vue'
+
+createApp(map).mount('#map')
+
+export default map
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -16,18 +22,10 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
 
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-Vue.component('pop-component', require('./components/popComponent.vue').default); 
-
-
-// Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
-// Vue.component('map-component', require('./components/MapComponent.vue').default); 
-
-
-
+Vue.component('pop', require('./components/pop.vue').default); 
+Vue.component('map', require('./map.vue').default); 
 
 Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 
