@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="row">
-<!--                                 <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
+                                <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
                                     <div class="col provinciaMunicipio">
 
                                         <div class="form-check form-check-inline ">
@@ -97,16 +97,15 @@
                                         </div>
 
                                     </div>
-                                </div> -->
-                                <div class="col-xl-8 col-sm-11">
+                                </div>
+                                <div class="col-xl-7 col-sm-9">
                                     <div class="collapse show multi-collapse" id="multiCollapseExample4">
 
-                                        <div class="form-check form-check-inline" v-for="tipusLocalitzacio in tipusLocalitzacions" :key="tipusLocalitzacio.id" :value="tipusLocalitzacio.id">
-                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" :value="tipusLocalitzacio.id"  v-model= "cartaTrucada.tipus_localitzacions_id" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample1" v-if="tipusLocalitzacio.id == 5 || tipusLocalitzacio.id == 3">
-                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" :value="tipusLocalitzacio.id"  v-model= "cartaTrucada.tipus_localitzacions_id" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1" v-else>
-                                            <label class="form-check-label" for="inlineRadio2">{{ tipusLocalitzacio.tipus }}</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" value="1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+                                            <label class="form-check-label" for="inlineRadio2">Carrer</label>
                                         </div>
-                                        <!-- <div class="form-check form-check-inline">
+                                        <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio3" value="option3" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample2">
                                             <label class="form-check-label" for="inlineRadio3">Punt singular</label>
                                         </div>
@@ -117,7 +116,7 @@
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio5" value="option5" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
                                             <label class="form-check-label" for="inlineRadio5">Població</label>
-                                        </div> -->
+                                        </div>
                                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                             <img :src="imagenHelpbox" alt="" width="20" height="20">
                                         </a>
@@ -367,8 +366,12 @@
 
                         <h1 class="text-center">Recomanacions</h1>
                         <div class="row" >
-
-<!-- mapa ---->        <map-component></map-component> -->
+<!--
+                <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+                <div id="map"></div> -->
+<!-- <button @click="title = 'Changed Popup Title'">Change Title</button>
+  <div id="map" /> -->
 
 
                         </div>
@@ -428,7 +431,7 @@
         </div>
     </div>
 </template>
-
+      
 <script>
 import app from '../app.vue';
     export default {
@@ -452,7 +455,6 @@ import app from '../app.vue';
                 agencies: [],
                 dadesPersonals: [],
                 cartesTrucada: [],
-                tipusLocalitzacions: [],
                 cartesTrucada2: {},
                 busquedaMunicipi: "",
                 municipiSel: {},
@@ -623,27 +625,15 @@ import app from '../app.vue';
                     .finally(() => this.loading = false)
                 let me11 = this;
                 axios
-                    .get('/tipusLocalitzacio')
-                    .then( response => {
-                        me11.tipusLocalitzacions = response.data;
-                    })
-                    .catch ( error => {
-                        console.log(error)
-                        this.errored = true;
-                    })
-                    .finally(() => this.loading = false)
-                let me12 = this;
-                axios
                     .get('/cartaTrucada/1')
                     .then( response => {
-                        me12.cartesTrucada2 = response.data;
+                        me11.cartesTrucada2 = response.data;
                     })
                     .catch ( error => {
                         console.log(error)
                         this.errored = true;
                     })
                     .finally(() => this.loading = false)
-
 
 
             },
@@ -710,4 +700,56 @@ import app from '../app.vue';
             console.log('Component mounted.')
         }
     }
+</script>
+<script>
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { onMounted } from "vue";
+import { createApp, defineComponent, ref, nextTick } from "vue";
+import MyPopup from "@/components/MyPopup.vue";
+export default {
+  setup() {
+    const title = ref("Unchanged Popup Title");
+    onMounted(() => {
+      mapboxgl.accessToken = "yourAccessToken";
+      const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/light-v9",
+      });
+      map.on("load", () => {
+        // Here we want to load a layer
+        map.addSource("usa", {
+          type: "geojson",
+          data:
+            "https://raw.githubusercontent.com/johan/world.geo.json/master/countries/USA.geo.json",
+        });
+        map.addLayer({
+          id: "usa-fill",
+          type: "fill",
+          source: "usa",
+          paint: {
+            "fill-color": "red",
+          },
+        });
+        // Here we want to setup the dropdown
+        map.on("click", "usa-fill", function (e) {
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML('<div id="popup-content"></div>')
+            .addTo(map);
+          const MyNewPopup = defineComponent({
+            extends: MyPopup,
+            setup() {
+              return { title };
+            },
+          });
+          nextTick(() => {
+            createApp(MyNewPopup).mount("#popup-content");
+          });
+        });
+      });
+    });
+    return { title };
+  },
+};
 </script>

@@ -17,7 +17,7 @@ Llamada
 
 @section('menu2')
     @if ($codigoUsuario == 3 || $codigoUsuario == 2)
-        <a class="nav-link" aria-current="page" href="{{ url('/expedientes') }}">Trucada</a>
+        <a class="nav-link" aria-current="page" href="{{ url('/expedientes') }}">Expedients</a>
     @else
 
     @endif
