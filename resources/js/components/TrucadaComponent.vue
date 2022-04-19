@@ -366,12 +366,10 @@
 
                         <h1 class="text-center">Recomanacions</h1>
                         <div class="row" >
-<!--
-                <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
-                <div id="map"></div> -->
-<!-- <button @click="title = 'Changed Popup Title'">Change Title</button>
-  <div id="map" /> -->
+
+
+                        <!-- <div id="pop-Component"></div> -->
+                        <map></map>
 
 
                         </div>
@@ -431,9 +429,10 @@
         </div>
     </div>
 </template>
-
+      
 <script>
-import app from '../app.vue';
+import app from './app.vue';
+
     export default {
   components: { app },
 
@@ -700,56 +699,4 @@ import app from '../app.vue';
             console.log('Component mounted.')
         }
     }
-</script>
-<script>
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import { onMounted } from "vue";
-import { createApp, defineComponent, ref, nextTick } from "vue";
-import MyPopup from "@/components/MyPopup.vue";
-export default {
-  setup() {
-    const title = ref("Unchanged Popup Title");
-    onMounted(() => {
-      mapboxgl.accessToken = "yourAccessToken";
-      const map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/light-v9",
-      });
-      map.on("load", () => {
-        // Here we want to load a layer
-        map.addSource("usa", {
-          type: "geojson",
-          data:
-            "https://raw.githubusercontent.com/johan/world.geo.json/master/countries/USA.geo.json",
-        });
-        map.addLayer({
-          id: "usa-fill",
-          type: "fill",
-          source: "usa",
-          paint: {
-            "fill-color": "red",
-          },
-        });
-        // Here we want to setup the dropdown
-        map.on("click", "usa-fill", function (e) {
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML('<div id="popup-content"></div>')
-            .addTo(map);
-          const MyNewPopup = defineComponent({
-            extends: MyPopup,
-            setup() {
-              return { title };
-            },
-          });
-          nextTick(() => {
-            createApp(MyNewPopup).mount("#popup-content");
-          });
-        });
-      });
-    });
-    return { title };
-  },
-};
 </script>

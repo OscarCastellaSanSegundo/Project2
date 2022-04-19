@@ -20,11 +20,12 @@ window.Vue = require('vue').default;
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-Vue.component('pop-component', require('./components/popComponent.vue').default); 
 
 
-// Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
-// Vue.component('map-component', require('./components/MapComponent.vue').default); 
+Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
+
+Vue.component('pop', require('./components/popComponent.vue').default); 
+Vue.component('map', require('./map.vue').default); 
 
 
 
