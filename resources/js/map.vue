@@ -1,7 +1,7 @@
 <template>
-  <h1>Mapa comoponent</h1>
+
   <div id="map" />
-  <button id="test-reactivity" @click="title = 'Popup info changed!'">  change popup title!</button>
+
 
 </template>
 

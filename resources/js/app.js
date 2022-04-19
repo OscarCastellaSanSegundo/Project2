@@ -24,8 +24,9 @@ window.Vue = require('vue').default;
 
 Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
 
-Vue.component('pop', require('./components/popComponent.vue').default); 
+Vue.component('pop', require('./components/pop.vue').default); 
 Vue.component('map', require('./map.vue').default); 
+
 
 
 
