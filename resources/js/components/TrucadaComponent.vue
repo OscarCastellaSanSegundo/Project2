@@ -367,12 +367,8 @@
 
                         <h1 class="text-center">Recomanacions</h1>
                         <div class="row" >
-<!--
-                <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
-                <div id="map"></div> -->
-<app></app>
 
+<!-- mapa ---->        <map-component></map-component> -->
 
 
                         </div>
@@ -434,9 +430,10 @@
 </template>
 
 <script>
-import app from './app.vue';
+import app from '../app.vue';
+import MapComponent from '../MapComponent.vue';
     export default {
-  components: { app },
+  components: { apMapComponentp },
 
         data(){
             return{
