@@ -431,9 +431,8 @@
 
 <script>
 import app from '../app.vue';
-import MapComponent from '../MapComponent.vue';
     export default {
-  components: { apMapComponentp },
+  components: { app },
 
         data(){
             return{
