@@ -1,15 +1,15 @@
 <template>
-
   <div id="map" />
-
-
 </template>
 
 <script>
+
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { onMounted, createApp, defineComponent, ref, nextTick } from "vue";
+import { onMounted } from "vue";
+import { onMounted, createApp, defineComponent, ref, nextTick } from "vue";  // ---> fallo de vue
 import pop from "@/components/pop.vue";
+
 export default {
   setup() {
     const title = ref("EU Border Region");
