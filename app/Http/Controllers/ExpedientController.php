@@ -108,7 +108,7 @@ class ExpedientController extends Controller
                 ->orWhere('cartes_trucades.nota_comuna', 'LIKE', '%'.$buscarExpedientes.'%')
                 ->orWhere('cartes_trucades.codi_trucada', '=', $buscarExpedientes)
                 // ->orWhere('provincies.nom', 'LIKE', '%'.$buscarExpedientes.'%')
-                ->get();
+                ->distinct()->get();
 
 
 
@@ -119,35 +119,35 @@ class ExpedientController extends Controller
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('tipus_localitzacions_id', '=', 1);
-            })->get();
+            })->distinct()->get();
 
         }else if ($entitatPoblacio == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('tipus_localitzacions_id', '=', 2);
-            })->get();
+            })->distinct()->get();
 
         }else if ($puntSingular == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('tipus_localitzacions_id', '=', 3);
-            })->get();
+            })->distinct()->get();
 
         }else if ($carretera == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            })->distinct()->get();
 
         }else if ($provincia == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('tipus_localitzacions_id', '=', 5);
-            })->get();
+            })->distinct()->get();
 
 
 
@@ -159,7 +159,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 1)
-                ->get();
+                ->distinct()->get();
 
         }else if ($assistenciaSanitaria == 'true') {
 
@@ -168,7 +168,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 2)
-                ->get();
+                ->distinct()->get();
 
         }else if ($incendi == 'true') {
 
@@ -177,7 +177,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 3)
-                ->get();
+                ->distinct()->get();
 
         }else if ($fuita == 'true') {
 
@@ -186,7 +186,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 4)
-                ->get();
+                ->distinct()->get();
 
         }else if ($altresIncidencies == 'true') {
 
@@ -195,7 +195,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 5)
-                ->get();
+                ->distinct()->get();
 
         }else if ($seguretat == 'true') {
 
@@ -204,7 +204,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 6)
-                ->get();
+                ->distinct()->get();
 
         }else if ($transit == 'true') {
 
@@ -213,7 +213,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 7)
-                ->get();
+                ->distinct()->get();
 
         }else if ($civisme == 'true') {
 
@@ -222,7 +222,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 8)
-                ->get();
+                ->distinct()->get();
 
         }else if ($mediAmbient == 'true') {
 
@@ -231,7 +231,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 9)
-                ->get();
+                ->distinct()->get();
 
         }else if ($meteorologia == 'true') {
 
@@ -240,7 +240,7 @@ class ExpedientController extends Controller
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('incidents', 'cartes_trucades.incidents_id', '=', 'incidents.id')
                 ->where('incidents.classes_incidents_id', '=', 10)
-                ->get();
+                ->distinct()->get();
 
 
 
@@ -250,35 +250,35 @@ class ExpedientController extends Controller
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('provincies_id', '=', 1);
-            })->get();
+            })->distinct()->get();
 
         }else if ($girona == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('provincies_id', '=', 2);
-            })->get();
+            })->distinct()->get();
 
         }else if ($tarragona == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('provincies_id', '=', 3);
-            })->get();
+                $query->where('provincies_id', '=', 4);
+            })->distinct()->get();
 
         }else if ($lleida == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('provincies_id', '=', 4);
-            })->get();
+                $query->where('provincies_id', '=', 3);
+            })->distinct()->get();
 
         }else if ($foraCatalunya == 'true') {
 
             $filtroActivado = true;
             $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
                 $query->where('fora_catalunya', '=', 1);
-            })->get();
+            })->distinct()->get();
 
 
 
@@ -290,24 +290,31 @@ class ExpedientController extends Controller
             $expedients = Expedient::
                 join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
                 ->join('cartes_trucades_has_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
+                ->select('expedients.*')
                 // ->join('estats_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
                 ->Where('cartes_trucades_has_agencies.agencies_id', '>', 0, 'and', 'cartes_trucades_has_agencies.agencies_id' ,'<=', 117)
                 ->orWhere('cartes_trucades_has_agencies.agencies_id', '>=', 264, 'and', 'cartes_trucades_has_agencies.agencies_id' ,'<=', 470)
-                ->get();
+                ->distinct()->get();
 
         }else if ($ambulancia == 'true') {
 
-            $filtroActivado = true;
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('cartes_trucades_has_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
+                ->select('expedients.*')
+                // ->join('estats_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
+                ->Where('cartes_trucades_has_agencies.agencies_id', '>=', 471)
+                ->distinct()->get();
 
         }else if ($bombers == 'true') {
 
-            $filtroActivado = true;
-            $expedients = Expedient::whereHas('cartesTrucada', function ($query) {
-                $query->where('tipus_localitzacions_id', '=', 4);
-            })->get();
+            $expedients = Expedient::
+                join('cartes_trucades', 'expedients.id', '=', 'cartes_trucades.expedients_id')
+                ->join('cartes_trucades_has_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
+                ->select('expedients.*')
+                // ->join('estats_agencies', 'cartes_trucades.id', '=', 'cartes_trucades_has_agencies.cartes_trucades_id')
+                ->Where('cartes_trucades_has_agencies.agencies_id', '>=', 118, 'and', 'cartes_trucades_has_agencies.agencies_id' ,'<=', 263)
+                ->distinct()->get();
 
 
 
@@ -317,31 +324,31 @@ class ExpedientController extends Controller
 
             $expedients = Expedient::
                 where('estats_expedients_id', '=', 1)
-                ->get();
+                ->distinct()->get();
 
         }else if ($solicitat == 'true') {
 
             $expedients = Expedient::
                 where('estats_expedients_id', '=', 2)
-                ->get();
+                ->distinct()->get();
 
         }else if ($acceptat == 'true') {
 
             $expedients = Expedient::
                 where('estats_expedients_id', '=', 3)
-                ->get();
+                ->distinct()->get();
 
         }else if ($tancat == 'true') {
 
             $expedients = Expedient::
                 where('estats_expedients_id', '=', 4)
-                ->get();
+                ->distinct()->get();
 
         }else if ($immobilitzat == 'true') {
 
             $expedients = Expedient::
                 where('estats_expedients_id', '=', 5)
-                ->get();
+                ->distinct()->get();
 
 
 
@@ -351,25 +358,25 @@ class ExpedientController extends Controller
 
             $expedients = Expedient::
                 orderBy('data_creacio', 'desc')
-                ->get();
+                ->distinct()->get();
 
         }else if ($creacioMesAntics == 'true') {
 
             $expedients = Expedient::
                 orderBy('data_creacio', 'asc')
-                ->get();
+                ->distinct()->get();
 
         }else if ($edicioMesRecents == 'true') {
 
             $expedients = Expedient::
                 orderBy('data_ultima_modificacio', 'desc')
-                ->get();
+                ->distinct()->get();
 
         }else if ($edicioMesAntics == 'true') {
 
             $expedients = Expedient::
                 orderBy('data_ultima_modificacio', 'asc')
-                ->get();
+                ->distinct()->get();
 
         }else{
 
@@ -377,18 +384,18 @@ class ExpedientController extends Controller
 
         }
 
-        if ($filtroActivado == true) {
-            $numeroIdExpediente= -1;
-            $contador = 0;
-            foreach ($expedients as $key => $value) {
-                if ($numeroIdExpediente == $value->id) {
-                    unset( $expedients[$contador - 1] );
-                }
-                $numeroIdExpediente = $value->id;
-                $contador++;
-            }
-            $filtroActivado = false;
-        }
+        // if ($filtroActivado == true) {
+        //     $numeroIdExpediente= -1;
+        //     $contador = 0;
+        //     foreach ($expedients as $key => $value) {
+        //         if ($numeroIdExpediente == $value->id) {
+        //             array_splice( $expedients, $contador - 1, 1);
+        //         }
+        //         $numeroIdExpediente = $value->id;
+        //         $contador++;
+        //     }
+        //     $filtroActivado = false;
+        // }
         $buscarExpedientes = null;
 
 
