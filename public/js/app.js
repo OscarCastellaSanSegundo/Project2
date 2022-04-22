@@ -5255,115 +5255,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/App.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/App.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var mapbox_gl_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mapbox-gl-vue */ "./node_modules/mapbox-gl-vue/dist/vue-mapbox-gl.esm.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './PopupContent.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Mapbox: mapbox_gl_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  methods: {
-    loaded: function loaded(map) {
-      map.addLayer({
-        id: 'points',
-        type: 'symbol',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: [{
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [-77.03238901390978, 38.913188059745586]
-              },
-              properties: {
-                title: 'Mapbox DC',
-                icon: 'monument'
-              }
-            }, {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [-122.414, 37.776]
-              },
-              properties: {
-                title: 'Mapbox SF',
-                icon: 'harbor'
-              }
-            }]
-          }
-        },
-        layout: {
-          'icon-image': '{icon}-15',
-          'text-field': '{title}',
-          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-          'text-offset': [0, 0.6],
-          'text-anchor': 'top'
-        }
-      });
-    },
-    clicked: function clicked(map, e) {
-      if (e.features) {
-        var coordinates = e.features[0].geometry.coordinates.slice(); // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        new mapboxgl.Popup().setLngLat({
-          lng: coordinates[0],
-          lat: coordinates[1]
-        }).setHTML('<div id="vue-popup-content"></div>').addTo(map);
-        new Object(function webpackMissingModule() { var e = new Error("Cannot find module './PopupContent.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())({
-          propsData: {
-            feature: e.features[0]
-          }
-        }).$mount('#vue-popup-content');
-      }
-    },
-    mouseEntered: function mouseEntered(map) {
-      map.getCanvas().style.cursor = 'pointer';
-    },
-    mouseLeft: function mouseLeft(map) {
-      map.getCanvas().style.cursor = '';
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TrucadaComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TrucadaComponent.vue?vue&type=script&lang=js& ***!
@@ -6081,7 +5972,8 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('trucada-component', (__webpack_require__(/*! ./components/TrucadaComponent.vue */ "./resources/js/components/TrucadaComponent.vue")["default"])); // Vue.component('pop-content', require('./components/PopupContent.vue').default);
+Vue.component('trucada-component', (__webpack_require__(/*! ./components/TrucadaComponent.vue */ "./resources/js/components/TrucadaComponent.vue")["default"])); // Vue.component('popup-content', require('./components/PopupContent.vue').default);
+// Vue.component('pop-content', require('./components/PopupContent.vue').default);
 // Vue.component('app', require('./App.vue').default);
 // Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 
@@ -28593,22 +28485,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=f348271a& */ "./resources/js/App.vue?vue&type=template&id=f348271a&");
-/* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ "./resources/js/App.vue?vue&type=script&lang=js&");
-/* harmony import */ var _App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ "./resources/js/App.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _TrucadaComponent_vue_vue_type_template_id_de002314___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TrucadaComponent.vue?vue&type=template&id=de002314& */ "./resources/js/components/TrucadaComponent.vue?vue&type=template&id=de002314&");
+/* harmony import */ var _TrucadaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TrucadaComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TrucadaComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__.render,
-  _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TrucadaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TrucadaComponent_vue_vue_type_template_id_de002314___WEBPACK_IMPORTED_MODULE_0__.render,
+  _TrucadaComponent_vue_vue_type_template_id_de002314___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -28618,7 +28508,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/App.vue"
+component.options.__file = "resources/js/components/TrucadaComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
