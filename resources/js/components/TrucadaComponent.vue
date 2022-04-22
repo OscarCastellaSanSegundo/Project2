@@ -369,7 +369,7 @@
 
 
                         <!-- <div id="pop-Component"></div> -->
-                        <map></map>
+                       <div id="app"></div>
 
 
                         </div>
