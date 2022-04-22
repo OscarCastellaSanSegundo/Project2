@@ -24,10 +24,10 @@ window.Vue = require('vue').default;
  */
 
 Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
-// Vue.component('popup-content', require('./components/PopupContent.vue').default);
+
 
 // Vue.component('pop-content', require('./components/PopupContent.vue').default);
-// Vue.component('app', require('./App.vue').default);
+Vue.component('mapa', require('./components/mapa.vue').default);
 
 // Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 

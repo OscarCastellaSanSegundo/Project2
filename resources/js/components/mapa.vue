@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <mapbox
-      access-token="your access token"
+      access-token="pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
       :map-options="{
         style: 'mapbox://styles/mapbox/light-v9',
         center: [-96, 37.8],

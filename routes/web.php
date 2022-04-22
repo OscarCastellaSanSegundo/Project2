@@ -45,6 +45,11 @@ Route::post('/login', [UsuariController::class, 'login'] );
 Route::get('/logout', [UsuariController::class, 'logout']);
 Route::post('/login', [UsuariController::class, 'login'] );
 
+Route::get('/mapa', function () {
+    $user = Auth::user();
+    return view('mapa.index', compact('user'));
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         $user = Auth::user();
