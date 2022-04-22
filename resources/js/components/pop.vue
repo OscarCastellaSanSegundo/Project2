@@ -1,5 +1,5 @@
 <template>
-    {{ title }}
+
 </template>
 
 <script>

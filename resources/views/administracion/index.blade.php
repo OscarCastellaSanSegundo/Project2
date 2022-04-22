@@ -461,7 +461,7 @@ Administració
                 'Fora Catalunya'
             ],
             datasets: [{
-                label: 'My First Dataset',
+                label: 'Numero de trucades',
                 data: [<?php echo $datosUsuariosProvincias[$contador][0] ?>,<?php echo $datosUsuariosProvincias[$contador][1] ?> , <?php echo $datosUsuariosProvincias[$contador][2] ?>,
                 <?php echo $datosUsuariosProvincias[$contador][3] ?>, <?php echo $datosUsuariosProvincias[$contador][4] ?>],
                 backgroundColor: [
@@ -502,7 +502,7 @@ Administració
                 'Meteorologia'
             ],
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Numero de trucades',
             data: [<?php echo $datosUsuariosIncidentes[$contador][0] ?>, <?php echo $datosUsuariosIncidentes[$contador][1] ?>, <?php echo $datosUsuariosIncidentes[$contador][2] ?>,
             <?php echo $datosUsuariosIncidentes[$contador][3] ?>, <?php echo $datosUsuariosIncidentes[$contador][4] ?>, <?php echo $datosUsuariosIncidentes[$contador][5] ?>,
             <?php echo $datosUsuariosIncidentes[$contador][6] ?>, <?php echo $datosUsuariosIncidentes[$contador][7] ?>, <?php echo $datosUsuariosIncidentes[$contador][8] ?>,

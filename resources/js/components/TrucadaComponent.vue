@@ -431,10 +431,10 @@
 </template>
 
 <script>
-import app from './app.vue';
+// import app from './app.vue';
 
     export default {
-  components: { app },
+//   components: { app },
 
         data(){
             return{
