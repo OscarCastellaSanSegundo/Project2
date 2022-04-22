@@ -25,8 +25,8 @@ window.Vue = require('vue').default;
 
 Vue.component('trucada-component', require('./components/TrucadaComponent.vue').default);
 
-// Vue.component('pop', require('./components/pop.vue').default);
-// Vue.component('map', require('./map.vue').default);
+// Vue.component('pop-content', require('./components/PopupContent.vue').default);
+// Vue.component('app', require('./App.vue').default);
 
 // Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 
