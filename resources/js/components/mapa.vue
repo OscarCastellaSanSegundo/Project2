@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="map">
     <mapbox
       access-token="pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
       :map-options="{
@@ -16,55 +16,47 @@
 </template>
 
 <script>
-import Mapbox from 'mapbox-gl-vue'
-import PopupContent from './PopupContent.vue'
+// import Mapbox from 'mapbox-gl-vue'
+// import PopupContent from './PopupContent.vue'
 
 export default {
-  components: { Mapbox },
   methods: {
-    loaded(map) {
-      map.addLayer({
-        id: 'points',
-        type: 'symbol',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: [
-              {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [-77.03238901390978, 38.913188059745586],
-                },
-                properties: {
-                  title: 'Mapbox DC',
-                  icon: 'monument',
-                },
-              },
-              {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [-122.414, 37.776],
-                },
-                properties: {
-                  title: 'Mapbox SF',
-                  icon: 'harbor',
-                },
-              },
-            ],
-          },
-        },
-        layout: {
-          'icon-image': '{icon}-15',
-          'text-field': '{title}',
-          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-          'text-offset': [0, 0.6],
-          'text-anchor': 'top',
-        },
-      })
+
+    loaded() {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ';
+            const mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+            mapboxClient.geocoding
+            .forwardGeocode({
+                query: 'Barcelona, Barcelona',
+                autocomplete: false,
+                limit: 1
+            })
+            .send()
+            .then((response) => {
+            if (
+                !response ||
+                !response.body ||
+                !response.body.features ||
+                !response.body.features.length
+            ) {
+                console.error('Invalid response:');
+                console.error(response);
+                return;
+            }
+            const feature = response.body.features[0];
+
+            const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: feature.center,
+            zoom: 10
+            });
+
+            // Create a marker and add it to the map.
+            new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+            });
     },
+
     clicked(map, e) {
       if (e.features) {
         const coordinates = e.features[0].geometry.coordinates.slice()
@@ -93,8 +85,15 @@ export default {
       map.getCanvas().style.cursor = ''
     },
   },
+  mounted() {
+    this.loaded();
+    }
 }
+
 </script>
+
+
+
 
 <style>
 #map {

@@ -365,15 +365,10 @@
                     <div class="modal-body">
 
                         <h1 class="text-center">Recomanacions</h1>
-                        <div class="row" >
-
-
+                        <div class="row" style="height: 550px; width: 100%;">
                         <!-- <div id="pop-Component"></div> -->
-
-                        <app></app>
-                        <div id="app"></div>
-
-
+                            <mapa></mapa>
+                        <!-- <div id="app"></div> -->
                         </div>
                         <div class="row text-center">
                             <div class="col-4 box1 pt-4">
