@@ -7,7 +7,7 @@
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { onMounted } from "vue";
-import { onMounted, createApp, defineComponent, ref, nextTick } from "vue";  // ---> fallo de vue
+import { createApp, defineComponent, ref, nextTick } from "vue";  // ---> fallo de vue
 import pop from "@/components/pop.vue";
 
 export default {
