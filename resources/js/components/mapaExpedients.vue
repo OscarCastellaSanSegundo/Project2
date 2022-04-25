@@ -1,6 +1,6 @@
 <template>
     <div style="height: 100%; width: 100%; padding: 5px;">
-        <div id="map"></div>
+        <div id="map2"></div>
     </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
                 .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Barcelona, Barcelona");
+                    this.positionMarkIncident("Valencia, Valencia");
 
                     this.markAgencies();
                 })
@@ -66,7 +66,7 @@ export default {
                     const feature = response.body.features[0];
 
                     me.map = new mapboxgl.Map({
-                        container: "map",
+                        container: "map2",
                         style: "mapbox://styles/mapbox/streets-v11",
                         center: feature.center,
                         zoom: 12,

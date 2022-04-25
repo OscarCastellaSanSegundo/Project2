@@ -28,6 +28,7 @@ Vue.component('trucada-component', require('./components/TrucadaComponent.vue').
 
 // Vue.component('pop-content', require('./components/PopupContent.vue').default);
 Vue.component('mapa', require('./components/mapa.vue').default);
+Vue.component('mapa-expedients', require('./components/mapaExpedients.vue').default);
 
 // Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 

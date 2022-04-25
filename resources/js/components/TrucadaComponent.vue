@@ -365,11 +365,14 @@
                     <div class="modal-body">
 
                         <h1 class="text-center">Recomanacions</h1>
-                        <div class="row" style="height: 550px; width: 100%;">
+
                         <!-- <div id="pop-Component"></div> -->
+                        <div style="width: 100%; height: 500px">
                             <mapa></mapa>
-                        <!-- <div id="app"></div> -->
                         </div>
+
+                        <!-- <div id="app"></div> -->
+
                         <div class="row text-center">
                             <div class="col-4 box1 pt-4">
                                 <a href="tel:+123456789"><span><img :src="imagenPolicia" class="imagenAgenciaRecomendacion"></span>
