@@ -209,7 +209,16 @@ export default {
         },
     },
 
-    created() {},
+    created() {
+        this.createPopup(agencies, marker, feature, map, recomanat)
+        this.positionMark(agencies);
+        this.positionMarkIncident(place);
+        this. selectAgencies();
+        this.markAgencies();
+
+
+
+    },
     mounted() {
         console.log("Component mounted.");
         this.selectAgencies();
