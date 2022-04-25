@@ -8,6 +8,15 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import Vue from 'vue'
+/* import { BootstrapVue, IconsPlugin } from 'bootstrap-vue' */
+import DraggableDiv from './DraggableDiv'
+export default {
+  components: {
+    DraggableDiv
+  }
+}
+
 // import { createApp } from 'vue'
 // import map from './map.vue'
 
@@ -29,8 +38,10 @@ Vue.component('trucada-component', require('./components/TrucadaComponent.vue').
 // Vue.component('pop-content', require('./components/PopupContent.vue').default);
 Vue.component('mapa', require('./components/mapa.vue').default);
 Vue.component('mapa-expedients', require('./components/mapaExpedients.vue').default);
+Vue.component('DraggableDiv', require('./DraggableDiv.vue').default);
 
-// Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
+
+Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 
 
 /**

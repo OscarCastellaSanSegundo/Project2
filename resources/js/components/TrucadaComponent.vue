@@ -14,7 +14,7 @@
                                 </div>
 
                                 <div>
-                                    <button type="button" class="btn btn-light botonTutorial" data-bs-toggle="modal" href="#tutorial" role="button">¡Tutorial!</button>
+                                    <button type="button" class="btn btn-light botonTutorial" data-bs-toggle="modal" href="#tutorial" role="button" v-on:click="estaAprendiendo = true">¡Tutorial!</button>
                                     <button type="button" class="btn btn-danger botonSimularLlamada" data-bs-toggle="modal" href="#simularLlamada" role="button">¡Simular Trucada!</button>
                                 </div>
                             </div>
@@ -88,20 +88,15 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xl-1 col-sm-2" style="margin-right: 15px">
-                                    <div class="col provinciaMunicipio">
-
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio1" value="option1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">
-                                            <label class="form-check-label" for="inlineRadio1">Provincia</label>
+                                <div class="col-xl-8 col-sm-11">
+                                    <div class="collapse show multi-collapse" id="multiCollapseExample4">
+                                        <div class="form-check form-check-inline" v-for="tipusLocalitzacio in tipusLocalitzacions" :key="tipusLocalitzacio.id" :value="tipusLocalitzacio.id">
+                                            <input v-if="tipusLocalitzacio.id == 3 || tipusLocalitzacio.id == 5" class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5" v-model="cartaTrucada.tipus_localitzacions_id" :value="tipusLocalitzacio.id">
+                                            <input v-else class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1" v-model="cartaTrucada.tipus_localitzacions_id" :value="tipusLocalitzacio.id">
+                                            <label class="form-check-label" for="inlineRadio1">{{ tipusLocalitzacio.tipus }}</label>
                                         </div>
 
-                                    </div>
-                                </div>
-                                <div class="col-xl-7 col-sm-9">
-                                    <div class="collapse show multi-collapse" id="multiCollapseExample4">
-
-                                        <div class="form-check form-check-inline">
+                                        <!-- <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="tipus_localitzacions_id" id="inlineRadio2" value="1" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
                                             <label class="form-check-label" for="inlineRadio2">Carrer</label>
                                         </div>
@@ -119,7 +114,7 @@
                                         </div>
                                         <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                             <img :src="imagenHelpbox" alt="" width="20" height="20">
-                                        </a>
+                                        </a> -->
 
                                     </div>
                                 </div>
@@ -235,7 +230,7 @@
 
                         </div>
                         <div class="col-12 mt-3">
-                            <h4>Crear expedient</h4>
+                            <h4>Crearr expedient</h4>
                         </div>
                         <div class="row col-12 mt-2">
                             <div class="col-6">
@@ -253,7 +248,42 @@
 
 
             </div>
+            <DraggableDiv style="width:40%; background-color: rgb(17, 173, 196)" v-show="estaAprendiendo">
+                <template slot="header">
+                    Arrossega per moure
+                </template>
+                <template slot="main" >
+                    <div class="card col-12">
+                        <div class="card-body" style="width: 100%">
+<!--                        <div class="row">
+                                <div class="col-12 d-flex aligns-items-center justify-content-center">
+                                    <h4>Tutorial</h4>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-12 d-flex aligns-items-center justify-content-center">
+                                    <div>
+                                        <video ref="video" controls type="video/mp4" :src="videoFormacio" style="width: 100%" @timeupdate="currentTime_ = $event.target.currentTime"></video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 d-flex aligns-items-center justify-content-center">
+                                    <button class="btn btn-secondary btn-sm me-2"
+                                            :class="{ ventanaActiva: seccionSeleccionada == seccion.id }"
+                                            v-for="(seccion, index) in secciones"
+                                            :key="seccion.nombre"
+                                            @click="currentTime = seccion.segundo; cambiarSeccion(index);">
+                                        {{ seccion.nombre }}
+                                    </button>
+                                </div>
 
+                            </div>
+                        </div>
+
+                    </div>
+                </template>
+            </DraggableDiv>
             <div class="zonaTelefono">
 
                 <div>
@@ -276,7 +306,14 @@
                 <div class="card informacionLlamante bordeRedondo zoomCard" style="width: 100%; margin-top: 10px">
                     <div class="card-body">
                         <h5 class="card-title">Informació del trucant</h5>
-
+                        <div class="form-group row mb-2">
+                            <div class="col-sm-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="fora_catalunya" value="fora_catalunya" name="fora_catalunya" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample6" aria-expanded="false" aria-controls="multiCollapseExample6" v-model="cartaTrucada.fora_catalunya">
+                                    <label class="form-check-label" for="fora_catalunya">Guardar info del trucant</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group row mb-2">
                             <div class="col-sm-10">
                                 <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon" v-model="cartaTrucada.telefon" v-on:keyup.enter="buscarTelefon(cartaTrucada.telefon)">
@@ -342,7 +379,7 @@
 
                             <div class="form-group row mb-2">
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Informació del telèfon" aria-label="Informacion del telefono" aria-describedby="button-addon2" name="dades_personals_id_antecedents">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Informació del telèfon" aria-label="Informacion del telefono" aria-describedby="button-addon2" name="dades_personals_id_antecedents" v-model="dadesPersonal.antecedents">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm gx-2" href="#">
                                     <img :src="imagenHelpbox" alt="" width="20" height="20">
@@ -444,10 +481,12 @@
                 imagenPolicia: 'http://localhost/Project2/public/imagenes/cochePolicia.png',
                 imagenAmbulancia: 'http://localhost/Project2/public/imagenes/furgonAmbulancia.png',
                 imagenBomberos: 'http://localhost/Project2/public/imagenes/camionBomberos.png',
+                hover: false,
                 municipis: [],
                 provincies: [],
                 comarques: [],
                 tipusIncidents: [],
+                tipusLocalitzacions: [],
                 incidents: [],
                 expedients: [],
                 estatExpedients: [],
@@ -504,6 +543,24 @@
                     data_ultima_modificacio: "",
                     estats_expedients_id: ""
                 },
+                reproducirVideo: false,
+                seccionSeleccionada: 0,
+                currentTime_: 10,
+                estaAprendiendo: false,
+                videoFormacio: 'http://localhost/Project2/public/imagenes/vid.mp4',
+                secciones: [{
+                    id: '0',
+                    nombre: 'Inici',
+                    segundo: '0.0'
+                },{
+                    id: '1',
+                    nombre: 'Dades',
+                    segundo: '7.0'
+                },{
+                    id: '2',
+                    nombre: 'Expedients',
+                    segundo: '10.0'
+                }]
             }
         },
         methods: {
@@ -624,16 +681,26 @@
                     .finally(() => this.loading = false)
                 let me11 = this;
                 axios
-                    .get('/cartaTrucada/1')
+                    .get('/tipusLocalitzacio')
                     .then( response => {
-                        me11.cartesTrucada2 = response.data;
+                        me11.tipusLocalitzacions = response.data;
                     })
                     .catch ( error => {
                         console.log(error)
                         this.errored = true;
                     })
                     .finally(() => this.loading = false)
-
+                let me12 = this;
+                axios
+                    .get('/cartaTrucada/1')
+                    .then( response => {
+                        me12.cartesTrucada2 = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
 
             },
             // Función que convierte el objeto a cadena. Es llamado para mostrarse en la lista
@@ -687,12 +754,23 @@
             pasarIdExpedientes(id){
                 this.cartaTrucada.expedients_id = id;
                 console.log(id)
+            },
+            cambiarSeccion(index){
+                this.seccionSeleccionada = index
             }
 
         },
         created(){
             this.selectAll();
             this.crearCodigo();
+        },
+        computed:{
+            currentTime: {
+                get: ({ currentTime_ }) => currentTime_,
+                set(time) {
+                    this.$refs.video.currentTime = time
+                }
+            }
         },
 
         mounted() {

@@ -5255,6 +5255,67 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'DraggableDiv',
+  data: function data() {
+    return {
+      positions: {
+        clientX: undefined,
+        clientY: undefined,
+        movementX: 0,
+        movementY: 0
+      }
+    };
+  },
+  methods: {
+    dragMouseDown: function dragMouseDown(event) {
+      event.preventDefault(); // get the mouse cursor position at startup:
+
+      this.positions.clientX = event.clientX;
+      this.positions.clientY = event.clientY;
+      document.onmousemove = this.elementDrag;
+      document.onmouseup = this.closeDragElement;
+    },
+    elementDrag: function elementDrag(event) {
+      event.preventDefault();
+      this.positions.movementX = this.positions.clientX - event.clientX;
+      this.positions.movementY = this.positions.clientY - event.clientY;
+      this.positions.clientX = event.clientX;
+      this.positions.clientY = event.clientY; // set the element's new position:
+
+      this.$refs.draggableContainer.style.top = this.$refs.draggableContainer.offsetTop - this.positions.movementY + 'px';
+      this.$refs.draggableContainer.style.left = this.$refs.draggableContainer.offsetLeft - this.positions.movementX + 'px';
+    },
+    closeDragElement: function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TrucadaComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TrucadaComponent.vue?vue&type=script&lang=js& ***!
@@ -5698,6 +5759,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import app from './app.vue';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   //   components: { app },
@@ -5709,10 +5807,12 @@ __webpack_require__.r(__webpack_exports__);
       imagenPolicia: 'http://localhost/Project2/public/imagenes/cochePolicia.png',
       imagenAmbulancia: 'http://localhost/Project2/public/imagenes/furgonAmbulancia.png',
       imagenBomberos: 'http://localhost/Project2/public/imagenes/camionBomberos.png',
+      hover: false,
       municipis: [],
       provincies: [],
       comarques: [],
       tipusIncidents: [],
+      tipusLocalitzacions: [],
       incidents: [],
       expedients: [],
       estatExpedients: [],
@@ -5768,7 +5868,25 @@ __webpack_require__.r(__webpack_exports__);
         data_creacio: "",
         data_ultima_modificacio: "",
         estats_expedients_id: ""
-      }
+      },
+      reproducirVideo: false,
+      seccionSeleccionada: 0,
+      currentTime_: 10,
+      estaAprendiendo: false,
+      videoFormacio: 'http://localhost/Project2/public/imagenes/vid.mp4',
+      secciones: [{
+        id: '0',
+        nombre: 'Inici',
+        segundo: '0.0'
+      }, {
+        id: '1',
+        nombre: 'Dades',
+        segundo: '7.0'
+      }, {
+        id: '2',
+        nombre: 'Expedients',
+        segundo: '10.0'
+      }]
     };
   },
   methods: {
@@ -5866,8 +5984,17 @@ __webpack_require__.r(__webpack_exports__);
         return _this.loading = false;
       });
       var me11 = this;
+      axios.get('/tipusLocalitzacio').then(function (response) {
+        me11.tipusLocalitzacions = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
+      })["finally"](function () {
+        return _this.loading = false;
+      });
+      var me12 = this;
       axios.get('/cartaTrucada/1').then(function (response) {
-        me11.cartesTrucada2 = response.data;
+        me12.cartesTrucada2 = response.data;
       })["catch"](function (error) {
         console.log(error);
         _this.errored = true;
@@ -5933,11 +6060,25 @@ __webpack_require__.r(__webpack_exports__);
     pasarIdExpedientes: function pasarIdExpedientes(id) {
       this.cartaTrucada.expedients_id = id;
       console.log(id);
+    },
+    cambiarSeccion: function cambiarSeccion(index) {
+      this.seccionSeleccionada = index;
     }
   },
   created: function created() {
     this.selectAll();
     this.crearCodigo();
+  },
+  computed: {
+    currentTime: {
+      get: function get(_ref) {
+        var currentTime_ = _ref.currentTime_;
+        return currentTime_;
+      },
+      set: function set(time) {
+        this.$refs.video.currentTime = time;
+      }
+    }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -5957,12 +6098,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 //
 //
 //
@@ -5973,171 +6108,54 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   data: function data() {
     return {
       agencies: [],
-      agenciesRecomanades: [],
+      loading: false,
       map: {},
-      accessToken: "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
+      accessToken: 'pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ'
     };
   },
   methods: {
-    markAgencies: function markAgencies() {
-      var _iterator = _createForOfIteratorHelper(this.agencies),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var agencia = _step.value;
-          this.positionMark(agencia);
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    },
     selectAgencies: function selectAgencies() {
       var _this = this;
 
+      this.loading = true;
       var me = this;
-      axios.get("/agencia").then(function (result) {
-        me.agencies = result.data;
+      axios.get('/agencies').then(function (response) {
+        me.agencies = response.data;
 
-        _this.positionMarkIncident("Barcelona, Barcelona");
-
-        _this.markAgencies();
-      })["catch"](function (err) {
-        console.log(err);
+        _this.crearMapa('Barcelona, Barcelona', me.agencies);
+      })["catch"](function (error) {
+        console.log(error);
+      })["finally"](function () {
+        return _this.loading = false;
       });
     },
-    positionMarkIncident: function positionMarkIncident(place) {
+    crearMapa: function crearMapa(place, agencies) {
       var me = this;
-      mapboxgl.accessToken = this.accessToken;
+      mapboxgl.accesToken = this.accessToken;
       var mapboxClient = mapboxSdk({
-        accessToken: mapboxgl.accessToken
+        accesToken: mapboxgl.accessToken
       });
       mapboxClient.geocoding.forwardGeocode({
-        query: place,
+        query: agencies.carrer + ", " + agencies.municipis_id.nom,
         autocomplete: false,
         limit: 1
       }).send().then(function (response) {
         if (!response || !response.body || !response.body.features || !response.body.features.length) {
-          console.error("Invalid response:");
+          console.error('Invalid response:');
           console.error(response);
           return;
         }
 
         var feature = response.body.features[0];
         me.map = new mapboxgl.Map({
-          container: "map",
-          style: "mapbox://styles/mapbox/streets-v11",
+          container: 'mapa',
+          style: 'mapbox://styles/mapbox/streets-v11',
           center: feature.center,
           zoom: 12
-        }); // Crea un marcador y lo añade al mapa
-
-        new mapboxgl.Marker({
-          color: "#E74C3C"
-        }).setLngLat(feature.center).addTo(me.map);
-      });
-    },
-    positionMark: function positionMark(agencia) {
-      var _this2 = this;
-
-      var me = this;
-      mapboxgl.accessToken = this.accessToken;
-      var mapboxClient = mapboxSdk({
-        accessToken: mapboxgl.accessToken
-      });
-      mapboxClient.geocoding.forwardGeocode({
-        query: agencia.carrer + ", " + agencia.municipi.nom,
-        autocomplete: false,
-        limit: 1
-      }).send().then(function (response) {
-        if (!response || !response.body || !response.body.features || !response.body.features.length) {
-          console.error("Invalid response:");
-          console.error(response);
-          return;
-        }
-
-        var feature = response.body.features[0];
-        var marker = new mapboxgl.Marker({
-          color: "#8E44AD"
         });
-        marker.setLngLat(feature.center).addTo(me.map);
-
-        var div = _this2.createPopup(agencia, marker, feature, me.map, false); // create the popup
-
-
-        var popup = new mapboxgl.Popup({
-          offset: 25
-        }).setDOMContent(div);
-        marker.setPopup(popup);
       });
-    },
-    createPopup: function createPopup(agencia, marker, feature, map, recomanat) {
-      var me = this;
-      var pMark = document.createElement("p");
-      pMark.innerText = agencia.nom;
-      pMark.className = "fw-bold";
-      var btnRecomanar = document.createElement("button");
-      btnRecomanar.dataset.recomanat = recomanat;
-      btnRecomanar.dataset.agencia_id = agencia.id;
-
-      if (recomanat) {
-        btnRecomanar.className = "btn btn-secondary btn-sm";
-        btnRecomanar.innerText = "Treure Recomananació";
-      } else {
-        btnRecomanar.className = "btn btn-primary btn-sm";
-        btnRecomanar.innerText = "Recomanar";
-      }
-
-      btnRecomanar.addEventListener("click", function (event) {
-        var btn = event.target;
-
-        if (btn.dataset.recomanat == "true") {
-          me.agenciesRecomanades.splice(me.agenciesRecomanades.indexOf(btn.dataset.agencia_id), 1);
-          marker.remove();
-          var markernew = new mapboxgl.Marker({
-            color: "#8E44AD",
-            rotation: 0
-          }).setLngLat(feature.center).addTo(map);
-
-          var _div = me.createPopup(agencia, markernew, feature, map, false); // create the popup
-
-
-          var popup = new mapboxgl.Popup({
-            offset: 25
-          }).setDOMContent(_div);
-          markernew.setPopup(popup);
-        } else {
-          me.agenciesRecomanades.push(btn.dataset.agencia_id);
-          console.log(me.agenciesRecomanades);
-          marker.remove();
-
-          var _markernew = new mapboxgl.Marker({
-            color: "#1FC610",
-            rotation: 45
-          }).setLngLat(feature.center).addTo(map);
-
-          var _div2 = me.createPopup(agencia, _markernew, feature, map, true); // create the popup
-
-
-          var _popup = new mapboxgl.Popup({
-            offset: 25
-          }).setDOMContent(_div2);
-
-          _markernew.setPopup(_popup);
-        }
-      });
-      var div = document.createElement("div");
-      div.className = "text-center";
-      div.appendChild(pMark);
-      div.appendChild(btnRecomanar);
-      return div;
+      this.añadirMarker(agencies);
     }
-  },
-  created: function created() {},
-  mounted: function mounted() {
-    console.log("Component mounted.");
-    this.selectAgencies();
   }
 });
 
@@ -6224,7 +6242,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         var feature = response.body.features[0];
         me.map = new mapboxgl.Map({
-          container: "map",
+          container: "map2",
           style: "mapbox://styles/mapbox/streets-v11",
           center: feature.center,
           zoom: 12
@@ -6344,8 +6362,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _DraggableDiv__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DraggableDiv */ "./resources/js/DraggableDiv.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6353,7 +6378,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]); // import { createApp } from 'vue'
+window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
+
+/* import { BootstrapVue, IconsPlugin } from 'bootstrap-vue' */
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    DraggableDiv: _DraggableDiv__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+}); // import { createApp } from 'vue'
 // import map from './map.vue'
 // createApp(map).mount('#map')
 // export default map
@@ -6366,18 +6400,19 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('trucada-component', (__webpack_require__(/*! ./components/TrucadaComponent.vue */ "./resources/js/components/TrucadaComponent.vue")["default"])); // Vue.component('pop-content', require('./components/PopupContent.vue').default);
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('trucada-component', (__webpack_require__(/*! ./components/TrucadaComponent.vue */ "./resources/js/components/TrucadaComponent.vue")["default"])); // Vue.component('pop-content', require('./components/PopupContent.vue').default);
 
-Vue.component('mapa', (__webpack_require__(/*! ./components/mapa.vue */ "./resources/js/components/mapa.vue")["default"]));
-Vue.component('mapa-expedients', (__webpack_require__(/*! ./components/mapaExpedients.vue */ "./resources/js/components/mapaExpedients.vue")["default"])); // Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
-
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('mapa', (__webpack_require__(/*! ./components/mapa.vue */ "./resources/js/components/mapa.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('mapa-expedients', (__webpack_require__(/*! ./components/mapaExpedients.vue */ "./resources/js/components/mapaExpedients.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('DraggableDiv', (__webpack_require__(/*! ./DraggableDiv.vue */ "./resources/js/DraggableDiv.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app'
 });
 
@@ -6393,7 +6428,8 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 try {
   // window.Popper = require('popper.js').default;
-  // window.$ = window.jQuery = require('jquery');
+  window.$ = window.jQuery = __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'jquery'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 } catch (e) {}
 /**
@@ -11449,6 +11485,30 @@ defineJQueryPlugin(Toast);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n#draggable-container {\n  position: absolute;\n  z-index: 9;\n}\n#draggable-header {\n  z-index: 10;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mapa.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mapa.vue?vue&type=style&index=0&lang=css& ***!
@@ -11466,7 +11526,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11490,7 +11550,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28992,6 +29052,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DraggableDiv.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mapa.vue?vue&type=style&index=0&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mapa.vue?vue&type=style&index=0&lang=css& ***!
@@ -29331,6 +29421,47 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./resources/js/DraggableDiv.vue":
+/*!***************************************!*\
+  !*** ./resources/js/DraggableDiv.vue ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DraggableDiv_vue_vue_type_template_id_76622162___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DraggableDiv.vue?vue&type=template&id=76622162& */ "./resources/js/DraggableDiv.vue?vue&type=template&id=76622162&");
+/* harmony import */ var _DraggableDiv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DraggableDiv.vue?vue&type=script&lang=js& */ "./resources/js/DraggableDiv.vue?vue&type=script&lang=js&");
+/* harmony import */ var _DraggableDiv_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DraggableDiv.vue?vue&type=style&index=0&lang=css& */ "./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _DraggableDiv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DraggableDiv_vue_vue_type_template_id_76622162___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DraggableDiv_vue_vue_type_template_id_76622162___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/DraggableDiv.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/TrucadaComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/TrucadaComponent.vue ***!
@@ -29452,6 +29583,22 @@ component.options.__file = "resources/js/components/mapaExpedients.vue"
 
 /***/ }),
 
+/***/ "./resources/js/DraggableDiv.vue?vue&type=script&lang=js&":
+/*!****************************************************************!*\
+  !*** ./resources/js/DraggableDiv.vue?vue&type=script&lang=js& ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DraggableDiv.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/TrucadaComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/TrucadaComponent.vue?vue&type=script&lang=js& ***!
@@ -29500,6 +29647,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************!*\
+  !*** ./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DraggableDiv.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/mapa.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/mapa.vue?vue&type=style&index=0&lang=css& ***!
@@ -29522,6 +29682,23 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_mapaExpedients_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./mapaExpedients.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mapaExpedients.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/DraggableDiv.vue?vue&type=template&id=76622162&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/DraggableDiv.vue?vue&type=template&id=76622162& ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_template_id_76622162___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_template_id_76622162___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DraggableDiv_vue_vue_type_template_id_76622162___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DraggableDiv.vue?vue&type=template&id=76622162& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=template&id=76622162&");
 
 
 /***/ }),
@@ -29577,6 +29754,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=template&id=76622162&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/DraggableDiv.vue?vue&type=template&id=76622162& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { ref: "draggableContainer", attrs: { id: "draggable-container" } },
+    [
+      _c(
+        "div",
+        {
+          attrs: { id: "draggable-header" },
+          on: { mousedown: _vm.dragMouseDown },
+        },
+        [_vm._t("header")],
+        2
+      ),
+      _vm._v(" "),
+      _vm._t("main"),
+      _vm._v(" "),
+      _vm._t("footer"),
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TrucadaComponent.vue?vue&type=template&id=de002314&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TrucadaComponent.vue?vue&type=template&id=de002314& ***!
@@ -29594,234 +29815,136 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "principalCarta" }, [
-      _c("div", { staticClass: "zonaFormulario" }, [
-        _c("div", [
-          _c(
-            "div",
-            {
-              staticClass: "card bordeRedondo zoomCardGrande",
-              staticStyle: { width: "100%", "margin-top": "10px" },
-            },
-            [
-              _c("img", {
-                staticClass: "card-img-top imagenEmergencia",
-                attrs: { src: _vm.imagenCabecera, alt: "Card image cap" },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _vm._m(0),
+    _c(
+      "div",
+      { staticClass: "principalCarta" },
+      [
+        _c("div", { staticClass: "zonaFormulario" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                staticClass: "card bordeRedondo zoomCardGrande",
+                staticStyle: { width: "100%", "margin-top": "10px" },
+              },
+              [
+                _c("img", {
+                  staticClass: "card-img-top imagenEmergencia",
+                  attrs: { src: _vm.imagenCabecera, alt: "Card image cap" },
+                }),
                 _vm._v(" "),
-                _c("div", [
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.cartaTrucada.fora_catalunya,
-                          expression: "cartaTrucada.fora_catalunya",
-                        },
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "checkbox",
-                        id: "fora_catalunya",
-                        value: "fora_catalunya",
-                        name: "fora_catalunya",
-                        "data-bs-toggle": "collapse",
-                        "data-bs-target": "#multiCollapseExample4",
-                        "aria-expanded": "false",
-                        "aria-controls": "multiCollapseExample4",
-                      },
-                      domProps: {
-                        checked: Array.isArray(_vm.cartaTrucada.fora_catalunya)
-                          ? _vm._i(
-                              _vm.cartaTrucada.fora_catalunya,
-                              "fora_catalunya"
-                            ) > -1
-                          : _vm.cartaTrucada.fora_catalunya,
-                      },
-                      on: {
-                        change: function ($event) {
-                          var $$a = _vm.cartaTrucada.fora_catalunya,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = "fora_catalunya",
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.cartaTrucada,
-                                  "fora_catalunya",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.cartaTrucada,
-                                  "fora_catalunya",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.cartaTrucada, "fora_catalunya", $$c)
-                          }
-                        },
-                      },
-                    }),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "simuladorLlamada" }, [
+                    _vm._m(0),
                     _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "fora_catalunya" },
-                      },
-                      [_vm._v("Fora de Catalunya")]
-                    ),
+                    _c("div", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-light botonTutorial",
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "modal",
+                            href: "#tutorial",
+                            role: "button",
+                          },
+                          on: {
+                            click: function ($event) {
+                              _vm.estaAprendiendo = true
+                            },
+                          },
+                        },
+                        [_vm._v("¡Tutorial!")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger botonSimularLlamada",
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "modal",
+                            href: "#simularLlamada",
+                            role: "button",
+                          },
+                        },
+                        [_vm._v("¡Simular Trucada!")]
+                      ),
+                    ]),
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "col-sm-2 col-navbar-brand-sm",
-                      attrs: { href: "#" },
-                    },
-                    [
-                      _c("img", {
+                  _c("div", [
+                    _c("div", { staticClass: "form-check form-check-inline" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cartaTrucada.fora_catalunya,
+                            expression: "cartaTrucada.fora_catalunya",
+                          },
+                        ],
+                        staticClass: "form-check-input",
                         attrs: {
-                          src: _vm.imagenHelpbox,
-                          alt: "",
-                          width: "20",
-                          height: "20",
-                          "data-toggle": "popover",
-                          title: "Popover title",
-                          "data-content":
-                            "And here's some amazing content. It's very engaging. Right?",
+                          type: "checkbox",
+                          id: "fora_catalunya",
+                          value: "fora_catalunya",
+                          name: "fora_catalunya",
+                          "data-bs-toggle": "collapse",
+                          "data-bs-target": "#multiCollapseExample4",
+                          "aria-expanded": "false",
+                          "aria-controls": "multiCollapseExample4",
+                        },
+                        domProps: {
+                          checked: Array.isArray(
+                            _vm.cartaTrucada.fora_catalunya
+                          )
+                            ? _vm._i(
+                                _vm.cartaTrucada.fora_catalunya,
+                                "fora_catalunya"
+                              ) > -1
+                            : _vm.cartaTrucada.fora_catalunya,
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$a = _vm.cartaTrucada.fora_catalunya,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "fora_catalunya",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.cartaTrucada,
+                                    "fora_catalunya",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.cartaTrucada,
+                                    "fora_catalunya",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.cartaTrucada, "fora_catalunya", $$c)
+                            }
+                          },
                         },
                       }),
-                    ]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-4" }, [
-                    _c("div", { staticClass: "col provinciaMunicipio" }, [
-                      _c("div", { staticClass: "form-group row mb-2" }, [
-                        _c("div", { staticClass: "col-sm-12" }, [
-                          _c(
-                            "div",
-                            [
-                              _c("vue-bootstrap-typeahead", {
-                                attrs: {
-                                  serializer: _vm.serializarValor,
-                                  data: _vm.municipis,
-                                  placeholder: "municipis",
-                                },
-                                on: { hit: _vm.onMunicipiSel },
-                                model: {
-                                  value: _vm.busquedaMunicipi,
-                                  callback: function ($$v) {
-                                    _vm.busquedaMunicipi = $$v
-                                  },
-                                  expression: "busquedaMunicipi",
-                                },
-                              }),
-                            ],
-                            1
-                          ),
-                        ]),
-                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "fora_catalunya" },
+                        },
+                        [_vm._v("Fora de Catalunya")]
+                      ),
                     ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-3" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse show multi-collapse",
-                        attrs: { id: "multiCollapseExample4" },
-                      },
-                      [
-                        _c("div", { staticClass: "form-group row mb-2" }, [
-                          _c("div", { staticClass: "col-sm-12" }, [
-                            _c("div", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.comarcaNom,
-                                    expression: "comarcaNom",
-                                  },
-                                ],
-                                staticClass: "form-control",
-                                staticStyle: {
-                                  "max-height": "350px",
-                                  "padding-top": "5px",
-                                  "z-index": "999",
-                                },
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "Comarca",
-                                  "aria-label": "Comarca",
-                                  "aria-describedby": "button-addon2",
-                                },
-                                domProps: { value: _vm.comarcaNom },
-                                on: {
-                                  input: function ($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.comarcaNom = $event.target.value
-                                  },
-                                },
-                              }),
-                            ]),
-                          ]),
-                        ]),
-                      ]
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-4" }, [
-                    _c("div", { staticClass: "col provinciaMunicipio" }, [
-                      _c("div", { staticClass: "form-group row mb-2" }, [
-                        _c("div", { staticClass: "col-sm-12" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.provinciaNom,
-                                expression: "provinciaNom",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Provincia",
-                              "aria-label": "Provincia",
-                              "aria-describedby": "button-addon2",
-                              name: "provincies_id",
-                            },
-                            domProps: { value: _vm.provinciaNom },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.provinciaNom = $event.target.value
-                              },
-                            },
-                          }),
-                        ]),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-1" }, [
+                    _vm._v(" "),
                     _c(
                       "a",
                       {
@@ -29831,896 +29954,1005 @@ var render = function () {
                       [
                         _c("img", {
                           attrs: {
+                            src: _vm.imagenHelpbox,
                             alt: "",
                             width: "20",
                             height: "20",
-                            src: _vm.imagenHelpbox,
+                            "data-toggle": "popover",
+                            title: "Popover title",
+                            "data-content":
+                              "And here's some amazing content. It's very engaging. Right?",
                           },
                         }),
                       ]
                     ),
                   ]),
-                ]),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(2),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-xl-7 col-sm-9" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse show multi-collapse",
-                        attrs: { id: "multiCollapseExample4" },
-                      },
-                      [
-                        _vm._m(3),
-                        _vm._v(" "),
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _vm._m(5),
-                        _vm._v(" "),
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "col-sm-2 col-navbar-brand-sm",
-                            attrs: { href: "#" },
-                          },
-                          [
-                            _c("img", {
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-4" }, [
+                      _c("div", { staticClass: "col provinciaMunicipio" }, [
+                        _c("div", { staticClass: "form-group row mb-2" }, [
+                          _c("div", { staticClass: "col-sm-12" }, [
+                            _c(
+                              "div",
+                              [
+                                _c("vue-bootstrap-typeahead", {
+                                  attrs: {
+                                    serializer: _vm.serializarValor,
+                                    data: _vm.municipis,
+                                    placeholder: "municipis",
+                                  },
+                                  on: { hit: _vm.onMunicipiSel },
+                                  model: {
+                                    value: _vm.busquedaMunicipi,
+                                    callback: function ($$v) {
+                                      _vm.busquedaMunicipi = $$v
+                                    },
+                                    expression: "busquedaMunicipi",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-3" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse show multi-collapse",
+                          attrs: { id: "multiCollapseExample4" },
+                        },
+                        [
+                          _c("div", { staticClass: "form-group row mb-2" }, [
+                            _c("div", { staticClass: "col-sm-12" }, [
+                              _c("div", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.comarcaNom,
+                                      expression: "comarcaNom",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  staticStyle: {
+                                    "max-height": "350px",
+                                    "padding-top": "5px",
+                                    "z-index": "999",
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Comarca",
+                                    "aria-label": "Comarca",
+                                    "aria-describedby": "button-addon2",
+                                  },
+                                  domProps: { value: _vm.comarcaNom },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.comarcaNom = $event.target.value
+                                    },
+                                  },
+                                }),
+                              ]),
+                            ]),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4" }, [
+                      _c("div", { staticClass: "col provinciaMunicipio" }, [
+                        _c("div", { staticClass: "form-group row mb-2" }, [
+                          _c("div", { staticClass: "col-sm-12" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.provinciaNom,
+                                  expression: "provinciaNom",
+                                },
+                              ],
+                              staticClass: "form-control",
                               attrs: {
-                                src: _vm.imagenHelpbox,
-                                alt: "",
-                                width: "20",
-                                height: "20",
+                                type: "text",
+                                placeholder: "Provincia",
+                                "aria-label": "Provincia",
+                                "aria-describedby": "button-addon2",
+                                name: "provincies_id",
+                              },
+                              domProps: { value: _vm.provinciaNom },
+                              on: {
+                                input: function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.provinciaNom = $event.target.value
+                                },
                               },
                             }),
-                          ]
+                          ]),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-1" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "col-sm-2 col-navbar-brand-sm",
+                          attrs: { href: "#" },
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              alt: "",
+                              width: "20",
+                              height: "20",
+                              src: _vm.imagenHelpbox,
+                            },
+                          }),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-xl-8 col-sm-11" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse show multi-collapse",
+                          attrs: { id: "multiCollapseExample4" },
+                        },
+                        _vm._l(
+                          _vm.tipusLocalitzacions,
+                          function (tipusLocalitzacio) {
+                            return _c(
+                              "div",
+                              {
+                                key: tipusLocalitzacio.id,
+                                staticClass: "form-check form-check-inline",
+                                attrs: { value: tipusLocalitzacio.id },
+                              },
+                              [
+                                tipusLocalitzacio.id == 3 ||
+                                tipusLocalitzacio.id == 5
+                                  ? _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.cartaTrucada
+                                              .tipus_localitzacions_id,
+                                          expression:
+                                            "cartaTrucada.tipus_localitzacions_id",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name: "tipus_localitzacions_id",
+                                        id: "inlineRadio1",
+                                        "data-bs-toggle": "collapse",
+                                        "data-bs-target":
+                                          "#multiCollapseExample5",
+                                        "aria-expanded": "false",
+                                        "aria-controls":
+                                          "multiCollapseExample5",
+                                      },
+                                      domProps: {
+                                        value: tipusLocalitzacio.id,
+                                        checked: _vm._q(
+                                          _vm.cartaTrucada
+                                            .tipus_localitzacions_id,
+                                          tipusLocalitzacio.id
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.cartaTrucada,
+                                            "tipus_localitzacions_id",
+                                            tipusLocalitzacio.id
+                                          )
+                                        },
+                                      },
+                                    })
+                                  : _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.cartaTrucada
+                                              .tipus_localitzacions_id,
+                                          expression:
+                                            "cartaTrucada.tipus_localitzacions_id",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name: "tipus_localitzacions_id",
+                                        id: "inlineRadio1",
+                                        "data-bs-toggle": "collapse",
+                                        "data-bs-target":
+                                          "#multiCollapseExample1",
+                                        "aria-expanded": "false",
+                                        "aria-controls":
+                                          "multiCollapseExample1",
+                                      },
+                                      domProps: {
+                                        value: tipusLocalitzacio.id,
+                                        checked: _vm._q(
+                                          _vm.cartaTrucada
+                                            .tipus_localitzacions_id,
+                                          tipusLocalitzacio.id
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.cartaTrucada,
+                                            "tipus_localitzacions_id",
+                                            tipusLocalitzacio.id
+                                          )
+                                        },
+                                      },
+                                    }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-check-label",
+                                    attrs: { for: "inlineRadio1" },
+                                  },
+                                  [_vm._v(_vm._s(tipusLocalitzacio.tipus))]
+                                ),
+                              ]
+                            )
+                          }
+                        ),
+                        0
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse multi-collapse",
+                          staticStyle: { "margin-top": "1%" },
+                          attrs: { id: "multiCollapseExample1" },
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-group row mb-2 gx-2" },
+                            [
+                              _c("div", { staticClass: "col-sm-4" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.cartaTrucada
+                                          .descripcio_localitzacio,
+                                      expression:
+                                        "cartaTrucada.descripcio_localitzacio",
+                                    },
+                                  ],
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Descripció",
+                                    "aria-label": "Descripció",
+                                    "aria-describedby": "button-addon2",
+                                    name: "descripcio_localitzacio",
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.cartaTrucada.descripcio_localitzacio,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.cartaTrucada,
+                                        "descripcio_localitzacio",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-4" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.cartaTrucada.detall_localitzacio,
+                                      expression:
+                                        "cartaTrucada.detall_localitzacio",
+                                    },
+                                  ],
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Detall",
+                                    "aria-label": "Detall",
+                                    "aria-describedby": "button-addon2",
+                                    name: "detall_localitzacio",
+                                  },
+                                  domProps: {
+                                    value: _vm.cartaTrucada.detall_localitzacio,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.cartaTrucada,
+                                        "detall_localitzacio",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-3" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.cartaTrucada
+                                          .altres_ref_localitzacio,
+                                      expression:
+                                        "cartaTrucada.altres_ref_localitzacio",
+                                    },
+                                  ],
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Altres referències",
+                                    "aria-label": "Altres referències",
+                                    "aria-describedby": "button-addon2",
+                                    name: "altres_ref_localitzacio",
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.cartaTrucada.altres_ref_localitzacio,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.cartaTrucada,
+                                        "altres_ref_localitzacio",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "col-sm-1 col-navbar-brand-sm",
+                                  attrs: { href: "#" },
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: _vm.imagenHelpbox,
+                                      alt: "",
+                                      width: "20",
+                                      height: "20",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col mb-3" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "collapse multi-collapse",
+                          staticStyle: { "margin-top": "1%" },
+                          attrs: { id: "multiCollapseExample5" },
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-group row mb-2 gx-2" },
+                            [
+                              _c("div", { staticClass: "col-sm-11" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.cartaTrucada
+                                          .altres_ref_localitzacio,
+                                      expression:
+                                        "cartaTrucada.altres_ref_localitzacio",
+                                    },
+                                  ],
+                                  staticClass: "form-control form-control-sm",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Altres referències",
+                                    "aria-label": "Otras referencias",
+                                    "aria-describedby": "button-addon2",
+                                    name: "",
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.cartaTrucada.altres_ref_localitzacio,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.cartaTrucada,
+                                        "altres_ref_localitzacio",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "col-sm-1 col-navbar-brand-sm",
+                                  attrs: { href: "#" },
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: _vm.imagenHelpbox,
+                                      alt: "",
+                                      width: "20",
+                                      height: "20",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-5" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.tipusIncidentId,
+                              expression: "tipusIncidentId",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "tipus_incident",
+                            id: "tipus_incident",
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.onIncidentSel(_vm.tipusIncidentId)
+                            },
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.tipusIncidentId = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                          },
+                        },
+                        _vm._l(_vm.tipusIncidents, function (tipusIncident) {
+                          return _c(
+                            "option",
+                            {
+                              key: tipusIncident.id,
+                              domProps: { value: tipusIncident.id },
+                            },
+                            [_vm._v(_vm._s(tipusIncident.descripcio))]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.cartaTrucada.incidents_id,
+                              expression: "cartaTrucada.incidents_id",
+                            },
+                          ],
+                          staticClass: "form-select",
+                          attrs: {
+                            "aria-label": ".form-select-sm example",
+                            name: "incidents_id",
+                          },
+                          on: {
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.cartaTrucada,
+                                "incidents_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                          },
+                        },
+                        _vm._l(_vm.incidentsIdSel, function (incident) {
+                          return _c(
+                            "option",
+                            {
+                              key: incident.id,
+                              domProps: { value: incident.id },
+                            },
+                            [_vm._v(_vm._s(incident.descripcio))]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-1" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "col-sm-2 col-navbar-brand-sm",
+                          attrs: { href: "#" },
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: _vm.imagenHelpbox,
+                              alt: "",
+                              width: "20",
+                              height: "20",
+                            },
+                          }),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                ]),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "card col-12 bordeRedondo zoomCardGrande",
+              staticStyle: { "margin-top": "10px" },
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12 tablaExpedientesScroll" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table table-hover tablaExpedientes" },
+                      [
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.expedients, function (expedient) {
+                            return _c(
+                              "tr",
+                              {
+                                key: expedient.id,
+                                attrs: { value: expedient.id },
+                              },
+                              [
+                                _c("th", { attrs: { scope: "row" } }, [
+                                  _vm._v(_vm._s(expedient.id)),
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(expedient.data_creacio)),
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(expedient.estats_expedients_id)
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-light botonesTabla",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.pasarIdExpedientes(
+                                            expedient.id
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [_vm._v("Seleccionar")]
+                                  ),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
                         ),
                       ]
                     ),
                   ]),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse multi-collapse",
-                        staticStyle: { "margin-top": "1%" },
-                        attrs: { id: "multiCollapseExample1" },
-                      },
-                      [
-                        _c("div", { staticClass: "form-group row mb-2 gx-2" }, [
-                          _c("div", { staticClass: "col-sm-4" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.cartaTrucada.descripcio_localitzacio,
-                                  expression:
-                                    "cartaTrucada.descripcio_localitzacio",
-                                },
-                              ],
-                              staticClass: "form-control form-control-sm",
-                              attrs: {
-                                type: "text",
-                                placeholder: "Descripció",
-                                "aria-label": "Descripció",
-                                "aria-describedby": "button-addon2",
-                                name: "descripcio_localitzacio",
-                              },
-                              domProps: {
-                                value: _vm.cartaTrucada.descripcio_localitzacio,
-                              },
-                              on: {
-                                input: function ($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.cartaTrucada,
-                                    "descripcio_localitzacio",
-                                    $event.target.value
-                                  )
-                                },
-                              },
-                            }),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-sm-4" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.cartaTrucada.detall_localitzacio,
-                                  expression:
-                                    "cartaTrucada.detall_localitzacio",
-                                },
-                              ],
-                              staticClass: "form-control form-control-sm",
-                              attrs: {
-                                type: "text",
-                                placeholder: "Detall",
-                                "aria-label": "Detall",
-                                "aria-describedby": "button-addon2",
-                                name: "detall_localitzacio",
-                              },
-                              domProps: {
-                                value: _vm.cartaTrucada.detall_localitzacio,
-                              },
-                              on: {
-                                input: function ($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.cartaTrucada,
-                                    "detall_localitzacio",
-                                    $event.target.value
-                                  )
-                                },
-                              },
-                            }),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-sm-3" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.cartaTrucada.altres_ref_localitzacio,
-                                  expression:
-                                    "cartaTrucada.altres_ref_localitzacio",
-                                },
-                              ],
-                              staticClass: "form-control form-control-sm",
-                              attrs: {
-                                type: "text",
-                                placeholder: "Altres referències",
-                                "aria-label": "Altres referències",
-                                "aria-describedby": "button-addon2",
-                                name: "altres_ref_localitzacio",
-                              },
-                              domProps: {
-                                value: _vm.cartaTrucada.altres_ref_localitzacio,
-                              },
-                              on: {
-                                input: function ($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.cartaTrucada,
-                                    "altres_ref_localitzacio",
-                                    $event.target.value
-                                  )
-                                },
-                              },
-                            }),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "col-sm-1 col-navbar-brand-sm",
-                              attrs: { href: "#" },
-                            },
-                            [
-                              _c("img", {
-                                attrs: {
-                                  src: _vm.imagenHelpbox,
-                                  alt: "",
-                                  width: "20",
-                                  height: "20",
-                                },
-                              }),
-                            ]
-                          ),
-                        ]),
-                      ]
-                    ),
-                  ]),
-                ]),
+                _vm._m(5),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col mb-3" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse multi-collapse",
-                        staticStyle: { "margin-top": "1%" },
-                        attrs: { id: "multiCollapseExample5" },
-                      },
-                      [
-                        _c("div", { staticClass: "form-group row mb-2 gx-2" }, [
-                          _c("div", { staticClass: "col-sm-11" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.cartaTrucada.altres_ref_localitzacio,
-                                  expression:
-                                    "cartaTrucada.altres_ref_localitzacio",
-                                },
-                              ],
-                              staticClass: "form-control form-control-sm",
-                              attrs: {
-                                type: "text",
-                                placeholder: "Altres referències",
-                                "aria-label": "Otras referencias",
-                                "aria-describedby": "button-addon2",
-                                name: "",
-                              },
-                              domProps: {
-                                value: _vm.cartaTrucada.altres_ref_localitzacio,
-                              },
-                              on: {
-                                input: function ($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.cartaTrucada,
-                                    "altres_ref_localitzacio",
-                                    $event.target.value
-                                  )
-                                },
-                              },
-                            }),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "col-sm-1 col-navbar-brand-sm",
-                              attrs: { href: "#" },
-                            },
-                            [
-                              _c("img", {
-                                attrs: {
-                                  src: _vm.imagenHelpbox,
-                                  alt: "",
-                                  width: "20",
-                                  height: "20",
-                                },
-                              }),
-                            ]
-                          ),
-                        ]),
-                      ]
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _vm._m(7),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-5" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.tipusIncidentId,
-                            expression: "tipusIncidentId",
-                          },
-                        ],
-                        staticClass: "form-control",
-                        attrs: { name: "tipus_incident", id: "tipus_incident" },
-                        on: {
-                          click: function ($event) {
-                            return _vm.onIncidentSel(_vm.tipusIncidentId)
-                          },
-                          change: function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.tipusIncidentId = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          },
-                        },
-                      },
-                      _vm._l(_vm.tipusIncidents, function (tipusIncident) {
-                        return _c(
-                          "option",
-                          {
-                            key: tipusIncident.id,
-                            domProps: { value: tipusIncident.id },
-                          },
-                          [_vm._v(_vm._s(tipusIncident.descripcio))]
-                        )
-                      }),
-                      0
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-6" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.cartaTrucada.incidents_id,
-                            expression: "cartaTrucada.incidents_id",
-                          },
-                        ],
-                        staticClass: "form-select",
-                        attrs: {
-                          "aria-label": ".form-select-sm example",
-                          name: "incidents_id",
-                        },
-                        on: {
-                          change: function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.cartaTrucada,
-                              "incidents_id",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                        },
-                      },
-                      _vm._l(_vm.incidentsIdSel, function (incident) {
-                        return _c(
-                          "option",
-                          {
-                            key: incident.id,
-                            domProps: { value: incident.id },
-                          },
-                          [_vm._v(_vm._s(incident.descripcio))]
-                        )
-                      }),
-                      0
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-1" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "col-sm-2 col-navbar-brand-sm",
-                        attrs: { href: "#" },
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: _vm.imagenHelpbox,
-                            alt: "",
-                            width: "20",
-                            height: "20",
-                          },
-                        }),
-                      ]
-                    ),
-                  ]),
-                ]),
+                _vm._m(6),
               ]),
             ]
           ),
         ]),
         _vm._v(" "),
         _c(
-          "div",
+          "DraggableDiv",
           {
-            staticClass: "card col-12 bordeRedondo zoomCardGrande",
-            staticStyle: { "margin-top": "10px" },
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.estaAprendiendo,
+                expression: "estaAprendiendo",
+              },
+            ],
+            staticStyle: {
+              width: "40%",
+              "background-color": "rgb(17, 173, 196)",
+            },
           },
           [
-            _c("div", { staticClass: "card-body" }, [
-              _vm._m(8),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-12 tablaExpedientesScroll" }, [
-                  _c(
-                    "table",
-                    { staticClass: "table table-hover tablaExpedientes" },
-                    [
-                      _vm._m(9),
-                      _vm._v(" "),
+            _c("template", { slot: "header" }, [
+              _vm._v(
+                "\n                    Arrossega per moure\n                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("template", { slot: "main" }, [
+              _c("div", { staticClass: "card col-12" }, [
+                _c(
+                  "div",
+                  { staticClass: "card-body", staticStyle: { width: "100%" } },
+                  [
+                    _c("div", { staticClass: "row" }, [
                       _c(
-                        "tbody",
-                        _vm._l(_vm.expedients, function (expedient) {
+                        "div",
+                        {
+                          staticClass:
+                            "col-12 d-flex aligns-items-center justify-content-center",
+                        },
+                        [
+                          _c("div", [
+                            _c("video", {
+                              ref: "video",
+                              staticStyle: { width: "100%" },
+                              attrs: {
+                                controls: "",
+                                type: "video/mp4",
+                                src: _vm.videoFormacio,
+                              },
+                              on: {
+                                timeupdate: function ($event) {
+                                  _vm.currentTime_ = $event.target.currentTime
+                                },
+                              },
+                            }),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-12 d-flex aligns-items-center justify-content-center",
+                        },
+                        _vm._l(_vm.secciones, function (seccion, index) {
                           return _c(
-                            "tr",
+                            "button",
                             {
-                              key: expedient.id,
-                              attrs: { value: expedient.id },
+                              key: seccion.nombre,
+                              staticClass: "btn btn-secondary btn-sm me-2",
+                              class: {
+                                ventanaActiva:
+                                  _vm.seccionSeleccionada == seccion.id,
+                              },
+                              on: {
+                                click: function ($event) {
+                                  _vm.currentTime = seccion.segundo
+                                  _vm.cambiarSeccion(index)
+                                },
+                              },
                             },
                             [
-                              _c("th", { attrs: { scope: "row" } }, [
-                                _vm._v(_vm._s(expedient.id)),
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(expedient.data_creacio)),
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(expedient.estats_expedients_id)),
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-light botonesTabla",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.pasarIdExpedientes(
-                                          expedient.id
-                                        )
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("Seleccionar")]
-                                ),
-                              ]),
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(seccion.nombre) +
+                                  "\n                                    "
+                              ),
                             ]
                           )
                         }),
                         0
                       ),
-                    ]
-                  ),
-                ]),
+                    ]),
+                  ]
+                ),
               ]),
-              _vm._v(" "),
-              _vm._m(10),
-              _vm._v(" "),
-              _vm._m(11),
             ]),
-          ]
+          ],
+          2
         ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "zonaTelefono" }, [
-        _c("div", [
-          _c(
-            "div",
-            {
-              staticClass: "card bordeRedondo zoomCard",
-              staticStyle: { width: "99%", "margin-top": "10px" },
-            },
-            [
-              _c("div", { staticClass: "card-body row mb-0 cronometro" }, [
-                _c("h5", [_vm._v("Nº Trucada")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-6 mb-0" }, [
-                  _c("p", [_vm._v(_vm._s(_vm.cartaTrucada.codi_trucada))]),
+        _vm._v(" "),
+        _c("div", { staticClass: "zonaTelefono" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                staticClass: "card bordeRedondo zoomCard",
+                staticStyle: { width: "99%", "margin-top": "10px" },
+              },
+              [
+                _c("div", { staticClass: "card-body row mb-0 cronometro" }, [
+                  _c("h5", [_vm._v("Nº Trucada")]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.cartaTrucada.codi_trucada,
-                        expression: "cartaTrucada.codi_trucada",
+                  _c("div", { staticClass: "col-sm-6 mb-0" }, [
+                    _c("p", [_vm._v(_vm._s(_vm.cartaTrucada.codi_trucada))]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cartaTrucada.codi_trucada,
+                          expression: "cartaTrucada.codi_trucada",
+                        },
+                      ],
+                      attrs: {
+                        id: "codiTrucadaP",
+                        name: "codi_trucada",
+                        type: "hidden",
                       },
-                    ],
-                    attrs: {
-                      id: "codiTrucadaP",
-                      name: "codi_trucada",
-                      type: "hidden",
-                    },
-                    domProps: { value: _vm.cartaTrucada.codi_trucada },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.cartaTrucada,
-                          "codi_trucada",
-                          $event.target.value
-                        )
-                      },
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _vm._m(12),
-              ]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "card informacionLlamante bordeRedondo zoomCard",
-            staticStyle: { width: "100%", "margin-top": "10px" },
-          },
-          [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v("Informació del trucant"),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-2" }, [
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.cartaTrucada.telefon,
-                        expression: "cartaTrucada.telefon",
-                      },
-                    ],
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "number",
-                      placeholder: "Telèfon",
-                      "aria-label": "Telefono",
-                      "aria-describedby": "button-addon2",
-                      id: "telefon",
-                      name: "telefon",
-                    },
-                    domProps: { value: _vm.cartaTrucada.telefon },
-                    on: {
-                      keyup: function ($event) {
-                        if (
-                          !$event.type.indexOf("key") &&
-                          _vm._k(
-                            $event.keyCode,
-                            "enter",
-                            13,
-                            $event.key,
-                            "Enter"
+                      domProps: { value: _vm.cartaTrucada.codi_trucada },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.cartaTrucada,
+                            "codi_trucada",
+                            $event.target.value
                           )
-                        ) {
-                          return null
-                        }
-                        return _vm.buscarTelefon(_vm.cartaTrucada.telefon)
-                      },
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.cartaTrucada,
-                          "telefon",
-                          $event.target.value
-                        )
-                      },
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "col-sm-2 col-navbar-brand-sm",
-                    attrs: { href: "#" },
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: _vm.imagenHelpbox,
-                        alt: "",
-                        width: "20",
-                        height: "20",
+                        },
                       },
                     }),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-2" }, [
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.cartaTrucada.nom_trucada,
-                        expression: "cartaTrucada.nom_trucada",
-                      },
-                    ],
-                    staticClass: "form-control form-control-sm",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Nom",
-                      "aria-label": "Nom",
-                      "aria-describedby": "button-addon2",
-                      name: "nom_trucada",
-                    },
-                    domProps: { value: _vm.cartaTrucada.nom_trucada },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.cartaTrucada,
-                          "nom_trucada",
-                          $event.target.value
-                        )
-                      },
-                    },
-                  }),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(7),
                 ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "col-sm-2 col-navbar-brand-sm",
-                    attrs: { href: "#" },
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: _vm.imagenHelpbox,
-                        alt: "",
-                        width: "20",
-                        height: "20",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    attrs: {
-                      for: "exampleFormControlTextarea1",
-                      id: "nota_comuna",
-                    },
-                  },
-                  [_vm._v("Nota comuna")]
-                ),
-                _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.cartaTrucada.nota_comuna,
-                      expression: "cartaTrucada.nota_comuna",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "exampleFormControlTextarea1",
-                    rows: "6",
-                    name: "nota_comuna",
-                  },
-                  domProps: { value: _vm.cartaTrucada.nota_comuna },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.cartaTrucada,
-                        "nota_comuna",
-                        $event.target.value
-                      )
-                    },
-                  },
-                }),
-              ]),
-            ]),
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", [
+              ]
+            ),
+          ]),
+          _vm._v(" "),
           _c(
             "div",
             {
-              staticClass: "card procedenciaLlamada bordeRedondo zoomCard",
+              staticClass: "card informacionLlamante bordeRedondo zoomCard",
               staticStyle: { width: "100%", "margin-top": "10px" },
             },
             [
-              _vm._m(13),
-              _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "form-group row mb-2 gx-1" }, [
-                  _c("div", { staticClass: "col-sm-5" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.cartaTrucada.procedencia_trucada,
-                          expression: "cartaTrucada.procedencia_trucada",
-                        },
-                      ],
-                      staticClass: "form-control form-control-sm",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Procedència",
-                        "aria-label": "Procedencia",
-                        "aria-describedby": "button-addon2",
-                        name: "procedencia_trucada",
-                      },
-                      domProps: { value: _vm.cartaTrucada.procedencia_trucada },
-                      on: {
-                        input: function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.cartaTrucada,
-                            "procedencia_trucada",
-                            $event.target.value
-                          )
-                        },
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-5" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.cartaTrucada.origen_trucada,
-                          expression: "cartaTrucada.origen_trucada",
-                        },
-                      ],
-                      staticClass: "form-control form-control-sm",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Origen",
-                        "aria-label": "Origen",
-                        "aria-describedby": "button-addon2",
-                        name: "origen_trucada",
-                      },
-                      domProps: { value: _vm.cartaTrucada.origen_trucada },
-                      on: {
-                        input: function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.cartaTrucada,
-                            "origen_trucada",
-                            $event.target.value
-                          )
-                        },
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "col-sm-2 col-navbar-brand-sm gx-4",
-                      attrs: { href: "#" },
-                    },
-                    [
-                      _c("img", {
-                        attrs: {
-                          src: _vm.imagenHelpbox,
-                          alt: "",
-                          width: "20",
-                          height: "20",
-                        },
-                      }),
-                    ]
-                  ),
+                _c("h5", { staticClass: "card-title" }, [
+                  _vm._v("Informació del trucant"),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
+                _c("div", { staticClass: "form-group row mb-2" }, [
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("div", { staticClass: "form-check form-check-inline" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cartaTrucada.fora_catalunya,
+                            expression: "cartaTrucada.fora_catalunya",
+                          },
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: {
+                          type: "checkbox",
+                          id: "fora_catalunya",
+                          value: "fora_catalunya",
+                          name: "fora_catalunya",
+                          "data-bs-toggle": "collapse",
+                          "data-bs-target": "#multiCollapseExample6",
+                          "aria-expanded": "false",
+                          "aria-controls": "multiCollapseExample6",
+                        },
+                        domProps: {
+                          checked: Array.isArray(
+                            _vm.cartaTrucada.fora_catalunya
+                          )
+                            ? _vm._i(
+                                _vm.cartaTrucada.fora_catalunya,
+                                "fora_catalunya"
+                              ) > -1
+                            : _vm.cartaTrucada.fora_catalunya,
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$a = _vm.cartaTrucada.fora_catalunya,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "fora_catalunya",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.cartaTrucada,
+                                    "fora_catalunya",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.cartaTrucada,
+                                    "fora_catalunya",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.cartaTrucada, "fora_catalunya", $$c)
+                            }
+                          },
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "fora_catalunya" },
+                        },
+                        [_vm._v("Guardar info del trucant")]
+                      ),
+                    ]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row mb-2" }, [
                   _c("div", { staticClass: "col-sm-10" }, [
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.cartaTrucada.municipis_id_trucada,
-                          expression: "cartaTrucada.municipis_id_trucada",
+                          value: _vm.cartaTrucada.telefon,
+                          expression: "cartaTrucada.telefon",
                         },
                       ],
                       staticClass: "form-control form-control-sm",
                       attrs: {
-                        type: "text",
-                        placeholder: "Municipi",
-                        "aria-label": "Municipi",
+                        type: "number",
+                        placeholder: "Telèfon",
+                        "aria-label": "Telefono",
                         "aria-describedby": "button-addon2",
-                        name: "municipis_id_trucada",
+                        id: "telefon",
+                        name: "telefon",
                       },
-                      domProps: {
-                        value: _vm.cartaTrucada.municipis_id_trucada,
-                      },
+                      domProps: { value: _vm.cartaTrucada.telefon },
                       on: {
+                        keyup: function ($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          return _vm.buscarTelefon(_vm.cartaTrucada.telefon)
+                        },
                         input: function ($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
                             _vm.cartaTrucada,
-                            "municipis_id_trucada",
-                            $event.target.value
-                          )
-                        },
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "col-sm-2 col-navbar-brand-sm",
-                      attrs: { href: "#" },
-                    },
-                    [
-                      _c("img", {
-                        attrs: {
-                          src: _vm.imagenHelpbox,
-                          alt: "",
-                          width: "20",
-                          height: "20",
-                        },
-                      }),
-                    ]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.cartaTrucada.adreca_trucada,
-                          expression: "cartaTrucada.adreca_trucada",
-                        },
-                      ],
-                      staticClass: "form-control form-control-sm",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Adreça",
-                        "aria-label": "Direccion",
-                        "aria-describedby": "button-addon2",
-                        name: "dades_personals_id_adreca",
-                      },
-                      domProps: { value: _vm.cartaTrucada.adreca_trucada },
-                      on: {
-                        input: function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.cartaTrucada,
-                            "adreca_trucada",
+                            "telefon",
                             $event.target.value
                           )
                         },
@@ -30748,12 +30980,44 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row mb-2" }, [
-                  _vm._m(14),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cartaTrucada.nom_trucada,
+                          expression: "cartaTrucada.nom_trucada",
+                        },
+                      ],
+                      staticClass: "form-control form-control-sm",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Nom",
+                        "aria-label": "Nom",
+                        "aria-describedby": "button-addon2",
+                        name: "nom_trucada",
+                      },
+                      domProps: { value: _vm.cartaTrucada.nom_trucada },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.cartaTrucada,
+                            "nom_trucada",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
                   _vm._v(" "),
                   _c(
                     "a",
                     {
-                      staticClass: "col-sm-2 col-navbar-brand-sm gx-2",
+                      staticClass: "col-sm-2 col-navbar-brand-sm",
                       attrs: { href: "#" },
                     },
                     [
@@ -30768,12 +31032,325 @@ var render = function () {
                     ]
                   ),
                 ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "exampleFormControlTextarea1",
+                        id: "nota_comuna",
+                      },
+                    },
+                    [_vm._v("Nota comuna")]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.cartaTrucada.nota_comuna,
+                        expression: "cartaTrucada.nota_comuna",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      id: "exampleFormControlTextarea1",
+                      rows: "6",
+                      name: "nota_comuna",
+                    },
+                    domProps: { value: _vm.cartaTrucada.nota_comuna },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.cartaTrucada,
+                          "nota_comuna",
+                          $event.target.value
+                        )
+                      },
+                    },
+                  }),
+                ]),
               ]),
             ]
           ),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "div",
+              {
+                staticClass: "card procedenciaLlamada bordeRedondo zoomCard",
+                staticStyle: { width: "100%", "margin-top": "10px" },
+              },
+              [
+                _vm._m(8),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "form-group row mb-2 gx-1" }, [
+                    _c("div", { staticClass: "col-sm-5" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cartaTrucada.procedencia_trucada,
+                            expression: "cartaTrucada.procedencia_trucada",
+                          },
+                        ],
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Procedència",
+                          "aria-label": "Procedencia",
+                          "aria-describedby": "button-addon2",
+                          name: "procedencia_trucada",
+                        },
+                        domProps: {
+                          value: _vm.cartaTrucada.procedencia_trucada,
+                        },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.cartaTrucada,
+                              "procedencia_trucada",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-5" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cartaTrucada.origen_trucada,
+                            expression: "cartaTrucada.origen_trucada",
+                          },
+                        ],
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Origen",
+                          "aria-label": "Origen",
+                          "aria-describedby": "button-addon2",
+                          name: "origen_trucada",
+                        },
+                        domProps: { value: _vm.cartaTrucada.origen_trucada },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.cartaTrucada,
+                              "origen_trucada",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm gx-4",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: _vm.imagenHelpbox,
+                            alt: "",
+                            width: "20",
+                            height: "20",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cartaTrucada.municipis_id_trucada,
+                            expression: "cartaTrucada.municipis_id_trucada",
+                          },
+                        ],
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Municipi",
+                          "aria-label": "Municipi",
+                          "aria-describedby": "button-addon2",
+                          name: "municipis_id_trucada",
+                        },
+                        domProps: {
+                          value: _vm.cartaTrucada.municipis_id_trucada,
+                        },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.cartaTrucada,
+                              "municipis_id_trucada",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: _vm.imagenHelpbox,
+                            alt: "",
+                            width: "20",
+                            height: "20",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cartaTrucada.adreca_trucada,
+                            expression: "cartaTrucada.adreca_trucada",
+                          },
+                        ],
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Adreça",
+                          "aria-label": "Direccion",
+                          "aria-describedby": "button-addon2",
+                          name: "dades_personals_id_adreca",
+                        },
+                        domProps: { value: _vm.cartaTrucada.adreca_trucada },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.cartaTrucada,
+                              "adreca_trucada",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: _vm.imagenHelpbox,
+                            alt: "",
+                            width: "20",
+                            height: "20",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row mb-2" }, [
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.dadesPersonal.antecedents,
+                            expression: "dadesPersonal.antecedents",
+                          },
+                        ],
+                        staticClass: "form-control form-control-sm",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Informació del telèfon",
+                          "aria-label": "Informacion del telefono",
+                          "aria-describedby": "button-addon2",
+                          name: "dades_personals_id_antecedents",
+                        },
+                        domProps: { value: _vm.dadesPersonal.antecedents },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.dadesPersonal,
+                              "antecedents",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "col-sm-2 col-navbar-brand-sm gx-2",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: _vm.imagenHelpbox,
+                            alt: "",
+                            width: "20",
+                            height: "20",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]
+            ),
+          ]),
         ]),
-      ]),
-    ]),
+      ],
+      1
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -30888,7 +31465,7 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    _vm._m(15),
+    _vm._m(9),
     _vm._v(" "),
     _c(
       "div",
@@ -30932,7 +31509,7 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(16),
+                    _vm._m(10),
                   ]
                 ),
               ]
@@ -30948,41 +31525,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "simuladorLlamada" }, [
-      _c("div", [
-        _c("h4", { staticClass: "card-title" }, [
-          _vm._v("Localització de la Emergencia"),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-light botonTutorial",
-            attrs: {
-              type: "button",
-              "data-bs-toggle": "modal",
-              href: "#tutorial",
-              role: "button",
-            },
-          },
-          [_vm._v("¡Tutorial!")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-danger botonSimularLlamada",
-            attrs: {
-              type: "button",
-              "data-bs-toggle": "modal",
-              href: "#simularLlamada",
-              role: "button",
-            },
-          },
-          [_vm._v("¡Simular Trucada!")]
-        ),
+    return _c("div", [
+      _c("h4", { staticClass: "card-title" }, [
+        _vm._v("Localització de la Emergencia"),
       ]),
     ])
   },
@@ -30994,150 +31539,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-8" }, [
         _c("h4", [_vm._v("Tipus de localització")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "col-xl-1 col-sm-2",
-        staticStyle: { "margin-right": "15px" },
-      },
-      [
-        _c("div", { staticClass: "col provinciaMunicipio" }, [
-          _c("div", { staticClass: "form-check form-check-inline " }, [
-            _c("input", {
-              staticClass: "form-check-input",
-              attrs: {
-                type: "radio",
-                name: "tipus_localitzacions_id",
-                id: "inlineRadio1",
-                value: "option1",
-                "data-bs-toggle": "collapse",
-                "data-bs-target": "#multiCollapseExample5",
-                "aria-expanded": "false",
-                "aria-controls": "multiCollapseExample5",
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "inlineRadio1" },
-              },
-              [_vm._v("Provincia")]
-            ),
-          ]),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio2",
-          value: "1",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample1",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample1",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio2" } },
-        [_vm._v("Carrer")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio3",
-          value: "option3",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample1",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample2",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio3" } },
-        [_vm._v("Punt singular")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio4",
-          value: "option4",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample1",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample3",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio4" } },
-        [_vm._v("Carretera")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check form-check-inline" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "radio",
-          name: "tipus_localitzacions_id",
-          id: "inlineRadio5",
-          value: "option5",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#multiCollapseExample5",
-          "aria-expanded": "false",
-          "aria-controls": "multiCollapseExample5",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "inlineRadio5" } },
-        [_vm._v("Població")]
-      ),
     ])
   },
   function () {
@@ -31181,7 +31582,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 mt-3" }, [
-      _c("h4", [_vm._v("Crear expedient")]),
+      _c("h4", [_vm._v("Crearr expedient")]),
     ])
   },
   function () {
@@ -31240,23 +31641,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("h5", [_vm._v("Procedència de la trucada")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-10" }, [
-      _c("input", {
-        staticClass: "form-control form-control-sm",
-        attrs: {
-          type: "text",
-          placeholder: "Informació del telèfon",
-          "aria-label": "Informacion del telefono",
-          "aria-describedby": "button-addon2",
-          name: "dades_personals_id_antecedents",
-        },
-      }),
     ])
   },
   function () {
@@ -31425,7 +31809,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticStyle: { height: "100%", width: "100%", padding: "5px" } },
-      [_c("div", { attrs: { id: "map" } })]
+      [_c("div", { attrs: { id: "map2" } })]
     )
   },
 ]
