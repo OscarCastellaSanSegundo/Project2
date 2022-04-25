@@ -358,14 +358,12 @@ Administració
                         </form>
                     </div>
                 </div>
-        </div>
-
+            </div>
+    
         @endforeach
-    </div>
-
-
 
     </div>
+
     <form action="">
         <div class="card botonAnadirUsuario">
             <div>

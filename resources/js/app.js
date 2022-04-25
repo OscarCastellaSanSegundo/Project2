@@ -40,6 +40,7 @@ Vue.component('mapa', require('./components/mapa.vue').default);
 Vue.component('mapa-expedients', require('./components/mapaExpedients.vue').default);
 Vue.component('DraggableDiv', require('./DraggableDiv.vue').default);
 
+// Vue.component('mapa-expedients', require('./components/mapaExpedients.vue').default);
 
 Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 
