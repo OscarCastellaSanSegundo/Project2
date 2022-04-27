@@ -538,6 +538,10 @@
                     estats_expedients_id: ""
                 },
                 datos: {
+                    cartaTrucada: {},
+                    cartesTrucadesHasAgencies: {},
+                    dadesPersonal: {},
+                    expedient: {},
                 },
                 reproducirVideo: false,
                 seccionSeleccionada: 0,
@@ -762,14 +766,18 @@
             crearNouExpedient(){
                 this.expedient.estats_expedients_id = 1;
 
-                this.datos = Object.assign(this.cartaTrucada, this.cartesTrucadesHasAgencies, this.dadesPersonal, this.expedient);
+                this.datos.cartaTrucada = this.cartaTrucada;
+                this.datos.cartesTrucadesHasAgencies = this.cartesTrucadesHasAgencies;
+                this.datos.dadesPersonal = this.dadesPersonal;
+                this.datos.expedient = this.expedient;
+
 
                 //Crear el expedientes
                 let me = this;
                 axios
-                    .post('/cartaTrucada',me.expedient)
+                    .post('/cartaTrucada',me.datos)
                     .then( response => {
-                        me.cartesTrucada2 = response.data;
+                        console.log("vaevrae")
                     })
                     .catch ( error => {
                         console.log(error)
