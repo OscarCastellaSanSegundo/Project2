@@ -5,7 +5,7 @@
 </template>
 
 <script>
-/* export default {
+export default {
     data() {
         return {
             agencies: [],
@@ -15,20 +15,20 @@
                 "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
         };
     },
-    methods: {
+        methods: {
         markAgencies() {
-            for (const agencies of this.agencies) {
-                this.positionMark(agencies);
+            for (const agencia of this.agencies) {
+                this.positionMark(agencia);
             }
         },
 
         selectAgencies() {
             let me = this;
             axios
-                .get("/agencies")
+                .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Valencia, Valencia");
+                    this.positionMarkIncident("Tarragona, Barcelona");
 
                     this.markAgencies();
                 })
@@ -66,13 +66,13 @@
                     const feature = response.body.features[0];
 
                     me.map = new mapboxgl.Map({
-                        container: "map2",
+                        container: "map",
                         style: "mapbox://styles/mapbox/streets-v11",
                         center: feature.center,
                         zoom: 12,
                     });
 
-                    // Crea un marcador y lo añade al mapa
+                    // Create a marker and add it to the map.
                     new mapboxgl.Marker({
                         color: "#E74C3C",
                     })
@@ -80,7 +80,7 @@
                         .addTo(me.map);
                 });
         },
-        positionMark(agencies) {
+        positionMark(agencia) {
             let me = this;
             mapboxgl.accessToken = this.accessToken;
 
@@ -89,7 +89,7 @@
             });
             mapboxClient.geocoding
                 .forwardGeocode({
-                    query: agencies.carrer + ", " + agencies.municipis.nom,
+                    query: agencia.carrer + ", " + agencia.municipi.nom,
                     autocomplete: false,
                     limit: 1,
                 })
@@ -115,7 +115,7 @@
                     marker.setLngLat(feature.center).addTo(me.map);
 
                     let div = this.createPopup(
-                        agencies,
+                        agencia,
                         marker,
                         feature,
                         me.map,
@@ -130,14 +130,14 @@
                     marker.setPopup(popup);
                 });
         },
-        createPopup(agencies, marker, feature, map, recomanat) {
+        createPopup(agencia, marker, feature, map, recomanat) {
             let me = this;
             const pMark = document.createElement("p");
-            pMark.innerText = agencies.nom;
+            pMark.innerText = agencia.nom;
             pMark.className = "fw-bold";
             const btnRecomanar = document.createElement("button");
             btnRecomanar.dataset.recomanat = recomanat;
-            btnRecomanar.dataset.agencies_id = agencies.id;
+            btnRecomanar.dataset.agencia_id = agencia.id;
             if (recomanat) {
                 btnRecomanar.className = "btn btn-secondary btn-sm";
                 btnRecomanar.innerText = "Treure Recomananació";
@@ -150,7 +150,7 @@
                 let btn = event.target;
                 if (btn.dataset.recomanat == "true") {
                     me.agenciesRecomanades.splice(
-                        me.agenciesRecomanades.indexOf(btn.dataset.agencies_id),
+                        me.agenciesRecomanades.indexOf(btn.dataset.agencia_id),
                         1
                     );
                     marker.remove();
@@ -162,7 +162,7 @@
                         .addTo(map);
 
                     let div = me.createPopup(
-                        agencies,
+                        agencia,
                         markernew,
                         feature,
                         map,
@@ -186,7 +186,7 @@
                         .addTo(map);
 
                     let div = me.createPopup(
-                        agencies,
+                        agencia,
                         markernew,
                         feature,
                         map,
@@ -210,25 +210,14 @@
     },
 
     created() {
-        this.createPopup(agencies, marker, feature, map, recomanat)
-        this.positionMark(agencies);
-        this.positionMarkIncident(place);
-        this. selectAgencies();
+        this.selectAgencies();
         this.markAgencies();
-
-
-
     },
     mounted() {
         console.log("Component mounted.");
         this.selectAgencies();
     },
 };
-
-
-
-
- */
 </script>
 
 <style>

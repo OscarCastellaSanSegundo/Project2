@@ -17,13 +17,6 @@ export default {
   }
 }
 
-// import { createApp } from 'vue'
-// import map from './map.vue'
-
-// createApp(map).mount('#map')
-
-// export default map
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
