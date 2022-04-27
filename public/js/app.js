@@ -6123,8 +6123,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -6142,19 +6140,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return {
       agencies: [],
       map: {},
-      loading: true,
+      loading: false,
       accessToken: "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
     };
   },
-  methods: _defineProperty({
-    crearMapa: function crearMapa() {
+  methods: {
+    declaraAgencia: function declaraAgencia() {
       var _iterator = _createForOfIteratorHelper(this.agencies),
           _step;
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var _agencia = _step.value;
-          this.positionMark(_agencia);
+          this.crearMapa(_agencia);
         }
       } catch (err) {
         _iterator.e(err);
@@ -6165,44 +6163,75 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     selectAgencies: function selectAgencies() {
       var _this = this;
 
-      this.loading = false;
+      this.loading = true;
       var me = this;
       axios.get("/agencia").then(function (response) {
         me.agencies = response.data;
 
-        _this.crearMapa('Barcelona,Barcelona', agencia);
+        _this.crearMapa('Barcelona, Barcelona', agencia);
       })["catch"](function (err) {
         console.log(err);
       })["finally"](function () {
         return _this.loading = false;
       });
-    }
-  }, "crearMapa", function crearMapa(agencia) {
-    var me = this;
-    mapboxgl.accessToken = this.accessToken;
-    var mapboxClient = mapboxSdk({
-      accessToken: mapboxgl.accessToken
-    });
-    mapboxClient.geocoding.forwardGeocode({
-      query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
-      autocomplete: false,
-      limit: 1
-    }).send().then(function (response) {
-      if (!response || !response.body || !response.body.features || !response.body.features.length) {
-        console.error("Invalid response:");
-        console.error(response);
-        return;
-      }
-
-      var feature = response.body.features[0];
-      me.map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets/v-11',
-        center: feature.center,
-        zoom: 12
+    },
+    crearMapa: function crearMapa(place, agencia) {
+      var me = this;
+      mapboxgl.accessToken = this.accessToken;
+      var mapboxClient = mapboxSdk({
+        accessToken: mapboxgl.accessToken
       });
-    }); // this.añadirMarker(agencia);
-  }),
+      mapboxClient.geocoding.forwardGeocode({
+        query: place,
+        autocomplete: false,
+        limit: 1
+      }).send().then(function (response) {
+        if (!response || !response.body || !response.body.features || !response.body.features.length) {
+          console.error("Invalid response:");
+          console.error(response);
+          return;
+        }
+
+        var feature = response.body.features[0];
+        me.map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets/v-11',
+          center: feature.center,
+          zoom: 12
+        });
+      });
+      this.añadirMarker(agencia);
+    },
+    añadirMarker: function añadirMarker(agencia) {
+      var me = this;
+      mapboxgl.accessToken = me.accessToken;
+      var mapboxClient = mapboxSdk({
+        accessToken: mapboxgl.accessToken
+      });
+      mapboxClient.geocoding.forwardGeocode({
+        query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
+        autocomplete: false,
+        limit: 1
+      }).send().then(function (response) {
+        if (!response || !response.body || !response.body.features || !response.body.features.length) {
+          console.error("Invalid response:");
+          console.error(response);
+          return;
+        } // create the popup
+
+
+        var popup = new mapboxgl.Popup({
+          offset: 25
+        }).setText('Construction on the Washington Monument began in 1848.'); // create DOM element for the marker
+
+        var el = document.createElement('div');
+        el.id = 'marker'; // create the marker
+
+        new mapboxgl.Marker(el).setLngLat(monument).setPopup(popup) // sets a popup on this marker
+        .addTo(map);
+      });
+    }
+  },
   created: function created() {},
   mounted: function mounted() {
     console.log("Component mounted.");

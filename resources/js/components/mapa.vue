@@ -10,69 +10,113 @@ export default {
         return {
             agencies: [],
             map: {},
-            loading:true,
+            loading:false,
             accessToken:
                 "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
         };
     },
         methods: {
-        crearMapa() {
-            for (const agencia of this.agencies) {
-                this.positionMark(agencia);
-            }
-        },
+            declaraAgencia() {
+                for (const agencia of this.agencies) {
+                    this.crearMapa(agencia);
+                }
+            },
 
-        selectAgencies() {
-            this.loading=false;
-            let me = this;
-            axios
-                .get("/agencia")
-                .then((response) => {
-                    me.agencies = response.data;
-                    this.crearMapa('Barcelona,Barcelona' ,agencia);
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-                .finally(()=> this.loading=false);
-        },
-        crearMapa(agencia) {
-            let me = this;
-            mapboxgl.accessToken = this.accessToken;
+            selectAgencies() {
+                this.loading=true;
+                let me = this;
+                axios
+                    .get("/agencia")
+                    .then((response) => {
+                        me.agencies = response.data;
+                        this.crearMapa('Barcelona, Barcelona' ,agencia);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+                    .finally(()=> this.loading=false);
+            },
+            crearMapa(place,agencia) {
+                let me = this;
+                mapboxgl.accessToken = this.accessToken;
 
-            const mapboxClient = mapboxSdk({
-                accessToken: mapboxgl.accessToken,
-            });
-            mapboxClient.geocoding
-                .forwardGeocode({
-                    query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
-                    autocomplete: false,
-                    limit: 1,
-                })
-                .send()
-                .then((response) => {
-                    if (
-                        !response ||
-                        !response.body ||
-                        !response.body.features ||
-                        !response.body.features.length
-                    ) {
-                        console.error("Invalid response:");
-                        console.error(response);
-                        return;
-                    }
-
-                    const feature = response.body.features[0];
-
-                  me.map =new mapboxgl.Map({
-                        container:'map',
-                        style:'mapbox://styles/mapbox/streets/v-11',
-                        center:feature.center,
-                        zoom:12
-                  });
+                const mapboxClient = mapboxSdk({
+                    accessToken: mapboxgl.accessToken,
                 });
-                // this.añadirMarker(agencia);
-        },
+                mapboxClient.geocoding
+                    .forwardGeocode({
+                        query: place,
+                        autocomplete: false,
+                        limit: 1,
+                    })
+                    .send()
+                    .then((response) => {
+                        if (
+                            !response ||
+                            !response.body ||
+                            !response.body.features ||
+                            !response.body.features.length
+                        ) {
+                            console.error("Invalid response:");
+                            console.error(response);
+                            return;
+                        }
+
+                        const feature = response.body.features[0];
+
+                    me.map =new mapboxgl.Map({
+                            container:'map',
+                            style:'mapbox://styles/mapbox/streets/v-11',
+                            center:feature.center,
+                            zoom:12
+                    });
+                    });
+                    this.añadirMarker(agencia);
+            },
+
+            añadirMarker(agencia){
+                let me = this;
+                mapboxgl.accessToken = me.accessToken;
+
+                const mapboxClient = mapboxSdk({
+                    accessToken: mapboxgl.accessToken,
+                });
+                mapboxClient.geocoding
+                    .forwardGeocode({
+                        query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
+                        autocomplete: false,
+                        limit: 1,
+                    })
+                    .send()
+                    .then((response) => {
+                        if (
+                            !response ||
+                            !response.body ||
+                            !response.body.features ||
+                            !response.body.features.length
+                        ) {
+                            console.error("Invalid response:");
+                            console.error(response);
+                            return;
+                        }
+                    
+                            // create the popup
+                            const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+                            'Construction on the Washington Monument began in 1848.'
+                            );
+                            
+                            // create DOM element for the marker
+                            const el = document.createElement('div');
+                            el.id = 'marker';
+                            
+                            // create the marker
+                            new mapboxgl.Marker(el)
+                            .setLngLat(monument)
+                            .setPopup(popup) // sets a popup on this marker
+                            .addTo(map);
+                
+                });
+            },
     },
 
     created() {
