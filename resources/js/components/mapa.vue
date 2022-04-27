@@ -17,26 +17,26 @@ export default {
     },
         methods: {
         markAgencies() {
-            for (const agencies of this.agencies) {
-                this.positionMark(agencies);
+            for (const agencia of this.agencies) {
+                this.positionMark(agencia);
             }
         },
 
         selectAgencies() {
             let me = this;
             axios
-                .get("/agencies")
+                .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident(agencies);
-                    this.markAgencies(agencies);
+                    this.positionMarkIncident(agencia);
+                    this.markAgencies(agencia);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
         },
 
-        positionMarkIncident(agencies) {
+        positionMarkIncident(agencia) {
             let me = this;
             mapboxgl.accessToken = this.accessToken;
 
@@ -45,7 +45,7 @@ export default {
             });
             mapboxClient.geocoding
                 .forwardGeocode({
-                    query: agencies.carrer + ", " + agencies.municipi.nom + ", " + agencies.codi_postal ,
+                    query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal ,
                     autocomplete: false,
                     limit: 1,
                 })
@@ -79,7 +79,7 @@ export default {
                         .addTo(me.map);
                 });
         },
-        positionMark(agencies) {
+        positionMark(agencia) {
             let me = this;
             mapboxgl.accessToken = this.accessToken;
 
@@ -88,7 +88,7 @@ export default {
             });
             mapboxClient.geocoding
                 .forwardGeocode({
-                    query: agencies.carrer + ", " + agencies.municipi.nom + ", " + agencies.codi_postal,
+                    query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
                     autocomplete: false,
                     limit: 1,
                 })
@@ -114,7 +114,7 @@ export default {
                     marker.setLngLat(feature.center).addTo(me.map);
 
                     let div = this.createPopup(
-                        agencies,
+                        agencia,
                         marker,
                         feature,
                         me.map,
@@ -129,14 +129,14 @@ export default {
                     marker.setPopup(popup);
                 });
         },
-        createPopup(agencies, marker, feature, map, recomanat) {
+        createPopup(agencia, marker, feature, map, recomanat) {
             let me = this;
             const pMark = document.createElement("p");
-            pMark.innerText = agencies.nom;
+            pMark.innerText = agencia.nom;
             pMark.className = "fw-bold";
             const btnRecomanar = document.createElement("button");
             btnRecomanar.dataset.recomanat = recomanat;
-            btnRecomanar.dataset.agencies_id = agencies.id;
+            btnRecomanar.dataset.agencia_id = agencia.id;
             if (recomanat) {
                 btnRecomanar.className = "btn btn-secondary btn-sm";
                 btnRecomanar.innerText = "Treure Recomananació";
@@ -149,7 +149,7 @@ export default {
                 let btn = event.target;
                 if (btn.dataset.recomanat == "true") {
                     me.agenciesRecomanades.splice(
-                        me.agenciesRecomanades.indexOf(btn.dataset.agencies_id),
+                        me.agenciesRecomanades.indexOf(btn.dataset.agencia_id),
                         1
                     );
                     marker.remove();
@@ -161,7 +161,7 @@ export default {
                         .addTo(map);
 
                     let div = me.createPopup(
-                        agencies,
+                        agencia,
                         markernew,
                         feature,
                         map,
@@ -174,7 +174,7 @@ export default {
 
                     markernew.setPopup(popup);
                 } else {
-                    me.agenciesRecomanades.push(btn.dataset.agencies_id);
+                    me.agenciesRecomanades.push(btn.dataset.agencia_id);
                     console.log(me.agenciesRecomanades);
                     marker.remove();
                     let markernew = new mapboxgl.Marker({
@@ -185,7 +185,7 @@ export default {
                         .addTo(map);
 
                     let div = me.createPopup(
-                        agencies,
+                        agencia,
                         markernew,
                         feature,
                         map,
