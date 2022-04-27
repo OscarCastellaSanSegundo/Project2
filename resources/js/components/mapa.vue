@@ -28,7 +28,7 @@ export default {
                 .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Tarragona, Barcelona");
+                    this.positionMarkIncident("Barcelona, Barcelona");
 
                     this.markAgencies();
                 })
@@ -72,7 +72,7 @@ export default {
                         zoom: 12,
                     });
 
-                    // Create a marker and add it to the map.
+                   
                     new mapboxgl.Marker({
                         color: "#E74C3C",
                     })
@@ -122,7 +122,7 @@ export default {
                         false
                     );
 
-                    // create the popup
+        
                     const popup = new mapboxgl.Popup({
                         offset: 25,
                     }).setDOMContent(div);
@@ -192,7 +192,6 @@ export default {
                         map,
                         true
                     );
-                    // create the popup
                     const popup = new mapboxgl.Popup({
                         offset: 25,
                     }).setDOMContent(div);
