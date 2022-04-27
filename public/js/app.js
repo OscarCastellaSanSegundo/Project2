@@ -5957,6 +5957,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 //
 //
 //
@@ -5967,54 +5973,171 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       agencies: [],
-      loading: false,
+      agenciesRecomanades: [],
       map: {},
-      accessToken: 'pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ'
+      accessToken: "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
     };
   },
   methods: {
+    markAgencies: function markAgencies() {
+      var _iterator = _createForOfIteratorHelper(this.agencies),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var agencies = _step.value;
+          this.positionMark(agencies);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    },
     selectAgencies: function selectAgencies() {
       var _this = this;
 
-      this.loading = true;
       var me = this;
-      axios.get('/agencies').then(function (response) {
-        me.agencies = response.data;
+      axios.get("/agencies").then(function (result) {
+        me.agencies = result.data;
 
-        _this.crearMapa('Barcelona, Barcelona', me.agencies);
-      })["catch"](function (error) {
-        console.log(error);
-      })["finally"](function () {
-        return _this.loading = false;
+        _this.positionMarkIncident("Valencia, Valencia");
+
+        _this.markAgencies();
+      })["catch"](function (err) {
+        console.log(err);
       });
     },
-    crearMapa: function crearMapa(place, agencies) {
+    positionMarkIncident: function positionMarkIncident(place) {
       var me = this;
-      mapboxgl.accesToken = this.accessToken;
+      mapboxgl.accessToken = this.accessToken;
       var mapboxClient = mapboxSdk({
-        accesToken: mapboxgl.accessToken
+        accessToken: mapboxgl.accessToken
       });
       mapboxClient.geocoding.forwardGeocode({
-        query: agencies.carrer + ", " + agencies.municipis_id.nom,
+        query: place,
         autocomplete: false,
         limit: 1
       }).send().then(function (response) {
         if (!response || !response.body || !response.body.features || !response.body.features.length) {
-          console.error('Invalid response:');
+          console.error("Invalid response:");
           console.error(response);
           return;
         }
 
         var feature = response.body.features[0];
         me.map = new mapboxgl.Map({
-          container: 'mapa',
-          style: 'mapbox://styles/mapbox/streets-v11',
+          container: "map2",
+          style: "mapbox://styles/mapbox/streets-v11",
           center: feature.center,
           zoom: 12
-        });
+        }); // Crea un marcador y lo añade al mapa
+
+        new mapboxgl.Marker({
+          color: "#E74C3C"
+        }).setLngLat(feature.center).addTo(me.map);
       });
-      this.añadirMarker(agencies);
+    },
+    positionMark: function positionMark(agencies) {
+      var _this2 = this;
+
+      var me = this;
+      mapboxgl.accessToken = this.accessToken;
+      var mapboxClient = mapboxSdk({
+        accessToken: mapboxgl.accessToken
+      });
+      mapboxClient.geocoding.forwardGeocode({
+        query: agencies.carrer + ", " + agencies.municipis.nom,
+        autocomplete: false,
+        limit: 1
+      }).send().then(function (response) {
+        if (!response || !response.body || !response.body.features || !response.body.features.length) {
+          console.error("Invalid response:");
+          console.error(response);
+          return;
+        }
+
+        var feature = response.body.features[0];
+        var marker = new mapboxgl.Marker({
+          color: "#8E44AD"
+        });
+        marker.setLngLat(feature.center).addTo(me.map);
+
+        var div = _this2.createPopup(agencies, marker, feature, me.map, false); // create the popup
+
+
+        var popup = new mapboxgl.Popup({
+          offset: 25
+        }).setDOMContent(div);
+        marker.setPopup(popup);
+      });
+    },
+    createPopup: function createPopup(agencies, marker, feature, map, recomanat) {
+      var me = this;
+      var pMark = document.createElement("p");
+      pMark.innerText = agencies.nom;
+      pMark.className = "fw-bold";
+      var btnRecomanar = document.createElement("button");
+      btnRecomanar.dataset.recomanat = recomanat;
+      btnRecomanar.dataset.agencies_id = agencies.id;
+
+      if (recomanat) {
+        btnRecomanar.className = "btn btn-secondary btn-sm";
+        btnRecomanar.innerText = "Treure Recomananació";
+      } else {
+        btnRecomanar.className = "btn btn-primary btn-sm";
+        btnRecomanar.innerText = "Recomanar";
+      }
+
+      btnRecomanar.addEventListener("click", function (event) {
+        var btn = event.target;
+
+        if (btn.dataset.recomanat == "true") {
+          me.agenciesRecomanades.splice(me.agenciesRecomanades.indexOf(btn.dataset.agencies_id), 1);
+          marker.remove();
+          var markernew = new mapboxgl.Marker({
+            color: "#8E44AD",
+            rotation: 0
+          }).setLngLat(feature.center).addTo(map);
+
+          var _div = me.createPopup(agencies, markernew, feature, map, false); // create the popup
+
+
+          var popup = new mapboxgl.Popup({
+            offset: 25
+          }).setDOMContent(_div);
+          markernew.setPopup(popup);
+        } else {
+          me.agenciesRecomanades.push(btn.dataset.agencia_id);
+          console.log(me.agenciesRecomanades);
+          marker.remove();
+
+          var _markernew = new mapboxgl.Marker({
+            color: "#1FC610",
+            rotation: 45
+          }).setLngLat(feature.center).addTo(map);
+
+          var _div2 = me.createPopup(agencies, _markernew, feature, map, true); // create the popup
+
+
+          var _popup = new mapboxgl.Popup({
+            offset: 25
+          }).setDOMContent(_div2);
+
+          _markernew.setPopup(_popup);
+        }
+      });
+      var div = document.createElement("div");
+      div.className = "text-center";
+      div.appendChild(pMark);
+      div.appendChild(btnRecomanar);
+      return div;
     }
+  },
+  created: function created() {},
+  mounted: function mounted() {
+    console.log("Component mounted.");
+    this.selectAgencies();
   }
 });
 
@@ -6073,7 +6196,8 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 try {
   // window.Popper = require('popper.js').default;
-  // window.$ = window.jQuery = require('jquery');
+  window.$ = window.jQuery = __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'jquery'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 } catch (e) {}
 /**
