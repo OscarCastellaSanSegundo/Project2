@@ -1,5 +1,6 @@
 <template>
-    <div style="height: 100%; width: 100%; padding: 5px;">
+    <div class="container">
+        <button id="sortir" class="btn btn-primary">Sortir</button>
         <div id="map"></div>
     </div>
 </template>
@@ -12,10 +13,10 @@ export default {
             agenciesRecomanades: [],
             map: {},
             accessToken:
-                "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
+                "pk.eyJ1IjoiZmZlcm5hbmRlenBvbGl0ZWNuaWNzIiwiYSI6ImNremgwbjc2YTE2MXkyb3BjaGFkZXhsa3IifQ.FXAfzdhSWz1BraIEWfUpvg",
         };
     },
-        methods: {
+    methods: {
         markAgencies() {
             for (const agencia of this.agencies) {
                 this.positionMark(agencia);
@@ -28,8 +29,8 @@ export default {
                 .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Barcelona,Barcelona");
-// query carta de llamada+  calle + codigo postal
+                    this.positionMarkIncident("Tarragona, Barcelona");
+
                     this.markAgencies();
                 })
                 .catch((err) => {
@@ -79,6 +80,7 @@ export default {
                         .setLngLat(feature.center)
                         .addTo(me.map);
                 });
+                
         },
         positionMark(agencia) {
             let me = this;
@@ -209,10 +211,7 @@ export default {
         },
     },
 
-    created() {
-        this.selectAgencies();
-        this.markAgencies();
-    },
+    created() {},
     mounted() {
         console.log("Component mounted.");
         this.selectAgencies();
@@ -223,7 +222,7 @@ export default {
 <style>
 #map {
     width: 100%;
-    height: 100%;
+    height: 700px;
 }
 #sortir {
     position: fixed;

@@ -6194,11 +6194,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         var feature = response.body.features[0];
         me.map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets/v-11',
+          container: "map",
+          style: "mapbox://styles/mapbox/streets-v11",
           center: feature.center,
           zoom: 12
-        });
+        }); // Create a marker and add it to the map.
+
+        new mapboxgl.Marker({
+          color: "#E74C3C"
+        }).setLngLat(feature.center).addTo(me.map);
       });
       this.añadirMarker(agencia);
     },
@@ -6217,12 +6221,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           console.error("Invalid response:");
           console.error(response);
           return;
-        } // create the popup
+        }
 
+        var feature = response.body.features[0];
+        var marker = new mapboxgl.Marker({
+          color: "#8E44AD"
+        });
+        marker.setLngLat(feature.center).addTo(me.map); // create the popup   
 
         var popup = new mapboxgl.Popup({
           offset: 25
-        }).setText('Construction on the Washington Monument began in 1848.'); // create DOM element for the marker
+        }).setText('Soy un popup'); // create DOM element for the marker
 
         var el = document.createElement('div');
         el.id = 'marker'; // create the marker
@@ -6264,13 +6273,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       agencies: [],
       agenciesRecomanades: [],
       map: {},
-      accessToken: "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
+      accessToken: "pk.eyJ1IjoiZmZlcm5hbmRlenBvbGl0ZWNuaWNzIiwiYSI6ImNremgwbjc2YTE2MXkyb3BjaGFkZXhsa3IifQ.FXAfzdhSWz1BraIEWfUpvg"
     };
   },
   methods: {
@@ -6296,8 +6306,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       axios.get("/agencia").then(function (result) {
         me.agencies = result.data;
 
-        _this.positionMarkIncident("Barcelona,Barcelona"); // query carta de llamada+  calle + codigo postal
-
+        _this.positionMarkIncident("Tarragona, Barcelona");
 
         _this.markAgencies();
       })["catch"](function (err) {
@@ -6430,10 +6439,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return div;
     }
   },
-  created: function created() {
-    this.selectAgencies();
-    this.markAgencies();
-  },
+  created: function created() {},
   mounted: function mounted() {
     console.log("Component mounted.");
     this.selectAgencies();
@@ -11583,7 +11589,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#draggable-container {\n  position: absolute;\n  z-index: 9;\n}\n#draggable-header {\n  z-index: 10;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#draggable-container {\r\n  position: absolute;\r\n  z-index: 9;\n}\n#draggable-header {\r\n  z-index: 10;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11607,7 +11613,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11631,7 +11637,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 700px;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31848,11 +31854,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { height: "100%", width: "100%", padding: "5px" } },
-      [_c("div", { attrs: { id: "map" } })]
-    )
+    return _c("div", { staticClass: "container" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { id: "sortir" } },
+        [_vm._v("Sortir")]
+      ),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "map" } }),
+    ])
   },
 ]
 render._withStripped = true
