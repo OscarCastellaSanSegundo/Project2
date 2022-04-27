@@ -16,7 +16,7 @@ export default {
         };
     },
         methods: {
-        markAgencies() {
+        crearMapa() {
             for (const agencia of this.agencies) {
                 this.positionMark(agencia);
             }
@@ -27,17 +27,16 @@ export default {
             let me = this;
             axios
                 .get("/agencia")
-                .then((result) => {
-                    me.agencies = result.data;
-                    // this.positionMarkIncident(agencia);
-                    this.markAgencies('Barcelona,Barcelona' ,agencia);
+                .then((response) => {
+                    me.agencies = response.data;
+                    this.crearMapa('Barcelona,Barcelona' ,agencia);
                 })
                 .catch((err) => {
                     console.log(err);
                 })
                 .finally(()=> this.loading=false);
         },
-        positionMark(agencia) {
+        crearMapa(agencia) {
             let me = this;
             mapboxgl.accessToken = this.accessToken;
 
@@ -65,27 +64,14 @@ export default {
 
                     const feature = response.body.features[0];
 
-                    const marker = new mapboxgl.Marker({
-                        color: "#8E44AD",
-                    });
-
-                    marker.setLngLat(feature.center).addTo(me.map);
-
-                    let div = this.createPopup(
-                        agencia,
-                        marker,
-                        feature,
-                        me.map,
-                        false
-                    );
-
-
-                    const popup = new mapboxgl.Popup({
-                        offset: 25,
-                    }).setDOMContent(div);
-
-                    marker.setPopup(popup);
+                  me.map =new mapboxgl.Map({
+                        container:'map',
+                        style:'mapbox://styles/mapbox/streets/v-11',
+                        center:feature.center,
+                        zoom:12
+                  });
                 });
+                // this.añadirMarker(agencia);
         },
     },
 

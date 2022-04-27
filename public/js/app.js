@@ -6098,6 +6098,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -6119,8 +6121,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       accessToken: "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
     };
   },
-  methods: {
-    markAgencies: function markAgencies() {
+  methods: _defineProperty({
+    crearMapa: function crearMapa() {
       var _iterator = _createForOfIteratorHelper(this.agencies),
           _step;
 
@@ -6140,50 +6142,42 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       this.loading = false;
       var me = this;
-      axios.get("/agencia").then(function (result) {
-        me.agencies = result.data; // this.positionMarkIncident(agencia);
+      axios.get("/agencia").then(function (response) {
+        me.agencies = response.data;
 
-        _this.markAgencies('Barcelona,Barcelona', agencia);
+        _this.crearMapa('Barcelona,Barcelona', agencia);
       })["catch"](function (err) {
         console.log(err);
       })["finally"](function () {
         return _this.loading = false;
       });
-    },
-    positionMark: function positionMark(agencia) {
-      var _this2 = this;
-
-      var me = this;
-      mapboxgl.accessToken = this.accessToken;
-      var mapboxClient = mapboxSdk({
-        accessToken: mapboxgl.accessToken
-      });
-      mapboxClient.geocoding.forwardGeocode({
-        query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
-        autocomplete: false,
-        limit: 1
-      }).send().then(function (response) {
-        if (!response || !response.body || !response.body.features || !response.body.features.length) {
-          console.error("Invalid response:");
-          console.error(response);
-          return;
-        }
-
-        var feature = response.body.features[0];
-        var marker = new mapboxgl.Marker({
-          color: "#8E44AD"
-        });
-        marker.setLngLat(feature.center).addTo(me.map);
-
-        var div = _this2.createPopup(agencia, marker, feature, me.map, false);
-
-        var popup = new mapboxgl.Popup({
-          offset: 25
-        }).setDOMContent(div);
-        marker.setPopup(popup);
-      });
     }
-  },
+  }, "crearMapa", function crearMapa(agencia) {
+    var me = this;
+    mapboxgl.accessToken = this.accessToken;
+    var mapboxClient = mapboxSdk({
+      accessToken: mapboxgl.accessToken
+    });
+    mapboxClient.geocoding.forwardGeocode({
+      query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
+      autocomplete: false,
+      limit: 1
+    }).send().then(function (response) {
+      if (!response || !response.body || !response.body.features || !response.body.features.length) {
+        console.error("Invalid response:");
+        console.error(response);
+        return;
+      }
+
+      var feature = response.body.features[0];
+      me.map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets/v-11',
+        center: feature.center,
+        zoom: 12
+      });
+    }); // this.añadirMarker(agencia);
+  }),
   created: function created() {},
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -11559,7 +11553,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
