@@ -13,8 +13,7 @@ export default {
             agenciesRecomanades: [],
             map: {},
             accessToken:
-                "pk.eyJ1IjoiZmZlcm5hbmRlenBvbGl0ZWNuaWNzIiwiYSI6ImNremgwbjc2YTE2MXkyb3BjaGFkZXhsa3IifQ.FXAfzdhSWz1BraIEWfUpvg",
-        };
+                "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"        };
     },
     methods: {
         markAgencies() {
