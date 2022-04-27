@@ -212,8 +212,7 @@
                                     <tr>
                                         <th scope="col">Codi</th>
                                         <th scope="col">Data de creació</th>
-                                        <th scope="col">Localització</th>
-                                        <th scope="col">Direcció</th>
+                                        <th scope="col">Estat de l'expedient</th>
                                         <th scope="col"></th>
                                     </tr>
                                     </thead>
@@ -221,7 +220,7 @@
                                     <tr  v-for="expedient in expedients" :key="expedient.id" :value="expedient.id">
                                         <th scope="row">{{ expedient.id }}</th>
                                         <td>{{ expedient.data_creacio }}</td>
-                                        <td>{{ expedient.estats_expedients_id }}</td>
+                                        <td>{{ estatExpedients[expedient.estats_expedients_id].estat }}</td>
                                         <td><button class="btn btn-light botonesTabla" type="button" @click="pasarIdExpedientes(expedient.id)">Seleccionar</button></td>
                                     </tr>
                                     </tbody>
@@ -230,14 +229,14 @@
 
                         </div>
                         <div class="col-12 mt-3">
-                            <h4>Crearr expedient</h4>
+                            <h4>Crear expedient</h4>
                         </div>
                         <div class="row col-12 mt-2">
                             <div class="col-6">
                                 <button type="button" class="btn btn-light botonExpedienteNuevoConRecomendacion" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Expedient nou amb recomanació</button>
                             </div>
                             <div class="col-6 ">
-                                <button type="button" class="btn btn-light botonExpedienteNuevo">Expedient nou</button>
+                                <button type="button" class="btn btn-light botonExpedienteNuevo" @click="crearNouExpedient()">Expedient nou</button>
                             </div>
                         </div>
 
@@ -248,13 +247,13 @@
 
 
             </div>
-            <DraggableDiv style="width:40%; background-color: rgb(17, 173, 196)" v-show="estaAprendiendo">
+            <DraggableDiv style="width:40%; background-color: rgb(17, 173, 196); border: 2px solid black" class="bordeRedondo" v-show="estaAprendiendo">
                 <template slot="header">
                     Arrossega per moure
                 </template>
                 <template slot="main" >
                     <div class="card col-12">
-                        <div class="card-body" style="width: 100%">
+                        <div class="card-body" style="width: 100%; ">
 <!--                        <div class="row">
                                 <div class="col-12 d-flex aligns-items-center justify-content-center">
                                     <h4>Tutorial</h4>
@@ -295,8 +294,8 @@
                                 <input id="codiTrucadaP" name="codi_trucada" type="hidden" v-model="cartaTrucada.codi_trucada">
                             </div>
                             <div class="col-sm-6">
-                                <h2 id="crono">0:00</h2>
-                                <input name="temps_trucada" type="hidden" value="" id="temps_trucada">
+                                <h2 id="crono" >0:00</h2>
+                                <input id="crono" type="hidden" v-model="cartaTrucada.temps_trucada">
 <!--                                 <input name="usuaris_id" type="hidden" value="{{ Auth::user()->id }}" id="temps_trucada"> -->
                             </div>
                         </div>
@@ -306,14 +305,6 @@
                 <div class="card informacionLlamante bordeRedondo zoomCard" style="width: 100%; margin-top: 10px">
                     <div class="card-body">
                         <h5 class="card-title">Informació del trucant</h5>
-                        <div class="form-group row mb-2">
-                            <div class="col-sm-10">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="fora_catalunya" value="fora_catalunya" name="fora_catalunya" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample6" aria-expanded="false" aria-controls="multiCollapseExample6" v-model="cartaTrucada.fora_catalunya">
-                                    <label class="form-check-label" for="fora_catalunya">Guardar info del trucant</label>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group row mb-2">
                             <div class="col-sm-10">
                                 <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon" v-model="cartaTrucada.telefon" v-on:keyup.enter="buscarTelefon(cartaTrucada.telefon)">
@@ -752,11 +743,18 @@
     /*             codigoLlamada.innerHTML = codigoFinal; */
             },
             pasarIdExpedientes(id){
-                this.cartaTrucada.expedients_id = id;
-                console.log(id)
+                this.cartaTrucada.expedients_id = id; /* no me lo coge */
+                this.cartaTrucada.temps_trucada = document.getElementById("crono").innerHTML;
+                this.expedient.id = id;
+                this.expedient.data_creacio = this.expedients[id].data_creacio;
+                this.expedient.data_ultima_modificacio = this.expedients[id].data_ultima_modificacio;
+                this.expedient.estats_expedients_id = this.expedients[id].estats_expedients_id;
             },
             cambiarSeccion(index){
                 this.seccionSeleccionada = index
+            },
+            crearNouExpedient(){
+                this.expedient.estats_expedients_id = 1;
             }
 
         },
