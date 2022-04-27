@@ -15,29 +15,33 @@ export default {
                 "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
         };
     },
-    methods: {
+        methods: {
         markAgencies() {
-            for (const agencies of this.agencies) {
-                this.positionMark(agencies);
+            for (const agencia of this.agencies) {
+                this.positionMark(agencia);
             }
         },
 
         selectAgencies() {
             let me = this;
             axios
-                .get("/agencies")
+                .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Valencia, Valencia");
+                    this.positionMarkIncident(agencia);
 
-                    this.markAgencies();
+//array para guardar cada punto 
+//query = agencies. ---selecciono la info 
+// la pongo de marcador en un foreach 
+
+                    this.markAgencies(agencia);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
         },
 
-        positionMarkIncident(place) {
+        positionMarkIncident(agencia) {
             let me = this;
             mapboxgl.accessToken = this.accessToken;
 
@@ -46,7 +50,7 @@ export default {
             });
             mapboxClient.geocoding
                 .forwardGeocode({
-                    query: place,
+                    query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal ,
                     autocomplete: false,
                     limit: 1,
                 })
@@ -66,13 +70,13 @@ export default {
                     const feature = response.body.features[0];
 
                     me.map = new mapboxgl.Map({
-                        container: "map2",
+                        container: "map",
                         style: "mapbox://styles/mapbox/streets-v11",
                         center: feature.center,
                         zoom: 12,
                     });
 
-                    // Crea un marcador y lo añade al mapa
+                   
                     new mapboxgl.Marker({
                         color: "#E74C3C",
                     })
@@ -80,7 +84,7 @@ export default {
                         .addTo(me.map);
                 });
         },
-        positionMark(agencies) {
+        positionMark(agencia) {
             let me = this;
             mapboxgl.accessToken = this.accessToken;
 
@@ -89,7 +93,7 @@ export default {
             });
             mapboxClient.geocoding
                 .forwardGeocode({
-                    query: agencies.carrer + ", " + agencies.municipis.nom,
+                    query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
                     autocomplete: false,
                     limit: 1,
                 })
@@ -115,14 +119,14 @@ export default {
                     marker.setLngLat(feature.center).addTo(me.map);
 
                     let div = this.createPopup(
-                        agencies,
+                        agencia,
                         marker,
                         feature,
                         me.map,
                         false
                     );
 
-                    // create the popup
+        
                     const popup = new mapboxgl.Popup({
                         offset: 25,
                     }).setDOMContent(div);
@@ -130,14 +134,14 @@ export default {
                     marker.setPopup(popup);
                 });
         },
-        createPopup(agencies, marker, feature, map, recomanat) {
+        createPopup(agencia, marker, feature, map, recomanat) {
             let me = this;
             const pMark = document.createElement("p");
-            pMark.innerText = agencies.nom;
+            pMark.innerText = agencia.nom;
             pMark.className = "fw-bold";
             const btnRecomanar = document.createElement("button");
             btnRecomanar.dataset.recomanat = recomanat;
-            btnRecomanar.dataset.agencies_id = agencies.id;
+            btnRecomanar.dataset.agencia_id = agencia.id;
             if (recomanat) {
                 btnRecomanar.className = "btn btn-secondary btn-sm";
                 btnRecomanar.innerText = "Treure Recomananació";
@@ -150,7 +154,7 @@ export default {
                 let btn = event.target;
                 if (btn.dataset.recomanat == "true") {
                     me.agenciesRecomanades.splice(
-                        me.agenciesRecomanades.indexOf(btn.dataset.agencies_id),
+                        me.agenciesRecomanades.indexOf(btn.dataset.agencia_id),
                         1
                     );
                     marker.remove();
@@ -162,7 +166,7 @@ export default {
                         .addTo(map);
 
                     let div = me.createPopup(
-                        agencies,
+                        agencia,
                         markernew,
                         feature,
                         map,
@@ -186,13 +190,12 @@ export default {
                         .addTo(map);
 
                     let div = me.createPopup(
-                        agencies,
+                        agencia,
                         markernew,
                         feature,
                         map,
                         true
                     );
-                    // create the popup
                     const popup = new mapboxgl.Popup({
                         offset: 25,
                     }).setDOMContent(div);
@@ -209,17 +212,15 @@ export default {
         },
     },
 
-    created() {},
+    created() {
+        this.selectAgencies();
+        this.markAgencies();
+    },
     mounted() {
         console.log("Component mounted.");
         this.selectAgencies();
     },
 };
-
-
-
-
-
 </script>
 
 <style>

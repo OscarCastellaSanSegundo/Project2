@@ -8,12 +8,14 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-// import { createApp } from 'vue'
-// import map from './map.vue'
-
-// createApp(map).mount('#map')
-
-// export default map
+import Vue from 'vue'
+/* import { BootstrapVue, IconsPlugin } from 'bootstrap-vue' */
+import DraggableDiv from './DraggableDiv'
+export default {
+  components: {
+    DraggableDiv
+  }
+}
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,9 +30,12 @@ Vue.component('trucada-component', require('./components/TrucadaComponent.vue').
 
 // Vue.component('pop-content', require('./components/PopupContent.vue').default);
 Vue.component('mapa', require('./components/mapa.vue').default);
+Vue.component('mapa-expedients', require('./components/mapaExpedients.vue').default);
+Vue.component('DraggableDiv', require('./DraggableDiv.vue').default);
+
 // Vue.component('mapa-expedients', require('./components/mapaExpedients.vue').default);
 
-// Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
+Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead);
 
 
 /**

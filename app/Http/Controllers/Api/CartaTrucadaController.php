@@ -62,25 +62,25 @@ class CartaTrucadaController extends Controller
         $cartesTrucadesHasAgencies->estats_agencies_id = $request->input('estats_agencies_id');
 
 
-        $dadesPersonals = new DadesPersonals();
-        $dadesPersonals->telefon = $request->input('telefon');
-        $dadesPersonals->adreca = $request->input('adreca');
-        $dadesPersonals->antecedents = $request->input('antecedents');
+        $dadesPersonal = new DadesPersonals();
+        $dadesPersonal->telefon = $request->input('telefon');
+        $dadesPersonal->adreca = $request->input('adreca');
+        $dadesPersonal->antecedents = $request->input('antecedents');
 
 
         $expedient = new Expedient();
-        $expedient->data_creacio = $request->input('data_creacio');
-        $expedient->data_ultima_modificacio = $request->input('data_ultima_modificacio');
+        $expedient->data_creacio = $request->date('Y-m-d H:i:s');
+        $expedient->data_ultima_modificacio = $request->date('Y-m-d H:i:s');
         $expedient->estats_expedients_id = $request->input('estats_expedients_id');
 
 
         try {
             DB::beginTransaction();
 
-                $dadesPersonals->save();
+                $dadesPersonal->save();
                 $expedient->save();
 
-                $cartaTrucada->dades_personals_id = $dadesPersonals->id;
+                $cartaTrucada->dades_personals_id = $dadesPersonal->id;
                 $cartaTrucada->expedients_id = $expedient->id;
                 $cartaTrucada->save();
 
