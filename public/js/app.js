@@ -6114,8 +6114,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   data: function data() {
     return {
       agencies: [],
-      agenciesRecomanades: [],
       map: {},
+      loading: true,
       accessToken: "pk.eyJ1IjoiYm9yamFnYXJjaWEiLCJhIjoiY2wyYTh6ZGg4MDFsZzNlb2EzMGVhejdvdCJ9.Zp8aJej_Dctrr88OrwbPrQ"
     };
   },
@@ -6138,47 +6138,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     selectAgencies: function selectAgencies() {
       var _this = this;
 
+      this.loading = false;
       var me = this;
       axios.get("/agencia").then(function (result) {
-        me.agencies = result.data;
+        me.agencies = result.data; // this.positionMarkIncident(agencia);
 
-        _this.positionMarkIncident(agencia); //array para guardar cada punto 
-        //query = agencies. ---selecciono la info 
-        // la pongo de marcador en un foreach 
-
-
-        _this.markAgencies(agencia);
+        _this.markAgencies('Barcelona,Barcelona', agencia);
       })["catch"](function (err) {
         console.log(err);
-      });
-    },
-    positionMarkIncident: function positionMarkIncident(agencia) {
-      var me = this;
-      mapboxgl.accessToken = this.accessToken;
-      var mapboxClient = mapboxSdk({
-        accessToken: mapboxgl.accessToken
-      });
-      mapboxClient.geocoding.forwardGeocode({
-        query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
-        autocomplete: false,
-        limit: 1
-      }).send().then(function (response) {
-        if (!response || !response.body || !response.body.features || !response.body.features.length) {
-          console.error("Invalid response:");
-          console.error(response);
-          return;
-        }
-
-        var feature = response.body.features[0];
-        me.map = new mapboxgl.Map({
-          container: "map",
-          style: "mapbox://styles/mapbox/streets-v11",
-          center: feature.center,
-          zoom: 12
-        });
-        new mapboxgl.Marker({
-          color: "#E74C3C"
-        }).setLngLat(feature.center).addTo(me.map);
+      })["finally"](function () {
+        return _this.loading = false;
       });
     },
     positionMark: function positionMark(agencia) {
@@ -6213,72 +6182,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }).setDOMContent(div);
         marker.setPopup(popup);
       });
-    },
-    createPopup: function createPopup(agencia, marker, feature, map, recomanat) {
-      var me = this;
-      var pMark = document.createElement("p");
-      pMark.innerText = agencia.nom;
-      pMark.className = "fw-bold";
-      var btnRecomanar = document.createElement("button");
-      btnRecomanar.dataset.recomanat = recomanat;
-      btnRecomanar.dataset.agencia_id = agencia.id;
-
-      if (recomanat) {
-        btnRecomanar.className = "btn btn-secondary btn-sm";
-        btnRecomanar.innerText = "Treure Recomananació";
-      } else {
-        btnRecomanar.className = "btn btn-primary btn-sm";
-        btnRecomanar.innerText = "Recomanar";
-      }
-
-      btnRecomanar.addEventListener("click", function (event) {
-        var btn = event.target;
-
-        if (btn.dataset.recomanat == "true") {
-          me.agenciesRecomanades.splice(me.agenciesRecomanades.indexOf(btn.dataset.agencia_id), 1);
-          marker.remove();
-          var markernew = new mapboxgl.Marker({
-            color: "#8E44AD",
-            rotation: 0
-          }).setLngLat(feature.center).addTo(map);
-
-          var _div = me.createPopup(agencia, markernew, feature, map, false); // create the popup
-
-
-          var popup = new mapboxgl.Popup({
-            offset: 25
-          }).setDOMContent(_div);
-          markernew.setPopup(popup);
-        } else {
-          me.agenciesRecomanades.push(btn.dataset.agencia_id);
-          console.log(me.agenciesRecomanades);
-          marker.remove();
-
-          var _markernew = new mapboxgl.Marker({
-            color: "#1FC610",
-            rotation: 45
-          }).setLngLat(feature.center).addTo(map);
-
-          var _div2 = me.createPopup(agencia, _markernew, feature, map, true);
-
-          var _popup = new mapboxgl.Popup({
-            offset: 25
-          }).setDOMContent(_div2);
-
-          _markernew.setPopup(_popup);
-        }
-      });
-      var div = document.createElement("div");
-      div.className = "text-center";
-      div.appendChild(pMark);
-      div.appendChild(btnRecomanar);
-      return div;
     }
   },
-  created: function created() {
-    this.selectAgencies();
-    this.markAgencies();
-  },
+  created: function created() {},
   mounted: function mounted() {
     console.log("Component mounted.");
     this.selectAgencies();
@@ -11653,7 +11559,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
