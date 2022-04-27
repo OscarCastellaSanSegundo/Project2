@@ -34,39 +34,7 @@ export default {
                 .catch((err) => {
                     console.log(err);
                 })
-<<<<<<< HEAD
-                .send()
-                .then((response) => {
-                    if (
-                        !response ||
-                        !response.body ||
-                        !response.body.features ||
-                        !response.body.features.length
-                    ) {
-                        console.error("Invalid response:");
-                        console.error(response);
-                        return;
-                    }
-
-                    const feature = response.body.features[0];
-
-                    me.map = new mapboxgl.Map({
-                        container: "map",
-                        style: "mapbox://styles/mapbox/streets-v11",
-                        center: feature.center,
-                        zoom: 12,
-                    });
-
-
-                    new mapboxgl.Marker({
-                        color: "#E74C3C",
-                    })
-                        .setLngLat(feature.center)
-                        .addTo(me.map);
-                });
-=======
                 .finally(()=> this.loading=false);
->>>>>>> fbf2e63143b46b470b3458a5cf5e565b55aa98b7
         },
         crearMapa(agencia) {
             let me = this;
@@ -96,35 +64,12 @@ export default {
 
                     const feature = response.body.features[0];
 
-<<<<<<< HEAD
-                    const marker = new mapboxgl.Marker({
-                        color: "#8E44AD",
-                    });
-
-                    marker.setLngLat(feature.center).addTo(me.map);
-
-                    let div = this.createPopup(
-                        agencia,
-                        marker,
-                        feature,
-                        me.map,
-                        false
-                    );
-
-
-                    const popup = new mapboxgl.Popup({
-                        offset: 25,
-                    }).setDOMContent(div);
-
-                    marker.setPopup(popup);
-=======
                   me.map =new mapboxgl.Map({
                         container:'map',
                         style:'mapbox://styles/mapbox/streets/v-11',
                         center:feature.center,
                         zoom:12
                   });
->>>>>>> fbf2e63143b46b470b3458a5cf5e565b55aa98b7
                 });
                 // this.añadirMarker(agencia);
         },
