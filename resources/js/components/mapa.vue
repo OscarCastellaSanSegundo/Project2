@@ -30,9 +30,9 @@ export default {
                     me.agencies = result.data;
                     this.positionMarkIncident(agencia);
 
-//array para guardar cada punto 
-//query = agencies. ---selecciono la info 
-// la pongo de marcador en un foreach 
+//array para guardar cada punto
+//query = agencies. ---selecciono la info
+// la pongo de marcador en un foreach
 
                     this.markAgencies(agencia);
                 })
@@ -76,7 +76,7 @@ export default {
                         zoom: 12,
                     });
 
-                   
+
                     new mapboxgl.Marker({
                         color: "#E74C3C",
                     })
@@ -126,7 +126,7 @@ export default {
                         false
                     );
 
-        
+
                     const popup = new mapboxgl.Popup({
                         offset: 25,
                     }).setDOMContent(div);

@@ -390,6 +390,9 @@
         <div class="modal fade zonaMapa bordeRedondo" id="exampleModalToggle" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <div class="modal-body">
 
                         <h1 class="text-center">Recomanacions</h1>
@@ -533,6 +536,8 @@
                     data_creacio: "",
                     data_ultima_modificacio: "",
                     estats_expedients_id: ""
+                },
+                datos: {
                 },
                 reproducirVideo: false,
                 seccionSeleccionada: 0,
@@ -693,6 +698,7 @@
                     })
                     .finally(() => this.loading = false)
 
+
             },
             // Función que convierte el objeto a cadena. Es llamado para mostrarse en la lista
             serializarValor(municipi){
@@ -755,6 +761,25 @@
             },
             crearNouExpedient(){
                 this.expedient.estats_expedients_id = 1;
+
+                this.datos = Object.assign(this.cartaTrucada, this.cartesTrucadesHasAgencies, this.dadesPersonal, this.expedient);
+
+                //Crear el expedientes
+                let me = this;
+                axios
+                    .post('/cartaTrucada',me.expedient)
+                    .then( response => {
+                        me.cartesTrucada2 = response.data;
+                    })
+                    .catch ( error => {
+                        console.log(error)
+                        this.errored = true;
+                    })
+                    .finally(() => this.loading = false)
+
+                //Crear la carta de llamada
+
+
             }
 
         },
