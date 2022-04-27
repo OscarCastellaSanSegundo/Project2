@@ -28,7 +28,7 @@ export default {
                 .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Valencia,Valencia");
+                    this.positionMarkIncident("Barcelona,Barcelona");
 // query carta de llamada+  calle + codigo postal
                     this.markAgencies();
                 })

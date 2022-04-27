@@ -28,16 +28,20 @@ export default {
                 .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Barcelona, Barcelona");
+                    this.positionMarkIncident(agencia);
 
-                    this.markAgencies();
+//array para guardar cada punto 
+//query = agencies. ---selecciono la info 
+// la pongo de marcador en un foreach 
+
+                    this.markAgencies(agencia);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
         },
 
-        positionMarkIncident(place) {
+        positionMarkIncident(agencia) {
             let me = this;
             mapboxgl.accessToken = this.accessToken;
 
@@ -46,7 +50,7 @@ export default {
             });
             mapboxClient.geocoding
                 .forwardGeocode({
-                    query: place,
+                    query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal ,
                     autocomplete: false,
                     limit: 1,
                 })
@@ -89,7 +93,7 @@ export default {
             });
             mapboxClient.geocoding
                 .forwardGeocode({
-                    query: agencia.carrer + ", " + agencia.municipi.nom,
+                    query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
                     autocomplete: false,
                     limit: 1,
                 })
