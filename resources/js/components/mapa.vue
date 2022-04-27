@@ -62,15 +62,22 @@ export default {
                             return;
                         }
 
-                        const feature = response.body.features[0];
+                    const feature = response.body.features[0];
 
-                    me.map =new mapboxgl.Map({
-                            container:'map',
-                            style:'mapbox://styles/mapbox/streets/v-11',
-                            center:feature.center,
-                            zoom:12
+                    me.map = new mapboxgl.Map({
+                        container: "map",
+                        style: "mapbox://styles/mapbox/streets-v11",
+                        center: feature.center,
+                        zoom: 12,
                     });
-                    });
+
+                    // Create a marker and add it to the map.
+                    new mapboxgl.Marker({
+                        color: "#E74C3C",
+                    })
+                        .setLngLat(feature.center)
+                        .addTo(me.map);
+                });
                     this.añadirMarker(agencia);
             },
 
@@ -99,12 +106,22 @@ export default {
                             console.error(response);
                             return;
                         }
-                    
-                            // create the popup
-                            const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-                            'Construction on the Washington Monument began in 1848.'
-                            );
+                            const feature = response.body.features[0];
+
+                            const marker = new mapboxgl.Marker({
+                                color: "#8E44AD",
+                            });
+
+                            marker.setLngLat(feature.center).addTo(me.map);
+                           
                             
+                            
+                             // create the popup   
+                            const popup = new mapboxgl.Popup({ 
+                                offset: 25 }).setText(
+                            'Soy un popup'
+                            );
+                        
                             // create DOM element for the marker
                             const el = document.createElement('div');
                             el.id = 'marker';
@@ -119,9 +136,7 @@ export default {
             },
     },
 
-    created() {
-
-    },
+    created() {},
     mounted() {
         console.log("Component mounted.");
         this.selectAgencies();
