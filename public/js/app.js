@@ -6143,8 +6143,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var _agencia = _step.value;
-          this.positionMark(_agencia);
+          var _agencies = _step.value;
+          this.positionMark(_agencies);
         }
       } catch (err) {
         _iterator.e(err);
@@ -6156,27 +6156,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this = this;
 
       var me = this;
-      axios.get("/agencia").then(function (result) {
+      axios.get("/agencies").then(function (result) {
         me.agencies = result.data;
 
-        _this.positionMarkIncident(agencia); //array para guardar cada punto
-        //query = agencies. ---selecciono la info
-        // la pongo de marcador en un foreach
+        _this.positionMarkIncident(agencies);
 
-
-        _this.markAgencies(agencia);
+        _this.markAgencies(agencies);
       })["catch"](function (err) {
         console.log(err);
       });
     },
-    positionMarkIncident: function positionMarkIncident(agencia) {
+    positionMarkIncident: function positionMarkIncident(agencies) {
       var me = this;
       mapboxgl.accessToken = this.accessToken;
       var mapboxClient = mapboxSdk({
         accessToken: mapboxgl.accessToken
       });
       mapboxClient.geocoding.forwardGeocode({
-        query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
+        query: agencies.carrer + ", " + agencies.municipi.nom + ", " + agencies.codi_postal,
         autocomplete: false,
         limit: 1
       }).send().then(function (response) {
@@ -6198,7 +6195,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }).setLngLat(feature.center).addTo(me.map);
       });
     },
-    positionMark: function positionMark(agencia) {
+    positionMark: function positionMark(agencies) {
       var _this2 = this;
 
       var me = this;
@@ -6207,7 +6204,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         accessToken: mapboxgl.accessToken
       });
       mapboxClient.geocoding.forwardGeocode({
-        query: agencia.carrer + ", " + agencia.municipi.nom + ", " + agencia.codi_postal,
+        query: agencies.carrer + ", " + agencies.municipi.nom + ", " + agencies.codi_postal,
         autocomplete: false,
         limit: 1
       }).send().then(function (response) {
@@ -6223,7 +6220,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         });
         marker.setLngLat(feature.center).addTo(me.map);
 
-        var div = _this2.createPopup(agencia, marker, feature, me.map, false);
+        var div = _this2.createPopup(agencies, marker, feature, me.map, false);
 
         var popup = new mapboxgl.Popup({
           offset: 25
@@ -6231,14 +6228,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         marker.setPopup(popup);
       });
     },
-    createPopup: function createPopup(agencia, marker, feature, map, recomanat) {
+    createPopup: function createPopup(agencies, marker, feature, map, recomanat) {
       var me = this;
       var pMark = document.createElement("p");
-      pMark.innerText = agencia.nom;
+      pMark.innerText = agencies.nom;
       pMark.className = "fw-bold";
       var btnRecomanar = document.createElement("button");
       btnRecomanar.dataset.recomanat = recomanat;
-      btnRecomanar.dataset.agencia_id = agencia.id;
+      btnRecomanar.dataset.agencies_id = agencies.id;
 
       if (recomanat) {
         btnRecomanar.className = "btn btn-secondary btn-sm";
@@ -6252,14 +6249,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         var btn = event.target;
 
         if (btn.dataset.recomanat == "true") {
-          me.agenciesRecomanades.splice(me.agenciesRecomanades.indexOf(btn.dataset.agencia_id), 1);
+          me.agenciesRecomanades.splice(me.agenciesRecomanades.indexOf(btn.dataset.agencies_id), 1);
           marker.remove();
           var markernew = new mapboxgl.Marker({
             color: "#8E44AD",
             rotation: 0
           }).setLngLat(feature.center).addTo(map);
 
-          var _div = me.createPopup(agencia, markernew, feature, map, false); // create the popup
+          var _div = me.createPopup(agencies, markernew, feature, map, false); // create the popup
 
 
           var popup = new mapboxgl.Popup({
@@ -6267,7 +6264,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }).setDOMContent(_div);
           markernew.setPopup(popup);
         } else {
-          me.agenciesRecomanades.push(btn.dataset.agencia_id);
+          me.agenciesRecomanades.push(btn.dataset.agencies_id);
           console.log(me.agenciesRecomanades);
           marker.remove();
 
@@ -6276,7 +6273,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             rotation: 45
           }).setLngLat(feature.center).addTo(map);
 
-          var _div2 = me.createPopup(agencia, _markernew, feature, map, true);
+          var _div2 = me.createPopup(agencies, _markernew, feature, map, true);
 
           var _popup = new mapboxgl.Popup({
             offset: 25
