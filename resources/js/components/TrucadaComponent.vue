@@ -247,9 +247,11 @@
 
 
             </div>
-            <DraggableDiv style="width:40%; background-color: rgb(17, 173, 196); border: 2px solid black" class="bordeRedondo" v-show="estaAprendiendo">
+            <DraggableDiv style="width:40%; background-color: rgb(17, 173, 196)" class="bordeRedondo" v-show="estaAprendiendo">
                 <template slot="header">
-                    Arrossega per moure
+                    <div class="d-flex aligns-items-center justify-content-center" style="border: 1px solid black; border-radius: 20px">
+                        <h5>Arrossega per moure</h5>
+                    </div>
                 </template>
                 <template slot="main" >
                     <div class="card col-12">
@@ -765,11 +767,17 @@
             },
             crearNouExpedient(){
                 this.expedient.estats_expedients_id = 1;
+                this.dadesPersonal.telefon = this.cartaTrucada.telefon;
+                this.dadesPersonal.adreca = this.cartaTrucada.adreca_trucada;
+                this.cartaTrucada.temps_trucada = document.getElementById("crono").innerHTML;
+                this.cartaTrucada.expedients_id = 1;
+
 
                 this.datos.cartaTrucada = this.cartaTrucada;
                 this.datos.cartesTrucadesHasAgencies = this.cartesTrucadesHasAgencies;
                 this.datos.dadesPersonal = this.dadesPersonal;
                 this.datos.expedient = this.expedient;
+
 
 
                 //Crear el expedientes

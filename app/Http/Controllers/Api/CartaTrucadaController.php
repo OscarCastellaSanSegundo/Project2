@@ -53,7 +53,8 @@ class CartaTrucadaController extends Controller
         $cartaTrucada->altres_ref_localitzacio = $request->input('cartaTrucada.altres_ref_localitzacio');
         $cartaTrucada->incidents_id = $request->input('cartaTrucada.incidents_id');
         $cartaTrucada->nota_comuna = $request->input('cartaTrucada.nota_comuna');
-        $cartaTrucada->usuaris_id = Auth::user()->id;
+        $cartaTrucada->expedients_id = $request->input('cartaTrucada.expedients_id');
+        $cartaTrucada->usuaris_id = 1;
 
 
        /*  $cartesTrucadesHasAgencies = new CartesTrucadesHasAgencies();

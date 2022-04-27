@@ -5790,6 +5790,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // import app from './app.vue';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   //   components: { app },
@@ -6074,6 +6076,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.expedient.estats_expedients_id = 1;
+      this.dadesPersonal.telefon = this.cartaTrucada.telefon;
+      this.dadesPersonal.adreca = this.cartaTrucada.adreca_trucada;
+      this.cartaTrucada.temps_trucada = document.getElementById("crono").innerHTML;
+      this.cartaTrucada.expedients_id = 1;
       this.datos.cartaTrucada = this.cartaTrucada;
       this.datos.cartesTrucadesHasAgencies = this.cartesTrucadesHasAgencies;
       this.datos.dadesPersonal = this.dadesPersonal;
@@ -11607,7 +11613,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30788,13 +30794,21 @@ var render = function () {
             staticStyle: {
               width: "40%",
               "background-color": "rgb(17, 173, 196)",
-              border: "2px solid black",
             },
           },
           [
             _c("template", { slot: "header" }, [
-              _vm._v(
-                "\n                    Arrossega per moure\n                "
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex aligns-items-center justify-content-center",
+                  staticStyle: {
+                    border: "1px solid black",
+                    "border-radius": "20px",
+                  },
+                },
+                [_c("h5", [_vm._v("Arrossega per moure")])]
               ),
             ]),
             _vm._v(" "),
