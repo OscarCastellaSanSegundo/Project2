@@ -195,7 +195,8 @@ Expedients
             <div class="cuerpoExpediente">
                 <div class="zonaMapaCard">
                     {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187.08288259846324!2d2.1730808994327813!3d41.388723494740994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f05d80e233%3A0x999036411babe70f!2sCentro%20de%20Estudios%20Polit%C3%A9cnicos%3A%20Urquinaona!5e0!3m2!1ses!2ses!4v1645014935619!5m2!1ses!2ses" class="imagenMapa" style="border:0;" allowfullscreen="" loading="lazy"></iframe> --}}
-                    <mapa></mapa>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2115.7849399839597!2d2.1772102121448604!3d41.413790088048714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2d121a09aa9%3A0x295f7b407ebc6292!2sInstituto%20p%C3%BAblico%20Mois%C3%A9s%20Broggi!5e0!3m2!1ses!2ses!4v1651138875092!5m2!1ses!2ses" class="imagenMapa" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    {{-- <mapa></mapa> --}}
                     {{-- <div id="map" style="width: 100%; height: 100%; padding: 5px"></div> --}}
                 </div>
                 <div class="notaComunaCard">

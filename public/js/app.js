@@ -6233,17 +6233,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         var marker = new mapboxgl.Marker({
           color: "#8E44AD"
         });
-        marker.setLngLat(feature.center).addTo(me.map); // create the popup   
-
-        var popup = new mapboxgl.Popup({
-          offset: 25
-        }).setText('Soy un popup'); // create DOM element for the marker
-
-        var el = document.createElement('div');
-        el.id = 'marker'; // create the marker
-
-        new mapboxgl.Marker(el).setLngLat(monument).setPopup(popup) // sets a popup on this marker
-        .addTo(map);
+        marker.setLngLat(feature.center).addTo(me.map); // recorrer todas las agencias foreach
+        // agencia.forEach(popup => {
+        // // crear the popup
+        //     const popup = new mapboxgl.Popup({
+        //     offset: 25 }).setText(
+        //         'Soy un popup'
+        //     );
+        //     // create DOM element for the marker
+        //     const el = document.createElement('div');
+        //     el.id = 'marker';
+        //     // create the marker
+        //     new mapboxgl.Marker(el)
+        //     .setLngLat(monument)
+        //     .setPopup(popup) // sets a popup on this marker
+        //     .addTo(map);
+        // })
       });
     }
   },
@@ -6312,7 +6317,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       axios.get("/agencia").then(function (result) {
         me.agencies = result.data;
 
-        _this.positionMarkIncident("Tarragona, Barcelona");
+        _this.positionMarkIncident("Barcelona, Barcelona");
 
         _this.markAgencies();
       })["catch"](function (err) {
@@ -11619,7 +11624,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

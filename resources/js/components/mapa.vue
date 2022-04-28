@@ -113,29 +113,29 @@ export default {
                             });
 
                             marker.setLngLat(feature.center).addTo(me.map);
-                           
-                           // recorrer todas las agencias foreach 
-                            agencia.forEach(popup => {
-                            // crear the popup 
-                                const popup = new mapboxgl.Popup({ 
-                                offset: 25 }).setText(
-                                    'Soy un popup'
-                                );
-                        
-                                // create DOM element for the marker
-                                const el = document.createElement('div');
-                                el.id = 'marker';
-                                
-                                // create the marker
-                                new mapboxgl.Marker(el)
-                                .setLngLat(monument)
-                                .setPopup(popup) // sets a popup on this marker
-                                .addTo(map);
-                            })
-                           
-                               
-                          
-                
+
+                           // recorrer todas las agencias foreach
+                            // agencia.forEach(popup => {
+                            // // crear the popup
+                            //     const popup = new mapboxgl.Popup({
+                            //     offset: 25 }).setText(
+                            //         'Soy un popup'
+                            //     );
+
+                            //     // create DOM element for the marker
+                            //     const el = document.createElement('div');
+                            //     el.id = 'marker';
+
+                            //     // create the marker
+                            //     new mapboxgl.Marker(el)
+                            //     .setLngLat(monument)
+                            //     .setPopup(popup) // sets a popup on this marker
+                            //     .addTo(map);
+                            // })
+
+
+
+
                 });
             },
     },
