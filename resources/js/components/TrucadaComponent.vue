@@ -354,7 +354,9 @@
 
                             <div class="form-group row mb-2 gx-3">
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipi" aria-describedby="button-addon2" name="municipis_id_trucada" v-model="cartaTrucada.municipis_id_trucada">
+                                    <!-- <input type="text" class="form-control form-control-sm" placeholder="Municipi" aria-label="Municipi" aria-describedby="button-addon2" name="municipis_id_trucada" v-model="municipis_id_trucada"> -->
+                                    <vue-bootstrap-typeahead @hit="onMunicipiAlertantSel" :serializer="serializarValor"
+                                                    v-model="busquedaMunicipiAlertant" :data="municipis" placeholder="municipis" />
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
                                     <img :src="imagenHelpbox" alt="" width="20" height="20">
@@ -491,6 +493,7 @@
                 cartesTrucada: [],
                 cartesTrucada2: {},
                 busquedaMunicipi: "",
+                busquedaMunicipiAlertant: "",
                 municipiSel: {},
                 comarcaId: "",
                 comarcaNom: "",
@@ -726,6 +729,9 @@
 /*                 this.comarcaId = municipi.comarques_id; */
                 this.comarcaNom = this.comarques[this.comarcaId].nom;
                 this.provinciaNom = this.provincies[this.comarques[this.comarcaId].provincies_id-1].nom;
+            },
+            onMunicipiAlertantSel(municipi){
+                this.cartaTrucada.municipis_id_trucada = municipi.id;
             },
             onIncidentSel(id){
                 var i = 0;

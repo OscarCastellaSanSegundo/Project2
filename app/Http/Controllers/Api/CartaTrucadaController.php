@@ -63,10 +63,10 @@ class CartaTrucadaController extends Controller
         $cartesTrucadesHasAgencies->estats_agencies_id = $request->input('cartesTrucadesHasAgencies.estats_agencies_id'); */
 
 
-/*         $dadesPersonal = new DadesPersonals();
+        $dadesPersonal = new DadesPersonals();
         $dadesPersonal->telefon = $request->input('dadesPersonal.telefon');
         $dadesPersonal->adreca = $request->input('dadesPersonal.adreca');
-        $dadesPersonal->antecedents = $request->input('dadesPersonal.antecedents'); */
+        $dadesPersonal->antecedents = $request->input('dadesPersonal.antecedents');
 
 
 /*         $expedient = new Expedient();
@@ -78,12 +78,12 @@ class CartaTrucadaController extends Controller
         try {
             DB::beginTransaction();
 
-/*                 $dadesPersonal->save();
-                $expedient->save();
+                 $dadesPersonal->save();
+/*                 $expedient->save(); */
 
                 $cartaTrucada->dades_personals_id = $dadesPersonal->id;
-                $cartaTrucada->expedients_id = $expedient->id; */
-/*                 $cartaTrucada->save(); */
+/*                 $cartaTrucada->expedients_id = $expedient->id; */
+/*                  $cartaTrucada->save(); */
 
 /*                 $cartesTrucadesHasAgencies->cartes_trucades_id = $cartaTrucada->id;
                 $cartesTrucadesHasAgencies->save(); */

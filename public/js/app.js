@@ -5792,6 +5792,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // import app from './app.vue';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   //   components: { app },
@@ -5817,6 +5819,7 @@ __webpack_require__.r(__webpack_exports__);
       cartesTrucada: [],
       cartesTrucada2: {},
       busquedaMunicipi: "",
+      busquedaMunicipiAlertant: "",
       municipiSel: {},
       comarcaId: "",
       comarcaNom: "",
@@ -6027,6 +6030,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.comarcaNom = this.comarques[this.comarcaId].nom;
       this.provinciaNom = this.provincies[this.comarques[this.comarcaId].provincies_id - 1].nom;
+    },
+    onMunicipiAlertantSel: function onMunicipiAlertantSel(municipi) {
+      this.cartaTrucada.municipis_id_trucada = municipi.id;
     },
     onIncidentSel: function onIncidentSel(id) {
       var i = 0;
@@ -11624,7 +11630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\n    width: 100%;\n    height: 100%;\n}\n#sortir {\n    position: fixed;\n    right: 20px;\n    bottom: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#map {\r\n    width: 100%;\r\n    height: 100%;\n}\n#sortir {\r\n    position: fixed;\r\n    right: 20px;\r\n    bottom: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31263,41 +31269,28 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group row mb-2 gx-3" }, [
-                    _c("div", { staticClass: "col-sm-10" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.cartaTrucada.municipis_id_trucada,
-                            expression: "cartaTrucada.municipis_id_trucada",
+                    _c(
+                      "div",
+                      { staticClass: "col-sm-10" },
+                      [
+                        _c("vue-bootstrap-typeahead", {
+                          attrs: {
+                            serializer: _vm.serializarValor,
+                            data: _vm.municipis,
+                            placeholder: "municipis",
                           },
-                        ],
-                        staticClass: "form-control form-control-sm",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Municipi",
-                          "aria-label": "Municipi",
-                          "aria-describedby": "button-addon2",
-                          name: "municipis_id_trucada",
-                        },
-                        domProps: {
-                          value: _vm.cartaTrucada.municipis_id_trucada,
-                        },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.cartaTrucada,
-                              "municipis_id_trucada",
-                              $event.target.value
-                            )
+                          on: { hit: _vm.onMunicipiAlertantSel },
+                          model: {
+                            value: _vm.busquedaMunicipiAlertant,
+                            callback: function ($$v) {
+                              _vm.busquedaMunicipiAlertant = $$v
+                            },
+                            expression: "busquedaMunicipiAlertant",
                           },
-                        },
-                      }),
-                    ]),
+                        }),
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c(
                       "a",
@@ -31462,7 +31455,7 @@ var render = function () {
                 _c(
                   "div",
                   { staticStyle: { width: "100%", height: "500px" } },
-                  [_c("mapa")],
+                  [_c("mapa-expedients")],
                   1
                 ),
                 _vm._v(" "),
