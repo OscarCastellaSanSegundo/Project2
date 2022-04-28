@@ -401,7 +401,7 @@
 
                         <!-- <div id="pop-Component"></div> -->
                         <div style="width: 100%; height: 500px">
-                            <mapa></mapa>
+                            <mapa-expedients></mapa-expedients>
                         </div>
 
                         <!-- <div id="app"></div> -->
