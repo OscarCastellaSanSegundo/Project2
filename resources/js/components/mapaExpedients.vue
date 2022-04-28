@@ -28,7 +28,7 @@ export default {
                 .get("/agencia")
                 .then((result) => {
                     me.agencies = result.data;
-                    this.positionMarkIncident("Tarragona, Barcelona");
+                    this.positionMarkIncident("Barcelona, Barcelona");
 
                     this.markAgencies();
                 })
