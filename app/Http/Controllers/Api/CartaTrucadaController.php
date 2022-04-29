@@ -37,7 +37,7 @@ class CartaTrucadaController extends Controller
     {
         $cartaTrucada = new CartaTrucada();
         $cartaTrucada->codi_trucada = $request->input('cartaTrucada.codi_trucada');
-        $cartaTrucada->data_hora = $request->date('Y-m-d H:i:s');
+        $cartaTrucada->data_hora = date('Y-m-d H:i:s');
         $cartaTrucada->temps_trucada = $request->input('cartaTrucada.temps_trucada');
         $cartaTrucada->procedencia_trucada = $request->input('cartaTrucada.procedencia_trucada');
         $cartaTrucada->origen_trucada = $request->input('cartaTrucada.origen_trucada');
@@ -54,6 +54,7 @@ class CartaTrucadaController extends Controller
         $cartaTrucada->incidents_id = $request->input('cartaTrucada.incidents_id');
         $cartaTrucada->nota_comuna = $request->input('cartaTrucada.nota_comuna');
         $cartaTrucada->expedients_id = $request->input('cartaTrucada.expedients_id');
+        $cartaTrucada->dades_personals_id = $request->input('cartaTrucada.dades_personals_id');
         $cartaTrucada->usuaris_id = 1;
 
 
@@ -62,28 +63,35 @@ class CartaTrucadaController extends Controller
         $cartesTrucadesHasAgencies->agencies_id = $request->input('cartesTrucadesHasAgencies.agencies_id');
         $cartesTrucadesHasAgencies->estats_agencies_id = $request->input('cartesTrucadesHasAgencies.estats_agencies_id'); */
 
+        if ($cartaTrucada->expedients_id == null) {
+            $expedient = new Expedient();
+            $expedient->data_creacio = date('Y-m-d H:i:s');
+            $expedient->data_ultima_modificacio = date('Y-m-d H:i:s');
+            $expedient->estats_expedients_id = $request->input('expedient.estats_expedients_id');
+        }
+        if ($cartaTrucada->dades_personals_id == null) {
+            $dadesPersonal = new DadesPersonals();
+            $dadesPersonal->telefon = $request->input('dadesPersonal.telefon');
+            $dadesPersonal->adreca = $request->input('dadesPersonal.adreca');
+            $dadesPersonal->antecedents = $request->input('dadesPersonal.antecedents');
+        }
 
-        $dadesPersonal = new DadesPersonals();
-        $dadesPersonal->telefon = $request->input('dadesPersonal.telefon');
-        $dadesPersonal->adreca = $request->input('dadesPersonal.adreca');
-        $dadesPersonal->antecedents = $request->input('dadesPersonal.antecedents');
 
 
-/*         $expedient = new Expedient();
-        $expedient->data_creacio = $request->date('Y-m-d H:i:s');
-        $expedient->data_ultima_modificacio = $request->date('Y-m-d H:i:s');
-        $expedient->estats_expedients_id = $request->input('expedient.estats_expedients_id'); */
 
 
         try {
             DB::beginTransaction();
 
-                 $dadesPersonal->save();
-/*                 $expedient->save(); */
-
-                $cartaTrucada->dades_personals_id = $dadesPersonal->id;
-/*                 $cartaTrucada->expedients_id = $expedient->id; */
-/*                  $cartaTrucada->save(); */
+                if ($cartaTrucada->expedients_id == null) {
+                    $expedient->save();
+                    $cartaTrucada->expedients_id = $expedient->id;
+                }
+                if ($cartaTrucada->dades_personals_id == null) {
+                    $dadesPersonal->save();
+                    $cartaTrucada->dades_personals_id = $dadesPersonal->id;
+                }
+                $cartaTrucada->save();
 
 /*                 $cartesTrucadesHasAgencies->cartes_trucades_id = $cartaTrucada->id;
                 $cartesTrucadesHasAgencies->save(); */

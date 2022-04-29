@@ -26,7 +26,7 @@
                                     <label class="form-check-label" for="fora_catalunya">Fora de Catalunya</label>
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Are You in Catalonia?" data-content="And here's some amazing content. It's very engaging. Right?">
                                 </a>
                             </div>
 
@@ -73,7 +73,7 @@
                                 <div class="col-1">
 
                                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                        <img alt="" width="20" height="20" :src="imagenHelpbox">
+                                        <img alt="" width="20" height="20" :src="imagenHelpbox" data-toggle="popover" title="What is your municipality, region or province?" data-content="">
                                     </a>
 
                                 </div>
@@ -136,7 +136,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Altres referències" aria-describedby="button-addon2" name="altres_ref_localitzacio" v-model="cartaTrucada.altres_ref_localitzacio">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Give me some details about your localitzation" data-content="">
                                                 </a>
                                             </div>
 
@@ -156,7 +156,7 @@
                                                     <input type="text" class="form-control form-control-sm" placeholder="Altres referències" aria-label="Otras referencias" aria-describedby="button-addon2" name="" v-model="cartaTrucada.altres_ref_localitzacio">
                                                 </div>
                                                 <a class="col-sm-1 col-navbar-brand-sm" href="#">
-                                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Give me some details about your localitzation" data-content="">
                                                 </a>
                                             </div>
 
@@ -187,7 +187,7 @@
                                 <div class="col-1">
 
                                     <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                        <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                        <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Tell me a brief description of what happened" data-content="">
                                     </a>
 
                                 </div>
@@ -312,7 +312,7 @@
                                 <input type="number" class="form-control form-control-sm" placeholder="Telèfon" aria-label="Telefono" aria-describedby="button-addon2" id="telefon" name="telefon" v-model="cartaTrucada.telefon" v-on:keyup.enter="buscarTelefon(cartaTrucada.telefon)">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="What is your phone?" data-content="">
                             </a>
                         </div>
                         <div class="form-group row mb-2">
@@ -320,7 +320,7 @@
                                 <input type="text" class="form-control form-control-sm" placeholder="Nom" aria-label="Nom" aria-describedby="button-addon2" name="nom_trucada" v-model="cartaTrucada.nom_trucada">
                             </div>
                             <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="What is your name?" data-content="">
                             </a>
                         </div>
 
@@ -348,7 +348,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Origen" aria-label="Origen" aria-describedby="button-addon2" name="origen_trucada" v-model="cartaTrucada.origen_trucada">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm gx-4" href="#">
-                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Tell me exactly where you are" data-content="">
                                 </a>
                             </div>
 
@@ -359,7 +359,7 @@
                                                     v-model="busquedaMunicipiAlertant" :data="municipis" placeholder="municipis" />
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="What is the municipality where you live?" data-content="">
                                 </a>
                             </div>
 
@@ -368,7 +368,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Adreça" aria-label="Direccion" aria-describedby="button-addon2" name="dades_personals_id_adreca" v-model="cartaTrucada.adreca_trucada">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm" href="#">
-                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="What is your address?" data-content="">
                                 </a>
                             </div>
 
@@ -377,7 +377,7 @@
                                     <input type="text" class="form-control form-control-sm" placeholder="Informació del telèfon" aria-label="Informacion del telefono" aria-describedby="button-addon2" name="dades_personals_id_antecedents" v-model="dadesPersonal.antecedents">
                                 </div>
                                 <a class="col-sm-2 col-navbar-brand-sm gx-2" href="#">
-                                    <img :src="imagenHelpbox" alt="" width="20" height="20">
+                                    <img :src="imagenHelpbox" alt="" width="20" height="20" data-toggle="popover" title="Give me a brief description about who you are" data-content="">
                                 </a>
                             </div>
 
@@ -749,8 +749,12 @@
             buscarTelefon (telefon){
                 var i = 0;
                 while(this.dadesPersonals.length > i){
-                    if(this.cartaTrucada[i].telefon == telefon){
-                        console.log("gvreg");
+                    if(this.cartaTrucada.telefon == telefon){
+                        this.cartaTrucada.dades_personals_id = this.dadesPersonals[i].id;
+                        this.dadesPersonal.antecedents = this.dadesPersonals[i].antecedents;
+                        this.dadesPersonal.adreca = this.dadesPersonals[i].adreca;
+                        this.cartaTrucada.adreca_trucada = this.dadesPersonals[i].adreca;
+
                     }
                     i++;
                 }
@@ -767,6 +771,19 @@
                 this.expedient.data_creacio = this.expedients[id].data_creacio;
                 this.expedient.data_ultima_modificacio = this.expedients[id].data_ultima_modificacio;
                 this.expedient.estats_expedients_id = this.expedients[id].estats_expedients_id;
+
+                this.dadesPersonal.telefon = this.cartaTrucada.telefon;
+                this.dadesPersonal.adreca = this.cartaTrucada.adreca_trucada;
+                this.cartaTrucada.temps_trucada = document.getElementById("crono").innerHTML;
+
+
+                this.datos.cartaTrucada = this.cartaTrucada;
+                this.datos.cartesTrucadesHasAgencies = this.cartesTrucadesHasAgencies;
+                this.datos.dadesPersonal = this.dadesPersonal;
+                this.datos.expedient = this.expedient;
+
+                location.reload();
+
             },
             cambiarSeccion(index){
                 this.seccionSeleccionada = index
@@ -776,17 +793,17 @@
                 this.dadesPersonal.telefon = this.cartaTrucada.telefon;
                 this.dadesPersonal.adreca = this.cartaTrucada.adreca_trucada;
                 this.cartaTrucada.temps_trucada = document.getElementById("crono").innerHTML;
-                this.cartaTrucada.expedients_id = 1;
+                /* this.cartaTrucada.expedients_id = 1; */
 
 
                 this.datos.cartaTrucada = this.cartaTrucada;
                 this.datos.cartesTrucadesHasAgencies = this.cartesTrucadesHasAgencies;
                 this.datos.dadesPersonal = this.dadesPersonal;
                 this.datos.expedient = this.expedient;
+                location.reload();
 
 
 
-                //Crear el expedientes
                 let me = this;
                 axios
                     .post('/cartaTrucada',me.datos)
